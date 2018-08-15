@@ -20,17 +20,32 @@
 # conversions or textual diffs. According to 
 # https://git-scm.com/docs/gitattributes, this is equivalent to
 # "*.jpg -text -diff".
-*.jpg binary
-*.png binary
+*.jpg		binary
+*.png		binary
+*.gif		binary
+*.tif		binary
+*.pcx		binary
+*.class		binary
+*.jar		binary
+*.zip		binary
+*.wav		binary
+*.docx		binary
+*.pdf		binary
+*.pfx		binary
+*.dat		binary
+*.rtf		binary
+*.exop		binary
+
+# Special binaries
+download.sh	binary
+jgit.sh		binary
+download_docsearcher.bat	binary
 
 # Note: After changing .gitattributes we should do this:
-#
 # git add --renormalize .
 # git status        # Show files that will be normalized
 # git commit -m "Introduce end-of-line normalization"
-# 
 # To prevent a specific file from being normalized:
 # manual.pdf	-text   # Then run "git add -u"
-#
 # To request that a specific file be normalized:
 # weirdchars.txt	text  # Then run "git add -u"
