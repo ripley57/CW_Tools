@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Image Decryption Demo</title>
+		<!-- Get these files from https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/crypto-js/CryptoJS v3.1.2.zip -->
+		<script type="text/javascript" src="crypto-js.js"></script>
+		<script type="text/javascript" src="aes.js"></script>
+		<!-- Get this file from https://code.jquery.com/jquery-3.3.1.min.js -->
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	</head>
+	<body>
+		<h2>Image Decryption Demo - using JavaScript Promises and jQuery Deferreds</h2>
+		<p><b>Note:</b> To encrypt your image, use a command similar to this:</p>
+		<pre>openssl enc -aes-256-cbc -in kafka160120.jpg -out kafka160120.jpg.encrypted -pass pass:"hello" -e -base64</pre>
+		
+		<form id="form_password" name="f">
+		Password:&nbsp;<input type="text" id="password" size="20" value="hello" />
+		<input type="button" onclick="decryptAllImages();" value="Decrypt" />
+		<p id="decryption_feedback" class="blink"></p>
+		</form>
+
+		<div id="placeholder1"></div>
+		<div id="placeholder2"></div>
+		<div id="placeholder3"></div>		
+		
+		<script type="text/javascript">
+			function getEncryptedImageData(url) {
+				const deferred = new $.Deferred(function(resolve, reject) {
+					const request = new XMLHttpRequest();
+					request.open('GET', url);
+					request.onload = function() {
+						if (request.status === 200) {
+							deferred.resolve(request.response);
+						} else {
+							deferred.reject(Error(request.statusText));
+						}
+					};
+					request.onerror = function() {
+						reject(Error('Error fetching data.'));
+					};
+					// This triggers the asynchronous GET request.
+					request.send();
+				});	
+				return deferred.promise();
+			}
+		
+			function getDecryptedImageData(encrypted_data,password) {
+				const deferred = new $.Deferred(function(resolve, reject) {
+					// Resolve the promise. The following is synchronous AFAIK, so we are 
+					// using a promise here simply so that we can chain our function calsl using "then".
+					var decrypted_data = CryptoJS.AES.decrypt(encrypted_data.split(/\s/).join(''), password).toString(CryptoJS.enc.Base64);
+					// We need to wrap this in a timeout to prevent "use before declaration" run-time error.
+					setTimeout(function(){deferred.resolve(decrypted_data);}, 100);
+				});
+				return deferred.promise();
+			}
+			
+			function displayDecryptedImage(decrypted_data,placeholder) {
+				const deferred = new $.Deferred(function(resolve, reject) {
+					var newImg = document.createElement("img");
+					newImg.setAttribute('alt','If you can see this then the image decryption probably failed!');
+					newImg.setAttribute('style', 'display:none'); // Start with image hidden.
+					newImg.setAttribute('class', 'fadein'); // So we can later un-hide the image.
+					newImg.onload = function() { 
+						document.getElementById(placeholder).appendChild(newImg);
+						deferred.resolve("Image decryption and display successful");
+					};
+					newImg.onerror = function() {
+						console.log('Unable to display image. Decryption password is most likely incorrect.');
+						deferred.reject(Error('Unable to display image'));
+					};
+					// I suspect this is what triggers the image loading.
+					newImg.setAttribute('src', 'data:image/jpg;base64,' + decrypted_data);
+				});
+				return deferred.promise();
+			}
+			
+			function decryptAndDisplaySingleImage(url,password,placeholder) {
+				const deferred = new $.Deferred(function(resolve, reject) {
+					var deferred_1 = getEncryptedImageData(url);
+					deferred_1.done(function(encrypted_data) {
+						var deferred_2 = getDecryptedImageData(encrypted_data,password);
+						deferred_2.done(function(decrypted_data) {
+							var deferred_3 = displayDecryptedImage(decrypted_data,placeholder);
+							deferred_3.done(function() {
+								console.log('Image displayed successfully: ' + url);
+								deferred.resolve('Image displayed successfully: ' + url);
+							})
+							.fail(function() {
+								deferred.reject(Error('Unable to display image: ' + url));
+							});
+						})
+						.fail(function() {
+							deferred.reject(Error('Unable to decrypt image data: ' + url));
+						});
+					})
+					.fail(function() {
+						deferred.reject(Error('Unable to get image data: ' + url));
+					});
+				});
+				return deferred.promise();
+			}
+			
+			function setFeedback(txt) {
+				$('#decryption_feedback').html(txt);
+			}
+		
+			function decryptAllImages() {
+				var password = document.getElementById('password').value;
+				// Note how we use "Promises", or "Deferreds" as they are known in jQuery.
+				// This enables us to execute the asynchronous image loads effectively 
+				// synchronously, so we know that if we get to the end then all image
+				// pages have been successfully decrypted, so we can show them all.
+				var def1 = decryptAndDisplaySingleImage('kafka160120.jpg.encrypted',password,'placeholder1');
+				def1.fail(function(err) {
+					setFeedback(err);
+				});
+				def1.done(function() {
+					var def2 = decryptAndDisplaySingleImage('kafka160120.jpg.encrypted',password,'placeholder2');
+					def2.fail(function(err) {
+						setFeedback(err);	
+					});
+					def2.done(function() {
+						var def3 = decryptAndDisplaySingleImage('kafka160120.jpg.encrypted',password,'placeholder3');
+						def3.fail(function(err) {
+							setFeedback(err);	
+						});
+						def3.done(function() {
+							// All images successfully decrypted and displayed. 
+							// Which means we can now hide the password form.
+							$("#form_password").toggle();
+							// And let's now un-hide the images.
+							$('.fadein').toggle('slow');
+						});
+					});
+				});
+			}
+		</script>
+	</body>
+	</html>

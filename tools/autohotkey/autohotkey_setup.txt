@@ -1,0 +1,14 @@
+Launching Autohotkey .ahk files at Windows startup
+==================================================
+
+Run "shell:startup" to take you to your startup folder, e.g.:
+
+C:\Users\jcdc\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
+
+
+In here put a shortcut to your .ahk file, e.g. pointing to:
+
+C:\Users\jcdc\Dropbox\scripts\autohotkey\explore.ahk
+
+
+JeremyC 6-6-2018

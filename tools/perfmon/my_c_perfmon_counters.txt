@@ -1,0 +1,11 @@
+\LogicalDisk(C:)\% Free Space
+\PhysicalDisk(0 C:)\Avg. Disk sec/Read
+\PhysicalDisk(0 C:)\Avg. Disk sec/Write
+\PhysicalDisk(0 C:)\Avg. Disk sec/Transfer
+\PhysicalDisk(0 C:)\Avg. Disk Read Queue Length
+\PhysicalDisk(0 C:)\Avg. Disk Write Queue Length
+\PhysicalDisk(0 C:)\Avg. Disk Queue Length
+\PhysicalDisk(0 C:)\% Idle Time
+\Memory\Available MBytes
+\Memory\Cache Bytes
+\Memory\System Cache Resident Bytes

@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Root MajorVersion="1" MinorVersion="0" CaseId="SECvTamas" Description="XML Export for SECvTamas by superuser on 2015-12-07T15:01:37.335-05:00">
+	<Batch name="Job 1.5.7.1490094768263266705, batch 1">
+		<Documents>
+			<Document DocID="0.7.14.31581" DocType="Message" MimeType="application/vnd.ms-outlook">
+				<Tags>
+					<Tag TagName="#From" TagDataType="Text" TagValue="Aiken, Sam &lt;aiken@tamascorp.com&gt;"></Tag>
+					<Tag TagName="#Sender" TagDataType="Text" TagValue="Aiken, Sam &lt;aiken@tamascorp.com&gt;"></Tag>
+					<Tag TagName="#To" TagDataType="Text" TagValue="Jack Fredericks &lt;jfredericks@tamascorp.com&gt;"></Tag>
+					<Tag TagName="#CC" TagDataType="Text" TagValue="Davis, Buster &lt;davis@tamascorp.com&gt;"></Tag>
+					<Tag TagName="#BCC" TagDataType="Text" TagValue="Middleton, Brandon &lt;middleton@tamascorp.com&gt;"></Tag>
+					<Tag TagName="#Subject" TagDataType="Text" TagValue=" Check this out "></Tag>
+					<Tag TagName="#DateSent" TagDataType="DateTime" TagValue="2008-12-31T21:11:00.000-05:00"></Tag>
+					<Tag TagName="#DateReceived" TagDataType="DateTime" TagValue="2000-03-22T08:51:00.000-05:00"></Tag>
+					<Tag TagName="#ReadFlag" TagDataType="Boolean" TagValue="true"></Tag>
+					<Tag TagName="#ImportanceFlag" TagDataType="Boolean" TagValue="false"></Tag>
+					<Tag TagName="#MessageClass" TagDataType="Text" TagValue="Message"></Tag>
+					<Tag TagName="#FlagStatus" TagDataType="Text" TagValue="NoFlag"></Tag>
+					<Tag TagName="Priority" TagDataType="Text" TagValue="Normal"></Tag>
+					<Tag TagName="Sensitivity" TagDataType="Text" TagValue="None"></Tag>
+					<Tag TagName="ReadReceipt" TagDataType="Boolean" TagValue="0"></Tag>
+					<Tag TagName="#Language" TagDataType="Text" TagValue="en"></Tag>
+					<Tag TagName="#HasAttachments" TagDataType="Boolean" TagValue="true"></Tag>
+					<Tag TagName="#AttachmentCount" TagDataType="Integer" TagValue="1"></Tag>
+					<Tag TagName="#AttachmentNames" TagDataType="Text" TagValue="000000003A214396F78F5E4B92DB85A8D15EFBBCE4E72000.#1.ENRON TEAM ROSTER.DOC"></Tag>
+				</Tags>
+				<CustomDocumentInfo>
+					<Batches>
+						<BatchId>Tue Dec 03 2013 17:18:14 EST - Processing - Initial Batch</BatchId>
+					</Batches>
+					<SearchableDocID>0.7.14.31581</SearchableDocID>
+					<Language>English (100%)</Language>
+					<StrictChecksum>a234d3cd003da028fc8fa312934ac098</StrictChecksum>
+					<RelaxedChecksum>0ee0fa58360b545fc8d94a291bb007ad</RelaxedChecksum>
+					<CrawlerChecksum>0700d158c9360ac171c393819b516f2e93a1abdda9de5f22d9f729bff38f1e6831a0</CrawlerChecksum>
+				</CustomDocumentInfo>
+			</Document>
+			<Document DocID="0.7.14.31581.1" DocType="File" MimeType="application/msword">
+				<Tags>
+					<Tag TagName="#FileName" TagDataType="Text" TagValue="000000003A214396F78F5E4B92DB85A8D15EFBBCE4E72000.#1.ENRON TEAM ROSTER"></Tag>
+					<Tag TagName="#FileExtension" TagDataType="Text" TagValue="DOC"></Tag>
+					<Tag TagName="#FileSize" TagDataType="LongInteger" TagValue="60416"></Tag>
+					<Tag TagName="#DateCreated" TagDataType="DateTime" TagValue="2005-04-27T07:25:39.185-04:00"></Tag>
+					<Tag TagName="#DateModified" TagDataType="DateTime" TagValue="2005-04-27T07:25:39.185-04:00"></Tag>
+					<Tag TagName="#Language" TagDataType="Text" TagValue="en"></Tag>
+				</Tags>
+				<CustomDocumentInfo>
+					<SearchableDocID>0.7.14.31581-000001</SearchableDocID>
+					<Language>English (100%)</Language>
+					<ContentChecksum>981b3226799435020ad903a90774f7af</ContentChecksum>
+				</CustomDocumentInfo>
+			</Document>
+			<Document DocID="0.7.14.31580" DocType="Message" MimeType="application/vnd.ms-outlook">
+				<Tags>
+					<Tag TagName="#From" TagDataType="Text" TagValue="Aiken, Sam &lt;aiken@tamascorp.com&gt;"></Tag>
+					<Tag TagName="#Sender" TagDataType="Text" TagValue="Aiken, Sam &lt;aiken@tamascorp.com&gt;"></Tag>
+					<Tag TagName="#To" TagDataType="Text" TagValue="David Carter &lt;dcarter@tamascorp.com&gt;"></Tag>
+					<Tag TagName="#CC" TagDataType="Text" TagValue="Foster, George &lt;foster@tamascorp.com&gt;"></Tag>
+					<Tag TagName="#BCC" TagDataType="Text" TagValue="McDonald, Shaun &lt;mcdonald@tamascorp.com&gt;"></Tag>
+					<Tag TagName="#Subject" TagDataType="Text" TagValue=" Check this out "></Tag>
+					<Tag TagName="#DateSent" TagDataType="DateTime" TagValue="2008-12-31T16:26:00.000-05:00"></Tag>
+					<Tag TagName="#DateReceived" TagDataType="DateTime" TagValue="2000-03-21T13:33:00.000-05:00"></Tag>
+					<Tag TagName="#ReadFlag" TagDataType="Boolean" TagValue="true"></Tag>
+					<Tag TagName="#ImportanceFlag" TagDataType="Boolean" TagValue="false"></Tag>
+					<Tag TagName="#MessageClass" TagDataType="Text" TagValue="Message"></Tag>
+					<Tag TagName="#FlagStatus" TagDataType="Text" TagValue="NoFlag"></Tag>
+					<Tag TagName="Priority" TagDataType="Text" TagValue="Normal"></Tag>
+					<Tag TagName="Sensitivity" TagDataType="Text" TagValue="None"></Tag>
+					<Tag TagName="ReadReceipt" TagDataType="Boolean" TagValue="0"></Tag>
+					<Tag TagName="#Language" TagDataType="Text" TagValue="en"></Tag>
+					<Tag TagName="#HasAttachments" TagDataType="Boolean" TagValue="false"></Tag>
+				</Tags>
+				<CustomDocumentInfo>
+					<Batches>
+						<BatchId>Tue Dec 03 2013 17:18:14 EST - Processing - Initial Batch</BatchId>
+					</Batches>
+					<SearchableDocID>0.7.14.31580</SearchableDocID>
+					<Language>English (100%)</Language>
+					<StrictChecksum>8cf8935ab39b0dc23173af8bcf07a269</StrictChecksum>
+					<RelaxedChecksum>d7ca12004ac6a53a012a495864ca581d</RelaxedChecksum>
+					<CrawlerChecksum>07008277f16ea2a19687cdb1d3399162aeeb4dcd92fca59ac162a1bf442b868e8f56</CrawlerChecksum>
+				</CustomDocumentInfo>
+			</Document>
+			<Document DocID="0.7.14.31579" DocType="Message" MimeType="application/vnd.ms-outlook">
+				<Tags>
+					<Tag TagName="#From" TagDataType="Text" TagValue="Aiken, Sam &lt;aiken@tamascorp.com&gt;"></Tag>
+					<Tag TagName="#Sender" TagDataType="Text" TagValue="Aiken, Sam &lt;aiken@tamascorp.com&gt;"></Tag>
+					<Tag TagName="#To" TagDataType="Text" TagValue="Mike Tamas &lt;mtamas@tamascorp.com&gt;"></Tag>
+					<Tag TagName="#CC" TagDataType="Text" TagValue="Fitzsimmons, Casey &lt;fitzsimmons@tamascorp.com&gt;"></Tag>
+					<Tag TagName="#BCC" TagDataType="Text" TagValue="Lewis, Alex &lt;lewis@tamascorp.com&gt;"></Tag>
+					<Tag TagName="#Subject" TagDataType="Text" TagValue=" Check this out "></Tag>
+					<Tag TagName="#DateSent" TagDataType="DateTime" TagValue="2008-12-31T12:21:00.000-05:00"></Tag>
+					<Tag TagName="#DateReceived" TagDataType="DateTime" TagValue="2000-03-21T13:04:00.000-05:00"></Tag>
+					<Tag TagName="#ReadFlag" TagDataType="Boolean" TagValue="true"></Tag>
+					<Tag TagName="#ImportanceFlag" TagDataType="Boolean" TagValue="false"></Tag>
+					<Tag TagName="#MessageClass" TagDataType="Text" TagValue="Message"></Tag>
+					<Tag TagName="#FlagStatus" TagDataType="Text" TagValue="NoFlag"></Tag>
+					<Tag TagName="Priority" TagDataType="Text" TagValue="Normal"></Tag>
+					<Tag TagName="Sensitivity" TagDataType="Text" TagValue="None"></Tag>
+					<Tag TagName="ReadReceipt" TagDataType="Boolean" TagValue="0"></Tag>
+					<Tag TagName="#Language" TagDataType="Text" TagValue="en"></Tag>
+					<Tag TagName="#HasAttachments" TagDataType="Boolean" TagValue="false"></Tag>
+				</Tags>
+				<CustomDocumentInfo>
+					<Batches>
+						<BatchId>Tue Dec 03 2013 17:18:14 EST - Processing - Initial Batch</BatchId>
+					</Batches>
+					<SearchableDocID>0.7.14.31579</SearchableDocID>
+					<Language>English (100%)</Language>
+					<StrictChecksum>6de74b00807da89ce2175796964dbac0</StrictChecksum>
+					<RelaxedChecksum>71582309826c2ea490baa4cfaad99d95</RelaxedChecksum>
+					<CrawlerChecksum>0700dd8c761831e0ff446c2e160459aee9ee1c949fb43c208a4c8f4104c8a1ae7f16</CrawlerChecksum>
+				</CustomDocumentInfo>
+			</Document>
+			<Document DocID="0.7.14.31576" DocType="Message" MimeType="application/vnd.ms-outlook">
+				<Tags>
+					<Tag TagName="#From" TagDataType="Text" TagValue="Aiken, Sam &lt;aiken@tamascorp.com&gt;"></Tag>
+					<Tag TagName="#Sender" TagDataType="Text" TagValue="Aiken, Sam &lt;aiken@tamascorp.com&gt;"></Tag>
+					<Tag TagName="#To" TagDataType="Text" TagValue="Phil Smith &lt;psmith@tamascorp.com&gt;"></Tag>
+					<Tag TagName="#CC" TagDataType="Text" TagValue="Fisher, Travis &lt;fisher@tamascorp.com&gt;"></Tag>
+					<Tag TagName="#BCC" TagDataType="Text" TagValue="O'Sullivan, J.T. &lt;o'sullivan@tamascorp.com&gt;"></Tag>
+					<Tag TagName="#Subject" TagDataType="Text" TagValue=" Check this out "></Tag>
+					<Tag TagName="#DateSent" TagDataType="DateTime" TagValue="2008-12-31T06:41:00.000-05:00"></Tag>
+					<Tag TagName="#DateReceived" TagDataType="DateTime" TagValue="2000-03-21T06:11:00.000-05:00"></Tag>
+					<Tag TagName="#ReadFlag" TagDataType="Boolean" TagValue="true"></Tag>
+					<Tag TagName="#ImportanceFlag" TagDataType="Boolean" TagValue="false"></Tag>
+					<Tag TagName="#MessageClass" TagDataType="Text" TagValue="Message"></Tag>
+					<Tag TagName="#FlagStatus" TagDataType="Text" TagValue="NoFlag"></Tag>
+					<Tag TagName="Priority" TagDataType="Text" TagValue="Normal"></Tag>
+					<Tag TagName="Sensitivity" TagDataType="Text" TagValue="None"></Tag>
+					<Tag TagName="ReadReceipt" TagDataType="Boolean" TagValue="0"></Tag>
+					<Tag TagName="#Language" TagDataType="Text" TagValue="en"></Tag>
+					<Tag TagName="#HasAttachments" TagDataType="Boolean" TagValue="true"></Tag>
+					<Tag TagName="#AttachmentCount" TagDataType="Integer" TagValue="1"></Tag>
+					<Tag TagName="#AttachmentNames" TagDataType="Text" TagValue="000000003A214396F78F5E4B92DB85A8D15EFBBC64E82000.#1.Fixed Costs (O&amp;M).xls"></Tag>
+				</Tags>
+				<CustomDocumentInfo>
+					<Batches>
+						<BatchId>Tue Dec 03 2013 17:18:14 EST - Processing - Initial Batch</BatchId>
+					</Batches>
+					<SearchableDocID>0.7.14.31576</SearchableDocID>
+					<Language>English (100%)</Language>
+					<StrictChecksum>598f7a74004537d395e918ca4c8370a4</StrictChecksum>
+					<RelaxedChecksum>b5618f1c6e3a187f3da0a67f17cadae8</RelaxedChecksum>
+					<CrawlerChecksum>070057d4f8e026f18b765ace6c940dd944bbc9161c4344a90896dd9dacf9ce94be85</CrawlerChecksum>
+				</CustomDocumentInfo>
+			</Document>
+			<Document DocID="0.7.14.31576.1" DocType="File" MimeType="application/vnd.ms-excel">
+				<Tags>
+					<Tag TagName="#FileName" TagDataType="Text" TagValue="000000003A214396F78F5E4B92DB85A8D15EFBBC64E82000.#1.Fixed Costs (O&amp;M)"></Tag>
+					<Tag TagName="#FileExtension" TagDataType="Text" TagValue="xls"></Tag>
+					<Tag TagName="#FileSize" TagDataType="LongInteger" TagValue="60928"></Tag>
+					<Tag TagName="#DateCreated" TagDataType="DateTime" TagValue="2005-04-27T07:25:41.138-04:00"></Tag>
+					<Tag TagName="#DateModified" TagDataType="DateTime" TagValue="2005-04-27T07:25:41.138-04:00"></Tag>
+					<Tag TagName="#Language" TagDataType="Text" TagValue="en"></Tag>
+				</Tags>
+				<CustomDocumentInfo>
+					<SearchableDocID>0.7.14.31576-000001</SearchableDocID>
+					<Language>English (100%)</Language>
+					<ContentChecksum>dd029611a5b85976a71e9c8c2f2103f2</ContentChecksum>
+				</CustomDocumentInfo>
+			</Document>
+			<Document DocID="0.7.14.31575" DocType="Message" MimeType="application/vnd.ms-outlook">
+				<Tags>
+					<Tag TagName="#From" TagDataType="Text" TagValue="Aiken, Sam &lt;aiken@tamascorp.com&gt;"></Tag>
+					<Tag TagName="#Sender" TagDataType="Text" TagValue="Aiken, Sam &lt;aiken@tamascorp.com&gt;"></Tag>
+					<Tag TagName="#To" TagDataType="Text" TagValue="Ashley Moore &lt;amoore@tamascorp.com&gt;"></Tag>
+					<Tag TagName="#CC" TagDataType="Text" TagValue="Edwards, Kalimba &lt;edwards@tamascorp.com&gt;"></Tag>
+					<Tag TagName="#BCC" TagDataType="Text" TagValue="Mulitalo, Edwin &lt;mulitalo@tamascorp.com&gt;"></Tag>
+					<Tag TagName="#Subject" TagDataType="Text" TagValue=" Check this out "></Tag>
+					<Tag TagName="#DateSent" TagDataType="DateTime" TagValue="2008-12-31T00:56:00.000-05:00"></Tag>
+					<Tag TagName="#DateReceived" TagDataType="DateTime" TagValue="2000-03-21T06:01:00.000-05:00"></Tag>
+					<Tag TagName="#ReadFlag" TagDataType="Boolean" TagValue="true"></Tag>
+					<Tag TagName="#ImportanceFlag" TagDataType="Boolean" TagValue="false"></Tag>
+					<Tag TagName="#MessageClass" TagDataType="Text" TagValue="Message"></Tag>
+					<Tag TagName="#FlagStatus" TagDataType="Text" TagValue="NoFlag"></Tag>
+					<Tag TagName="Priority" TagDataType="Text" TagValue="Normal"></Tag>
+					<Tag TagName="Sensitivity" TagDataType="Text" TagValue="None"></Tag>
+					<Tag TagName="ReadReceipt" TagDataType="Boolean" TagValue="0"></Tag>
+					<Tag TagName="#Language" TagDataType="Text" TagValue="en"></Tag>
+					<Tag TagName="#HasAttachments" TagDataType="Boolean" TagValue="false"></Tag>
+				</Tags>
+				<CustomDocumentInfo>
+					<Batches>
+						<BatchId>Tue Dec 03 2013 17:18:14 EST - Processing - Initial Batch</BatchId>
+					</Batches>
+					<SearchableDocID>0.7.14.31575</SearchableDocID>
+					<Language>English (100%)</Language>
+					<StrictChecksum>75b3e0c5bf08158df2d4349dd30d58bb</StrictChecksum>
+					<RelaxedChecksum>d345ed28a47c534f8b1855feb774a763</RelaxedChecksum>
+					<CrawlerChecksum>0700beeb2c1b1f7248d40268b7bfad59c06fb8a3fd2d17bd80a0fc0288b910805484</CrawlerChecksum>
+				</CustomDocumentInfo>
+			</Document>
+			<Document DocID="0.7.14.31574" DocType="Message" MimeType="application/vnd.ms-outlook">
+				<Tags>
+					<Tag TagName="#From" TagDataType="Text" TagValue="Aiken, Sam &lt;aiken@tamascorp.com&gt;"></Tag>
+					<Tag TagName="#Sender" TagDataType="Text" TagValue="Aiken, Sam &lt;aiken@tamascorp.com&gt;"></Tag>
+					<Tag TagName="#To" TagDataType="Text" TagValue="Shane Madden &lt;smadden@tamascorp.com&gt;"></Tag>
+					<Tag TagName="#CC" TagDataType="Text" TagValue="Davis, Buster &lt;davis@tamascorp.com&gt;"></Tag>
+					<Tag TagName="#BCC" TagDataType="Text" TagValue="Muhlbach, Don &lt;muhlbach@tamascorp.com&gt;"></Tag>
+					<Tag TagName="#Subject" TagDataType="Text" TagValue=" Check this out "></Tag>
+					<Tag TagName="#DateSent" TagDataType="DateTime" TagValue="2008-12-30T20:56:00.000-05:00"></Tag>
+					<Tag TagName="#DateReceived" TagDataType="DateTime" TagValue="2000-03-21T05:42:00.000-05:00"></Tag>
+					<Tag TagName="#ReadFlag" TagDataType="Boolean" TagValue="true"></Tag>
+					<Tag TagName="#ImportanceFlag" TagDataType="Boolean" TagValue="false"></Tag>
+					<Tag TagName="#MessageClass" TagDataType="Text" TagValue="Message"></Tag>
+					<Tag TagName="#FlagStatus" TagDataType="Text" TagValue="NoFlag"></Tag>
+					<Tag TagName="Priority" TagDataType="Text" TagValue="Normal"></Tag>
+					<Tag TagName="Sensitivity" TagDataType="Text" TagValue="None"></Tag>
+					<Tag TagName="ReadReceipt" TagDataType="Boolean" TagValue="0"></Tag>
+					<Tag TagName="#Language" TagDataType="Text" TagValue="en"></Tag>
+					<Tag TagName="#HasAttachments" TagDataType="Boolean" TagValue="false"></Tag>
+				</Tags>
+				<CustomDocumentInfo>
+					<Batches>
+						<BatchId>Tue Dec 03 2013 17:18:14 EST - Processing - Initial Batch</BatchId>
+					</Batches>
+					<SearchableDocID>0.7.14.31574</SearchableDocID>
+					<Language>English (100%)</Language>
+					<StrictChecksum>085f61fff87fcf8d8829c7ef58ecde5b</StrictChecksum>
+					<RelaxedChecksum>0b86e3e4303ff8f17c8b97ebc6c8611e</RelaxedChecksum>
+					<CrawlerChecksum>0700f4fed12c6b0f45514fa360fc3672a56a340a970a9e0bc40f30f7834dd8365296</CrawlerChecksum>
+				</CustomDocumentInfo>
+			</Document>
+			<Document DocID="0.7.14.31573" DocType="Message" MimeType="application/vnd.ms-outlook">
+				<Tags>
+					<Tag TagName="#From" TagDataType="Text" TagValue="Aiken, Sam &lt;aiken@tamascorp.com&gt;"></Tag>
+					<Tag TagName="#Sender" TagDataType="Text" TagValue="Aiken, Sam &lt;aiken@tamascorp.com&gt;"></Tag>
+					<Tag TagName="#To" TagDataType="Text" TagValue="Alice Garity &lt;agarity@tamascorp.com&gt;"></Tag>
+					<Tag TagName="#CC" TagDataType="Text" TagValue="Cody, Shaun &lt;cody@tamascorp.com&gt;"></Tag>
+					<Tag TagName="#BCC" TagDataType="Text" TagValue="Moore, Langston &lt;moore@tamascorp.com&gt;"></Tag>
+					<Tag TagName="#Subject" TagDataType="Text" TagValue=" Check this out "></Tag>
+					<Tag TagName="#DateSent" TagDataType="DateTime" TagValue="2008-12-30T18:31:00.000-05:00"></Tag>
+					<Tag TagName="#DateReceived" TagDataType="DateTime" TagValue="2000-03-21T03:44:00.000-05:00"></Tag>
+					<Tag TagName="#ReadFlag" TagDataType="Boolean" TagValue="true"></Tag>
+					<Tag TagName="#ImportanceFlag" TagDataType="Boolean" TagValue="false"></Tag>
+					<Tag TagName="#MessageClass" TagDataType="Text" TagValue="Message"></Tag>
+					<Tag TagName="#FlagStatus" TagDataType="Text" TagValue="NoFlag"></Tag>
+					<Tag TagName="Priority" TagDataType="Text" TagValue="Normal"></Tag>
+					<Tag TagName="Sensitivity" TagDataType="Text" TagValue="None"></Tag>
+					<Tag TagName="ReadReceipt" TagDataType="Boolean" TagValue="0"></Tag>
+					<Tag TagName="#Language" TagDataType="Text" TagValue="en"></Tag>
+					<Tag TagName="#HasAttachments" TagDataType="Boolean" TagValue="false"></Tag>
+				</Tags>
+				<CustomDocumentInfo>
+					<Batches>
+						<BatchId>Tue Dec 03 2013 17:18:14 EST - Processing - Initial Batch</BatchId>
+					</Batches>
+					<SearchableDocID>0.7.14.31573</SearchableDocID>
+					<Language>English (100%)</Language>
+					<StrictChecksum>e8884425d540f290ceb4fbdd5a21272b</StrictChecksum>
+					<RelaxedChecksum>7035cdc47ba794ae5ef66d11f4af2b5a</RelaxedChecksum>
+					<CrawlerChecksum>07002333246f2ac5d4b850c00a3bc53f4b77487e6b79247c517003d099c46c7e2bcb</CrawlerChecksum>
+				</CustomDocumentInfo>
+			</Document>
+			<Document DocID="0.7.14.31572" DocType="Message" MimeType="application/vnd.ms-outlook">
+				<Tags>
+					<Tag TagName="#From" TagDataType="Text" TagValue="Aiken, Sam &lt;aiken@tamascorp.com&gt;"></Tag>
+					<Tag TagName="#Sender" TagDataType="Text" TagValue="Aiken, Sam &lt;aiken@tamascorp.com&gt;"></Tag>
+					<Tag TagName="#To" TagDataType="Text" TagValue="Jack Fredericks &lt;jfredericks@tamascorp.com&gt;"></Tag>
+					<Tag TagName="#CC" TagDataType="Text" TagValue="Foster, George &lt;foster@tamascorp.com&gt;"></Tag>
+					<Tag TagName="#BCC" TagDataType="Text" TagValue="Middleton, Brandon &lt;middleton@tamascorp.com&gt;"></Tag>
+					<Tag TagName="#Subject" TagDataType="Text" TagValue=" Check this out "></Tag>
+					<Tag TagName="#DateSent" TagDataType="DateTime" TagValue="2008-12-30T16:11:00.000-05:00"></Tag>
+					<Tag TagName="#DateReceived" TagDataType="DateTime" TagValue="2000-03-21T03:43:00.000-05:00"></Tag>
+					<Tag TagName="#ReadFlag" TagDataType="Boolean" TagValue="true"></Tag>
+					<Tag TagName="#ImportanceFlag" TagDataType="Boolean" TagValue="false"></Tag>
+					<Tag TagName="#MessageClass" TagDataType="Text" TagValue="Message"></Tag>
+					<Tag TagName="#FlagStatus" TagDataType="Text" TagValue="NoFlag"></Tag>
+					<Tag TagName="Priority" TagDataType="Text" TagValue="Normal"></Tag>
+					<Tag TagName="Sensitivity" TagDataType="Text" TagValue="None"></Tag>
+					<Tag TagName="ReadReceipt" TagDataType="Boolean" TagValue="0"></Tag>
+					<Tag TagName="#Language" TagDataType="Text" TagValue="en"></Tag>
+					<Tag TagName="#HasAttachments" TagDataType="Boolean" TagValue="false"></Tag>
+				</Tags>
+				<CustomDocumentInfo>
+					<Batches>
+						<BatchId>Tue Dec 03 2013 17:18:14 EST - Processing - Initial Batch</BatchId>
+					</Batches>
+					<SearchableDocID>0.7.14.31572</SearchableDocID>
+					<Language>English (100%)</Language>
+					<StrictChecksum>278cc17fbf79369ef5eb319c18ce066e</StrictChecksum>
+					<RelaxedChecksum>0ee0fa58360b545fc8d94a291bb007ad</RelaxedChecksum>
+					<CrawlerChecksum>0700a64be8d197218cc539fcbffa0d086375d8a76493c63b5620e84fede4f240affb</CrawlerChecksum>
+				</CustomDocumentInfo>
+			</Document>
+			<Document DocID="0.7.14.31571" DocType="Message" MimeType="application/vnd.ms-outlook">
+				<Tags>
+					<Tag TagName="#From" TagDataType="Text" TagValue="Aiken, Sam &lt;aiken@tamascorp.com&gt;"></Tag>
+					<Tag TagName="#Sender" TagDataType="Text" TagValue="Aiken, Sam &lt;aiken@tamascorp.com&gt;"></Tag>
+					<Tag TagName="#To" TagDataType="Text" TagValue="Larua Fanelli &lt;lfanelli@tamascorp.com&gt;"></Tag>
+					<Tag TagName="#CC" TagDataType="Text" TagValue="Fitzsimmons, Casey &lt;fitzsimmons@tamascorp.com&gt;"></Tag>
+					<Tag TagName="#BCC" TagDataType="Text" TagValue="McHugh, Sean &lt;mchugh@tamascorp.com&gt;"></Tag>
+					<Tag TagName="#Subject" TagDataType="Text" TagValue=" Check this out "></Tag>
+					<Tag TagName="#DateSent" TagDataType="DateTime" TagValue="2008-12-30T12:06:00.000-05:00"></Tag>
+					<Tag TagName="#DateReceived" TagDataType="DateTime" TagValue="2000-03-21T03:28:00.000-05:00"></Tag>
+					<Tag TagName="#ReadFlag" TagDataType="Boolean" TagValue="true"></Tag>
+					<Tag TagName="#ImportanceFlag" TagDataType="Boolean" TagValue="false"></Tag>
+					<Tag TagName="#MessageClass" TagDataType="Text" TagValue="Message"></Tag>
+					<Tag TagName="#FlagStatus" TagDataType="Text" TagValue="NoFlag"></Tag>
+					<Tag TagName="Priority" TagDataType="Text" TagValue="Normal"></Tag>
+					<Tag TagName="Sensitivity" TagDataType="Text" TagValue="None"></Tag>
+					<Tag TagName="ReadReceipt" TagDataType="Boolean" TagValue="0"></Tag>
+					<Tag TagName="#Language" TagDataType="Text" TagValue="en"></Tag>
+					<Tag TagName="#HasAttachments" TagDataType="Boolean" TagValue="false"></Tag>
+				</Tags>
+				<CustomDocumentInfo>
+					<Batches>
+						<BatchId>Tue Dec 03 2013 17:18:14 EST - Processing - Initial Batch</BatchId>
+					</Batches>
+					<SearchableDocID>0.7.14.31571</SearchableDocID>
+					<Language>English (100%)</Language>
+					<StrictChecksum>3a5de972c3bb921ae5c4783e365c7a70</StrictChecksum>
+					<RelaxedChecksum>02c07599e79963acb3fc02a71c8b3c5c</RelaxedChecksum>
+					<CrawlerChecksum>07001501dec784ba004b145b087a62916bd7cf6fb731a8b7d7c6aa2cb6f89414f4a1</CrawlerChecksum>
+				</CustomDocumentInfo>
+			</Document>
+			<Document DocID="0.7.14.31578" DocType="Message" MimeType="application/vnd.ms-outlook">
+				<Tags>
+					<Tag TagName="#From" TagDataType="Text" TagValue="Aiken, Sam &lt;aiken@tamascorp.com&gt;"></Tag>
+					<Tag TagName="#Sender" TagDataType="Text" TagValue="Aiken, Sam &lt;aiken@tamascorp.com&gt;"></Tag>
+					<Tag TagName="#To" TagDataType="Text" TagValue="David Carter &lt;dcarter@tamascorp.com&gt;"></Tag>
+					<Tag TagName="#CC" TagDataType="Text" TagValue="Fisher, Travis &lt;fisher@tamascorp.com&gt;"></Tag>
+					<Tag TagName="#BCC" TagDataType="Text" TagValue="McDonald, Shaun &lt;mcdonald@tamascorp.com&gt;"></Tag>
+					<Tag TagName="#Subject" TagDataType="Text" TagValue=" Check this out "></Tag>
+					<Tag TagName="#DateSent" TagDataType="DateTime" TagValue="2008-12-30T06:26:00.000-05:00"></Tag>
+					<Tag TagName="#DateReceived" TagDataType="DateTime" TagValue="2000-03-21T03:24:00.000-05:00"></Tag>
+					<Tag TagName="#ReadFlag" TagDataType="Boolean" TagValue="true"></Tag>
+					<Tag TagName="#ImportanceFlag" TagDataType="Boolean" TagValue="false"></Tag>
+					<Tag TagName="#MessageClass" TagDataType="Text" TagValue="Message"></Tag>
+					<Tag TagName="#FlagStatus" TagDataType="Text" TagValue="NoFlag"></Tag>
+					<Tag TagName="Priority" TagDataType="Text" TagValue="Normal"></Tag>
+					<Tag TagName="Sensitivity" TagDataType="Text" TagValue="None"></Tag>
+					<Tag TagName="ReadReceipt" TagDataType="Boolean" TagValue="0"></Tag>
+					<Tag TagName="#Language" TagDataType="Text" TagValue="en"></Tag>
+					<Tag TagName="#HasAttachments" TagDataType="Boolean" TagValue="false"></Tag>
+				</Tags>
+				<CustomDocumentInfo>
+					<Batches>
+						<BatchId>Tue Dec 03 2013 17:18:14 EST - Processing - Initial Batch</BatchId>
+					</Batches>
+					<SearchableDocID>0.7.14.31578</SearchableDocID>
+					<Language>English (100%)</Language>
+					<StrictChecksum>223ef859fd969db2ffaf2ae4e26302c8</StrictChecksum>
+					<RelaxedChecksum>d7ca12004ac6a53a012a495864ca581d</RelaxedChecksum>
+					<CrawlerChecksum>0700ff17d5b8a7a4a3c6e1394a3cc21e4a654330faedfadd9f22fc56db957935e9ff</CrawlerChecksum>
+				</CustomDocumentInfo>
+			</Document>
+		</Documents>
+		<Relationships>
+			<Relationship Type="Attachment" ParentDocId="0.7.14.31581" ChildDocId="0.7.14.31581.1"></Relationship>
+			<Relationship Type="Attachment" ParentDocId="0.7.14.31576" ChildDocId="0.7.14.31576.1"></Relationship>
+		</Relationships>
+
+	</Batch>
+</Root>

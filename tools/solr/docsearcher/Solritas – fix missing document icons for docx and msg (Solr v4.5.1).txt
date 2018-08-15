@@ -1,0 +1,14 @@
+Problem:
+
+A Solritas search returns some documents, but the icon for docx and msg files is missing (docx.png and msg.png).
+
+
+Solution:
+
+It turns out that both of these are missing in this Solr (v4.5.1) installation, so I simply made copies of the existing "mail.png" and "doc.png" icons:
+
+cp ./example/solr-webapp/webapp/img/filetypes/doc.png ./example/solr-webapp/webapp/img/filetypes/docx.png
+cp ./example/solr-webapp/webapp/img/ico/mail.png ./example/solr-webapp/webapp/img/filetypes/msg.png
+
+
+JeremyC 6-6-2018

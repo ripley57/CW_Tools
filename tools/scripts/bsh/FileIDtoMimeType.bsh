@@ -1,0 +1,11 @@
+import java.util.Iterator;
+import java.util.List;
+
+import com.teneo.esa.common.core.AttachmentFileID;
+import com.teneo.esa.common.core.WarningAttachmentTypes;
+import com.teneo.esa.common.textengine.stellent.StellentFileIdToMIMETypeMapper;
+
+buf = new StringBuffer();
+String mimet = StellentFileIdToMIMETypeMapper.getMimeType(new Integer("1548"));
+buf.append("Mime Type for stellent id 1548 = " + mimet + "\n");
+buf;

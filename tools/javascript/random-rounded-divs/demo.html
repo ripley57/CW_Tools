@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Random Rounded Divs Demo</title>
+		<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+		
+		<script type="text/javascript">
+			// Our colours array.
+			// Colour picker, giving you the '#nnnnnn' value: https://html-color-codes.info/
+			// Enter the '#nnnnnn' value and see the colour: https://www.w3schools.com/colors/colors_hexadecimal.asp
+			var colors = [];
+			colors.push('#58FAF4');	// Pale blue.
+			colors.push('#F3F781'); // Pale yellow.
+				
+			var paused = false;
+			var displaySingleDiv = true; // Set false to not clear previous div.
+			var currentDivNum = 0;
+					
+			function makeDiv() {
+				// We will create a div of random size, but we'll limit the max size.
+				var divsizeH = ((Math.random()*100) + 80).toFixed();
+				var divsizeW = ((Math.random()*100) + 130).toFixed() * 3;	// Make the div rectangular.
+				
+				// Allow space for the buttons at the top of the page.
+				var buttonsOffset = 30;
+				
+				var posx =   (Math.random() * ($(window).width()  - divsizeW)).toFixed();
+				var posy =  ((Math.random() * ($(window).height() - divsizeH - buttonsOffset)) + buttonsOffset).toFixed();
+
+				var color = colors[Math.floor(Math.random() * colors.length)]; // Pick a random colour from our colour array.
+											
+				if (paused == false) {
+					// Create a new div.
+					$newdiv = $('<div/>').css({
+						'width'            	: divsizeW+'px',
+						'height'           	: divsizeH+'px',
+						'text'             	: 'testing testing',
+						'borderRadius'     	: '1em',
+						'background-color' 	: color,
+						'border'           	: '1px solid black',
+						'box-shadow'       	: '5px 5px grey',
+						'position'			: 'absolute',
+						'left'     			: posx+'px',
+						'top'      			: posy+'px',
+						'display'  			: 'none',
+						'text-align'		: 'center', 
+						'font-family'		: '"Comic Sans MS", cursive',
+						'padding'     		: '20px 20px 20px 20px'
+					}).appendTo('body').append(getDivText()).fadeIn(400);
+								
+					if (displaySingleDiv == true) {
+						// Auto-remove this new div after a short delay, then create the next one.
+						$newdiv.delay(3000).fadeOut(400, function() {
+							$(this).remove();
+							makeDiv();
+						});
+					} 
+					else {
+						// Don't auto-remove this new div - simply create the next one.	
+						setTimeout(function(){makeDiv();}, 3000);
+					}
+					
+					// Limit the number of divs displayed at any one time.
+					var numDivs = $("div").length;
+					if (numDivs == 20) {
+						removeDivs();
+					}
+				}
+			}
+			
+			// Get some random text to display in the div.
+			function getDivText()
+			{
+				var txt = "	Contrary to popular belief, Lorem Ipsum is not simply random text. " +
+							"It has roots in a piece of classical Latin literature from 45 BC, " +
+							"making it over 2000 years old.";
+				return txt;
+			}
+			
+			// Pause the drawing of divs.
+			function pauseDivs()
+			{
+				// Stop any in-progress fadeOut/fadeIn. 
+				// 1st boolean arg : clear the event queue for this element.
+				// 2nd boolean arg : skip to the end of the current fadeIn/fadeOut for this element.
+				$("div").last().stop(true,false);	
+				
+				$('#start_btn').prop('disabled', false);
+				$('#pause_btn').prop('disabled', true);
+				paused = true;
+			}
+			
+			// Start drawing divs.
+			function startDivs()
+			{
+				$('#start_btn').prop('disabled', true);
+				$('#pause_btn').prop('disabled', false);
+				$('#clear_btn').prop('disabled', false);
+				paused = false;
+				makeDiv();
+			}
+			
+			// Remove all divs.
+			function clearDivs()
+			{
+				$("div").last().stop(true,false);	// Stop any in-progress fadeIn or fadeOut.
+				$('#clear_btn').prop('disabled', true);
+				$('#pause_btn').prop('disabled', true);
+				$('#start_btn').prop('disabled', false);
+				$('div').remove();
+			}
+		</script>
+	</head>
+	<body>
+	<button id="start_btn" type="button" onclick="startDivs()">Start</button>
+	<button id="pause_btn" type="button" onclick="pauseDivs()" disabled>Pause</button>
+	<button id="clear_btn" type="button" onclick="clearDivs()" disabled>Reset</button>
+	</body>
+</html>

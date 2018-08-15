@@ -1,0 +1,17 @@
+This is how CW used to launch tail from Cygwin (clearly it must have been on the path):
+
+ECHO Opening %cd%\logs\adscrawler log in a new window
+for /f "tokens=*" %%a in ('dir %cd%\logs\adscrawler_output* /od /a-d /b') do set newfile=%%a 
+start "%newfile%" tail -f %cd%\logs\%newfile%
+
+ECHO Opening %cd%\logs\pstcrawler log in a new window
+for /f "tokens=*" %%a in ('dir %cd%\logs\PSTCrawler_output* /od /a-d /b') do set newfile=%%a 
+start "%newfile%" tail -f %cd%\logs\%newfile%
+
+ECHO Opening %cd%\logs\PSTRetriever log in a new window
+for /f "tokens=*" %%a in ('dir %cd%\logs\PSTRetriever_output* /od /a-d /b') do set newfile=%%a 
+start "%newfile%" tail -f %cd%\logs\%newfile%
+
+ECHO Opening %cd%\logs\server log in a new window
+for /f "tokens=*" %%a in ('dir %cd%\logs\server.*.log /od /a-d /b') do set newfile=%%a
+start "%newfile%" tail -f %cd%\logs\%newfile%

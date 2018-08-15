@@ -1,0 +1,31 @@
+// Description:
+//	List running components on local appliance.
+//
+// Example usage:
+// 	D:\CW\V82>b admin-client shell addRemovableService bsfservice
+//  D:\CW\V82>b admin-client bsfservice evalScript d:\listcomps.bsh
+//
+// Example output:
+// admin-client:
+//     [echo] JACL admin client
+//     [echo]   args : bsfservice evalScript d:\listcomps.bsh -- -- -- -- -- -- --
+//     [java] 2017-01-16 06:33:49,623 INFO  [STDOUT] (main:)
+//     [java] 2017-01-16 06:33:49,624 INFO  [STDOUT] (main:) ==>> Service: bsfservice <<==
+//     [java] 2017-01-16 06:33:49,625 INFO  [STDOUT] (main:)
+//     [java] 2017-01-16 06:33:49,625 INFO  [STDOUT] (main:)
+//     [java] system on Clear1:2595:1892
+//     [java] processpool_component on Clear1:49136:3228
+//
+// BUILD SUCCESSFUL
+// Total time: 7 seconds
+// ANT COMMAND DONE
+//
+// JeremyC 16/1/2017
+
+import com.teneo.esa.admin.system.ComponentServiceMBean;
+comps = ComponentServiceMBean.RESOLVER.getSysCompMBean().findLocalComponents(null);
+buf = new StringBuffer();
+for (c : comps) {
+   buf.append("\n" + c.getId().getName() + " on " + c.getConnector().toString() + ":" + c.getPid());
+}
+buf;

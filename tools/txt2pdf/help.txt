@@ -1,0 +1,57 @@
+EncryptPDF Command Line v2.3
+ 
+Homepage: http://www.verypdf.com/encryptpdf/
+	  http://www.globalpdf.com/encryptpdf/
+	  http://www.toppdf.com/encryptpdf/
+E-mail  : support@verypdf.com
+
+    Encrypt PDF software is a very flexible and powerful program, Encrypt PDF software allows you to encrypt 
+(using standard 40-bit or 128-bit supported by Acrobat Reader 5.0 and up) existing PDFs, set permissions, 
+add user and owner password. For example you can encrypt a PDF without to allow to print it. The button to 
+print the file will be disabled in Acrobat Reader application, you also can encrypt a PDF allowing the user 
+to read it only if he know the correct password. 
+
+Limitations in the trial version:
+1.Popup a message box.
+2.The trial version is can only process the first half pages from your original PDF file.
+3.Remove Outlines, Metadata, AcroForm information from some special PDF documents.
+-------------------------------------------------------------------
+Usage: EncryptPDF [options]
+Copyright (C) 2000-2006 by VeryPDF Inc
+Website: http://www.verypdf.com
+Email: support@verypdf.com
+Build: Jan 27 2007
+-i [PDF file name] : input PDF filename or directory.
+-o [PDF file name] : PDF file will be generated.
+   If you not specify the -o parameter, the default output file will overwrite the input PDF file.
+-u                 : user password.
+-w                 : owner password.
+-p                 : permission print.
+-c                 : permission copy.
+-m                 : permission modify.
+-n                 : enable adding and changing text notes and AcroForm fields.
+-e [128 or 40    ] : set encrypt level.
+-k                 : set for all permission bits.
+-v                 : view the PDF file after encrypt.
+-l [log file name] : specify log file for output message.
+-r [License Key  ] : input License Key for this product.
+-?                 : help.
+-h                 : help.
+--------------------------------------------------------------------
+Example:
+     EncryptPDF -i c:\sample.pdf -o c:\out.pdf -w owner -u user -l c:\out.log
+     EncryptPDF -i c:\sample.pdf -w owner -u user -e 40 -p
+     EncryptPDF -i c:\sample.pdf -w owner -u user -e 40 -k -828
+     EncryptPDF -i c:\pdfdir\ -o d:\ -w owner -p -c -m -l c:\error.log
+
+
+>How to use EncryptPDF Command Line tool?
+A: Start the DOS command line window (i.e. run "cmd" command from "Start Menu"->"Run"); 
+then run the EncryptPDF command from the command line window (EncryptPDF software can 
+be found in your EncryptPDF decompression directory).
+
+>How to register the EncryptPDF Command Line tool?
+A: Please run the following command in your command line window, please replace "ABCDEFGH"
+with your registration key, once you registered this software, you needn't register it again.
+Example:
+     EncryptPDF -r "ABCDEFGH"

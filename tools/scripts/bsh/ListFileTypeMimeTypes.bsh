@@ -1,0 +1,44 @@
+import java.util.Iterator;
+import java.util.List;
+
+import com.teneo.esa.common.core.AttachmentFileID;
+import com.teneo.esa.common.core.WarningAttachmentTypes;
+import com.teneo.esa.common.textengine.stellent.StellentFileIdToMIMETypeMapper;
+
+buf = new StringBuffer();
+
+// First get the 12 file types (Microsoft Word, All word processing documents, All images, etc).
+List displayTypes = AttachmentFileID.getFileIDDisplayTypes();
+
+// For each file type, extract all the corresponding Stellent fileID values and map these
+// to the corresponding Stellent mime type as seen in the mimeType field of a metadata export.
+for (int i=0; i< displayTypes.size(); i++)
+{
+	// Get the file type (e.g. "All images").
+	String dtype = displayTypes.get(i);
+	
+	// Display the file type.
+	buf.append("\n\n*** File type: " + dtype + "\n");
+	
+	// To lookup the fileids for a file type, we need to use the "IndexedText" 
+	// value for the file type (e.g. "allgraphics" is used for "All images").
+	String indexedText = AttachmentFileID.getIndexedText(dtype);
+	
+	// Lets display the indexedText value.
+	//buf.append(" (" + indexedText + ") ***\n");
+	
+	// Now lets examine each fileid and display the mimeType.
+	// Lets also display the fileid in brackets at the end of each line,
+	// since multiple fileids can correspond to the same mime type.
+	List fileids = AttachmentFileID.getFileID(indexedText);
+	for (int j=0; j<fileids.size(); j++) 
+	{
+		Integer id = fileids.get(j);
+		String mimet = StellentFileIdToMIMETypeMapper.getMimeType(id);
+	    buf.append(mimet + " (" + id + ")\n");
+	}
+	
+    buf.append("\n");	
+}
+// Display everything.
+buf;

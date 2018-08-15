@@ -1,0 +1,37 @@
+# Build the root node.
+dn: dc=maxcrc,dc=com
+objectClass: dcObject
+objectClass: organizationalUnit
+dc: maxcrc
+ou: Maxcrc Dot Com
+
+# Build the people ou.
+dn: ou=people,dc=maxcrc,dc=com
+objectClass: organizationalUnit
+ou: people
+
+# LDIF entry for "Gerald W. Carter".
+dn: cn=Gerald W. Carter,ou=people,dc=maxcrc,dc=com
+objectClass: inetOrgPerson
+cn: Gerald W. Carter
+sn: Carter
+mail: jerry@maxcrc.com
+mail: gcarter@valinux.com
+labeledURI: http://www.maxcrc.com
+roomNumber: 1234 Dudley Hall
+departmentNumber: Engineering
+telephoneNumber: 222-555-2345
+pager: 222-555-6789
+mobile: 222-555-1011
+userPassword: {SSHA}3ngK3yGFhAUDE4B8ZQspUJYjgBcVml0i
+displayName: Gerald W. Carter
+
+# LDIF entry for "Jerry  Carter".
+dn: cn=Jerry Carter,ou=people,dc=maxcrc,dc=com
+objectClass: inetOrgPerson
+cn: Jerry Carter
+sn: Carter
+mail: carter@nowhere.net
+telephoneNumber: 555-123-1234
+userPassword: {SSHA}3ngK3yGFhAUDE4B8ZQspUJYjgBcVml0i
+displayName: Jerry  Carter

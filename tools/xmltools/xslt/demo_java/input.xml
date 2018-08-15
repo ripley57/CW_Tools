@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Root MajorVersion="1" MinorVersion="0" CaseId="Enron_Small1_2" Description="XML Export for Enron_Small1_2 by superuser on 2018-01-31T03:28:32.352-05:00">
+	<Batch name="Job 1.5.59.1551943147729190953, batch 1">
+		<Documents>
+			<Document DocID="0.7.66.5134" DocType="Message" MimeType="application/vnd.ms-outlook">
+				<Tags>
+					<Tag TagName="#From" TagDataType="Text" TagValue="Baxter  Jean &lt;jean.baxter@enron.com&gt;"></Tag>
+					<Tag TagName="#Sender" TagDataType="Text" TagValue="Baxter  Jean &lt;jean.baxter@enron.com&gt;"></Tag>
+					<Tag TagName="#To" TagDataType="Text" TagValue="Rapp  Bill &lt;bill.rapp@enron.com&gt;"></Tag>
+					<Tag TagName="#Subject" TagDataType="Text" TagValue="Starwood"></Tag>
+					<Tag TagName="#DateSent" TagDataType="DateTime" TagValue="2001-10-24T18:32:54.000-04:00"></Tag>
+					<Tag TagName="#Header" TagDataType="LongText" TagValue="date: Wed, 24 Oct 2001 15:32:54 -0700 (PDT) Wed, 24 Oct 2001 15:32:54 -0500
+Message-ID: &lt;P3RJN1UKQG5WDGAJ1AZI3ESICZDL3V44B@zlsvr22&gt;
+MIME-Version: 1.0
+Content-Type: text/plain; charset=&quot;us-ascii&quot;
+Content-Transfer-Encoding: 7bit
+2.0: Microsoft Mail Internet Headers Version 2.0
+X-MimeOLE: Produced By Microsoft Exchange V6.0.4712.0
+content-class: urn:content-classes:message
+Subject: Starwood
+Thread-Topic: Starwood
+Thread-Index: AcFcyxH/r8gBici8EdWxIgBQi+MJ2Q==
+From: &quot;Baxter  Jean&quot; &lt;Jean.Baxter@ENRON.com&gt;
+To: &quot;Rapp  Bill&quot; &lt;Bill.Rapp@ENRON.com&gt;
+X-ZL-from: Baxter, Jean &lt;/O=ENRON/OU=NA/CN=RECIPIENTS/CN=NOTESADDR/CN=7C3B0A91-4204199B-862568BE-72437E&gt;
+X-ZL-to: Rapp, Bill &lt;/O=ENRON/OU=NA/CN=RECIPIENTS/CN=BRAPP&gt;
+X-ZL-subject: Starwood
+filename: BRAPP (Non-Privileged).pst
+folder: \BRAPP (Non-Privileged)\Rapp, Bill\Deleted Items
+"></Tag>
+					<Tag TagName="#DateReceived" TagDataType="DateTime" TagValue="2001-10-24T18:32:54.000-04:00"></Tag>
+					<Tag TagName="#ReadFlag" TagDataType="Boolean" TagValue="true"></Tag>
+					<Tag TagName="#ImportanceFlag" TagDataType="Boolean" TagValue="true"></Tag>
+					<Tag TagName="#MessageClass" TagDataType="Text" TagValue="Message"></Tag>
+					<Tag TagName="#FlagStatus" TagDataType="Text" TagValue="NoFlag"></Tag>
+					<Tag TagName="Priority" TagDataType="Text" TagValue="Normal"></Tag>
+					<Tag TagName="Sensitivity" TagDataType="Text" TagValue="None"></Tag>
+					<Tag TagName="ReadReceipt" TagDataType="Boolean" TagValue="0"></Tag>
+					<Tag TagName="#Language" TagDataType="Text" TagValue="en"></Tag>
+					<Tag TagName="#HasAttachments" TagDataType="Boolean" TagValue="false"></Tag>
+				</Tags>
+				<Locations>
+					<Location>
+						<Custodian>bill_rapp</Custodian>
+						<LocationURI>esa:pst/*:\\edp-app1\d$\CaseData\Enron_Small1\bill_rapp\bill_rapp_000_1_1.pst:Top of Personal Folders\rapp-b\BRAPP (Non-Privileged)\Rapp, Bill\Deleted Items:0000000095b6e9026e396c4d9fe3d9e4ede7b38f44372000</LocationURI>
+					</Location>
+					<Location>
+						<Custodian>bill_rapp</Custodian>
+						<LocationURI>esa:pst/*:\\edp-app1\d$\CaseData\Enron_Small1\bill_rapp\bill_rapp_000_1_1.pst:Top of Personal Folders\rapp-b\Rapp, Bill (Non-Privileged)\Rapp, Bill\Deleted Items:0000000095b6e9026e396c4d9fe3d9e4ede7b38f840a2000</LocationURI>
+					</Location>
+				</Locations>
+				<CustomDocumentInfo>
+					<Batches>
+						<BatchId>Tue Jan 23 2018 03:13:13 EST - Processing</BatchId>
+					</Batches>
+					<SearchableDocID>0.7.66.5134</SearchableDocID>
+					<Language>English (100%)</Language>
+					<StrictChecksum>322b6d4f2df1b45db7925908f0871738</StrictChecksum>
+					<RelaxedChecksum>d8221ff22f3dd54bf186ad244e7a452c</RelaxedChecksum>
+					<CrawlerChecksum>0700c5bc7e08af579d38a3659ff51b202ac76eae2b2191a30ef0becd3242ed10edb7</CrawlerChecksum>
+				</CustomDocumentInfo>
+			</Document>
+		</Documents>
+	</Batch>
+</Root>

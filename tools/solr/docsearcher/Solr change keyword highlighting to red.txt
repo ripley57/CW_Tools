@@ -1,0 +1,23 @@
+Online tool to encode html entities:
+https://mothereff.in/html-entities
+
+Conversion of this:
+<b><font color="red"> 
+=> gives this;
+&lt;b&gt;&lt;font color=&quot;red&quot;&gt; 
+
+Conversion of this:
+</font></b>
+=> gives this:
+&lt;/font&gt;&lt;/b&gt;
+
+We then add these to solrconfig.xml:
+Before:
+       <str name="hl.simple.pre">&lt;b&gt;</str>
+       <str name="hl.simple.post">&lt;/b&gt;</str>
+After:
+       <str name="hl.simple.pre">&lt;b&gt;&lt;font color=&quot;red&quot;&gt;</str>
+       <str name="hl.simple.post">&lt;/font&gt;&lt;/b&gt;</str>
+
+JeremyC 9-6-2018
+	   

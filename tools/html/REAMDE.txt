@@ -1,0 +1,3 @@
+o Note that the inline embedded HTML examples all speciy the binary using the mime type, e.g. application/pdf.
+
+JeremyC 13-07-2018

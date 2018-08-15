@@ -1,0 +1,28 @@
+	UPGRADING MyJgui
+
+Keeping SQL Marks
+If you have stored any SQL marks and you want to keep them, backup the file: 'sqlmarsk.xml'. After installing last version of myjgui, just replace/move the backuped 'sqlmarkrs.xml' file to the folder 'configs'. 
+
+
+Upgrading from version 0.7.4.2
+You can use installer if is available for current version.
+Manual install: 
+Replace the old MyJgui.jar with the new one from the http://www.myjgui.com/download.html page.
+Replace the menu.properties file in the props folder.
+
+
+Since version 0.7.2
+You can use installer if is available for current version.
+Manual install:
+Replace the old MyJgui.jar with the new one from the http://www.myjgui.com/download.html page.
+Replace the menu.properties file in the props folder and menukeys.properties to configs folder.
+In order to see the latest help within the application, replace the whole help folder with the new one from the download page.
+
+
+Since version 0.7.1
+You can use installer if is available for current version.
+Manual install:
+Replace the old MyJgui.jar with the new one from the http://www.myjgui.com/download.html page.
+Replace the menu.properties file in the props folder.
+Add new files to configs folder (menukeys.properties) from download page.
+In order to see the latest help within the application, replace the whole help folder with the new one from the download page.

@@ -1,0 +1,118 @@
+Job ID: 1.5.16.1490094768263266307 
+Case: TEST_CASE_1 
+Appliance: CW11 
+02/29/2016 06:42:18   Starting scheduled job: TEST_CASE_1 : Process documents from "Case Folder".
+02/29/2016 06:42:18   CW11 System            Skipping Discovery per config setting
+02/29/2016 06:42:22   CW11 System            Started transferring files to processing node(s) in preparation for Indexing
+02/29/2016 06:42:23   CW11 System            File transfer has completed
+02/29/2016 06:42:29   CW11 Indexer           Waiting for resources
+02/29/2016 06:42:40   CW11 Indexer           Started
+02/29/2016 06:42:40   CW11 Indexer           Starting crawling
+02/29/2016 06:42:41   CW11 Indexer           Crawler Session: TEST_CASE_1__PST_1688918926680397 Status: INDEXING
+02/29/2016 06:42:41   CW11 Indexer           Crawler Session: TEST_CASE_1__PST1_1688918926680397 Status: INDEXING
+02/29/2016 06:42:41   CW11 Indexer           Crawler Session: TEST_CASE_1__PST2_1688918926680397 Status: INDEXING
+02/29/2016 06:42:41   CW11 Indexer           Crawler Session: TEST_CASE_1__PST3_1688918926680397 Status: INDEXING
+02/29/2016 06:42:41   CW11 Indexer           Crawler Session: TEST_CASE_1__PST4_1688918926680397 Status: INDEXING
+02/29/2016 06:42:41   CW11 Indexer           Crawler Session: TEST_CASE_1__PST5_1688918926680397 Status: INDEXING
+02/29/2016 06:42:41   CW11 Indexer           Crawler Session: TEST_CASE_1__PST6_1688918926680397 Status: INDEXING
+02/29/2016 06:42:41   CW11 Indexer           Crawler Session: TEST_CASE_1__PST7_1688918926680397 Status: INDEXING
+02/29/2016 06:42:41   CW11 Indexer           Crawler Session: TEST_CASE_1__PST8_1688918926680397 Status: INDEXING
+02/29/2016 06:42:41   CW11 Indexer           Crawler Session: TEST_CASE_1__PST9_1688918926680397 Status: INDEXING
+02/29/2016 06:42:41   CW11 Indexer           Throttling crawling due to large numbers of sources
+02/29/2016 06:43:43   CW11 Indexer           Crawler Session: TEST_CASE_1__PST10_1688918926680397 Status: INDEXING
+02/29/2016 06:43:43   CW11 Indexer           Crawler Session: TEST_CASE_1__PST11_1688918926680397 Status: INDEXING
+02/29/2016 06:43:44   CW11 Indexer           Crawler Session: TEST_CASE_1__PST12_1688918926680397 Status: INDEXING
+02/29/2016 06:43:45   CW11 Indexer           Crawler Session: TEST_CASE_1__PST13_1688918926680397 Status: INDEXING
+02/29/2016 06:43:45   CW11 Indexer           Crawler Session: TEST_CASE_1__PST14_1688918926680397 Status: INDEXING
+02/29/2016 06:43:45   CW11 Indexer           Crawler Session: TEST_CASE_1__NSF_1688918926680397 Status: INDEXING
+02/29/2016 06:43:45   CW11 Indexer           Crawler Session: TEST_CASE_1__NSF1_1688918926680397 Status: INDEXING
+02/29/2016 06:43:45   CW11 Indexer           Crawler Session: _LOOSEFILE_5066626890203138 Status: INDEXING
+02/29/2016 06:43:58   CW11 Indexer           Previously Processed 0 documents (1.30 MB)
+02/29/2016 06:44:18   CW11 Indexer           Processed 642 documents (148.90 MB)
+02/29/2016 06:44:29   CW11 Indexer           Processed 1,224 documents (412.94 MB)
+02/29/2016 06:44:39   CW11 Indexer           Processed 1,864 documents (451.22 MB)
+02/29/2016 06:44:59   CW11 Indexer           Processed 2,643 documents (540.31 MB)
+02/29/2016 06:45:21   CW11 Indexer           Processed 3,528 documents (598.39 MB)
+02/29/2016 06:45:42   CW11 Indexer           Processed 4,337 documents (623.54 MB)
+02/29/2016 06:46:03   CW11 Indexer           Processed 4,951 documents (685.75 MB)
+02/29/2016 06:46:24   CW11 Indexer           Processed 5,581 documents (795.50 MB)
+02/29/2016 06:46:46   CW11 Indexer           Processed 6,121 documents (925.23 MB)
+02/29/2016 06:47:17   CW11 Indexer           Processed 6,841 documents (1.10 GB)
+02/29/2016 06:47:37   CW11 Indexer           Processed 7,411 documents (1.16 GB)
+02/29/2016 06:47:57   CW11 Indexer           Processed 8,101 documents (1.22 GB)
+02/29/2016 06:48:19   CW11 Indexer           Processed 8,611 documents (1.31 GB)
+02/29/2016 06:48:39   CW11 Indexer           Processed 9,136 documents (1.37 GB)
+02/29/2016 06:49:10   CW11 Indexer           Processed 9,646 documents (1.45 GB)
+02/29/2016 06:50:04   CW11 Indexer           Processed 10,188 documents (1.61 GB)
+02/29/2016 06:50:36   CW11 Indexer           Processed 10,890 documents (1.70 GB)
+02/29/2016 06:51:29   CW11 Indexer           Processed 11,508 documents (1.86 GB)
+02/29/2016 06:52:23   CW11 Indexer           Processed 12,075 documents (1.97 GB)
+02/29/2016 06:53:14   CW11 Indexer           Processed 12,634 documents (2.14 GB)
+02/29/2016 06:53:56   CW11 Indexer           Processed 13,393 documents (2.30 GB)
+02/29/2016 06:54:27   CW11 Indexer           Processed 14,138 documents (2.65 GB)
+02/29/2016 06:54:58   CW11 Indexer           Processed 15,023 documents (3.09 GB)
+02/29/2016 06:55:18   CW11 Indexer           Processed 15,548 documents (3.20 GB)
+02/29/2016 06:55:59   CW11 Indexer           Processed 16,178 documents (3.32 GB)
+02/29/2016 06:56:50   CW11 Indexer           Processed 16,741 documents (3.48 GB)
+02/29/2016 07:01:58   CW11 Indexer           Completed
+02/29/2016 07:01:58   CW11 System            Started transferring files to processing node(s) in preparation for Post-Processing
+02/29/2016 07:01:59   CW11 System            File transfer has completed
+02/29/2016 07:02:00   CW11 System            Total Progress: 11%
+02/29/2016 07:02:00   CW11 Validator         Starting component and waiting for resources
+02/29/2016 07:02:10   CW11 Validator         Started
+02/29/2016 07:02:20   CW11 Validator         Processing component: 23% complete. Next update in 15 seconds.
+02/29/2016 07:02:40   CW11 Validator         Processing component: 88% complete. Next update in 15 seconds.
+02/29/2016 07:03:00   CW11 Validator         Processing component: 100% complete. Next update in 15 seconds.
+02/29/2016 07:03:00   CW11 Validator         100% completed
+02/29/2016 07:03:00   CW11 System            Total Progress: 22%
+02/29/2016 07:03:00   CW11 Threader          Starting component and waiting for resources
+02/29/2016 07:03:11   CW11 Threader          Started
+02/29/2016 07:03:21   CW11 Threader          Processing component: 2% complete. Next update in 15 seconds.
+02/29/2016 07:03:41   CW11 Threader          Processing component: 18% complete. Next update in 15 seconds.
+02/29/2016 07:04:01   CW11 Threader          Processing component: 32% complete. Next update in 15 seconds.
+02/29/2016 07:04:21   CW11 Threader          Processing component: 66% complete. Next update in 15 seconds.
+02/29/2016 07:04:31   CW11 Threader          100% completed
+02/29/2016 07:04:31   CW11 System            Total Progress: 33%
+02/29/2016 07:04:31   CW11 SearchAnalytics   Starting component and waiting for resources
+02/29/2016 07:04:43   CW11 SearchAnalytics   Started
+02/29/2016 07:04:53   CW11 SearchAnalytics   Processing component: 29% complete. Next update in 15 seconds.
+02/29/2016 07:05:13   CW11 SearchAnalytics   Processing component: 45% complete. Next update in 15 seconds.
+02/29/2016 07:05:33   CW11 SearchAnalytics   Processing component: 65% complete. Next update in 15 seconds.
+02/29/2016 07:05:34   CW11 SearchAnalytics   100% completed
+02/29/2016 07:05:34   CW11 System            Total Progress: 44%
+02/29/2016 07:05:34   CW11 ImagingAnalysis   Starting component and waiting for resources
+02/29/2016 07:05:46   CW11 ImagingAnalysis   Started
+02/29/2016 07:05:56   CW11 ImagingAnalysis   Processing component: 0% complete. Next update in 15 seconds.
+02/29/2016 07:06:16   CW11 ImagingAnalysis   Processing component: 23% complete. Next update in 15 seconds.
+02/29/2016 07:06:24   CW11 ImagingAnalysis   100% completed
+02/29/2016 07:06:24   CW11 System            Total Progress: 55%
+02/29/2016 07:06:24   CW11 Statistics        Starting component and waiting for resources
+02/29/2016 07:06:34   CW11 Statistics        Started
+02/29/2016 07:06:39   CW11 Statistics        100% completed
+02/29/2016 07:06:39   CW11 System            Total Progress: 66%
+02/29/2016 07:06:39   CW11 DistributedMerge  Starting...
+02/29/2016 07:06:49   CW11 DistributedMerge  Processing component: 100% complete. Next update in 15 seconds.
+02/29/2016 07:06:49   CW11 DistributedMerge  completed
+02/29/2016 07:06:49   CW11 DistributedMerge  Completed
+02/29/2016 07:06:49   CW11 System            Total Progress: 77%
+02/29/2016 07:06:49   CW11 CentralizedMerge  Merging processing results...
+02/29/2016 07:06:50   CW11 CentralizedMerge  Cleaning up temporary data...
+02/29/2016 07:06:50   CW11 CentralizedMerge  Processing component: 100% complete. Next update in 15 seconds.
+02/29/2016 07:06:50   CW11 Consolidator      Acquiring write consolidation Lock
+02/29/2016 07:06:50   CW11 Consolidator      Acquired write consolidation Lock
+02/29/2016 07:06:53   CW11 Consolidator      Releasing write consolidation Lock
+02/29/2016 07:06:53   CW11 Consolidator      Released write consolidation Lock
+02/29/2016 07:06:53   CW11 Consolidator      Completed main operation and new review data is available...
+02/29/2016 07:06:57   CW11 System            Total Progress: 100%
+02/29/2016 07:06:57   CW11 System            Processing Summary
+02/29/2016 07:06:57   CW11 System                        Indexer           19m 28.962s
+02/29/2016 07:06:57   CW11 System                      Validator           01m 00.544s
+02/29/2016 07:06:57   CW11 System                       Threader           01m 31.244s
+02/29/2016 07:06:57   CW11 System                SearchAnalytics           01m 03.134s
+02/29/2016 07:06:57   CW11 System                ImagingAnalysis               49.514s
+02/29/2016 07:06:57   CW11 System                     Statistics               14.727s
+02/29/2016 07:06:57   CW11 System               DistributedMerge               10.062s
+02/29/2016 07:06:57   CW11 System               CentralizedMerge               00.889s
+02/29/2016 07:06:57   CW11 System                   Consolidator               03.588s
+02/29/2016 07:06:57   CW11 System            Total Processing Time : 24m 22.664s
+02/29/2016 07:06:57   Completed normally: TEST_CASE_1 : Process documents from "Case Folder".

@@ -1,0 +1,30 @@
+	INSTALLING MyJgui
+
+Be sure that you have the java runtime installed. If you don't , make sure you download it from java page before running the application.
+
+Linux/Unix
+
+   1. Unpack the archive: 
+	tar -xzf myjgui[version].tar.gz. 
+	This creates the directory ./myjgui[version]
+   2. Change to myjgui directory and run ./myjgui.sh. 
+	The myjgui.sh runs: java -jar myjgui.jar
+
+or use MyJgui universal installer:
+
+   1.  Download and run: java -jar MyGInstaller.jar 
+
+So you have to have java in your PATH: export PATH=$PATH:/path/to/java.
+That's it.
+
+Windows
+
+   1. Unpack the archive myjgui[version].zip
+   2. Change to mygui directory and run myjgui.bat. 
+	The myjgui.bat runs: java -jar myjgui.jar 
+
+or use MyJgui universal installer:
+
+   1. Download and run: java -jar MyGInstaller.jar. 
+
+So again you have to have java binary in you PATH, but this should be already done for you when installing the java runtime. That's it.

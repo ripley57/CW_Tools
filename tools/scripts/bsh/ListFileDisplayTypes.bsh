@@ -1,0 +1,18 @@
+import java.util.Iterator;
+import java.util.List;
+
+import com.teneo.esa.common.core.AttachmentFileID;
+import com.teneo.esa.common.core.WarningAttachmentTypes;
+
+buf = new StringBuffer();
+buf.append("JCDC: Testing:\n");
+buf;
+
+List displayTypes = AttachmentFileID.getFileIDDisplayTypes();
+for (int i=0; i< displayTypes.size(); i++)
+{
+	buf.append(displayTypes.get(i));
+	buf.append("\n");
+}
+buf;
+    

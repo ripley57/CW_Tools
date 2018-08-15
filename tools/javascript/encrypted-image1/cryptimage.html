@@ -1,0 +1,166 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Encrypt image with JavaScript</title>
+	<meta name="author" content="Jonas Elfström">
+
+	<style type="text/css">	
+	span {
+        font-family: 'Lucida Sans Unicode';
+        color: #000000;
+        background: #FFFFFF;
+        font-size: 10pt;
+	}
+	</style>
+
+	<script type="text/javascript" src="2.0.0-crypto-sha1-hmac-pbkdf2-ofb-aes.js"></script>
+	<script type="text/javascript" src="2.0.0-crypto-sha1-hmac-pbkdf2-rabbit.js"></script>
+</head>
+
+<body>
+<span>
+<h1>Encrypt and decrypt HTML5 canvas</h1>
+<br>
+JavaScript <a href="http://en.wikipedia.org/wiki/Advanced_Encryption_Standard">AES</a> and 
+<a href="http://en.wikipedia.org/wiki/Rabbit_%28cipher%29">Rabbit</a> encryption and decryption of an image.
+<br>
+Uses <a href="http://code.google.com/p/crypto-js/">Crypto-JS</a>.
+<br><br>
+<a href="http://alicebobandmallory.com/articles/2010/10/14/encrypt-images-in-javascript">Blog post</a>.
+<br><br>
+
+<form name="f">
+<b>Rabbit</b><br>
+<input type="button" onclick="var start = (new Date).getTime();encryptRabbit();this.value='Encrypt ' + ((new Date).getTime() - start) + 'ms'" value="Encrypt">
+| <input type="button" onclick="clear_canvas();" value="Clear">
+| <input type="button" onclick="var start = (new Date).getTime();decryptRabbit();;this.value='Decrypt ' + ((new Date).getTime() - start) + 'ms'" value="Decrypt"><br>
+<br>
+<b>AES</b><br>
+<input type="button" onclick="var start = (new Date).getTime();encryptAES();this.value='Encrypt ' + ((new Date).getTime() - start) + 'ms'" 
+value="Encrypt">
+| <input type="button" onclick="clear_canvas();" value="Clear">
+| <input type="button" onclick="var start = (new Date).getTime();decryptAES();this.value='Decrypt ' + ((new Date).getTime() - start) + 'ms'" value="Decrypt"><br>
+<br>
+</span>
+<canvas id="leif" width="160" height="120"></canvas><br><br>
+Password: <input id="password" type="password" size="20" value="test"><br><br>
+<input id="ta" name="encrypted" type="text" size="80" value="There will be dragons."><div id="chars"></div><br><br>
+</form>
+<span>
+<br>
+</span>
+
+<script type="text/javascript">
+/*
+Copyright 2010 Jonas Elfström. All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are
+permitted provided that the following conditions are met:
+
+   1. Redistributions of source code must retain the above copyright notice, this list of
+      conditions and the following disclaimer.
+
+   2. Redistributions in binary form must reproduce the above copyright notice, this list
+      of conditions and the following disclaimer in the documentation and/or other materials
+      provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY JONAS ELFSTRÖM ``AS IS'' AND ANY EXPRESS OR IMPLIED
+WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
+FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL JONAS ELFSTRÖM OR
+CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+The views and conclusions contained in the software and documentation are those of the
+authors and should not be interpreted as representing official policies, either expressed
+or implied, of Jonas Elfström.
+*/
+
+  var img = new Image();
+  img.src = 'kafka160120.jpg';
+  var width=160;
+  var height=120;
+  var ctx, imgd, pix;
+  
+  img.onload = function() {
+    ctx = document.getElementById('leif').getContext('2d');
+    ctx.drawImage(img, 0, 0);
+    imgd = ctx.getImageData(0,0,width,height);
+    pix = imgd.data;
+  }
+
+  function clear_canvas() {
+    ctx.clearRect(0,0,160,120);
+    imgd.data=[];
+  }
+
+  function canvasArrToString(a) {
+    var s="";
+    // Removes alpha to save space.
+    for (var i=0; i<pix.length; i+=4) {
+      s+=(String.fromCharCode(pix[i]) 
+          + String.fromCharCode(pix[i+1]) 
+          + String.fromCharCode(pix[i+2]));
+    }
+    return s;
+  }
+
+  function canvasStringToArr(s) {
+    var p=[];
+    for (var i=0; i<s.length; i+=3) {
+      for (var j=0; j<3; j++) {
+        p.push(s.substring(i+j,i+j+1).charCodeAt());
+      } 
+      p.push(255); // Hardcodes alpha to 255.
+    }
+    return p;
+  }
+
+  function encryptRabbit() {
+    var password = document.getElementById('password').value;
+    var s=canvasArrToString(pix);
+    var encrypted = Crypto.Rabbit.encrypt(s, password);
+    document.getElementById('ta').value=encrypted;
+    document.getElementById('chars').innerHTML=""+encrypted.length+" characters.";
+  }
+
+  function decryptRabbit() {
+    var password = document.getElementById('password').value;
+    var arr=canvasStringToArr(Crypto.Rabbit.decrypt(document.getElementById('ta').value, password));
+    pix=arr;
+    imgd.data=pix;
+    ctx.putImageData(imgd,0,0);
+    document.getElementById('ta').value="";
+  }
+
+  function encryptAES() {
+    var password = document.getElementById('password').value;
+    var s=canvasArrToString(pix);
+    var encrypted = Krypto.AES.encrypt(s, password);
+    document.getElementById('ta').value=encrypted;
+    document.getElementById('chars').innerHTML=""+encrypted.length+" characters.";
+  }
+
+  function decryptAES() {
+    var password = document.getElementById('password').value;
+    var arr=canvasStringToArr(Krypto.AES.decrypt(document.getElementById('ta').value, password));
+    for (var i=0; i<arr.length; i++) { arr[i]-=0; }
+    pix=arr;
+    imgd.data=pix;
+    ctx.putImageData(imgd,0,0);
+    document.getElementById('ta').value="";
+  }
+</script>
+
+<br><br>
+
+<span>
+<br><br>
+2010-10-14<br>
+<a href="mailto:jonas@plea.se">jonas@plea.se</a>
+</span>
+</body>
+</html>

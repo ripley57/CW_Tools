@@ -1,0 +1,355 @@
+First page
+                                                                                                     TWM        page  2
+
+
+TWM Limited
+BALANCE SHEET ON 31 May 2003 - CONSOLIDATED
+                                                                         EUR                  US$                  ZAR 
+                                                                         ---                  ---                  --- 
+CAPITAL EMPLOYED
+----------------
+SHARE CAPITAL                                                       X,XXX.XX             X,XXX.XX            XX,XXX.XX 
+SHARE PREMIUM                                                 XXX,XXX,XXX.XX       XXX,XXX,XXX.XX     X,XXX,XXX,XXX.XX 
+RETAINED INCOME/(-)ACCUMULATED LOSS                             X,XXX,XXX.XX-        X,XXX,XXX.XX-       XX,XXX,XXX.XX-
+UNREALISED GAIN/(-)LOSS ON CURRENCY REVALUATION                XX,XXX,XXX.XX-       XX,XXX,XXX.XX-      XXX,XXX,XXX.XX-
+UNREALISED GAIN/(-)LOSS ON FORWARD CONTRACTS                      XXX,XXX.XX-          XXX,XXX.XX-        X,XXX,XXX.XX-
+UNREALISED GAIN/(-)LOSS ON INVESTMENT VALUATION                XX,XXX,XXX.XX        XX,XXX,XXX.XX       XXX,XXX,XXX.XX 
+                                                           -----------------    -----------------    ----------------- 
+SHAREHOLDERS' EQUITY                                          XXX,XXX,XXX.XX       XXX,XXX,XXX.XX     X,XXX,XXX,XXX.XX 
+                                                           -----------------    -----------------    ----------------- 
+                                                              XXX,XXX,XXX.XX       XXX,XXX,XXX.XX     X,XXX,XXX,XXX.XX 
+                                                           =================    =================    ================= 
+
+
+EMPLOYMENT OF CAPITAL
+---------------------
+OFFICE FURNITURE                                                    X,XXX.XX             X,XXX.XX            XX,XXX.XX 
+OFFICE EQUIPMENT                                                      XXX.XX             X,XXX.XX             X,XXX.XX 
+COMPUTER HARDWARE                                                   X,XXX.XX            XX,XXX.XX            XX,XXX.XX 
+INVESTMENTS                                                   XXX,XXX,XXX.XX       XXX,XXX,XXX.XX     X,XXX,XXX,XXX.XX 
+
+CURRENT ASSETS
+   BANK ACCOUNT                                                    XX,XXX.XX            XX,XXX.XX           XXX,XXX.XX 
+   NOTICE DEPOSIT                                                   X,XXX.XX             X,XXX.XX            XX,XXX.XX 
+   DEALING ACCOUNT                                             XX,XXX,XXX.XX        XX,XXX,XXX.XX       XXX,XXX,XXX.XX 
+   DEPOSITS                                                           XXX.XX               XXX.XX             X,XXX.XX 
+                                                           -----------------    -----------------    ----------------- 
+                                                               XX,XXX,XXX.XX        XX,XXX,XXX.XX       XXX,XXX,XXX.XX 
+
+CURRENT LIABILITIES
+   INVESTEC ASSET MANAGEMENT                                      XXX,XXX.XX           XXX,XXX.XX         X,XXX,XXX.XX 
+                                                           -----------------    -----------------    ----------------- 
+                                                                  XXX,XXX.XX           XXX,XXX.XX         X,XXX,XXX.XX 
+                                                           -----------------    -----------------    ----------------- 
+NET CURRENT ASSETS/(-)LIABILITIES                              XX,XXX,XXX.XX        XX,XXX,XXX.XX       XXX,XXX,XXX.XX 
+                                                           -----------------    -----------------    ----------------- 
+                                                              XXX,XXX,XXX.XX       XXX,XXX,XXX.XX     X,XXX,XXX,XXX.XX 
+                                                           =================    =================    ================= 
+
+
+Exchange rates: US$-Euro = X.XXXXXXX , ZARand-Euro = X.XXXXXXX
+                                                                                                     TWM        page  X
+
+
+TWM Limited
+INCOME STATEMENT - CONSOLIDATED
+FOR THE PERIOD ENDED XX May XXXX
+
+
+                                                                         EUR                  US$                  ZAR 
+                                                                         ---                  ---                  --- 
+
+INCOME
+------
+Interest received                                                 XXX,XXX.XX           XXX,XXX.XX         X,XXX,XXX.XX 
+Dividend received                                                 XXX,XXX.XX           XXX,XXX.XX         X,XXX,XXX.XX 
+Profit/(-)loss:investment sold                                    XXX,XXX.XX           XXX,XXX.XX         X,XXX,XXX.XX 
+Profit/(-)loss:FX transaction                                   X,XXX,XXX.XX-        X,XXX,XXX.XX-       XX,XXX,XXX.XX-
+Profit/loss - FX forward contr                                  X,XXX,XXX.XX         X,XXX,XXX.XX        XX,XXX,XXX.XX 
+                                                           -----------------    -----------------    ----------------- 
+TOTAL INCOME                                                      XXX,XXX.XX-          XXX,XXX.XX-        X,XXX,XXX.XX-
+
+EXPENDITURE
+-----------
+Professional fees                                                     XXX.XX               XXX.XX             X,XXX.XX 
+Printing & stationery                                                 XXX.XX               XXX.XX             X,XXX.XX 
+Postage & courier                                                     XXX.XX               XXX.XX               XXX.XX 
+Custodial Fee                                                      XX,XXX.XX            XX,XXX.XX           XXX,XXX.XX 
+Depreciation                                                          XXX.XX               XXX.XX             X,XXX.XX 
+Electricity & heating                                                 XXX.XX               XXX.XX             X,XXX.XX 
+Investec Asset Management fee                                     XXX,XXX.XX           XXX,XXX.XX         X,XXX,XXX.XX 
+Refreshments & entertainment                                           XX.XX                XX.XX               XXX.XX 
+Rental - premises                                                   X,XXX.XX             X,XXX.XX            XX,XXX.XX 
+Telephone & fax                                                       XXX.XX               XXX.XX             X,XXX.XX 
+Travelling & accommodation                                            XXX.XX               XXX.XX             X,XXX.XX 
+Subscriptions                                                          XX.XX                XX.XX               XXX.XX 
+Salaries                                                           XX,XXX.XX            XX,XXX.XX           XXX,XXX.XX 
+Directors' remuneration                                            XX,XXX.XX            XX,XXX.XX           XXX,XXX.XX 
+                                                           -----------------    -----------------    ----------------- 
+TOTAL EXPENSES                                                    XXX,XXX.XX           XXX,XXX.XX         X,XXX,XXX.XX 
+                                                           -----------------    -----------------    ----------------- 
+NET PROFIT/(-)LOSS FOR THE PERIOD                                 XXX,XXX.XX-        X,XXX,XXX.XX-        X,XXX,XXX.XX-
+RETAINED INCOME - BEGINNING OF YEAR                             X,XXX,XXX.XX-        X,XXX,XXX.XX-       XX,XXX,XXX.XX-
+                                                           -----------------    -----------------    ----------------- 
+RETAINED INCOME/(-)ACCUMULATED LOSS - END OF PERIOD             X,XXX,XXX.XX-        X,XXX,XXX.XX-       XX,XXX,XXX.XX-
+                                                           =================    =================    ================= 
+                                                                                                     TWM        page  X
+
+
+TWM Limited
+ANALYSIS OF INVESTMENTS ON XX May XXXX - CONSOLIDATED
+                                                                EUR                  US$                  ZAR   RATIO 
+                                                                ---                  ---                  ---   ----- 
+DEALING ACCOUNT
+---------------
+Cost                                                  XX,XXX,XXX.XX        XX,XXX,XXX.XX       XXX,XXX,XXX.XX  XXX.XX %
+Unrealised gain/(-)loss on FX revaluation              X,XXX,XXX.XX-        X,XXX,XXX.XX-       XX,XXX,XXX.XX-   X.XX %
+                                                  -----------------    -----------------    -----------------  ------ 
+Cost adjusted for FX revaluation                      XX,XXX,XXX.XX        XX,XXX,XXX.XX       XXX,XXX,XXX.XX   XX.XX  
+                                                  -----------------    -----------------    -----------------  ------ 
+CORE INVESTMENTS
+----------------
+Cost                                                 XXX,XXX,XXX.XX       XXX,XXX,XXX.XX     X,XXX,XXX,XXX.XX  XXX.XX %
+Unrealised gain/(-)loss on FX revaluation             XX,XXX,XXX.XX-       XX,XXX,XXX.XX-      XXX,XXX,XXX.XX-   X.XX %
+                                                  -----------------    -----------------    -----------------  ------ 
+Cost adjusted for FX revaluation                     XXX,XXX,XXX.XX       XXX,XXX,XXX.XX     X,XXX,XXX,XXX.XX   XX.XX %
+Market value gain/(-)loss adjustment                  XX,XXX,XXX.XX        XX,XXX,XXX.XX       XXX,XXX,XXX.XX    X.XX %
+                                                  -----------------    -----------------    -----------------  ------ 
+Market value                                         XXX,XXX,XXX.XX       XXX,XXX,XXX.XX     X,XXX,XXX,XXX.XX  XXX.XX %
+                                                  -----------------    -----------------    -----------------  ------ 
+ACCRUED INTEREST
+----------------
+Cost                                                     XXX,XXX.XX           XXX,XXX.XX         X,XXX,XXX.XX  XXX.XX %
+Unrealised gain/(-)loss on FX revaluation                 XX,XXX.XX-           XX,XXX.XX-          XXX,XXX.XX-   X.XX %
+                                                  -----------------    -----------------    -----------------  ------ 
+Cost adjusted for FX revaluation                         XXX,XXX.XX           XXX,XXX.XX         X,XXX,XXX.XX   XX.XX %
+Interest earned since purchase                            XX,XXX.XX-           XX,XXX.XX-          XXX,XXX.XX-   X.XX %
+                                                  -----------------    -----------------    -----------------  ------ 
+Market value                                             XXX,XXX.XX           XXX,XXX.XX         X,XXX,XXX.XX   XX.XX %
+                                                  -----------------    -----------------    -----------------  ------ 
+FORWARD CONTRACTS
+-----------------
+Market value gain/(-)loss adjustment                     XXX,XXX.XX-          XXX,XXX.XX-        X,XXX,XXX.XX- XXX.XX %
+                                                  -----------------    -----------------    -----------------  ------ 
+SUMMARY
+-------
+Core investment                                      XXX,XXX,XXX.XX       XXX,XXX,XXX.XX     X,XXX,XXX,XXX.XX   XX.XX %
+Accrued interest                                         XXX,XXX.XX           XXX,XXX.XX         X,XXX,XXX.XX    X.XX %
+Forward contracts                                        XXX,XXX.XX-          XXX,XXX.XX-        X,XXX,XXX.XX-   X.XX %
+                                                  -----------------    -----------------    -----------------  ------ 
+TOTAL INVESTMENTS                                    XXX,XXX,XXX.XX       XXX,XXX,XXX.XX     X,XXX,XXX,XXX.XX   XX.XX %
+Dealing account                                       XX,XXX,XXX.XX        XX,XXX,XXX.XX       XXX,XXX,XXX.XX   XX.XX %
+                                                  -----------------    -----------------    -----------------  ------ 
+FUNDS UNDER MANAGEMENT                               XXX,XXX,XXX.XX       XXX,XXX,XXX.XX     X,XXX,XXX,XXX.XX  XXX.XX  
+                                                  =================    =================    =================  ====== 
+                                                                                                     TWM        page  X
+
+
+
+
+
+
+TWM LIMITED
+Ballastrang Offices        Tel: +XX (X) XXXX XXXXXX
+Douglas Road               Fax: +XX (X) XXXX XXXXXX
+Santon                     E-mail: TWMltd@manx.net
+Isle of Man IMX XEU
+
+
+
+
+MANAGEMENT ACCOUNTS - TWM CORPORATE only
+
+
+
+XX May XXXX
+
+                                                                                                     TWM        page  X
+
+
+TWM Limited
+BALANCE SHEET ON XX May XXXX - TWM CORPORATE
+                                                                         EUR                  US$                  ZAR 
+                                                                         ---                  ---                  --- 
+CAPITAL EMPLOYED
+----------------
+SHARE CAPITAL                                                       X,XXX.XX             X,XXX.XX            XX,XXX.XX 
+SHARE PREMIUM                                                 XXX,XXX,XXX.XX       XXX,XXX,XXX.XX     X,XXX,XXX,XXX.XX 
+RETAINED INCOME/(-)ACCUMULATED LOSS                             X,XXX,XXX.XX-        X,XXX,XXX.XX-       XX,XXX,XXX.XX-
+UNREALISED GAIN/(-)LOSS ON CURRENCY REVALUATION                     X,XXX.XX-           XX,XXX.XX-           XX,XXX.XX-
+                                                           -----------------    -----------------    ----------------- 
+SHAREHOLDERS' EQUITY                                          XXX,XXX,XXX.XX       XXX,XXX,XXX.XX     X,XXX,XXX,XXX.XX 
+                                                           -----------------    -----------------    ----------------- 
+                                                              XXX,XXX,XXX.XX       XXX,XXX,XXX.XX     X,XXX,XXX,XXX.XX 
+                                                           =================    =================    ================= 
+
+
+EMPLOYMENT OF CAPITAL
+---------------------
+OFFICE FURNITURE                                                    X,XXX.XX             X,XXX.XX            XX,XXX.XX 
+OFFICE EQUIPMENT                                                      XXX.XX             X,XXX.XX             X,XXX.XX 
+COMPUTER HARDWARE                                                   X,XXX.XX            XX,XXX.XX            XX,XXX.XX 
+INVESTMENTS - FUNDS                                           XXX,XXX,XXX.XX       XXX,XXX,XXX.XX     X,XXX,XXX,XXX.XX 
+
+CURRENT ASSETS
+   BANK ACCOUNT                                                    XX,XXX.XX            XX,XXX.XX           XXX,XXX.XX 
+   NOTICE DEPOSIT                                                   X,XXX.XX             X,XXX.XX            XX,XXX.XX 
+   DEPOSITS                                                           XXX.XX               XXX.XX             X,XXX.XX 
+                                                           -----------------    -----------------    ----------------- 
+                                                                   XX,XXX.XX            XX,XXX.XX           XXX,XXX.XX 
+
+CURRENT LIABILITIES
+   INTER COMPANY/FUNDS ACCOUNT                                     XX,XXX.XX-           XX,XXX.XX-          XXX,XXX.XX-
+                                                           -----------------    -----------------    ----------------- 
+                                                                   XX,XXX.XX-           XX,XXX.XX-          XXX,XXX.XX-
+                                                           -----------------    -----------------    ----------------- 
+NET CURRENT ASSETS/(-)LIABILITIES                                  XX,XXX.XX            XX,XXX.XX           XXX,XXX.XX 
+                                                           -----------------    -----------------    ----------------- 
+                                                              XXX,XXX,XXX.XX       XXX,XXX,XXX.XX     X,XXX,XXX,XXX.XX 
+                                                           =================    =================    ================= 
+
+
+Exchange rates: US$-Euro = X.XXXXXXX , ZARand-Euro = X.XXXXXXX
+                                                                                                     TWM        page  X
+
+
+TWM Limited
+INCOME STATEMENT - TWM CORPORATE
+FOR THE PERIOD ENDED XX May XXXX
+
+
+                                                                         EUR                  US$                  ZAR 
+                                                                         ---                  ---                  --- 
+
+INCOME
+------
+
+Interest received                                                     XXX.XX               XXX.XX             X,XXX.XX 
+Fee contribution from funds                                        XX,XXX.XX            XX,XXX.XX           XXX,XXX.XX 
+                                                           -----------------    -----------------    ----------------- 
+TOTAL INCOME                                                       XX,XXX.XX            XX,XXX.XX           XXX,XXX.XX 
+
+
+EXPENDITURE
+-----------
+
+Professional fees                                                     XXX.XX               XXX.XX             X,XXX.XX 
+Printing & stationery                                                 XXX.XX               XXX.XX             X,XXX.XX 
+Postage & courier                                                     XXX.XX               XXX.XX               XXX.XX 
+Depreciation                                                          XXX.XX               XXX.XX             X,XXX.XX 
+Electricity & heating                                                 XXX.XX               XXX.XX             X,XXX.XX 
+Refreshments & entertainment                                           XX.XX                XX.XX               XXX.XX 
+Rental - premises                                                   X,XXX.XX             X,XXX.XX            XX,XXX.XX 
+Telephone & fax                                                       XXX.XX               XXX.XX             X,XXX.XX 
+Travelling & accommodation                                            XXX.XX               XXX.XX             X,XXX.XX 
+Subscriptions                                                          XX.XX                XX.XX               XXX.XX 
+Salaries                                                           XX,XXX.XX            XX,XXX.XX           XXX,XXX.XX 
+Directors' remuneration                                            XX,XXX.XX            XX,XXX.XX           XXX,XXX.XX 
+                                                           -----------------    -----------------    ----------------- 
+TOTAL EXPENSES                                                     XX,XXX.XX            XX,XXX.XX           XXX,XXX.XX 
+                                                           -----------------    -----------------    ----------------- 
+NET PROFIT/(-)LOSS FOR THE PERIOD                                  XX,XXX.XX            XX,XXX.XX           XXX,XXX.XX 
+RETAINED INCOME - BEGINNING OF YEAR                             X,XXX,XXX.XX-        X,XXX,XXX.XX-       XX,XXX,XXX.XX-
+                                                           -----------------    -----------------    ----------------- 
+RETAINED INCOME/(-)ACCUMULATED LOSS - END OF PERIOD             X,XXX,XXX.XX-        X,XXX,XXX.XX-       XX,XXX,XXX.XX-
+                                                           =================    =================    ================= 
+                                                                                                     TWM        page  X
+
+
+TWM Limited
+ANALYSIS OF INVESTMENTS ON XX May XXXX - TWM CORPORATE
+
+                                                                EUR                  US$                  ZAR   RATIO 
+                                                                ---                  ---                  ---   ----- 
+CORPORATE INVESTMENTS
+---------------------
+                                                  -----------------    -----------------    -----------------  ------ 
+TOTAL - TWM CORPORATE                                          X.XX                 X.XX                 X.XX    X.XX %
+                                                  =================    =================    =================  ====== 
+
+
+INVESTMENTS IN FUNDS
+--------------------
+GLOBAL BONDS                                          XX,XXX,XXX.XX        XX,XXX,XXX.XX       XXX,XXX,XXX.XX   XX.XX %
+GLOBAL CASH                                           XX,XXX,XXX.XX        XX,XXX,XXX.XX       XXX,XXX,XXX.XX   XX.XX %
+GLOBAL EQUITIES                                       XX,XXX,XXX.XX        XX,XXX,XXX.XX       XXX,XXX,XXX.XX   XX.XX %
+                                                  -----------------    -----------------    -----------------  ------ 
+SUBTOTAL - BONDS, CASH & EQUITIES                    XXX,XXX,XXX.XX       XXX,XXX,XXX.XX     X,XXX,XXX,XXX.XX   XX.XX %
+
+SINGLE PREMIUM CORPORATE#X                             X,XXX,XXX.XX         X,XXX,XXX.XX        XX,XXX,XXX.XX    X.XX %
+SINGLE PREMIUM CORPORATE#X                             X,XXX,XXX.XX         X,XXX,XXX.XX        XX,XXX,XXX.XX    X.XX %
+SINGLE PREMIUM CORPORATE#X                             X,XXX,XXX.XX         X,XXX,XXX.XX        XX,XXX,XXX.XX    X.XX %
+SINGLE PREMIUM INDIVIDUAL#X                            X,XXX,XXX.XX         X,XXX,XXX.XX        XX,XXX,XXX.XX    X.XX %
+SINGLE PREMIUM INDIVIDUAL#X                            X,XXX,XXX.XX         X,XXX,XXX.XX        XX,XXX,XXX.XX    X.XX %
+SINGLE PREMIUM INDIVIDUAL#X                            X,XXX,XXX.XX         X,XXX,XXX.XX        XX,XXX,XXX.XX    X.XX %
+                                                  -----------------    -----------------    -----------------  ------ 
+SUNTOTAL - SINGLE PREMIUM POLICIES                    XX,XXX,XXX.XX        XX,XXX,XXX.XX       XXX,XXX,XXX.XX    X.XX %
+
+                                                  -----------------    -----------------    -----------------  ------ 
+TOTAL INITIAL INVESTMENT IN FUNDS                    XXX,XXX,XXX.XX       XXX,XXX,XXX.XX     X,XXX,XXX,XXX.XX  XXX.XX %
+                                                  =================    =================    =================  ====== 
+                                                                                                     TWM        page  X
+
+
+
+
+
+
+
+
+
+
+
+TWM LIMITED
+
+
+
+MANAGEMENT ACCOUNTS - GLOBAL BONDS
+
+
+
+XX May XXXX
+
+                                                                                                     TWM        page  X
+
+
+TWM Limited
+BALANCE SHEET ON XX May XXXX - GLOBAL BONDS
+                                                                         EUR                  US$                  ZAR 
+                                                                         ---                  ---                  --- 
+CAPITAL EMPLOYED
+----------------
+INITIAL INVESTMENT IN THE FUND                                 XX,XXX,XXX.XX        XX,XXX,XXX.XX       XXX,XXX,XXX.XX 
+RETAINED INCOME/(-)ACCUMULATED LOSS                             X,XXX,XXX.XX-        X,XXX,XXX.XX-       XX,XXX,XXX.XX-
+UNREALISED GAIN/(-)LOSS ON CURRENCY REVALUATION                 X,XXX,XXX.XX-        X,XXX,XXX.XX-       XX,XXX,XXX.XX-
+UNREALISED GAIN/(-)LOSS ON FORWARD CONTRACTS                      XXX,XXX.XX-          XXX,XXX.XX-        X,XXX,XXX.XX-
+UNREALISED GAIN/(-)LOSS ON INVESTMENT VALUATION                 X,XXX,XXX.XX         X,XXX,XXX.XX         X,XXX,XXX.XX 
+                                                           -----------------    -----------------    ----------------- 
+FUND EQUITY                                                    XX,XXX,XXX.XX        XX,XXX,XXX.XX       XXX,XXX,XXX.XX 
+                                                           -----------------    -----------------    ----------------- 
+                                                               XX,XXX,XXX.XX        XX,XXX,XXX.XX       XXX,XXX,XXX.XX 
+                                                           =================    =================    ================= 
+
+
+EMPLOYMENT OF CAPITAL
+---------------------
+INVESTMENTS                                                    XX,XXX,XXX.XX        XX,XXX,XXX.XX       XXX,XXX,XXX.XX 
+
+CURRENT ASSETS
+   FUND DEALING ACCOUNT                                        XX,XXX,XXX.XX        XX,XXX,XXX.XX       XXX,XXX,XXX.XX 
+                                                           -----------------    -----------------    ----------------- 
+                                                               XX,XXX,XXX.XX        XX,XXX,XXX.XX       XXX,XXX,XXX.XX 
+
+CURRENT LIABILITIES
+   INVESTEC ASSET MANAGEMENT                                      XXX,XXX.XX           XXX,XXX.XX         X,XXX,XXX.XX 
+   INTER COMPANY/FUNDS ACCOUNT                                    XXX,XXX.XX           XXX,XXX.XX         X,XXX,XXX.XX 
+                                                           -----------------    -----------------    ----------------- 
+                                                                  XXX,XXX.XX           XXX,XXX.XX         X,XXX,XXX.XX 
+                                                           -----------------    -----------------    ----------------- 
+NET CURRENT ASSETS/(-)LIABILITIES                              XX,XXX,XXX.XX        XX,XXX,XXX.XX       XXX,XXX,XXX.XX 
+                                                           -----------------    -----------------    ----------------- 
+                                                               XX,XXX,XXX.XX        XX,XXX,XXX.XX       XXX,XXX,XXX.XX 
+                                                           =================    =================    ================= 
+
+Exchange rates: US$-Euro = X.XXXXXXX , ZARand-Euro = X.XXXXXXX
+

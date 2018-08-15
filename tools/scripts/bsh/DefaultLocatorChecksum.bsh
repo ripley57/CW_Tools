@@ -1,0 +1,9 @@
+import com.teneo.esa.common.core.ChecksumFactory;
+import com.teneo.esa.common.util.StringHelper;
+
+buf = new StringBuffer();
+String s = "esa:pst/cn:$4505077096120322$:0000000031fd8876ebba5649b503d6658b82b65964892900: ::0700b0bd680460802204382fa8633b2f38ca4db17360781cf1784ce1045bea87f720";
+String sums = ChecksumFactory.checksumCalculator().createChecksum(new ByteArrayInputStream(StringHelper.getUTF8(s)));
+buf.append("\nsums=" + sums);
+buf.append("\n");	
+buf;

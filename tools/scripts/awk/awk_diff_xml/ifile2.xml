@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml>
+	<SearchContext caseName="SECvTamas" userName="superuser"></SearchContext>
+	<Message>
+		<Locator location="esa:pst/*:\\cw1\casedata\SECvTamas\Sales Managers\Carter, David\Email\2008.pst:000000004843c9077ca6c246a293a9d9c8edbf5524fb2000"></Locator>
+		<Log Sender="aiken@internal_domain" Date="Wed Dec 31 2008 21:11:00 EST" Subject=" Check this out " DBID="1970384966548317" DOCID="0.7.14.31581" FTID="3377760923832845" RelaxedChecksum="0ee0fa58360b545fc8d94a291bb007ad" StrictChecksum="a234d3cd003da028fc8fa312934ac098" CrawlerChecksum="0700d158c9360ac171c393819b516f2e93a1abdda9de5f22d9f729bff38f1e6831a0"></Log>
+	</Message>
+	<Message>
+		<Locator location="esa:pst/*:\\cw1\casedata\SECvTamas\Sales Managers\Carter, David\Email\2008.pst:000000004843c9077ca6c246a293a9d9c8edbf55e4fa2000"></Locator>
+		<Log Sender="aiken@internal_domain" Date="Wed Dec 31 2008 16:26:00 EST" Subject=" Check this out " DBID="1970384966548316" DOCID="0.7.14.31580" FTID="3377760923832825" RelaxedChecksum="d7ca12004ac6a53a012a495864ca581d" StrictChecksum="8cf8935ab39b0dc23173af8bcf07a269" CrawlerChecksum="07008277f16ea2a19687cdb1d3399162aeeb4dcd92fca59ac162a1bf442b868e8f56"></Log>
+	</Message>
+	<Message>
+		<Locator location="esa:pst/*:\\cw1\casedata\SECvTamas\Sales Managers\Carter, David\Email\2008.pst:000000004843c9077ca6c246a293a9d9c8edbf55c4fa2000"></Locator>
+		<Log Sender="aiken@internal_domain" Date="Wed Dec 31 2008 12:21:00 EST" Subject=" Check this out " DBID="1970384966548315" DOCID="0.7.14.31579" FTID="3377760923832824" RelaxedChecksum="71582309826c2ea490baa4cfaad99d95" StrictChecksum="6de74b00807da89ce2175796964dbac0" CrawlerChecksum="0700dd8c761831e0ff446c2e160459aee9ee1c949fb43c208a4c8f4104c8a1ae7f16"></Log>
+	</Message>
+	<Message>
+		<Locator location="esa:pst/*:\\cw1\casedata\SECvTamas\Sales Managers\Carter, David\Email\2008.pst:000000004843c9077ca6c246a293a9d9c8edbf55a4fa2000"></Locator>
+		<Log Sender="aiken@internal_domain" Date="Wed Dec 31 2008 06:41:00 EST" Subject=" Check this out " DBID="1970384966548312" DOCID="0.7.14.31576" FTID="3377760923832843" RelaxedChecksum="b5618f1c6e3a187f3da0a67f17cadae8" StrictChecksum="598f7a74004537d395e918ca4c8370a4" CrawlerChecksum="070057d4f8e026f18b765ace6c940dd944bbc9161c4344a90896dd9dacf9ce94be85"></Log>
+	</Message>
+	<Message>
+		<Locator location="esa:pst/*:\\cw1\casedata\SECvTamas\Sales Managers\Carter, David\Email\2008.pst:000000004843c9077ca6c246a293a9d9c8edbf5584fa2000"></Locator>
+		<Log Sender="aiken@internal_domain" Date="Wed Dec 31 2008 00:56:00 EST" Subject=" Check this out " DBID="1970384966548311" DOCID="0.7.14.31575" FTID="3377760923832829" RelaxedChecksum="d345ed28a47c534f8b1855feb774a763" StrictChecksum="75b3e0c5bf08158df2d4349dd30d58bb" CrawlerChecksum="0700beeb2c1b1f7248d40268b7bfad59c06fb8a3fd2d17bd80a0fc0288b910805484"></Log>
+	</Message>
+	<Message>
+		<Locator location="esa:pst/*:\\cw1\casedata\SECvTamas\Sales Managers\Carter, David\Email\2008.pst:000000004843c9077ca6c246a293a9d9c8edbf5564fa2000"></Locator>
+		<Log Sender="aiken@internal_domain" Date="Tue Dec 30 2008 20:56:00 EST" Subject=" Check this out " DBID="1970384966548310" DOCID="0.7.14.31574" FTID="3377760923832830" RelaxedChecksum="0b86e3e4303ff8f17c8b97ebc6c8611e" StrictChecksum="085f61fff87fcf8d8829c7ef58ecde5b" CrawlerChecksum="0700f4fed12c6b0f45514fa360fc3672a56a340a970a9e0bc40f30f7834dd8365296"></Log>
+	</Message>
+	<Message>
+		<Locator location="esa:pst/*:\\cw1\casedata\SECvTamas\Sales Managers\Carter, David\Email\2008.pst:000000004843c9077ca6c246a293a9d9c8edbf5544fa2000"></Locator>
+		<Log Sender="aiken@internal_domain" Date="Tue Dec 30 2008 18:31:00 EST" Subject=" Check this out " DBID="1970384966548309" DOCID="0.7.14.31573" FTID="3377760923832832" RelaxedChecksum="7035cdc47ba794ae5ef66d11f4af2b5a" StrictChecksum="e8884425d540f290ceb4fbdd5a21272b" CrawlerChecksum="07002333246f2ac5d4b850c00a3bc53f4b77487e6b79247c517003d099c46c7e2bcb"></Log>
+	</Message>
+	<Message>
+		<Locator location="esa:pst/*:\\cw1\casedata\SECvTamas\Sales Managers\Carter, David\Email\2008.pst:000000004843c9077ca6c246a293a9d9c8edbf5524fa2000"></Locator>
+		<Log Sender="aiken@internal_domain" Date="Tue Dec 30 2008 16:11:00 EST" Subject=" Check this out " DBID="1970384966548308" DOCID="0.7.14.31572" FTID="3377760923832831" RelaxedChecksum="0ee0fa58360b545fc8d94a291bb007ad" StrictChecksum="278cc17fbf79369ef5eb319c18ce066e" CrawlerChecksum="0700a64be8d197218cc539fcbffa0d086375d8a76493c63b5620e84fede4f240affb"></Log>
+	</Message>
+	<Message>
+		<Locator location="esa:pst/*:\\cw1\casedata\SECvTamas\Sales Managers\Carter, David\Email\2008.pst:000000004843c9077ca6c246a293a9d9c8edbf5504fa2000"></Locator>
+		<Log Sender="aiken@internal_domain" Date="Tue Dec 30 2008 12:06:00 EST" Subject=" Check this out " DBID="1970384966548307" DOCID="0.7.14.31571" FTID="3377760923832833" RelaxedChecksum="02c07599e79963acb3fc02a71c8b3c5c" StrictChecksum="3a5de972c3bb921ae5c4783e365c7a70" CrawlerChecksum="07001501dec784ba004b145b087a62916bd7cf6fb731a8b7d7c6aa2cb6f89414f4a1"></Log>
+	</Message>
+	<Message>
+		<Locator location="esa:pst/*:\\cw1\casedata\SECvTamas\Sales Managers\Carter, David\Email\2008.pst:000000004843c9077ca6c246a293a9d9c8edbf55e4f92000"></Locator>
+		<Log Sender="aiken@internal_domain" Date="Tue Dec 30 2008 06:26:00 EST" Subject=" Check this out " DBID="1970384966548314" DOCID="0.7.14.31578" FTID="3377760923832826" RelaxedChecksum="d7ca12004ac6a53a012a495864ca581d" StrictChecksum="223ef859fd969db2ffaf2ae4e26302c8" CrawlerChecksum="0700ff17d5b8a7a4a3c6e1394a3cc21e4a654330faedfadd9f22fc56db957935e9ff"></Log>
+	</Message>
+	<Message>
+		<Locator location="esa:pst/*:\\cw1\casedata\SECvTamas\Sales Managers\Carter, David\Email\2008.pst:000000004843c9077ca6c246a293a9d9c8edbf55e4f92000"></Locator>
+		<Log Sender="aiken@internal_domain" Date="Tue Dec 30 2008 06:26:00 EST" Subject=" Check this out " DBID="1970384966548314" DOCID="0.7.14.31578" FTID="3377760923832826" RelaxedChecksum="d7ca12004ac6a53a012a495864ca581d" StrictChecksum="x223ef859fd969db2ffaf2ae4e26302c8" CrawlerChecksum="0700ff17d5b8a7a4a3c6e1394a3cc21e4a654330faedfadd9f22fc56db957935e9ff"></Log>
+	</Message>
+</xml>

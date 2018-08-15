@@ -1,0 +1,153 @@
+<streamingInfos>
+
+<!-- Links from http://iptv.filmover.com/category/france/ -->
+<!-- LiveStreamPro versions: https://ftp.acc.umu.se/mirror/addons.superrepo.org/v7/addons/plugin.video.live.streamspro/ -->
+<!-- How to install and use LiveStreamPro: https://www.youtube.com/watch?v=U_1BRdbVHhk -->
+<!-- Numerous UK acestream links (untested): http://acestreamchannel.blogspot.com/ --> 
+<!-- More acestream links (untested): http://www.iptvsaga.com/acestream-live-streaming-750-tv-channels-24-04/ -->
+
+<item>
+<title>TF1</title>
+<link>http://144.217.253.140/TF1/mpegts</link>
+</item>
+
+<item>
+<title>France 2</title>
+<link>http://144.217.253.140/France2/mpegts</link>
+</item>
+
+<item>
+<title>France 3</title>
+<link>http://144.217.253.140/France3/mpegts</link>
+</item>
+
+<item>
+<title>France 4</title>
+<link>http://144.217.253.140/France4/mpegts</link>
+</item>
+
+<item>
+<title>W9</title>
+<link>http://144.217.253.140/W9/mpegts</link
+</item>
+
+<item>
+<title>NRJ 12</title>
+<link>http://144.217.253.140/NRJ12/mpegts</link
+</item>
+
+<item>
+<title>M6</title>
+<link>http://144.217.253.140/M6/mpegts</link
+</item>
+
+<item>
+<title>Gulli</title>
+<link>http://144.217.253.140/Gulli/mpegts</link
+</item>
+
+<item>
+<title>C8</title>
+<link>http://144.217.253.140/C8/mpegts</link
+</item>
+
+<item>
+<title>Cherie25</title>
+<link>http://144.217.253.140/Cherie25/mpegts</link
+</item>
+
+<item>
+<title>tiji</title>
+<link>http://144.217.253.140/tiji/mpegts</link
+</item>
+
+<item>
+<title>LBC</title>
+<link>http://144.217.253.140/LBC/mpegts</link
+</item>
+
+<item>
+<title>LDC</title>
+<link>http://144.217.253.140/LDC/mpegts</link
+</item>
+
+<item>
+<title>MBC</title>
+<link>http://144.217.253.140/MBC/mpegts</link
+</item>
+
+<item>
+<title>MBC MASR</title>
+<link>http://144.217.253.140/MBCMASR/mpegts</link
+</item>
+
+<item>
+<title>MBC MAX</title>
+<link>http://144.217.253.140/MBCMAX/mpegts</link
+</item>
+
+<item>
+<title>MBC DRAMA</title>
+<link>http://144.217.253.140/MBCDRAMA/mpegts</link
+</item>
+
+<item>
+<title>MBC DRAMA</title>
+<link>http://144.217.253.140/MBCACTION/mpegts</link
+</item>
+
+<item>
+<title>MBC 4</title>
+<link>http://144.217.253.140/MBC4/mpegts</link
+</item>
+
+<item>
+<title>MBC 2</title>
+<link>http://144.217.253.140/MBC2/mpegts</link
+</item>
+
+<!--
+#EXTINF:-1,OTV
+http://144.217.253.140/OTV/mpegts
+#EXTINF:-1,Nessma
+http://144.217.253.140/Nessma/mpegts
+#EXTINF:-1,NBN
+http://144.217.253.140/NBN/mpegts
+#EXTINF:-1,Mangas
+http://144.217.253.140/Mangas/mpegts
+#EXTINF:-1,Boomerang
+http://144.217.253.140/Boomerang/mpegts
+#EXTINF:-1,Boing
+http://144.217.253.140/Boing/mpegts
+#EXTINF:-1,TRT 1
+http://144.217.76.52:8080/TRT1/mpegts
+#EXTINF:-1,OTV
+http://144.217.76.52:8080/OTV/mpegts
+#EXTINF:-1,KTV 2
+http://144.217.76.52:8080/KTV2/mpegts
+#EXTINF:-1,CBC
+http://144.217.76.52:8080/CBC/mpegts
+#EXTINF:-1,LDC
+http://144.217.76.52:8080/LDC/mpegts
+#EXTINF:-1,natgeo
+http://144.217.74.192:8080/natgeo/mpegts
+#EXTINF:-1,zeemarathi
+http://144.217.74.192:8080/zeemarathi/mpegts
+#EXTINF:-1,syfy
+http://144.217.74.192:8080/syfy/mpegts
+#EXTINF:-1,AMC HD
+http://144.217.74.192:8080/AMCHD/mpegts
+#EXTINF:-1,SPIKE TV
+http://144.217.74.192:8080/SPIKETV/mpegts
+#EXTINF:-1,pogo
+http://144.217.74.192:8080/pogo/mpegts
+#EXTINF:-1,TSN 3 HD
+http://144.217.74.122:8080/TSN3HD/mpegts
+#EXTINF:-1,TSN 1 HD
+http://144.217.74.122:8080/TSN1HD/mpegts
+#EXTINF:-1,TSN 2 HD
+http://144.217.74.122:8080/TSN2HD/mpegts
+-->
+
+
+</streamingInfos>

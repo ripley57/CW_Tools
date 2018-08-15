@@ -1,0 +1,4 @@
+"UPDATE","SUBJECT","d:\tmp2\test_email_1.msg","My test email 1 subject"  
+"UPDATE","RECIPIENTS","d:\tmp2\test_email_1.msg","   fred1 <  fred@fred.com  >  ;fred2;fred3" 
+"UPDATE","SUBJECT","d:\tmp2\test_email_2.msg","My test email 2 subject"  
+"UPDATE","RECIPIENTS","d:\tmp2\test_email_2.msg","frank1;frank2;frank3"

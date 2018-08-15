@@ -1,0 +1,27 @@
+alias c='cd /cygdrive/c/ && pwd'
+alias d='cd /cygdrive/d/ && pwd'
+
+# cd to Windows home directory.
+alias h='windir && e'
+alias home='windir && e'
+
+function lcd() {
+    cd "$(ls -1trF | grep '/$' | tail -1)" && pwd
+}
+
+alias clr='clearscreen'
+
+function tools() {
+    load_tools ; funcs
+}
+
+alias 1='cdir 1'
+alias 2='cdir 2'
+alias 3='cdir 3'
+alias 4='cdir 4'
+alias 5='cdir 5'
+alias 6='cdir 6'
+alias 7='cdir 7'
+alias 8='cdir 8'
+alias 9='cdir 9'
+

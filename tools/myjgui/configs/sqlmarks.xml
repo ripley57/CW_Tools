@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<SQLMARKS>
+<FOLDER id="system">
+<ITEM desc="" id="killProcess" val="kill [process id]"/>
+<FOLDER id="mysql users">
+<ITEM desc="" id="user databases" val="select * from mysql.db where user='[Enter username]'"/>
+<ITEM desc="" id="revoke privileges" val="revoke [Enter privileges] on [database.tables] from [user@host]"/>
+<ITEM desc="" id="change password" val="update mysql.user set password=password('[Enter password]') where user='[Enter user name]'"/>
+<ITEM desc="" id="delete user" val="delete from mysql.user where user='[Enter user name]'"/>
+<ITEM desc="" id="find user" val="select * from mysql.user where user='[Enter user name]'"/>
+<ITEM desc="" id="new grant/user" val="grant [Enter privileges] on [database.tables] to [user@host] identified by '[password]'"/>
+</FOLDER>
+<FOLDER id="show">
+<ITEM desc="" id="server status" val="show status"/>
+<ITEM desc="" id="show tables" val="show tables"/>
+<ITEM desc="" id="databases" val="show databases"/>
+<ITEM desc="" id="processlist" val="show full processlist"/>
+<ITEM desc="" id="variables" val="show variables"/>
+</FOLDER>
+<FOLDER id="flush">
+<ITEM desc="" id="privileges" val="flush privileges"/>
+<ITEM desc="" id="tables" val="flush tables"/>
+<ITEM desc="" id="hosts" val="flush hosts"/>
+</FOLDER>
+</FOLDER>
+</SQLMARKS>

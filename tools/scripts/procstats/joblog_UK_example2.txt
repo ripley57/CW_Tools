@@ -1,0 +1,218 @@
+Job ID: 1.5.34.5702956011984257026 
+Case: KLUMP045 BM TEST 
+Appliance: www.xxxx.co.uk 
+02/02/2016 15:22:22   Starting scheduled job: KLUMP045 BM TEST : Process documents from "Batch_0001" in batch "Batch_0001".
+02/02/2016 15:22:22   www.xxxx.co.uk System            Skipping Discovery per config setting
+02/02/2016 15:22:34   www.xxxx.co.uk System            Started transferring files to processing node(s) in preparation for Indexing
+02/02/2016 15:22:34   www.xxxx.co.uk System            File transfer has completed
+02/02/2016 15:22:37   www.xxxx.co.uk Indexer           Waiting for resources
+02/02/2016 15:22:51   www.xxxx.co.uk Indexer           Started
+02/02/2016 15:22:51   www.xxxx.co.uk Indexer           Starting crawling
+02/02/2016 15:22:51   www.xxxx.co.uk Indexer           Crawler Session: KLUMP045_BM_TEST__PST_1688997216974920 Status: INDEXING
+02/02/2016 15:22:51   www.xxxx.co.uk Indexer           Crawler Session: KLUMP045_BM_TEST__PST1_1688997216974920 Status: INDEXING
+02/02/2016 15:22:51   www.xxxx.co.uk Indexer           Crawler Session: KLUMP045_BM_TEST__PST2_1688997216974920 Status: INDEXING
+02/02/2016 15:22:51   www.xxxx.co.uk Indexer           Crawler Session: KLUMP045_BM_TEST__PST3_1688997216974920 Status: INDEXING
+02/02/2016 15:22:51   www.xxxx.co.uk Indexer           Crawler Session: KLUMP045_BM_TEST__PST4_1688997216974920 Status: INDEXING
+02/02/2016 15:22:51   www.xxxx.co.uk Indexer           Crawler Session: KLUMP045_BM_TEST__PST5_1688997216974920 Status: INDEXING
+02/02/2016 15:22:51   www.xxxx.co.uk Indexer           Crawler Session: KLUMP045_BM_TEST__PST6_1688997216974920 Status: INDEXING
+02/02/2016 15:22:51   www.xxxx.co.uk Indexer           Crawler Session: KLUMP045_BM_TEST__PST7_1688997216974920 Status: INDEXING
+02/02/2016 15:22:51   www.xxxx.co.uk Indexer           Crawler Session: KLUMP045_BM_TEST__PST8_1688997216974920 Status: INDEXING
+02/02/2016 15:22:52   www.xxxx.co.uk Indexer           Crawler Session: KLUMP045_BM_TEST__PST9_1688997216974920 Status: INDEXING
+02/02/2016 15:22:52   www.xxxx.co.uk Indexer           Throttling crawling due to large numbers of sources
+02/02/2016 15:23:55   www.xxxx.co.uk Indexer           Crawler Session: KLUMP045_BM_TEST__PST10_1688997216974920 Status: INDEXING
+02/02/2016 15:23:55   www.xxxx.co.uk Indexer           Crawler Session: KLUMP045_BM_TEST__PST11_1688997216974920 Status: INDEXING
+02/02/2016 15:23:55   www.xxxx.co.uk Indexer           Crawler Session: KLUMP045_BM_TEST__PST12_1688997216974920 Status: INDEXING
+02/02/2016 15:23:56   www.xxxx.co.uk Indexer           Crawler Session: KLUMP045_BM_TEST__PST13_1688997216974920 Status: INDEXING
+02/02/2016 15:23:56   www.xxxx.co.uk Indexer           Crawler Session: KLUMP045_BM_TEST__PST14_1688997216974920 Status: INDEXING
+02/02/2016 15:23:56   www.xxxx.co.uk Indexer           Crawler Session: KLUMP045_BM_TEST__NSF_1688997216974920 Status: INDEXING
+02/02/2016 15:23:56   www.xxxx.co.uk Indexer           Crawler Session: KLUMP045_BM_TEST__NSF1_1688997216974920 Status: INDEXING
+02/02/2016 15:23:56   www.xxxx.co.uk Indexer           Crawler Session: _LOOSEFILE_5066704199614465 Status: INDEXING
+02/02/2016 15:24:10   www.xxxx.co.uk Indexer           Previously Processed 0 documents (0 bytes)
+02/02/2016 15:32:02   www.xxxx.co.uk Indexer           Processed 540 documents (1.01 GB)
+02/02/2016 15:39:44   www.xxxx.co.uk Indexer           Processed 1,085 documents (1.87 GB)
+02/02/2016 15:43:35   www.xxxx.co.uk Indexer           Processed 1,738 documents (2.36 GB)
+02/02/2016 15:47:17   www.xxxx.co.uk Indexer           Processed 2,246 documents (2.75 GB)
+02/02/2016 15:51:38   www.xxxx.co.uk Indexer           Processed 2,781 documents (3.26 GB)
+02/02/2016 15:54:39   www.xxxx.co.uk Indexer           Processed 3,384 documents (3.64 GB)
+02/02/2016 16:01:00   www.xxxx.co.uk Indexer           Processed 3,908 documents (4.28 GB)
+02/02/2016 16:10:12   www.xxxx.co.uk Indexer           Processed 4,428 documents (4.78 GB)
+02/02/2016 16:24:26   www.xxxx.co.uk Indexer           Processed 4,974 documents (5.87 GB)
+02/02/2016 16:36:29   www.xxxx.co.uk Indexer           Processed 5,475 documents (7.28 GB)
+02/02/2016 16:44:20   www.xxxx.co.uk Indexer           Processed 5,976 documents (8.12 GB)
+02/02/2016 17:03:17   www.xxxx.co.uk Indexer           Processed 6,477 documents (9.66 GB)
+02/02/2016 17:21:31   www.xxxx.co.uk Indexer           Processed 7,055 documents (11.79 GB)
+02/02/2016 17:33:04   www.xxxx.co.uk Indexer           Processed 7,564 documents (12.57 GB)
+02/02/2016 17:40:56   www.xxxx.co.uk Indexer           Processed 8,134 documents (13.58 GB)
+02/02/2016 17:53:43   www.xxxx.co.uk Indexer           Processed 8,648 documents (15.46 GB)
+02/02/2016 18:07:16   www.xxxx.co.uk Indexer           Processed 9,193 documents (17.07 GB)
+02/02/2016 18:30:04   www.xxxx.co.uk Indexer           Processed 9,718 documents (18.95 GB)
+02/02/2016 18:46:49   www.xxxx.co.uk Indexer           Processed 10,297 documents (20.95 GB)
+02/02/2016 19:10:06   www.xxxx.co.uk Indexer           Processed 10,822 documents (22.88 GB)
+02/02/2016 19:28:01   www.xxxx.co.uk Indexer           Processed 11,327 documents (25.14 GB)
+02/02/2016 19:36:02   www.xxxx.co.uk Indexer           Processed 11,845 documents (26.90 GB)
+02/02/2016 19:47:15   www.xxxx.co.uk Indexer           Processed 12,407 documents (28.39 GB)
+02/02/2016 20:07:32   www.xxxx.co.uk Indexer           Processed 12,919 documents (30.78 GB)
+02/02/2016 20:40:59   www.xxxx.co.uk Indexer           Processed 13,423 documents (33.29 GB)
+02/02/2016 20:57:03   www.xxxx.co.uk Indexer           Processed 13,956 documents (36.03 GB)
+02/02/2016 21:21:50   www.xxxx.co.uk Indexer           Processed 14,460 documents (38.43 GB)
+02/02/2016 21:39:25   www.xxxx.co.uk Indexer           Processed 14,964 documents (40.85 GB)
+02/02/2016 21:54:50   www.xxxx.co.uk Indexer           Processed 15,477 documents (43.25 GB)
+02/02/2016 22:21:57   www.xxxx.co.uk Indexer           Processed 15,978 documents (45.88 GB)
+02/02/2016 22:51:36   www.xxxx.co.uk Indexer           Processed 16,505 documents (48.91 GB)
+02/02/2016 23:10:23   www.xxxx.co.uk Indexer           Processed 17,007 documents (51.62 GB)
+02/02/2016 23:35:10   www.xxxx.co.uk Indexer           Processed 17,517 documents (54.93 GB)
+02/02/2016 23:56:05   www.xxxx.co.uk Indexer           Processed 18,019 documents (58.68 GB)
+03/02/2016 00:17:01   www.xxxx.co.uk Indexer           Processed 18,554 documents (61.74 GB)
+03/02/2016 00:23:44   www.xxxx.co.uk Indexer           Processed 19,215 documents (63.23 GB)
+03/02/2016 00:27:55   www.xxxx.co.uk Indexer           Processed 19,732 documents (63.99 GB)
+03/02/2016 00:36:08   www.xxxx.co.uk Indexer           Processed 20,268 documents (64.64 GB)
+03/02/2016 00:40:09   www.xxxx.co.uk Indexer           Processed 20,785 documents (65.41 GB)
+03/02/2016 00:43:10   www.xxxx.co.uk Indexer           Processed 21,631 documents (66.10 GB)
+03/02/2016 00:49:31   www.xxxx.co.uk Indexer           Processed 22,182 documents (66.48 GB)
+03/02/2016 00:49:51   www.xxxx.co.uk Indexer           Processed 22,713 documents (66.62 GB)
+03/02/2016 00:50:41   www.xxxx.co.uk Indexer           Processed 23,290 documents (66.93 GB)
+03/02/2016 00:51:32   www.xxxx.co.uk Indexer           Processed 23,849 documents (67.12 GB)
+03/02/2016 00:51:52   www.xxxx.co.uk Indexer           Processed 24,361 documents (67.31 GB)
+03/02/2016 00:52:32   www.xxxx.co.uk Indexer           Processed 25,306 documents (67.53 GB)
+03/02/2016 00:52:52   www.xxxx.co.uk Indexer           Processed 25,964 documents (67.73 GB)
+03/02/2016 00:53:22   www.xxxx.co.uk Indexer           Processed 26,800 documents (67.98 GB)
+03/02/2016 00:54:02   www.xxxx.co.uk Indexer           Processed 27,311 documents (68.09 GB)
+03/02/2016 00:54:43   www.xxxx.co.uk Indexer           Processed 27,919 documents (68.31 GB)
+03/02/2016 00:55:03   www.xxxx.co.uk Indexer           Processed 28,649 documents (68.57 GB)
+03/02/2016 00:55:43   www.xxxx.co.uk Indexer           Processed 29,206 documents (68.83 GB)
+03/02/2016 00:56:34   www.xxxx.co.uk Indexer           Processed 29,926 documents (69.10 GB)
+03/02/2016 00:56:54   www.xxxx.co.uk Indexer           Processed 30,669 documents (69.27 GB)
+03/02/2016 00:57:14   www.xxxx.co.uk Indexer           Processed 31,175 documents (69.38 GB)
+03/02/2016 00:58:14   www.xxxx.co.uk Indexer           Processed 31,845 documents (69.76 GB)
+03/02/2016 00:58:34   www.xxxx.co.uk Indexer           Processed 32,474 documents (69.92 GB)
+03/02/2016 00:58:54   www.xxxx.co.uk Indexer           Processed 33,092 documents (70.00 GB)
+03/02/2016 00:59:34   www.xxxx.co.uk Indexer           Processed 33,980 documents (70.37 GB)
+03/02/2016 01:00:05   www.xxxx.co.uk Indexer           Processed 34,810 documents (70.61 GB)
+03/02/2016 01:00:26   www.xxxx.co.uk Indexer           Processed 35,369 documents (70.83 GB)
+03/02/2016 01:00:47   www.xxxx.co.uk Indexer           Processed 36,020 documents (71.05 GB)
+03/02/2016 01:01:37   www.xxxx.co.uk Indexer           Processed 37,159 documents (71.45 GB)
+03/02/2016 01:02:07   www.xxxx.co.uk Indexer           Processed 37,766 documents (71.68 GB)
+03/02/2016 01:02:27   www.xxxx.co.uk Indexer           Processed 38,566 documents (71.93 GB)
+03/02/2016 01:02:48   www.xxxx.co.uk Indexer           Processed 39,195 documents (72.09 GB)
+03/02/2016 01:03:18   www.xxxx.co.uk Indexer           Processed 40,038 documents (72.45 GB)
+03/02/2016 01:03:38   www.xxxx.co.uk Indexer           Processed 41,043 documents (72.64 GB)
+03/02/2016 01:03:58   www.xxxx.co.uk Indexer           Processed 42,389 documents (72.96 GB)
+03/02/2016 01:04:08   www.xxxx.co.uk Indexer           Processed 43,178 documents (73.05 GB)
+03/02/2016 01:04:18   www.xxxx.co.uk Indexer           Processed 43,842 documents (73.20 GB)
+03/02/2016 01:04:28   www.xxxx.co.uk Indexer           Processed 44,498 documents (73.37 GB)
+03/02/2016 01:04:39   www.xxxx.co.uk Indexer           Processed 45,401 documents (73.50 GB)
+03/02/2016 01:04:49   www.xxxx.co.uk Indexer           Processed 46,083 documents (73.67 GB)
+03/02/2016 01:04:59   www.xxxx.co.uk Indexer           Processed 47,242 documents (73.80 GB)
+03/02/2016 01:05:09   www.xxxx.co.uk Indexer           Processed 47,953 documents (73.96 GB)
+03/02/2016 01:05:29   www.xxxx.co.uk Indexer           Processed 48,947 documents (74.23 GB)
+03/02/2016 01:05:39   www.xxxx.co.uk Indexer           Processed 49,518 documents (74.34 GB)
+03/02/2016 01:05:49   www.xxxx.co.uk Indexer           Processed 50,190 documents (74.51 GB)
+03/02/2016 01:06:09   www.xxxx.co.uk Indexer           Processed 51,329 documents (74.90 GB)
+03/02/2016 01:06:29   www.xxxx.co.uk Indexer           Processed 52,314 documents (75.15 GB)
+03/02/2016 01:07:10   www.xxxx.co.uk Indexer           Processed 53,231 documents (75.42 GB)
+03/02/2016 01:07:20   www.xxxx.co.uk Indexer           Processed 54,097 documents (75.69 GB)
+03/02/2016 01:07:40   www.xxxx.co.uk Indexer           Processed 54,668 documents (75.90 GB)
+03/02/2016 01:08:00   www.xxxx.co.uk Indexer           Processed 55,727 documents (76.22 GB)
+03/02/2016 01:08:10   www.xxxx.co.uk Indexer           Processed 56,673 documents (76.36 GB)
+03/02/2016 01:08:40   www.xxxx.co.uk Indexer           Processed 57,192 documents (76.58 GB)
+03/02/2016 01:09:00   www.xxxx.co.uk Indexer           Processed 57,854 documents (77.04 GB)
+03/02/2016 01:09:11   www.xxxx.co.uk Indexer           Processed 58,640 documents (77.44 GB)
+03/02/2016 01:09:31   www.xxxx.co.uk Indexer           Processed 59,724 documents (78.22 GB)
+03/02/2016 01:09:51   www.xxxx.co.uk Indexer           Processed 60,265 documents (78.57 GB)
+03/02/2016 01:10:41   www.xxxx.co.uk Indexer           Processed 60,830 documents (80.14 GB)
+03/02/2016 01:11:11   www.xxxx.co.uk Indexer           Processed 61,505 documents (81.06 GB)
+03/02/2016 01:12:01   www.xxxx.co.uk Indexer           Processed 62,034 documents (82.63 GB)
+03/02/2016 01:13:21   www.xxxx.co.uk Indexer           Processed 62,557 documents (85.69 GB)
+03/02/2016 01:19:42   www.xxxx.co.uk Indexer           Completed
+03/02/2016 01:19:42   www.xxxx.co.uk System            Started transferring files to processing node(s) in preparation for Post-Processing
+03/02/2016 01:19:42   www.xxxx.co.uk System            File transfer has completed
+03/02/2016 01:19:43   www.xxxx.co.uk System            Total Progress: 11%
+03/02/2016 01:19:43   www.xxxx.co.uk Validator         Starting component and waiting for resources
+03/02/2016 01:19:54   www.xxxx.co.uk Validator         Started
+03/02/2016 01:20:04   www.xxxx.co.uk Validator         Processing component: 11% complete. Next update in 15 seconds.
+03/02/2016 01:20:24   www.xxxx.co.uk Validator         Processing component: 23% complete. Next update in 15 seconds.
+03/02/2016 01:20:44   www.xxxx.co.uk Validator         Processing component: 23% complete. Next update in 15 seconds.
+03/02/2016 01:21:04   www.xxxx.co.uk Validator         Processing component: 23% complete. Next update in 15 seconds.
+03/02/2016 01:21:24   www.xxxx.co.uk Validator         Processing component: 23% complete. Next update in 15 seconds.
+03/02/2016 01:21:44   www.xxxx.co.uk Validator         Processing component: 23% complete. Next update in 15 seconds.
+03/02/2016 01:22:04   www.xxxx.co.uk Validator         Processing component: 82% complete. Next update in 15 seconds.
+03/02/2016 01:23:04   www.xxxx.co.uk Validator         Processing component: 82% complete. Next update at Wed Feb 03 01:24:04 GMT 2016
+03/02/2016 01:24:05   www.xxxx.co.uk Validator         Processing component: 88% complete. Next update at Wed Feb 03 01:25:05 GMT 2016
+03/02/2016 01:25:05   www.xxxx.co.uk Validator         Processing component: 88% complete. Next update at Wed Feb 03 01:26:05 GMT 2016
+03/02/2016 01:26:05   www.xxxx.co.uk Validator         Processing component: 88% complete. Next update at Wed Feb 03 01:27:05 GMT 2016
+03/02/2016 01:27:05   www.xxxx.co.uk Validator         Processing component: 88% complete. Next update at Wed Feb 03 01:28:05 GMT 2016
+03/02/2016 01:27:38   www.xxxx.co.uk Validator         100% completed
+03/02/2016 01:27:38   www.xxxx.co.uk System            Total Progress: 22%
+03/02/2016 01:27:38   www.xxxx.co.uk Threader          Starting component and waiting for resources
+03/02/2016 01:27:52   www.xxxx.co.uk Threader          Started
+03/02/2016 01:28:02   www.xxxx.co.uk Threader          Processing component: 0% complete. Next update in 15 seconds.
+03/02/2016 01:28:22   www.xxxx.co.uk Threader          Processing component: 1% complete. Next update in 15 seconds.
+03/02/2016 01:28:42   www.xxxx.co.uk Threader          Processing component: 3% complete. Next update in 15 seconds.
+03/02/2016 01:29:02   www.xxxx.co.uk Threader          Processing component: 5% complete. Next update in 15 seconds.
+03/02/2016 01:29:22   www.xxxx.co.uk Threader          Processing component: 8% complete. Next update in 15 seconds.
+03/02/2016 01:29:42   www.xxxx.co.uk Threader          Processing component: 10% complete. Next update in 15 seconds.
+03/02/2016 01:30:02   www.xxxx.co.uk Threader          Processing component: 13% complete. Next update in 15 seconds.
+03/02/2016 01:31:02   www.xxxx.co.uk Threader          Processing component: 20% complete. Next update at Wed Feb 03 01:32:02 GMT 2016
+03/02/2016 01:32:02   www.xxxx.co.uk Threader          Processing component: 27% complete. Next update at Wed Feb 03 01:33:02 GMT 2016
+03/02/2016 01:33:02   www.xxxx.co.uk Threader          Processing component: 33% complete. Next update at Wed Feb 03 01:34:02 GMT 2016
+03/02/2016 01:34:02   www.xxxx.co.uk Threader          Processing component: 46% complete. Next update at Wed Feb 03 01:35:02 GMT 2016
+03/02/2016 01:34:53   www.xxxx.co.uk Threader          100% completed
+03/02/2016 01:34:53   www.xxxx.co.uk System            Total Progress: 33%
+03/02/2016 01:34:53   www.xxxx.co.uk SearchAnalytics   Starting component and waiting for resources
+03/02/2016 01:35:05   www.xxxx.co.uk SearchAnalytics   Started
+03/02/2016 01:35:15   www.xxxx.co.uk SearchAnalytics   Processing component: 11% complete. Next update in 15 seconds.
+03/02/2016 01:35:35   www.xxxx.co.uk SearchAnalytics   Processing component: 31% complete. Next update in 15 seconds.
+03/02/2016 01:35:55   www.xxxx.co.uk SearchAnalytics   Processing component: 35% complete. Next update in 15 seconds.
+03/02/2016 01:36:15   www.xxxx.co.uk SearchAnalytics   Processing component: 38% complete. Next update in 15 seconds.
+03/02/2016 01:36:35   www.xxxx.co.uk SearchAnalytics   Processing component: 40% complete. Next update in 15 seconds.
+03/02/2016 01:36:55   www.xxxx.co.uk SearchAnalytics   Processing component: 40% complete. Next update in 15 seconds.
+03/02/2016 01:37:15   www.xxxx.co.uk SearchAnalytics   Processing component: 40% complete. Next update in 15 seconds.
+03/02/2016 01:38:15   www.xxxx.co.uk SearchAnalytics   Processing component: 52% complete. Next update at Wed Feb 03 01:39:15 GMT 2016
+03/02/2016 01:39:15   www.xxxx.co.uk SearchAnalytics   Processing component: 52% complete. Next update at Wed Feb 03 01:40:15 GMT 2016
+03/02/2016 01:40:15   www.xxxx.co.uk SearchAnalytics   Processing component: 54% complete. Next update at Wed Feb 03 01:41:15 GMT 2016
+03/02/2016 01:41:06   www.xxxx.co.uk SearchAnalytics   100% completed
+03/02/2016 01:41:06   www.xxxx.co.uk System            Total Progress: 44%
+03/02/2016 01:41:06   www.xxxx.co.uk ImagingAnalysis   Starting component and waiting for resources
+03/02/2016 01:41:20   www.xxxx.co.uk ImagingAnalysis   Started
+03/02/2016 01:41:30   www.xxxx.co.uk ImagingAnalysis   Processing component: 0% complete. Next update in 15 seconds.
+03/02/2016 01:41:50   www.xxxx.co.uk ImagingAnalysis   Processing component: 0% complete. Next update in 15 seconds.
+03/02/2016 01:42:10   www.xxxx.co.uk ImagingAnalysis   Processing component: 7% complete. Next update in 15 seconds.
+03/02/2016 01:42:30   www.xxxx.co.uk ImagingAnalysis   Processing component: 7% complete. Next update in 15 seconds.
+03/02/2016 01:42:43   www.xxxx.co.uk ImagingAnalysis   100% completed
+03/02/2016 01:42:43   www.xxxx.co.uk System            Total Progress: 55%
+03/02/2016 01:42:43   www.xxxx.co.uk Statistics        Starting component and waiting for resources
+03/02/2016 01:42:58   www.xxxx.co.uk Statistics        Started
+03/02/2016 01:43:08   www.xxxx.co.uk Statistics        Processing component: 0% complete. Next update in 15 seconds.
+03/02/2016 01:43:21   www.xxxx.co.uk Statistics        100% completed
+03/02/2016 01:43:21   www.xxxx.co.uk System            Total Progress: 66%
+03/02/2016 01:43:21   www.xxxx.co.uk DistributedMerge  Starting...
+03/02/2016 01:43:31   www.xxxx.co.uk DistributedMerge  Processing component: 52% complete. Next update in 15 seconds.
+03/02/2016 01:43:51   www.xxxx.co.uk DistributedMerge  Processing component: 98% complete. Next update in 15 seconds.
+03/02/2016 01:44:05   www.xxxx.co.uk DistributedMerge  Processing component: 100% complete. Next update in 15 seconds.
+03/02/2016 01:44:05   www.xxxx.co.uk DistributedMerge  completed
+03/02/2016 01:44:05   www.xxxx.co.uk DistributedMerge  Completed
+03/02/2016 01:44:05   www.xxxx.co.uk System            Total Progress: 77%
+03/02/2016 01:44:05   www.xxxx.co.uk CentralizedMerge  Merging processing results...
+03/02/2016 01:44:09   www.xxxx.co.uk CentralizedMerge  Cleaning up temporary data...
+03/02/2016 01:44:09   www.xxxx.co.uk CentralizedMerge  Processing component: 100% complete. Next update in 15 seconds.
+03/02/2016 01:44:09   www.xxxx.co.uk Consolidator      Acquiring write consolidation Lock
+03/02/2016 01:44:09   www.xxxx.co.uk Consolidator      Acquired write consolidation Lock
+03/02/2016 01:44:11   www.xxxx.co.uk Consolidator      Releasing write consolidation Lock
+03/02/2016 01:44:11   www.xxxx.co.uk Consolidator      Released write consolidation Lock
+03/02/2016 01:44:11   www.xxxx.co.uk Consolidator      Completed main operation and new review data is available...
+03/02/2016 01:44:15   www.xxxx.co.uk System            Total Progress: 100%
+03/02/2016 01:44:15   www.xxxx.co.uk System            Processing Summary
+03/02/2016 01:44:15   www.xxxx.co.uk System                        Indexer       09h 57m 04.780s
+03/02/2016 01:44:15   www.xxxx.co.uk System                      Validator           07m 55.259s
+03/02/2016 01:44:15   www.xxxx.co.uk System                       Threader           07m 14.638s
+03/02/2016 01:44:15   www.xxxx.co.uk System                SearchAnalytics           06m 13.027s
+03/02/2016 01:44:15   www.xxxx.co.uk System                ImagingAnalysis           01m 37.454s
+03/02/2016 01:44:15   www.xxxx.co.uk System                     Statistics               37.742s
+03/02/2016 01:44:15   www.xxxx.co.uk System               DistributedMerge               44.272s
+03/02/2016 01:44:15   www.xxxx.co.uk System               CentralizedMerge               03.557s
+03/02/2016 01:44:15   www.xxxx.co.uk System                   Consolidator               02.728s
+03/02/2016 01:44:15   www.xxxx.co.uk System            Total Processing Time : 10h 21m 33.457s
+03/02/2016 01:44:15   Completed normally: KLUMP045 BM TEST : Process documents from "Batch_0001" in batch "Batch_0001".
+
+			    
+ 

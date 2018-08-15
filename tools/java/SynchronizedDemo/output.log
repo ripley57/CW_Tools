@@ -1,0 +1,80 @@
+Thread t1. About to call usc1.set()...
+Inside UserSearchContext.set()...
+UserSearchCOntext.set(): Sleeping for 60 seconds...
+Thread t2. About to call usc1.get()...
+"Thread-1" Id=9 BLOCKED on SynchronizedDemo$UserSearchContext@4dca9f78 owned by "Thread-0" Id=8
+	at SynchronizedDemo$UserSearchContext.get(SynchronizedDemo.java:49)
+	-  blocked on SynchronizedDemo$UserSearchContext@4dca9f78
+	at SynchronizedDemo$2.run(SynchronizedDemo.java:26)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+java.lang.Throwable
+	at SynchronizedDemo$UserSearchContext.get(SynchronizedDemo.java:49)
+	at SynchronizedDemo$2.run(SynchronizedDemo.java:26)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+"Thread-0" Id=8 TIMED_WAITING
+	at java.lang.Thread.sleep(Native Method)
+	at SynchronizedDemo$UserSearchContext.set(SynchronizedDemo.java:42)
+	at SynchronizedDemo$1.run(SynchronizedDemo.java:19)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+java.lang.Throwable
+	at java.lang.Thread.sleep(Native Method)
+	at SynchronizedDemo$UserSearchContext.set(SynchronizedDemo.java:42)
+	at SynchronizedDemo$1.run(SynchronizedDemo.java:19)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+"Signal Dispatcher" Id=4 RUNNABLE
+
+
+java.lang.Throwable
+
+
+"Finalizer" Id=3 WAITING on java.lang.ref.ReferenceQueue$Lock@31aba72e
+	at java.lang.Object.wait(Native Method)
+	-  waiting on java.lang.ref.ReferenceQueue$Lock@31aba72e
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:135)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:151)
+	at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:209)
+
+
+java.lang.Throwable
+	at java.lang.Object.wait(Native Method)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:135)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:151)
+	at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:209)
+
+
+"Reference Handler" Id=2 WAITING on java.lang.ref.Reference$Lock@7c6cd67b
+	at java.lang.Object.wait(Native Method)
+	-  waiting on java.lang.ref.Reference$Lock@7c6cd67b
+	at java.lang.Object.wait(Object.java:503)
+	at java.lang.ref.Reference$ReferenceHandler.run(Reference.java:133)
+
+
+java.lang.Throwable
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:503)
+	at java.lang.ref.Reference$ReferenceHandler.run(Reference.java:133)
+
+
+"main" Id=1 RUNNABLE
+	at sun.management.ThreadImpl.getThreadInfo1(Native Method)
+	at sun.management.ThreadImpl.getThreadInfo(ThreadImpl.java:174)
+	at SynchronizedDemo.dumpStacks(SynchronizedDemo.java:56)
+	at SynchronizedDemo.main(SynchronizedDemo.java:10)
+
+
+java.lang.Throwable
+	at sun.management.ThreadImpl.getThreadInfo1(Native Method)
+	at sun.management.ThreadImpl.getThreadInfo(ThreadImpl.java:174)
+	at SynchronizedDemo.dumpStacks(SynchronizedDemo.java:56)
+	at SynchronizedDemo.main(SynchronizedDemo.java:10)
+
+
+Inside UserSearchContext.get()...

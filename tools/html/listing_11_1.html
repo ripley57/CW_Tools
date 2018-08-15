@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<title>List Test</title>
+		<style type="text/css">
+			.padded {
+				padding: 6px;
+			}
+			.padded-left {
+				padding-left: 12px;
+			}
+			.margined {
+				margin: 6px;
+			}
+			.margined-left {
+				margin-left: 12px;
+			}
+			.outside {
+				list-style-position: outside;
+			}
+			.inside {
+				list-style-position: inside;
+			}
+			ul {
+				background-color: #6666ff;
+				border: 1px solid #000000;
+				width: 100px;
+				//list-style-type: none;
+			}
+			li {
+				background-color: #cccccc;
+				border: 1px solid #ffff00;
+			}
+		</style>
+	</head>
+
+	<body>
+		<h1>List Test</h1>
+		<ul>
+			<li>Item #1</li>
+			<li class="padded">Item #2</li>
+			<li class="margined">Item #3</li>
+			<li class="outside">Item #4 test test test test test test</li>
+			<li class="inside margined-left">Item #5 test test test test test test</li>
+			<li class="inside padded-left">Item #6 test test test test test test</li>
+		</ul>
+	</body>
+</html>

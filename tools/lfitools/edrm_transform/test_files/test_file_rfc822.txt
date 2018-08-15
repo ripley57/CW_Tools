@@ -1,0 +1,30 @@
+Received: from ch1p860pos.chi.swissbank.com (ch1p860pos.chi.swissbank.com [146.180.30.6])
+	by ch1p450.chi.swissbank.com (8.8.6 (PHNE_17135)/8.8.6/WDR gamma evision: 1.4 $) with ESMTP id JAA10872
+	for </S=Fernandez/G=Alfredo+/I=/Q=/@ch1p794.chi.swissbank.com>; Wed, 13 Mar 2002 09:52:34 -0600 (CST)
+From: jmmartinp@repsolypf.com
+Received: from virscan1.swissbank.com (virscan1 [192.168.0.3])
+	by ch1p860pos.chi.swissbank.com (8.8.8/8.8.8) with ESMTP id JAA11083
+	for <alfredo.fernandez@ubsw.com>; Wed, 13 Mar 2002 09:52:34 -0600 (CST)
+Received: from gate.chi.ubswarburg.com (virscan1 [192.168.0.3])
+	by virscan1.swissbank.com (8.8.8/8.8.8) with ESMTP id JAA04776
+	for <alfredo.fernandez@ubsw.com>; Wed, 13 Mar 2002 09:51:14 -0600 (CST)
+Received: (from smap@localhost)
+	by gate.chi.ubswarburg.com (8.8.8/8.8.8) id JAA23912
+	for <alfredo.fernandez@ubsw.com>; Wed, 13 Mar 2002 09:50:24 -0600 (CST)
+Received: from <jmmartinp@repsolypf.com> (unknown [195.53.125.138]) by gate via smap (V2.0)
+	id xma022868; Wed, 13 Mar 2002 09:50:03 -0600
+Received: from ssmaaexcx3.rm.repsol-ypf.com ([172.26.224.4] RDNS failed) by smtp2.repsolypf.com with Microsoft SMTPSVC(5.0.2195.4905);
+	 Wed, 13 Mar 2002 16:30:05 +0100
+Received: by SSMAAEXCX3 with Internet Mail Service (5.5.2653.19)
+	id <GY9J6XQ5>; Wed, 13 Mar 2002 16:39:08 +0100
+Message-ID: <7C112C89A1CBD511BC7B00508BE02CD71CD734@SSMCAEXC3>
+To: Alfredo.Fernandez@ubsw.com
+Cc: aperezc@repsolypf.com, amendezr@repsolypf.com
+Subject: =?iso-8859-1?Q?Reuni=F3n_del_pr=F3ximo_viernes_=2812h00=29_-_c?=
+	=?iso-8859-1?Q?oberturas_del_riesgo_de_precio_para_Pacific_LNG?=
+Date: Wed, 13 Mar 2002 16:39:37 +0100
+MIME-Version: 1.0
+X-Mailer: Internet Mail Service (5.5.2653.19)
+Content-Type: multipart/alternative;
+	boundary="----_=_NextPart_001_01C1CAA5.484AF0D0"
+X-OriginalArrivalTime: 13 Mar 2002 15:30:05.0234 (UTC) FILETIME=[F33BB120:01C1CAA3]

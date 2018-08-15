@@ -1,0 +1,4 @@
+x 1. Asia:
+x 2. Africa:
+x 3. Europe:
+x 4. North America:

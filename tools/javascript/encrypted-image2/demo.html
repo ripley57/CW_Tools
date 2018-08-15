@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Image Decryption Demo</title>
+		
+		<!-- Get these files from https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/crypto-js/CryptoJS v3.1.2.zip -->
+		<script type="text/javascript" src="crypto-js.js"></script>
+		<script type="text/javascript" src="aes.js"></script>
+		
+		<!-- Get this file from https://code.jquery.com/jquery-3.3.1.min.js -->
+		<script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+	</head>
+	<body>
+		<h2>Image Decryption Demo</h2>
+		<p><b>Note:</b> To encrypt your image, use a command similar to this:</p>
+		<pre>openssl enc -aes-256-cbc -in kafka160120.jpg -out kafka160120.jpg.encrypted -pass pass:"hello" -e -base64</pre>
+		
+		<br/>
+	
+		<form id="form_decrypt" name="f">
+		Password:&nbsp;<input type="text" id="password" size="20" value="hello" />
+		<input type="button" onclick="decryptImage();" value="Decrypt" />
+		<p id="decryption_feedback" class="blink"></p>
+		</form>
+
+		<div id="placeholder"></div>
+				
+		<script type="text/javascript">
+		function decryptImage() {
+			document.getElementById("decryption_feedback").innerHTML = "";
+		
+			jQuery.get('kafka160120.jpg.encrypted', function(data) {
+				var password = document.getElementById('password').value;
+				var decrypted = CryptoJS.AES.decrypt(data.split(/\s/).join(''), password).toString(CryptoJS.enc.Base64);
+				var newImg = document.createElement("img");
+				
+				// Dimensions don't appear to be required.
+				//newImg.setAttribute('width', 160);
+				//newImg.setAttribute('height',120);
+				
+				newImg.setAttribute('alt','If you can see this then the image decryption failed!');
+				newImg.setAttribute('src', 'data:image/jpg;base64,' + decrypted);
+				
+				// Start with image being hidden. We'll fade it into display later, if we decrypt it successfully.
+				newImg.setAttribute('style', 'display:none');
+				newImg.setAttribute('class', 'fadein');
+				
+				newImg.addEventListener('error', function(){ 
+					// Image decryption failed.
+					document.getElementById("decryption_feedback").innerHTML = "Decryption failed!";
+					// Blink the message.
+					$(".blink").animate({opacity:0},200,"linear",function(){
+						$(this).animate({opacity:1},200);
+					});
+					// Then clear the message.
+					setTimeout(function(){
+						document.getElementById("decryption_feedback").innerHTML = "";
+					}, 2000);
+				});
+				newImg.addEventListener('load', function(){ 
+					// Image decryption successfully.
+					document.getElementById("placeholder").appendChild(newImg);
+					// Hide the password-entry form.
+					$("#form_decrypt").toggle();
+					// Fade-in the image slowly.
+					$('.fadein').toggle('slow');
+				});
+			});
+		}
+		</script>
+	</body>
+</html>

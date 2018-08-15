@@ -1,0 +1,1082 @@
+# Description:
+#   This file contains a number of handy functions, including 
+#   functions for working with XML data files.
+#
+# Installation Instructions:
+#   Copy this file to ~/cw_bash_profile and 'source' it into
+#   ~/.bash_profile as follows:
+#
+#   . ./cw_bash_profile
+#
+#   If you see any errors such as "bash: $'\r': command not found" then
+#   you probably need to run "dos2unix .bash_profile" to remove Windows
+#   end of line characters.
+#
+#   Some of these functions are expected to be run on an appliance. If
+#   you want to run these functions outside of an appliance, then you
+#   should set the CW_HOME environment variable, for example:
+#
+#   CW_HOME=/cygdrive/c/mystuff/CW/66
+#   . ./cw_bash_profile
+#
+# You can find installation and basic usage demo videos here:
+#   https://www.dropbox.com/sh/038a2id4k0jm6zr/u1sQ82mcsn/Demo%20Videos%20for%20cw_bash_profile
+#
+# JeremyC
+
+# Create directory for temporary files.
+if [ -z "$HOME" ]; then
+    echo "Error: Windows HOME environment variable not set!"
+    return
+fi
+
+TMP="$HOME/.cw_bash_profile"
+mkdir -p "$TMP"
+
+# The environment variable CW_BASH_PROFILE_PATH must be defined,
+# so that we can determine the location of this file at runtime.
+# If it isn't defined then we set it ~/cw_bash_profile.
+[ -z "$CW_BASH_PROFILE_PATH" ] && CW_BASH_PROFILE_PATH=~/CW_Tools/cw_bash_profile
+if [ ! -f "$CW_BASH_PROFILE_PATH" ]; then
+    cat <<EOI
+
+Error: Could not determine the location of file cw_bash_profile
+
+Copy cw_bash_profile to ~/cw_bash_profile and update ~/.bash_profile
+as follows:
+
+. ./cw_bash_profile
+
+EOI
+    return
+fi
+
+# Support for running on Linux.
+function _cygpath() {
+    if [ "$(uname)" = "Linux" ]; then
+        # Return path unchanged.
+        shift
+        echo $*
+    else
+        # Assume Windows with Cygwin installed.
+        cygpath $*
+    fi
+}
+
+# Ask a "yes" or "no" question. Return 0 for yes and 1 for no.
+function _yorn() {
+	local _question="$1"
+	local _yn=""
+
+	while [ 1 ]
+	do
+		echo -n $_question
+		read _yn
+		if [ "$_yn" = 'y' -o "$_yn" = 'Y' -o "$_yn" = 'yes' -o "$_yn" = 'YES' ];then
+			return 0
+		fi
+		if [ "$_yn" = 'n' -o "$_yn" = 'N' -o "$_yn" = 'no' -o "$_yn" = 'NO' ];then
+			return 1
+		fi
+		echo "Bad choice. Enter yes or no, or y or n."
+	done
+}
+
+# Create unique file containing contents of stdin.
+function _createstdinfile() {
+    local _fname=$1  
+    local _n=
+
+    if [ -z "$_fname" ]; then
+        # Don't bother to check if we are overwriting an existing file.
+        _fname=stdinfile
+        _file="$TMP/.cw_bash_profile.$_fname"
+        rm -f "$_file"
+    else
+        # Here we try to not overwrite a file that already exists, 
+        # in case it's being used by another function in a chain.
+        # Let's try a few attempts to find an available file name.
+        for _n in 1 2 3 4 5
+        do
+            _file=$(printf "%s%d" "$TMP/.cw_bash_profile.$_fname" $_n)
+            [ ! -f $_file ] && break
+        done
+
+        if [ -f "$_file" ]; then
+           echo "Fatal error: _createstdinfile: All filenames in use! (Last tested: $_file)"
+           return
+        fi
+    fi
+
+    # Note the use of IFS to preserve leading whitespace.
+    # Note the -r option to not interpret backslashes.
+    while IFS='\n' read -r _line; do
+        echo "$_line" >> $_file
+    done 
+
+    echo "$_file"  
+}
+
+
+CW_CACHE_DIR=$HOME/.cache/
+# Description:
+#   Return the cached value for the passed key, or cache a new value.
+#   For each key, the cached value will be stored in the file ~/.cache_<key>
+#
+# Usage:
+#   cache <key> [<value>]
+#
+# Example:
+#   Cache a value for key "PI_APP":
+#   cache "PI_APP" "192.168.0.6"
+#
+#   Retrieve the cached value for key "PI_APP":
+#   cache "PI_APP"
+#
+function cache() {
+    if [ "$1" = '-h' -o $# -gt 2 ]; then
+        usage cache
+        return
+    fi
+
+    local _key=$1
+    local _cache_file=".cache_${_key}"
+    local _value=$2
+    local _rtn=""
+
+    if [[ ! -z $_value ]]; then
+        # Value was passed, so cache it, and then return it.
+		mkdir -p "${CW_CACHE_DIR}"
+        echo "$_value" > "${CW_CACHE_DIR}/${_cache_file}"
+        _rtn="$_value"
+    else
+        # No value passed, so try to fetch the current value.
+        if [ -f "${CW_CACHE_DIR}/${_cache_file}" ]; then
+            _rtn=$(<"${CW_CACHE_DIR}/${_cache_file}")
+        fi
+    fi
+
+    echo $_rtn
+}
+
+
+# Description:
+#   List the current contents of our file-based variable cache.
+#
+# Usage:
+#   cache_list
+#
+function cache_list() {
+    if [ "$1" = '-h' ]; then
+        usage cache_list
+        return
+    fi 
+	
+	# Testing.
+	#cache "TEST1" "my 1st cached value"
+	#cache "TEST2" "my 2nd cached value"
+	#cache "TEST3" "my 3rd cached value"
+	
+	if [ -d "${CW_CACHE_DIR}" ] && [ $(ls -a1tr "${CW_CACHE_DIR}"/.cache_* 2>/dev/null | wc -l ) -gt 0 ]; then
+	    # Nice little awk command here to print each cache entry name and value in the corresponding cache file.
+	    ls -a1tr "${CW_CACHE_DIR}"/.cache_* | sed 's/^.*\.cache_//' | /usr/bin/gawk '{ s=sprintf("f=$(<\"$HOME/.cache/.cache_%s\"); echo %s: $f", $0, $0); print s | "/bin/sh" ; }'
+	else
+	    echo "cache_list: Cache is currently empty at \"${CW_CACHE_DIR}\""
+	fi
+}
+
+
+# Description:
+#   Clear the current contents of our file-based variable cache.
+#
+# Usage:
+#   cache_clear
+#
+function cache_clear() {
+    if [ "$1" = '-h' ]; then
+        usage cache_clear
+        return
+    fi
+	
+	if [ $(ls -a1tr "${CW_CACHE_DIR}"/.cache_* 2>/dev/null | wc -l) -gt 0 ]; then
+        # Cache is not empty.
+	    if _yorn 'Are you sure you want to clear the persistent variable cache? (y|n) :' -eq 0 ; then
+	        echo "Clearing the persistent variable cache..."
+			rm -f "${CW_CACHE_DIR}"/.cache_*
+		fi
+	else
+	    echo "cache_clear: Cache is already empty at \"${CW_CACHE_DIR}\""
+	fi
+}
+
+
+# Description: 
+#   Use the Cygwin built-in command putclip to copy all input
+#   text to the Windows clipboard and then launch notepad++ or
+#   notepad to display it.
+#
+# Usage:
+#   <text output generated by some other command> | putclip [-e]
+#
+# Options:
+#   -e       Wait for the launched editor to close, then update the
+#            contents of the Windows clipboard with the updated text.
+#
+# Example usage:
+#   ls | putclip  
+#
+function putclip() {
+    local _edit=$1
+    local _editor=
+    local _file= 
+
+    if [ "$1" = '-h' ]; then
+        usage putclip
+        return
+    fi
+
+    if [ -f "$TOOLS_DIR/notepad++/notepad++.exe" ]
+    then
+        _editor="$TOOLS_DIR/notepad++/notepad++.exe"
+    else
+        _editor=notepad
+    fi
+
+    _file=$(_createstdinfile)
+    /bin/putclip < $_file
+
+    if [ "$_edit" = '-e' ]; then
+        unix2dos $_file >/dev/null 2>&1
+        $_editor "$(cygpath -aw $_file)" 
+        /bin/putclip < $_file
+    else
+        unix2dos $_file >/dev/null 2>&1
+        $_editor "$(cygpath -aw $_file)" &
+    fi
+}
+
+# Return path to preferred web browser.
+function _get_web_browser() {
+    local _browser=chrome.exe ;# Default browser
+
+    if [ x"$ENV_WEB_BROWSER" != x ]; then
+        _browser="$ENV_WEB_BROWSER"
+    fi
+
+    if [ ! -f "$_browser" ]; then
+        echo "Could not find web browser: $_browser"
+        return
+    fi
+
+    echo "$_browser"
+}
+
+# Return path to preferred text editor.
+function _get_text_editor() {
+    local _text_editor=notepad.exe
+    
+    if [ x"$ENV_TEXT_EDITOR" != x ]; then
+        _text_editor="$ENV_TEXT_EDITOR"
+    fi
+
+    echo "$_text_editor"
+}
+
+# Description:
+#    
+# 
+# Usage:
+#    ll [regex]
+#
+# Example:
+#    ll wibble
+#    ll '*.txt'
+#
+function ll() {
+	local _regexp=$*
+
+    if [ "$1" = '-h' ]; then
+        usage ll
+        return
+    fi
+	
+	ls -altr | grep -i -E "$_regexp"
+}
+
+
+# Description:
+#    Determine the most recently modified file in the
+#    current directory that includes the specified string
+#    in the filename, then open the file in notepad++ or
+#    notepad.
+#
+# Usage:
+#        nf <str>
+#
+# Example:
+#
+#        nf indexer
+#
+function nf() {
+    local _files=$*
+
+    if [ "$1" = '-h' ]; then
+        usage nf
+        return
+    fi
+
+    local _file=$(_lastf "$1")
+
+    local _editor="notepad.exe"
+    if which notepad++ >/dev/null 2>&1 ; then
+        _editor="notepad++.exe"
+    fi
+
+    if [ ! -z "$_file" ]; then
+        $_editor $(cygpath -aw $_file) &
+    else
+        echo "nl: No file names match \"$1\""
+    fi
+}
+
+# Description:
+#    Launch notepad++.exe or notepad.exe.
+#
+# Usage:
+#    Launch the editor with no files:
+#        n -
+#    Launch the editor with the files listed in the Windows clipboard:
+#        n
+#    Launch the editor with one or more files specified on the command-line:
+#        n <filename1> [<filename2> ...]
+#
+function n() {
+    local _files=$*
+
+    if [ "$1" = '-h' ]; then
+        usage n
+        return
+    fi
+
+    # Determine the editor to use. Fall back to notepad.
+    local _editor=$(_get_text_editor)
+
+    if [ "$1" = '-' ]; then
+       # Just launch the editor, with no files.
+       eval "$_editor" &
+       return
+    fi
+
+    # Launch files specified on command-line.
+    if [ ! -z "$_files" ]; then
+        local _f
+        for _f in "$@" ; do
+            if [ -f "$_f" ]; then
+                $_editor $(cygpath -aw "$_f") &
+            else
+                echo "WARNING: Ignoring file $_f"
+            fi
+        done
+        return
+    fi
+
+    # If no files were specified on the command-line, use Windows clipboard.
+    if [ -z "$_files" ]; then
+        local _clip=$(getclip)
+        if [ x"$_clip" != x ]; then
+            getclip > "$TMP/n.$$"
+            # Force newline, so we read all lines in clipboard.
+            echo >> "$TMP/n.$$"
+            local _f
+            while read _f ; do
+                if [ -f "$_f" ]; then
+                    $_editor $(cygpath -aw $_f) &
+                else
+                    echo "WARNING: Ignoring file $_f"
+                fi
+	    done < "$TMP/n.$$"
+            rm -f "$TMP/n.$$"
+        fi
+    fi
+
+    # Just launch the editor with no files.
+    $_editor
+}
+
+
+# Description:
+#    Launch jd-gui.exe.
+#
+# Usage:
+#    Launch jd-gui.exe with no files:
+#        j -
+#    Launch jd-gui with the files listed in the Windows clipboard:
+#        j
+#    Launch jd-gui with one or more files specified on the command-line:
+#        j <filename1> [<filename2> ...]
+#
+function j() {
+    local _files=$*
+
+    if [ "$1" = '-h' ]; then
+        usage j
+        return
+    fi
+
+    if [ "$1" = '-' ]; then
+        # Just launch jd-gui with no files.
+        jdgui &
+        return
+    fi
+
+    # Launch files specified on command-line.
+    if [ ! -z "$_files" ]; then
+        local _f
+        for _f in $_files ; do
+            # Convert to full path.
+            _f=$(readlink -m $_f 2>/dev/null)
+            local _ext=${_f##/*.}
+            if [ "$_ext" = 'class' ]; then
+                if [ -f "$_f" ]; then
+                    jdgui "$_f" &
+                fi
+            else
+                echo "WARNING: Ignoring file $_f"
+            fi
+        done
+	return
+    fi
+
+    # If no files were specified on the command-line, use Windows clipboard.
+    if [ -z "$_files" ]; then
+        local _clip=$(getclip)
+	if [ x"$_clip" != x ]; then
+           getclip > "$TMP/n.$$"
+           # Force newline, so we read all lines in clipboard.
+           echo >> "$TMP/n.$$"
+            local _f
+            while read _f ; do
+                # Convert to full path.
+                _f=$(readlink -m $_f 2>/dev/null)
+                local _ext=${_f##/*.}
+                if [ "$_ext" = 'class' ]; then
+                    if [ -f "$_f" ]; then
+		        jdgui "$_f" &
+                    fi
+                else
+                    echo "WARNING: Ignoring file $_f"
+                fi
+	    done < "$TMP/n.$$"
+            rm -f "$TMP/n.$$"
+        fi
+    fi
+
+    # Just launch jd-gui with no files.
+    jdgui
+}
+
+
+# Description:
+#    In-place removal of line beginnings and trailing text added
+#    by jd-gui.exe when a .class file is saved as a .java file.
+#    This function is useful when you want to compare different
+#    versions of the same Java file.
+#
+#    The original file is renamed with a "BAK" suffix.
+#
+# Usage:
+#    jstrip <filename> [<filename> ...]
+#
+# Examples:
+#    jstrip ImportDocumentAdapter.java
+#    jstrip *.java
+#
+function jstrip() {
+    local _files=$*
+
+    if [ -z "$1" -o "$1" = '-h' ]; then
+        usage jstrip
+        return
+    fi
+
+    for _f in $_files
+    do
+        if [ ! -f "$_f" ]
+        then
+            echo "No such file: $_f"
+        else
+            echo "Stripping $_f ..."
+            sed -e 's#^/\* .* \*/##' -e '/Location:/,/JD-Core Version:/d' -e '$d' -iBAK "$_f"
+        fi
+    done
+}
+
+
+# Description:
+#   Display the symbols in all files in the current directory and sub-directories.
+#
+# Usage:
+#   s
+#
+function s() {
+    if [ "$1" = '-h' ]; then
+        usage s
+        return
+    fi
+
+    if [ "$(which strings)" = '/usr/bin/strings' ]
+    then
+        s_cygwin
+    else
+        s_sysinternals
+    fi
+}
+
+
+# Call Cygwin strings command.
+function s_cygwin() {
+    find . -type f -exec /usr/bin/strings --print-file-name {} \;
+}
+
+# Call Sysinternals strings command.
+function s_sysinternals() {
+    # Note how we simulate the Cygwin strings option --print-file-name
+    find . -type f -exec sh -c 'strings -q "$0" | sed "s#^#$0:#"' {} \; 
+}
+
+
+# This function is for helping to move from one directory
+# to another on the command-line. Using this function, you
+# can remember various directory paths, list them, and 
+# select any of them to change to that directory. This
+# function is not intended to be called directly.
+function _sd() {
+    local _sd_cmd=$1		;# Command to run (save, delete, etc)
+    local _sd_dest_dnum=$2	;# Slot number
+    local _sd_dest_path=$3	;# Directory path (optional)
+    local _sd_dest_desc=$4	;# Slot description (optional)
+
+    local _debug=0
+
+    # This is where we save the directory paths and descriptions.
+    # Format: #<save number>#<directory path>#<save description>#
+    # Note: We can currently save up to 9 different directory paths.
+    if [ x"$_SD_DIRS" = x ]; then
+        # Initialise save string with default (empty) values.
+        _SD_DIRS="#1#EMPTY#No description#!#2#EMPTY#No description#!#3#EMPTY#No description#!#4#EMPTY#No description#!#5#EMPTY#No description#!#6#EMPTY#No description#!#7#EMPTY#No description#!#8#EMPTY#No description#!#9#EMPTY#No description#!"
+    fi
+
+    if [ $_sd_cmd = 'l' ]; then
+       # Command - list all saved dirs
+       echo
+       echo "Saved Directory Paths"
+       echo "---------------------"
+       echo $_SD_DIRS | sed -n 's|#\([0-9][0-9]*\)#\([^#]*\)#\([^#]*\)#!|\1 - \3 - \2\n|pg'
+       return
+    fi
+	
+    if [ $_sd_cmd = 'persist' ]; then
+       # Command - persist saved dirs to file.
+       _persistdirs "$_SD_DIRS"
+       return
+    fi
+			    	
+    IFS='!'
+    local _dir
+    for _dir in $_SD_DIRS
+    do
+        [ $_debug -eq 1 ] && echo "_dir=$_dir"
+
+        # Parse each directory save details.
+        local _dnum=$(echo $_dir | sed -n 's/#\(.*\)#.*#.*#/\1/p')
+        local _dpath=$(echo $_dir | sed -n 's/#.*#\(.*\)#.*#/\1/p')
+        local _ddesc=$(echo $_dir | sed -n 's/#.*#.*#\(.*\)#/\1/p')
+
+        if [ $_debug -eq 1 ]; then
+            echo
+            echo "_dnum= $_dnum"
+            echo "_dpath=$_dpath"
+            echo "_ddesc=$_ddesc"
+        fi
+
+        # Take action based on command.
+        if [ $_sd_cmd = 's' ]; then
+            # Command - save current directory in specified slot.
+
+            if [ "$_dnum" = "$_sd_dest_dnum" ]; then
+		# We have found slot.
+
+		# Save description. Ask for description, if not supplied.
+                local _sd_new_desc_tmp
+                if [ x"$_sd_dest_desc" != x ]; then
+                    _sd_new_desc_tmp=$_sd_dest_desc
+                else
+                    echo "Enter description for directory and press Return:"
+                    read _sd_new_desc_tmp
+                fi   
+                [ x"$_sd_new_desc_tmp" = x ] && _sd_new_desc_tmp="No description"
+
+                # Use supplied directory, if specified; otherwise use current directory.
+                local _sd_new_path
+                if [ x"$_sd_dest_path" != x ]; then
+                    _sd_new_path="$_sd_dest_path"
+                else
+                    _sd_new_path="$PWD"
+                fi
+
+                # Save directory path to slot.
+                local _SD_DIRS_TMP
+                _SD_DIRS_TMP=$(echo "$_SD_DIRS" | sed "s|#${_dnum}#[^#]*#[^#]*#|#${_dnum}#${_sd_new_path}#${_sd_new_desc_tmp}#|")
+                _SD_DIRS="$_SD_DIRS_TMP"
+
+		# Persist the paths.
+       		_persistdirs "$_SD_DIRS"
+                break
+            fi
+
+        elif [ $_sd_cmd = 'd' ]; then
+		# Command - clear saved directory from specified slot.
+
+		if [ "$_dnum" = "$_sd_dest_dnum" ]; then
+			# We have found slot. Clear directory path in it.
+			local _SD_DIRS_TMP
+			_SD_DIRS_TMP=$(echo "$_SD_DIRS" | sed "s|#${_dnum}#[^#]*#[^#]*#|#${_dnum}#EMPTY#No description#|")
+			_SD_DIRS="$_SD_DIRS_TMP"
+
+			# Persist the paths.
+ 	      		_persistdirs "$_SD_DIRS"
+			break
+		fi
+
+	elif [ $_sd_cmd = "cd" ]; then
+		# Command - switch to the specified directory.
+
+		if [ "$_dnum" = "$_sd_dest_dnum" ]; then
+			# We have found slot. cd to directory.
+			cd "$_dpath"
+               		# cd to sub-directory if specified.
+               		[ "x$_sd_dest_path" != x ] && cd "$_sd_dest_path"
+			break
+		fi
+
+	else
+        	echo "sd: Unrecognised command ($_sd_cmd)"
+           	break
+        fi
+    done
+    unset IFS
+}
+
+# Persist the saved dirs to a file, so that they can be
+# loaded automatically by bash when it next starts.
+function _persistdirs() {
+    IFS='!'
+    local _debug=0
+	local _winhomedir=$(_windir)
+    local presavefile="${_winhomedir}/.presave"
+	
+	# Remove the current file.
+	rm -f "$presavefile"
+	echo "# Presave file generated ${date}" > "$presavefile"
+	
+	# Build a new file.
+	local _dir
+    	for _dir in $_SD_DIRS
+    	do
+       		[ $_debug -eq 1 ] && echo "_dir=$_dir"
+
+        	# Parse each directory save details.
+        	local _dnum=$(echo $_dir | sed -n 's/#\(.*\)#.*#.*#/\1/p')
+       	 	local _dpath=$(echo $_dir | sed -n 's/#.*#\(.*\)#.*#/\1/p')
+        	local _ddesc=$(echo $_dir | sed -n 's/#.*#.*#\(.*\)#/\1/p')
+
+        	if [ $_debug -eq 1 ]; then
+            		echo
+            		echo "_dnum= $_dnum"
+            		echo "_dpath=$_dpath"
+            		echo "_ddesc=$_ddesc"
+        	fi	
+		
+		# Translate into the "presavedir()" syntax that can be loaded into the bash profile.
+		# Example:
+		#   presavedir 2 "/cygdrive/c/tmp" "tmp dir"
+		#echo "Persisting slot ${_dnum} ..."
+		cat >> "$presavefile" <<End-of-entry
+presavedir ${_dnum} "${_dpath}" "${_ddesc}"
+End-of-entry
+	done
+	unset IFS
+}
+
+# Description:
+#   Persist the currently saved paths to a file that can be
+#   later read by bash profile to initialise the saved list.
+#
+# Usage:
+#   persistdirs
+#
+function persistdirs() {
+    if [ "$1" = '-h' ]; then
+        usage persistdirs
+        return
+    fi
+    _persistdirs
+}
+
+# Description:
+#   Save the current directory path in the specified 'slot' number.
+#
+#   This function is used together with the following functions:
+#     ldir  -  List all the saved directory path 'slots'.
+#     cdir  -  Change to the specified saved directory path.
+#     ddir  -  Clear the specified directory 'slot'.
+#
+# Usage:
+#   sdir <slot number>
+#
+# Example:
+#   sdir 3
+#  
+function sdir() {
+    if [ "$1" = '-h' ]; then
+        usage sdir
+        return
+    fi
+    _sd s $1 
+}
+
+# Description:
+#   Clear the specified saved directory path 'slot'.
+#
+#   This function is used together with the following functions:
+#     ldir  -  List all the saved directory path 'slots'.
+#     sdir  -  Save the current directory path in the specified 'slot'.
+#     cdir  -  Change to the specified saved directory path.
+#
+# Usage:
+#   ddir <slot number>
+#
+# Example:
+#   ddir 2
+#  
+function ddir() { 
+    if [ "$1" = '-h' ]; then
+        usage ddir
+        return
+    fi
+
+    local _dummy
+    echo "Are you sure you want to delete slot $1? [yes or no]: "
+    read _yno
+    case "$_yno" in
+    [yY] | [yY][Ee][Ss] )
+        _sd d $1
+	;;
+    esac
+}
+
+# Description:
+#   Change to the specified saved directory path.
+#
+#   This function is used together with the following functions:
+#     ldir  -  List all the saved directory path 'slots'.
+#     sdir  -  Save the current directory path in the specified 'slot'.
+#     ddir  -  Clear the specified directory 'slot'
+#
+# Usage:
+#   cdir <slot number> [sub-directory]
+#
+# Example. Change to directory in slot 2:
+#   cdir 2
+#
+# Example. Change to directory in slot 1 then to sub-directory "src":
+#   cdir 1 src
+#
+function cdir() { 
+    if [ "$1" = '-h' ]; then
+        usage cdir
+        return
+    fi
+    local _slotnum=$1
+    local _subdir=$2
+    _sd cd $_slotnum $_subdir
+}
+
+# Description:
+#	Display the current directory as a Windows path.
+#
+# wpwd
+#
+function wpwd() {
+    if [ "$1" = '-h' ]; then
+        usage wpwd
+        return
+    fi
+	local _pwd=$(pwd)
+	cygpath -aw "$_pwd"
+}
+
+# Description:
+#   List all the saved directory path 'slots'.
+#
+#   This function is used together with the following functions:
+#     sdir  -  Save the current directory path in the specified 'slot'.
+#     cdir  -  Change to the specified saved directory path.
+#     ddir  -  Clear the specified directory 'slot'
+#
+# Usage:
+#   ldir
+#
+function ldir() { 
+    if [ "$1" = '-h' ]; then
+        usage ldir
+        return
+    fi
+    _sd l; 
+}
+
+# Description:
+#   Preload a directory path slot with a directory path.
+#
+#   This function is used together with the following functions:
+#     sdir  -  Save the current directory path in the specified 'slot'.
+#     cdir  -  Change to the specified saved directory path.
+#     ddir  -  Clear the specified directory 'slot'
+#     ldir  -  List all saved directory path 'slots'.
+#
+# Usage:
+#   presavedir <slot> <directory> <description>
+#
+# Example:
+#   presavedir 2 "/cygdrive/c/tmp" "tmp dir"
+#
+function presavedir() {
+    if [ "$1" = '-h' ]; then
+        usage presavedir
+        return
+    fi
+
+    local _saved_dir="$PWD"
+
+    # Ignore if directory path is "EMPTY". This value is
+    # possible when a persisted dirs path file is restored.
+    if [ "$2" = "EMPTY" ]; then
+	return
+    fi
+
+    echo "Saving directory path $2 ..."
+    cd "$2" && _sd s "$1" "$2" "$3"
+
+    cd "$_saved_dir"
+}
+
+# Description:
+#   List local ip address.
+#
+# Usage:
+#   ip
+#
+function ip() {
+    if [ "$1" = '-h' ]; then
+        usage ip
+        return
+    fi
+
+    if [ -f /sbin/ifconfig ]; then
+        # Linux
+        /sbin/ifconfig | grep -A 1 wlan0 | grep 'inet addr'
+    else
+        # Windows
+        ipconfig 2>&1 | grep 'IPv4 Address'
+    fi
+}
+
+# Description:
+#   Function to clear the screen.
+#
+# Usage:
+#   clearscreen
+#
+function clearscreen() {
+    if [ "$1" = '-h' ]; then
+        usage clearscreen
+        return
+    fi
+    printf "\033c"
+}
+
+function cw_tools_dir() {
+    dirname "$CW_BASH_PROFILE_PATH"
+}
+
+# Load tools and return list of load files.
+function load_tools() {
+    local _tools_dir="$(cw_tools_dir)/tools"
+    . $_tools_dir/load_tools.sh
+    TOOL_LOAD_FILES=
+    local _t
+    for _t in $(tools)
+    do
+        local _lf="$_tools_dir/$_t/load_tool.sh"
+        source "$_lf" "$_tools_dir" && TOOL_LOAD_FILES="$_lf $TOOL_LOAD_FILES"
+    done
+    echo $_load_files
+}
+# Do not load the tools on a true Linux OS.
+# This prevents any bootup failure or hang.
+if [ "$(uname)" != "Linux" ]; then
+    load_tools
+fi
+
+# Display description of the specified function. We do this by
+# parsing this file, combined with all the tool function definitions.
+# For this to work, the description above each function needs to match
+# the expected format.
+function usage() {
+    local _fname=$1
+    cat $CW_BASH_PROFILE_PATH $TOOL_LOAD_FILES | \
+    sed -e '/# Description:/{h;d;}' -e "/^function $_fname()/!{H;d;}" -e "/^function $_fname()/{x;}" | \
+    sed '/Description:/{x;p;x;}' | sed '$d' | sed 's/^#//'
+}
+
+# List all 'public' functions.
+function public_funcs() {
+    cat $CW_BASH_PROFILE_PATH $TOOL_LOAD_FILES | \
+    sed -e '/Description:/{h;d;}' -e "/function /!{H;d;}" -e '/function /{H;}' -e "x;/Usage/!d" | \
+    grep '^function ' | grep -v '^function _' | sed -e 's/^function //' -e 's/ {//' -e 's/()//'
+    #| sort -k1.1,1.1
+}
+
+# List all 'private' functions.
+function private_funcs() {
+    # The easiest and most maintainable way to do this, is to
+    # list all functions and then exlcude the 'public' ones.
+
+    # All funcs.
+    cat $CW_BASH_PROFILE_PATH $TOOL_LOAD_FILES | grep '^function ' | grep -v '^function _' | \
+    sed -e 's/^function //' -e 's/ {//' -e 's/()//' | sort > ${TMP}/all_funcs.tmp
+
+    # Public funcs.
+    public_funcs | sort > ${TMP}/public_funcs.tmp
+
+    # Display the difference.
+    comm -23 "${TMP}/all_funcs.tmp" "${TMP}/public_funcs.tmp" | sed '$G'
+}
+
+# Description:
+#   Display contents of the ~/.banner file, if it exists.
+#   Otherwise just display /bin/banner "cw tools".
+#
+# Usage:
+#   display_banner
+#
+function display_banner() {
+    if [ "$1" = '-h' ]; then
+        usage display_banner
+        return
+    fi
+    if [ -f ~/.banner ]; then
+        cat ~/.banner
+    else
+	/bin/banner 2>/dev/null && /bin/banner "cw tools"
+    fi
+}
+
+# Description:
+#   Update the contents of the ~/.banner file with
+#   the passed string.
+#
+# Usage:
+#   set_banner "banner text"
+#
+function set_banner() {
+    if [ "$1" = '-h' ]; then
+        usage set_banner
+        return
+    fi
+    if [ x"$1" != x ]; then
+        /bin/banner 2>/dev/null && /bin/banner "$1" > ~/.banner
+    fi
+}
+
+# Description:
+#   List 'public' or 'private' functions.
+#
+#   Public functions are those used mostly commonly
+#   and intended for use by all users. You can specify
+#   an optional filter argument to filter the public
+#   functions listed.
+#
+# Usage:
+#   funcs [no_list_public] [list_private] [<filter>]
+#
+# Examples:
+#   funcs 
+#   funcs no_list_public 
+#   funcs list_private
+#   funcs md5
+#
+function funcs() {
+    local _display_public_funcs=yes
+    local _display_private_funcs=no
+    local _grep_expr=
+
+    if [ "$1" = '-h' ]; then
+        usage funcs
+        return
+    fi
+
+	# Option to not list the public functions.
+    if [ "$1" = 'no_list_public' ]; then
+        _display_public_funcs=no
+	shift
+    fi
+	
+    # Option to list private functions.
+    if [ "$1" = 'list_private' ]; then
+        _display_private_funcs=yes
+        shift
+    fi
+
+    # Option to filter functions listed.
+    if [ "x$1" != "x" ]; then
+        _grep_expr="$1"
+        shift
+    fi
+
+    if [ "$_display_public_funcs" = "no" -a "$_display_private_funcs" = "no" ]; then
+	if [ "$ENV_INCLUDE_CW_TOOLS" = "yes" ]; then
+	    display_banner
+        fi
+        echo
+        echo "Type \"funcs\" to see the list of available tools."
+        echo
+        echo "Run each tool with an input argument of '-h'"
+        echo "to see a description of the tool and example usage."
+	echo
+    else
+        if [ "$_display_private_funcs" = "yes" ]; then
+	    echo
+            echo "Private functions:"
+            echo
+	    private_funcs | sort | gawk '{printf "%-40s\n", $0}' | pr --columns=3 -t --width=90
+            echo
+        else
+            echo
+            if [ "x$_grep_expr" != "x" ]; then
+	        public_funcs | grep -i "$_grep_expr" | sort | gawk '{printf "%-40s\n", $0}' | pr --columns=3 -t --width=90
+                echo
+                echo "Type \"funcs\" \"$_grep_expr\" to see this list again."
+            else
+	        public_funcs | sort | gawk '{printf "%-40s\n", $0}' | pr --columns=3 -t --width=90
+                echo
+            fi
+        fi
+    fi
+}
+# We want no output when running on true Linux OS.
+if [ "$(uname)" = "Linux" ]; then
+    echo "Type \"tools\" to load the tools on Linux."
+else
+    funcs no_list_public
+fi

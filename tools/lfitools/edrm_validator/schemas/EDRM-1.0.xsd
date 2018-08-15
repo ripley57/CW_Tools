@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+
+** EDRM XML Schema version 1.01 **
+Copyright 2006-2007 Socha Consulting LLC and Gelbmann & Associates for the EDRM Project. 
+All rights reserved.
+
+Changes made since the 1.0 version:
+31 Oct 2007   Changed DocumentID in FolderDocumentType to DocID for consistency
+01 Nov 2007   Changed Location in LocationType to LocationURI to decrease naming ambiguity
+08 Nov 2007   Changed type of ModifiedDate field for tags from xsd:date to xsd:dateTime
+30 Nov 2007   Changed File to be unbounded (previously was 0 or 1 occurrences)
+30 Nov 2007   Clarified in the documentation that the final name of a merged file will be the name of the first file in the sequence
+15 Dec 2007   Added "Embedded" to the RelationshipType enumeration; it had been mistakenly omitted
+11 Jan 2008   Change Tag within a review (ReviewType) to be unbounded (previously was 0 or 1 occurrences)
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:annotation>
+		<xs:documentation>This is the final XSD specification for the EDRM 1.0 interchange format</xs:documentation>
+	</xs:annotation>
+	<xs:element name="Root">
+		<xs:annotation>
+			<xs:documentation>The root element of the EDRM XML file is the parent for all documents being transmitted</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Batch" type="BatchType" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="MajorVersion" type="xs:integer" use="optional" default="1">
+				<xs:annotation>
+					<xs:documentation>The Major Version of this EDRM XML file (currently 1). If omitted, default will be 1
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="MinorVersion" type="xs:integer" use="optional" default="0">
+				<xs:annotation>
+					<xs:documentation>
+						The Minor Version of this EDRM XML file (currently 0).
+						If omitted, default will be 0
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="Description" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Description of the XML file to describe the overall contents being transmitted</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="DataInterchangeType" type="Action" use="optional" default="Update">
+				<xs:annotation>
+					<xs:documentation>The Data Interchange Type between systems: Update or Delete.
+
+If not specified, will default to Update.	</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="CaseId" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>A string used to identify the case that the XML data is associated with.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="RootFilePath" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>The Root File Path where the documents reside which need to be loaded using this XML file.
+
+If blank, relative pathing will be used. 			</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="Locale" type="xs:string" use="optional" default="US">
+				<xs:annotation>
+					<xs:documentation>The locale for the data represented in the XML file.  This should be a two-letter code that matches an ISO-3166 locale.
+
+The default is US (United States).</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="Action">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Update"/>
+			<xs:enumeration value="Delete"/>
+			<!--<xs:enumeration value="Folder" />-->
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RelationshipType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Attachment"/>
+			<xs:enumeration value="Container"/>
+			<xs:enumeration value="Discussion"/>
+			<xs:enumeration value="Embedded"/>
+			<xs:enumeration value="NearDupe"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DataType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Text"/>
+			<xs:enumeration value="Integer"/>
+			<xs:enumeration value="DateTime"/>
+			<xs:enumeration value="Decimal"/>
+			<xs:enumeration value="Boolean"/>
+			<xs:enumeration value="LongInteger"/>
+			<xs:enumeration value="LongText"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="BatchType">
+		<xs:sequence>
+			<xs:element name="Documents" type="DocumentsType">
+				<xs:annotation>
+					<xs:documentation>Every batch contains one or more documents identified by a complext document type defined below
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Relationships" type="RelatedDocumentsType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Every batch may contain relationship between documents contained withing the XML file identified by a complext Related document type defined below
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Folders" type="FoldersType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Every batch may contain folders identified by Folder type defined below</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CustomBatchInfo" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>CustomBatchInfo is where all non-EDRM data related to a batch can be placed
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="name" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation>The optional name of the batch.
+			</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="DocumentsType">
+		<xs:sequence>
+			<xs:element name="Document" type="DocumentType" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Within Documents element, there are one or more documents each document may contains several different parts identified by a Document Type defined below
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DocumentType">
+		<xs:sequence>
+			<xs:element name="Tags" type="TagsType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Every document may contain tag information identified by a generic name/value pair identified by Tag Type. 
+
+This is a high level element which contains tag elements
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Files" type="FilesType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Every document may have 0 or more files associated with it.			</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Reviews" type="ReviewsType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Every document may contain Review information identified by a ReviewType.
+	
+This is a high level element which contains Review elements. Reviewes contain annotation information, which are really just sets of tags that are associated with a single review operation.	</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Locations" type="LocationsType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Every document may contain Location information identified by a LocationType.
+	
+This is a high level element which contains Location elements. Locations are information about particular occurrences of a document in the original data source(s)		</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CustomDocumentInfo" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Custom document information not compliant with the EDRM spec</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="DocID" type="xs:string" use="required">
+			<xs:annotation>
+				<xs:documentation>The DocID is a unique identifier for the document within the context of the case</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="DocType" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>"Message" for message-type documents or "File" for all others.  This can be used in parsing the message and file specific EDRM-defined metadata tags</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="MimeType" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The MIME type of the document (see http://www.w3schools.com/media/media_mimeref.asp) </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="TagsType">
+		<xs:sequence>
+			<xs:element name="Tag" type="TagType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TagType">
+		<xs:sequence/>
+		<xs:attribute name="TagName" type="xs:string" use="required">
+			<xs:annotation>
+				<xs:documentation>TagName is a required field specifying the name of this tag.  It can either be an EDRM-compliant standard tag name (such as "#CC" for the cc'ed recipients of an email message) or a custom tag name.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="TagDataType" type="DataType" use="required">
+			<xs:annotation>
+				<xs:documentation>TagDataType is a required field specifying the data type of this tag (Text, Integer, DateTime, Decimal, Boolean, LongInteger, LongText).		</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="TagValue" type="xs:string" use="required">
+			<xs:annotation>
+				<xs:documentation>TagValue is a required field specifying the value of this tag.  Its data type should match the TagDataType of the tag.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ModifiedOn" type="xs:dateTime" use="optional">
+			<xs:annotation>
+				<xs:documentation>If the information is known, this attribute tracks when (datetime) the tag was modified.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ModifiedBy" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation>If the information is known, populate the name of the user that modified the tag value.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="FilesType">
+		<xs:sequence>
+			<xs:element name="File" type="DocumentFile" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>
+This element represents a single file associated with the containing document.
+				</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DocumentFile">
+		<xs:annotation>
+			<xs:documentation>
+				Document Text File are of 2 types Raw text embedded withing XML OR text contained in a text file. 
+				The attributes of Text File are further identified by File Attributes
+			</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="InlineContent" type="xs:string" nillable="true" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Binary file content can be embedded directly within the XML file using this element.  In EDRM XML 1.0 it is proposed that this only be supported for files whose FileType is "Text."</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ExternalFile" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>An ExternalFile is defined if the source of the file content is external to the XML file.
+					</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attribute name="FilePath" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>The path to the file, either relative to the XML file or absolute.  If not specified, same as the path to the XML file.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="FileName" type="xs:string" use="required"/>
+					<xs:attribute name="FileSize" type="xs:integer">
+						<xs:annotation>
+							<xs:documentation>The size of the file.
+				</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="Hash" type="xs:string" use="required">
+						<xs:annotation>
+							<xs:documentation>The hash of the file in hex string format to use for checksumming and ensuring no changes have been made to the external file. MD5 is the default.  Other hash algorithms may be supported in the future; these will have a documented prefix code before the hash (e.g. "SHA1:{SHA-1 hash}).  For the MD5 default, no prefix is required.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="MergeFileNum" type="xs:integer" use="optional">
+						<xs:annotation>
+							<xs:documentation>Use this sequence number associated with the file name in conjunction with FileName and MergeFileCount to merge contents of several files into a single file.  The assumption is that the name of the merged file will be the same as the name of the first file in the sequence.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="MergeFileCount" type="xs:integer" use="optional">
+						<xs:annotation>
+							<xs:documentation>Use the sequence number associated with the file name in conjunction with FileName and MergeFileCount to merge contents of several files into a single file.	</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+				</xs:complexType>
+			</xs:element>
+		</xs:choice>
+		<xs:attribute name="FileType" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The type of the file. Valid values in EDRM 1.0 are Native, Image, Text, or Redacted.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="ReviewsType">
+		<xs:sequence>
+			<xs:element name="Review" type="ReviewType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ReviewType">
+		<xs:sequence>
+			<xs:element name="Tag" type="TagType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="ReviewId" type="xs:long"/>
+	</xs:complexType>
+	<xs:complexType name="LocationsType">
+		<xs:sequence>
+			<xs:element name="Location" type="LocationType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="LocationType">
+		<xs:sequence>
+			<xs:element name="Custodian" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>The name of the custodian who owned the document at this particular location</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="LocationURI" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>The URI of the document at the location (including filename)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="FolderType">
+		<xs:sequence>
+			<xs:element name="Folder" type="FolderType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Document" type="FolderDocumentType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="FolderName" type="xs:string" use="required"/>
+		<xs:attribute name="FolderParentName" type="xs:string" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="FolderDocumentType">
+		<xs:attribute name="DocId" type="xs:string"/>
+	</xs:complexType>
+	<xs:complexType name="FoldersType">
+		<xs:sequence>
+			<xs:element name="Folder" type="FolderType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RelatedDocumentsType">
+		<xs:sequence>
+			<xs:element name="Relationship" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="RelationType"/>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RelationType">
+		<xs:attribute name="Type" type="RelationshipType" use="required">
+			<xs:annotation>
+				<xs:documentation>This is the type of the document relationships. Valid values are "Attachment" (for email attachments),  "Container" (for ZIP/PST files, etc.) "NearDupe" (for near duplications", "Embedded" for embedded objects, or "Discussion" (for threads)</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ParentDocId" type="xs:string" use="required"/>
+		<xs:attribute name="ChildDocId" type="xs:string" use="required"/>
+	</xs:complexType>
+</xs:schema>

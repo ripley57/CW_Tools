@@ -1,0 +1,4 @@
+"DocID","DocType","DateModified","FileName","NativeFilePath_FileName","TextFilePath_FileName"
+"00000001","File","2008-01-22T22:36:57.725+0000","test_1.pdf","clearwe_export_0000001\native\0000001\0000001.pdf","clearwe_export_0000001\text\0000001\0000001.txt"
+"00000002","File","2008-01-22T22:37:58.725+0000","test_򭢨_2.pdf","clearwe_export_0000001\native\0000001\0000002.pdf","clearwe_export_0000001\text\0000001\0000002.txt"
+"00000003","File","2008-01-22T22:38:59.127+0000","test_3.pdf","clearwe_export_0000001\native\0000001\0000003.pdf","clearwe_export_0000001\text\0000001\0000003.txt"

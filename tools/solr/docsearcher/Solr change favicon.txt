@@ -1,0 +1,13 @@
+The "favicon"  is the icon that appears in the web browser title bar, and in each web browser tab.
+
+From https://gitlab.cecs.anu.edu.au/tsujamin/lucene-solr/commit/ae727f338c19d34a46258158792006ca72738a1a:
+
+  <link rel="stylesheet" type="text/css" href="#{url_for_solr}/admin/file?file=/velocity/main.css&contentType=text/css"/>
+  <link rel="stylesheet" href="#{url_for_solr}/admin/file?file=/velocity/jquery.autocomplete.css&contentType=text/css" type="text/css" />
++ <link rel="icon" type="image/x-icon" href="#{url_root}/img/favicon.ico"/>
++ <link rel="shortcut icon" type="image/x-icon" href="#{url_root}/img/favicon.ico"/>
+
+Make this change to file head.vm
+
+JeremyC 9-6-2018
+  

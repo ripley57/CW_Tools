@@ -1,0 +1,79 @@
+<html>
+<head>
+<title>Ajax Demo</title>
+<style>
+.displaybox {
+width:150px;
+background-color:#ffffff;
+border:2px solid #000000;
+padding:10px;
+font:24px normal verdana, helvetica, arial, sans-serif;
+}
+</style>
+<script language="JavaScript" type="text/javascript">
+function getXMLHttpRequest() {
+try {
+	req = new XMLHttpRequest();
+}
+catch (err1) {
+	try {
+		req = new ActiveXObject("Msxml2.XMLHTTP");
+	}
+	catch (err2) {
+		try {
+			req = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		catch (err3) {
+			req = false;
+		}
+	}
+}
+return req;
+}
+var http = getXMLHttpRequest();
+
+function getServerData() {
+	// Note: You need to go to http://localhost:8080
+	// to first download this web page. This is because,
+	// for security, you cannot send Ajax requests to
+	// a different domain.
+	var myurl = 'http://localhost:8080/list/test.txt';
+	myRand = parseInt(Math.random()*99999999999999999);
+	var modurl = myurl+"?rand="+myRand;
+	http.open("GET", modurl, true);
+	http.onreadystatechange = useHttpResponse;
+	// Force the response to be interpreted as XML.
+	// I needed this, because I was getting null
+	// for http.responseXML (testing on Chrome with
+	// Jetty web server).  
+	http.overrideMimeType('text/xml');
+	http.send(null);
+}
+
+function useHttpResponse() {
+	//alert("http.readyState="+http.readyState);
+	if (http.readyState == 4) {
+		//alert("http.status="+http.status);
+		if (http.status == 200) {
+			//alert("http.resonseText="+http.responseText);
+			//alert("http.responseXML="+http.responseXML);
+			var dataValue = http.responseXML.getElementsByTagName("testdata")[0];
+			document.getElementById('showdata').innerHTML = dataValue.childNodes[0].nodeValue;
+		}
+	} else {
+		document.getElementById('showdata').innerHTML = '<img src="anim.gif">';
+	}
+}
+</script>
+</head>
+<body style="background-color:#cccccc">
+<center>
+<h1>Ajax Demo</h1>
+<h2>Getting data from server without page refresh</h2>
+<form>
+<input type="button" value="Get data from server" onClick="getServerData()">
+</form>
+<div id="showdata" class="displaybox"></div>
+</center>
+</body>
+</html>

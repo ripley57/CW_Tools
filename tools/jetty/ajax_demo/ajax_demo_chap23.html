@@ -1,0 +1,29 @@
+<html>
+<head>
+<script Language="JavaScript" src="myAJAXlib.js"></script>
+<script Language="JavaScript">
+function cback_text(text) {
+    alert(text);
+}
+function cback_xml(text) {
+    var data = text.getElementsByTagName("testdata")[0].childNodes[0].nodeValue;
+    alert("data="+data);
+}
+</script>
+<noscript>
+Javascript has been disabled in this browser or this browser does not support Javascript.
+</noscript>
+</head>
+<body>
+<form name="form1">
+<input type="button" value="Test GET Text"  onClick="doAjax('http://localhost:8080/test.txt','param=b','cback_text','get',0)">
+<input type="button" value="Test GET xml"   onClick="doAjax('http://localhost:8080/test.txt','param=b','cback_xml', 'get',1)"> 
+<!-- 
+The following return 404. I believe this is because test.txt needs to be replaced with a script.
+<input type="button" value="Test POST Text" onClick="doAjax('http://localhost:8080/test.txt','','cback_text','post',0)">
+<input type="button" value="Test POST xml"  onClick="doAjax('http://localhost:8080/test.txt','','cback_xml', 'post',1)"> 
+-->
+</form>
+</body>
+</html>
+

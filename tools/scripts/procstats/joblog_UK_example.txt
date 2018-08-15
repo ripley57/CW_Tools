@@ -1,0 +1,385 @@
+Job ID: 1.5.18.5702956011984257026 
+Case: 2015-TEST-CASE (TEST) 
+Appliance: www.dummysite.co.uk 
+29/01/2016 13:57:21   Starting scheduled job: 2015-TEST-CASE (TEST) : Process documents from "Batch_Test_0001" in batch "Batch_Test_0001".
+29/01/2016 13:57:21   www.dummysite.co.uk System            Skipping Discovery per config setting
+29/01/2016 13:57:27   www.dummysite.co.uk System            Started transferring files to processing node(s) in preparation for Indexing
+29/01/2016 13:57:28   www.dummysite.co.uk System            File transfer has completed
+29/01/2016 13:57:31   www.dummysite.co.uk Indexer           Waiting for resources
+29/01/2016 13:57:45   www.dummysite.co.uk Indexer           Started
+29/01/2016 13:57:45   www.dummysite.co.uk Indexer           Starting crawling
+29/01/2016 13:57:45   www.dummysite.co.uk Indexer           Crawler Session: 2015-TEST-CASE__TEST___PST_1688928497498184 Status: INDEXING
+29/01/2016 13:57:45   www.dummysite.co.uk Indexer           Crawler Session: 2015-TEST-CASE__TEST___PST1_1688928497498184 Status: INDEXING
+29/01/2016 13:57:45   www.dummysite.co.uk Indexer           Crawler Session: 2015-TEST-CASE__TEST___PST2_1688928497498184 Status: INDEXING
+29/01/2016 13:57:45   www.dummysite.co.uk Indexer           Crawler Session: 2015-TEST-CASE__TEST___PST3_1688928497498184 Status: INDEXING
+29/01/2016 13:57:45   www.dummysite.co.uk Indexer           Crawler Session: 2015-TEST-CASE__TEST___PST4_1688928497498184 Status: INDEXING
+29/01/2016 13:57:46   www.dummysite.co.uk Indexer           Crawler Session: 2015-TEST-CASE__TEST___PST5_1688928497498184 Status: INDEXING
+29/01/2016 13:57:46   www.dummysite.co.uk Indexer           Crawler Session: 2015-TEST-CASE__TEST___PST6_1688928497498184 Status: INDEXING
+29/01/2016 13:57:46   www.dummysite.co.uk Indexer           Crawler Session: 2015-TEST-CASE__TEST___PST7_1688928497498184 Status: INDEXING
+29/01/2016 13:57:46   www.dummysite.co.uk Indexer           Crawler Session: 2015-TEST-CASE__TEST___PST8_1688928497498184 Status: INDEXING
+29/01/2016 13:57:46   www.dummysite.co.uk Indexer           Crawler Session: 2015-TEST-CASE__TEST___PST9_1688928497498184 Status: INDEXING
+29/01/2016 13:57:46   www.dummysite.co.uk Indexer           Throttling crawling due to large numbers of sources
+29/01/2016 13:58:46   www.dummysite.co.uk Indexer           Crawler Session: 2015-TEST-CASE__TEST___PST10_1688928497498184 Status: INDEXING
+29/01/2016 13:58:46   www.dummysite.co.uk Indexer           Crawler Session: 2015-TEST-CASE__TEST___PST11_1688928497498184 Status: INDEXING
+29/01/2016 13:58:47   www.dummysite.co.uk Indexer           Crawler Session: 2015-TEST-CASE__TEST___PST12_1688928497498184 Status: INDEXING
+29/01/2016 13:58:47   www.dummysite.co.uk Indexer           Crawler Session: 2015-TEST-CASE__TEST___PST13_1688928497498184 Status: INDEXING
+29/01/2016 13:58:47   www.dummysite.co.uk Indexer           Crawler Session: 2015-TEST-CASE__TEST___PST14_1688928497498184 Status: INDEXING
+29/01/2016 13:58:47   www.dummysite.co.uk Indexer           Crawler Session: 2015-TEST-CASE__TEST___NSF_1688928497498184 Status: INDEXING
+29/01/2016 13:58:48   www.dummysite.co.uk Indexer           Crawler Session: 2015-TEST-CASE__TEST___NSF1_1688928497498184 Status: INDEXING
+29/01/2016 13:58:48   www.dummysite.co.uk Indexer           Crawler Session: _LOOSEFILE_5066635480137729 Status: INDEXING
+29/01/2016 13:58:59   www.dummysite.co.uk Indexer           Previously Processed 0 documents (0 bytes)
+29/01/2016 14:05:12   www.dummysite.co.uk Indexer           Processed 527 documents (389.84 MB)
+29/01/2016 14:17:36   www.dummysite.co.uk Indexer           Processed 1,050 documents (1.16 GB)
+29/01/2016 14:35:52   www.dummysite.co.uk Indexer           Processed 1,734 documents (2.40 GB)
+29/01/2016 14:43:44   www.dummysite.co.uk Indexer           Processed 2,270 documents (3.18 GB)
+29/01/2016 14:54:18   www.dummysite.co.uk Indexer           Processed 2,857 documents (4.55 GB)
+29/01/2016 14:58:59   www.dummysite.co.uk Indexer           Processed 3,417 documents (5.09 GB)
+29/01/2016 15:14:25   www.dummysite.co.uk Indexer           Processed 3,943 documents (6.37 GB)
+29/01/2016 15:27:49   www.dummysite.co.uk Indexer           Processed 4,474 documents (7.28 GB)
+29/01/2016 15:35:32   www.dummysite.co.uk Indexer           Processed 4,987 documents (7.94 GB)
+29/01/2016 15:42:54   www.dummysite.co.uk Indexer           Processed 5,524 documents (9.00 GB)
+29/01/2016 15:54:07   www.dummysite.co.uk Indexer           Processed 6,051 documents (9.80 GB)
+29/01/2016 16:03:00   www.dummysite.co.uk Indexer           Processed 6,581 documents (10.55 GB)
+29/01/2016 16:07:41   www.dummysite.co.uk Indexer           Processed 7,146 documents (11.16 GB)
+29/01/2016 16:15:34   www.dummysite.co.uk Indexer           Processed 7,705 documents (11.93 GB)
+29/01/2016 16:24:57   www.dummysite.co.uk Indexer           Processed 8,310 documents (12.94 GB)
+29/01/2016 16:31:20   www.dummysite.co.uk Indexer           Processed 8,874 documents (13.68 GB)
+29/01/2016 16:39:02   www.dummysite.co.uk Indexer           Processed 9,376 documents (14.43 GB)
+29/01/2016 16:48:55   www.dummysite.co.uk Indexer           Processed 9,880 documents (15.09 GB)
+29/01/2016 16:56:57   www.dummysite.co.uk Indexer           Processed 10,418 documents (15.85 GB)
+29/01/2016 17:07:31   www.dummysite.co.uk Indexer           Processed 10,941 documents (16.36 GB)
+29/01/2016 17:24:06   www.dummysite.co.uk Indexer           Processed 11,529 documents (17.14 GB)
+29/01/2016 17:33:39   www.dummysite.co.uk Indexer           Processed 12,123 documents (17.86 GB)
+29/01/2016 17:44:12   www.dummysite.co.uk Indexer           Processed 12,636 documents (18.86 GB)
+29/01/2016 17:53:05   www.dummysite.co.uk Indexer           Processed 13,141 documents (19.77 GB)
+29/01/2016 18:01:38   www.dummysite.co.uk Indexer           Processed 13,650 documents (20.65 GB)
+29/01/2016 18:14:12   www.dummysite.co.uk Indexer           Processed 14,174 documents (21.75 GB)
+29/01/2016 18:49:33   www.dummysite.co.uk Indexer           Processed 14,709 documents (23.61 GB)
+29/01/2016 19:40:49   www.dummysite.co.uk Indexer           Processed 15,235 documents (25.60 GB)
+29/01/2016 20:19:31   www.dummysite.co.uk Indexer           Processed 15,748 documents (27.74 GB)
+29/01/2016 20:51:41   www.dummysite.co.uk Indexer           Processed 16,275 documents (29.76 GB)
+29/01/2016 21:35:35   www.dummysite.co.uk Indexer           Processed 16,807 documents (31.95 GB)
+29/01/2016 22:07:34   www.dummysite.co.uk Indexer           Processed 17,312 documents (33.91 GB)
+29/01/2016 22:56:00   www.dummysite.co.uk Indexer           Processed 17,815 documents (35.97 GB)
+29/01/2016 23:32:12   www.dummysite.co.uk Indexer           Processed 18,327 documents (37.81 GB)
+30/01/2016 00:06:53   www.dummysite.co.uk Indexer           Processed 18,857 documents (39.92 GB)
+30/01/2016 00:57:58   www.dummysite.co.uk Indexer           Processed 19,387 documents (42.19 GB)
+30/01/2016 01:44:41   www.dummysite.co.uk Indexer           Processed 19,890 documents (44.34 GB)
+30/01/2016 02:28:55   www.dummysite.co.uk Indexer           Processed 20,410 documents (46.38 GB)
+30/01/2016 02:56:14   www.dummysite.co.uk Indexer           Processed 20,933 documents (48.26 GB)
+30/01/2016 03:33:55   www.dummysite.co.uk Indexer           Processed 21,473 documents (49.99 GB)
+30/01/2016 03:58:23   www.dummysite.co.uk Indexer           Processed 21,978 documents (51.86 GB)
+30/01/2016 04:24:20   www.dummysite.co.uk Indexer           Processed 22,484 documents (54.02 GB)
+30/01/2016 05:10:22   www.dummysite.co.uk Indexer           Processed 23,002 documents (55.97 GB)
+30/01/2016 05:46:44   www.dummysite.co.uk Indexer           Processed 23,511 documents (58.25 GB)
+30/01/2016 06:34:58   www.dummysite.co.uk Indexer           Processed 24,039 documents (60.20 GB)
+30/01/2016 07:20:22   www.dummysite.co.uk Indexer           Processed 24,544 documents (62.42 GB)
+30/01/2016 07:49:41   www.dummysite.co.uk Indexer           Processed 25,054 documents (64.46 GB)
+30/01/2016 08:17:20   www.dummysite.co.uk Indexer           Processed 25,567 documents (66.81 GB)
+30/01/2016 08:54:23   www.dummysite.co.uk Indexer           Processed 26,071 documents (68.70 GB)
+30/01/2016 09:37:46   www.dummysite.co.uk Indexer           Processed 26,586 documents (70.82 GB)
+30/01/2016 10:17:19   www.dummysite.co.uk Indexer           Processed 27,089 documents (72.47 GB)
+30/01/2016 10:52:00   www.dummysite.co.uk Indexer           Processed 27,612 documents (74.63 GB)
+30/01/2016 11:34:53   www.dummysite.co.uk Indexer           Processed 28,118 documents (76.61 GB)
+30/01/2016 12:09:44   www.dummysite.co.uk Indexer           Processed 28,635 documents (78.71 GB)
+30/01/2016 12:51:16   www.dummysite.co.uk Indexer           Processed 29,147 documents (80.92 GB)
+30/01/2016 13:44:23   www.dummysite.co.uk Indexer           Processed 29,661 documents (82.89 GB)
+30/01/2016 14:18:37   www.dummysite.co.uk Indexer           Processed 30,175 documents (85.34 GB)
+30/01/2016 14:58:21   www.dummysite.co.uk Indexer           Processed 30,715 documents (87.59 GB)
+30/01/2016 15:35:02   www.dummysite.co.uk Indexer           Processed 31,245 documents (89.63 GB)
+30/01/2016 16:05:51   www.dummysite.co.uk Indexer           Processed 31,786 documents (91.33 GB)
+30/01/2016 16:28:08   www.dummysite.co.uk Indexer           Processed 32,302 documents (92.75 GB)
+30/01/2016 16:49:35   www.dummysite.co.uk Indexer           Processed 32,807 documents (94.79 GB)
+30/01/2016 17:26:36   www.dummysite.co.uk Indexer           Processed 33,359 documents (96.85 GB)
+30/01/2016 18:02:48   www.dummysite.co.uk Indexer           Processed 33,877 documents (99.32 GB)
+30/01/2016 18:43:50   www.dummysite.co.uk Indexer           Processed 34,387 documents (101.54 GB)
+30/01/2016 19:35:25   www.dummysite.co.uk Indexer           Processed 34,908 documents (103.61 GB)
+30/01/2016 20:20:39   www.dummysite.co.uk Indexer           Processed 35,418 documents (105.74 GB)
+30/01/2016 20:46:37   www.dummysite.co.uk Indexer           Processed 35,925 documents (107.46 GB)
+30/01/2016 21:16:05   www.dummysite.co.uk Indexer           Processed 36,532 documents (109.18 GB)
+30/01/2016 21:42:06   www.dummysite.co.uk Indexer           Processed 37,071 documents (110.71 GB)
+30/01/2016 21:56:51   www.dummysite.co.uk Indexer           Processed 37,585 documents (112.29 GB)
+30/01/2016 22:23:38   www.dummysite.co.uk Indexer           Processed 38,099 documents (114.05 GB)
+30/01/2016 22:59:21   www.dummysite.co.uk Indexer           Processed 38,601 documents (115.94 GB)
+30/01/2016 23:24:29   www.dummysite.co.uk Indexer           Processed 39,104 documents (117.87 GB)
+30/01/2016 23:39:06   www.dummysite.co.uk Indexer           Processed 39,631 documents (119.52 GB)
+31/01/2016 00:05:36   www.dummysite.co.uk Indexer           Processed 40,139 documents (120.94 GB)
+31/01/2016 00:44:29   www.dummysite.co.uk Indexer           Processed 40,643 documents (122.67 GB)
+31/01/2016 01:06:26   www.dummysite.co.uk Indexer           Processed 41,186 documents (124.50 GB)
+31/01/2016 01:23:01   www.dummysite.co.uk Indexer           Processed 41,698 documents (125.69 GB)
+31/01/2016 01:44:37   www.dummysite.co.uk Indexer           Processed 42,226 documents (127.46 GB)
+31/01/2016 02:16:38   www.dummysite.co.uk Indexer           Processed 42,737 documents (129.24 GB)
+31/01/2016 02:32:53   www.dummysite.co.uk Indexer           Processed 43,251 documents (130.79 GB)
+31/01/2016 03:05:25   www.dummysite.co.uk Indexer           Processed 43,788 documents (132.50 GB)
+31/01/2016 03:39:56   www.dummysite.co.uk Indexer           Processed 44,296 documents (134.10 GB)
+31/01/2016 03:59:02   www.dummysite.co.uk Indexer           Processed 44,805 documents (135.66 GB)
+31/01/2016 04:41:46   www.dummysite.co.uk Indexer           Processed 45,315 documents (137.66 GB)
+31/01/2016 05:17:06   www.dummysite.co.uk Indexer           Processed 45,822 documents (139.72 GB)
+31/01/2016 05:44:59   www.dummysite.co.uk Indexer           Processed 46,377 documents (141.58 GB)
+31/01/2016 06:43:07   www.dummysite.co.uk Indexer           Processed 46,914 documents (143.65 GB)
+31/01/2016 07:26:42   www.dummysite.co.uk Indexer           Processed 47,418 documents (145.74 GB)
+31/01/2016 08:15:35   www.dummysite.co.uk Indexer           Processed 47,944 documents (147.84 GB)
+31/01/2016 09:11:04   www.dummysite.co.uk Indexer           Processed 48,446 documents (149.96 GB)
+31/01/2016 09:42:13   www.dummysite.co.uk Indexer           Processed 48,965 documents (151.77 GB)
+31/01/2016 10:29:09   www.dummysite.co.uk Indexer           Processed 49,480 documents (153.88 GB)
+31/01/2016 11:16:05   www.dummysite.co.uk Indexer           Processed 49,994 documents (155.81 GB)
+31/01/2016 11:54:56   www.dummysite.co.uk Indexer           Processed 50,529 documents (157.49 GB)
+31/01/2016 12:19:43   www.dummysite.co.uk Indexer           Processed 51,057 documents (159.46 GB)
+31/01/2016 12:53:05   www.dummysite.co.uk Indexer           Processed 51,562 documents (161.18 GB)
+31/01/2016 14:01:36   www.dummysite.co.uk Indexer           Processed 52,067 documents (163.35 GB)
+31/01/2016 14:41:57   www.dummysite.co.uk Indexer           Processed 52,578 documents (165.47 GB)
+31/01/2016 15:17:02   www.dummysite.co.uk Indexer           Processed 53,090 documents (167.49 GB)
+31/01/2016 15:44:41   www.dummysite.co.uk Indexer           Processed 53,593 documents (169.60 GB)
+31/01/2016 16:21:56   www.dummysite.co.uk Indexer           Processed 54,095 documents (171.62 GB)
+31/01/2016 17:02:39   www.dummysite.co.uk Indexer           Processed 54,617 documents (173.66 GB)
+31/01/2016 17:41:52   www.dummysite.co.uk Indexer           Processed 55,121 documents (175.69 GB)
+31/01/2016 18:16:03   www.dummysite.co.uk Indexer           Processed 55,635 documents (177.71 GB)
+31/01/2016 18:55:44   www.dummysite.co.uk Indexer           Processed 56,145 documents (179.70 GB)
+31/01/2016 19:24:23   www.dummysite.co.uk Indexer           Processed 56,647 documents (181.43 GB)
+31/01/2016 19:57:03   www.dummysite.co.uk Indexer           Processed 57,151 documents (183.14 GB)
+31/01/2016 20:32:24   www.dummysite.co.uk Indexer           Processed 57,669 documents (185.02 GB)
+31/01/2016 21:04:56   www.dummysite.co.uk Indexer           Processed 58,208 documents (187.28 GB)
+31/01/2016 21:59:02   www.dummysite.co.uk Indexer           Processed 58,731 documents (189.42 GB)
+31/01/2016 22:27:42   www.dummysite.co.uk Indexer           Processed 59,240 documents (191.34 GB)
+31/01/2016 22:50:30   www.dummysite.co.uk Indexer           Processed 59,742 documents (193.06 GB)
+31/01/2016 23:30:11   www.dummysite.co.uk Indexer           Processed 60,247 documents (195.16 GB)
+01/02/2016 00:05:01   www.dummysite.co.uk Indexer           Processed 60,766 documents (197.06 GB)
+01/02/2016 00:39:12   www.dummysite.co.uk Indexer           Processed 61,268 documents (199.14 GB)
+01/02/2016 01:04:10   www.dummysite.co.uk Indexer           Processed 61,779 documents (200.87 GB)
+01/02/2016 01:31:42   www.dummysite.co.uk Indexer           Processed 62,284 documents (202.77 GB)
+01/02/2016 01:56:22   www.dummysite.co.uk Indexer           Processed 62,805 documents (204.72 GB)
+01/02/2016 02:24:32   www.dummysite.co.uk Indexer           Processed 63,320 documents (206.54 GB)
+01/02/2016 02:53:03   www.dummysite.co.uk Indexer           Processed 63,852 documents (208.33 GB)
+01/02/2016 03:31:15   www.dummysite.co.uk Indexer           Processed 64,353 documents (210.48 GB)
+01/02/2016 04:06:47   www.dummysite.co.uk Indexer           Processed 64,879 documents (212.82 GB)
+01/02/2016 04:44:22   www.dummysite.co.uk Indexer           Processed 65,393 documents (215.06 GB)
+01/02/2016 05:20:24   www.dummysite.co.uk Indexer           Processed 65,897 documents (216.93 GB)
+01/02/2016 06:08:09   www.dummysite.co.uk Indexer           Processed 66,403 documents (219.08 GB)
+01/02/2016 06:34:37   www.dummysite.co.uk Indexer           Processed 66,922 documents (221.04 GB)
+01/02/2016 07:06:57   www.dummysite.co.uk Indexer           Processed 67,436 documents (222.89 GB)
+01/02/2016 07:23:11   www.dummysite.co.uk Indexer           Processed 68,074 documents (223.67 GB)
+01/02/2016 07:40:46   www.dummysite.co.uk Indexer           Processed 68,584 documents (224.99 GB)
+01/02/2016 07:54:10   www.dummysite.co.uk Indexer           Processed 69,156 documents (225.69 GB)
+01/02/2016 07:59:22   www.dummysite.co.uk Indexer           Processed 69,694 documents (226.35 GB)
+01/02/2016 08:11:06   www.dummysite.co.uk Indexer           Processed 70,419 documents (227.33 GB)
+01/02/2016 08:18:50   www.dummysite.co.uk Indexer           Processed 71,094 documents (227.76 GB)
+01/02/2016 08:23:01   www.dummysite.co.uk Indexer           Processed 71,610 documents (228.32 GB)
+01/02/2016 08:25:52   www.dummysite.co.uk Indexer           Processed 72,236 documents (228.76 GB)
+01/02/2016 08:31:24   www.dummysite.co.uk Indexer           Processed 72,750 documents (229.06 GB)
+01/02/2016 08:38:27   www.dummysite.co.uk Indexer           Processed 73,445 documents (229.79 GB)
+01/02/2016 08:40:37   www.dummysite.co.uk Indexer           Processed 73,977 documents (230.17 GB)
+01/02/2016 08:41:58   www.dummysite.co.uk Indexer           Processed 74,479 documents (230.36 GB)
+01/02/2016 08:43:38   www.dummysite.co.uk Indexer           Processed 74,991 documents (230.55 GB)
+01/02/2016 08:48:30   www.dummysite.co.uk Indexer           Processed 75,542 documents (231.11 GB)
+01/02/2016 08:57:06   www.dummysite.co.uk Indexer           Processed 76,047 documents (231.44 GB)
+01/02/2016 09:01:31   www.dummysite.co.uk Indexer           Processed 76,581 documents (232.00 GB)
+01/02/2016 09:14:16   www.dummysite.co.uk Indexer           Processed 77,146 documents (232.54 GB)
+01/02/2016 09:27:40   www.dummysite.co.uk Indexer           Processed 77,651 documents (233.12 GB)
+01/02/2016 09:37:33   www.dummysite.co.uk Indexer           Processed 78,234 documents (233.65 GB)
+01/02/2016 09:50:08   www.dummysite.co.uk Indexer           Processed 78,854 documents (234.26 GB)
+01/02/2016 09:52:48   www.dummysite.co.uk Indexer           Processed 79,395 documents (234.58 GB)
+01/02/2016 09:58:41   www.dummysite.co.uk Indexer           Processed 79,908 documents (235.10 GB)
+01/02/2016 10:10:16   www.dummysite.co.uk Indexer           Processed 80,414 documents (235.71 GB)
+01/02/2016 10:19:19   www.dummysite.co.uk Indexer           Processed 80,926 documents (236.15 GB)
+01/02/2016 10:34:44   www.dummysite.co.uk Indexer           Processed 81,494 documents (237.16 GB)
+01/02/2016 11:14:25   www.dummysite.co.uk Indexer           Processed 82,020 documents (239.09 GB)
+01/02/2016 11:50:17   www.dummysite.co.uk Indexer           Processed 82,531 documents (241.18 GB)
+01/02/2016 12:36:23   www.dummysite.co.uk Indexer           Processed 83,050 documents (243.27 GB)
+01/02/2016 13:09:35   www.dummysite.co.uk Indexer           Processed 83,574 documents (245.14 GB)
+01/02/2016 13:45:51   www.dummysite.co.uk Indexer           Processed 84,088 documents (247.25 GB)
+01/02/2016 14:16:21   www.dummysite.co.uk Indexer           Processed 84,589 documents (249.11 GB)
+01/02/2016 14:46:23   www.dummysite.co.uk Indexer           Processed 85,100 documents (251.06 GB)
+01/02/2016 15:16:53   www.dummysite.co.uk Indexer           Processed 85,624 documents (252.87 GB)
+01/02/2016 15:46:25   www.dummysite.co.uk Indexer           Processed 86,126 documents (254.68 GB)
+01/02/2016 16:23:29   www.dummysite.co.uk Indexer           Processed 86,630 documents (256.55 GB)
+01/02/2016 17:06:09   www.dummysite.co.uk Indexer           Processed 87,132 documents (258.69 GB)
+01/02/2016 18:00:14   www.dummysite.co.uk Indexer           Processed 87,652 documents (260.74 GB)
+01/02/2016 18:42:09   www.dummysite.co.uk Indexer           Processed 88,169 documents (262.74 GB)
+01/02/2016 19:27:58   www.dummysite.co.uk Indexer           Processed 88,721 documents (264.64 GB)
+01/02/2016 20:06:40   www.dummysite.co.uk Indexer           Processed 89,236 documents (266.69 GB)
+01/02/2016 20:49:15   www.dummysite.co.uk Indexer           Processed 89,753 documents (268.79 GB)
+01/02/2016 21:43:47   www.dummysite.co.uk Indexer           Processed 90,274 documents (271.14 GB)
+01/02/2016 23:06:59   www.dummysite.co.uk Indexer           Processed 90,783 documents (273.27 GB)
+01/02/2016 23:28:10   www.dummysite.co.uk Indexer           Processed 91,299 documents (275.13 GB)
+01/02/2016 23:51:46   www.dummysite.co.uk Indexer           Processed 91,810 documents (277.31 GB)
+02/02/2016 00:18:03   www.dummysite.co.uk Indexer           Processed 92,319 documents (279.38 GB)
+02/02/2016 00:43:12   www.dummysite.co.uk Indexer           Processed 92,917 documents (280.83 GB)
+02/02/2016 00:53:15   www.dummysite.co.uk Indexer           Processed 93,680 documents (281.32 GB)
+02/02/2016 00:55:05   www.dummysite.co.uk Indexer           Processed 94,213 documents (281.56 GB)
+02/02/2016 00:56:56   www.dummysite.co.uk Indexer           Processed 94,718 documents (281.92 GB)
+02/02/2016 01:01:07   www.dummysite.co.uk Indexer           Processed 95,334 documents (282.33 GB)
+02/02/2016 01:08:40   www.dummysite.co.uk Indexer           Processed 95,865 documents (282.73 GB)
+02/02/2016 01:10:01   www.dummysite.co.uk Indexer           Processed 96,433 documents (282.98 GB)
+02/02/2016 01:11:21   www.dummysite.co.uk Indexer           Processed 97,382 documents (283.26 GB)
+02/02/2016 01:12:53   www.dummysite.co.uk Indexer           Processed 98,029 documents (283.53 GB)
+02/02/2016 01:14:33   www.dummysite.co.uk Indexer           Processed 98,553 documents (283.80 GB)
+02/02/2016 01:22:05   www.dummysite.co.uk Indexer           Processed 99,228 documents (284.07 GB)
+02/02/2016 01:23:56   www.dummysite.co.uk Indexer           Processed 99,834 documents (284.34 GB)
+02/02/2016 01:27:17   www.dummysite.co.uk Indexer           Processed 100,415 documents (284.72 GB)
+02/02/2016 01:37:40   www.dummysite.co.uk Indexer           Processed 101,011 documents (285.11 GB)
+02/02/2016 01:43:02   www.dummysite.co.uk Indexer           Processed 101,605 documents (285.64 GB)
+02/02/2016 01:54:45   www.dummysite.co.uk Indexer           Processed 102,164 documents (286.05 GB)
+02/02/2016 01:59:16   www.dummysite.co.uk Indexer           Processed 102,671 documents (286.42 GB)
+02/02/2016 02:10:21   www.dummysite.co.uk Indexer           Processed 103,218 documents (286.74 GB)
+02/02/2016 02:11:31   www.dummysite.co.uk Indexer           Processed 103,742 documents (286.96 GB)
+02/02/2016 02:12:52   www.dummysite.co.uk Indexer           Processed 104,356 documents (287.20 GB)
+02/02/2016 02:13:12   www.dummysite.co.uk Indexer           Processed 105,373 documents (287.26 GB)
+02/02/2016 02:18:25   www.dummysite.co.uk Indexer           Processed 106,314 documents (287.43 GB)
+02/02/2016 02:18:35   www.dummysite.co.uk Indexer           Processed 106,952 documents (287.46 GB)
+02/02/2016 02:50:44   www.dummysite.co.uk Indexer           Processed 107,721 documents (287.55 GB)
+02/02/2016 02:50:54   www.dummysite.co.uk Indexer           Processed 109,045 documents (287.59 GB)
+02/02/2016 02:51:05   www.dummysite.co.uk Indexer           Processed 109,728 documents (287.64 GB)
+02/02/2016 02:51:15   www.dummysite.co.uk Indexer           Processed 110,657 documents (287.67 GB)
+02/02/2016 02:51:25   www.dummysite.co.uk Indexer           Processed 111,244 documents (287.70 GB)
+02/02/2016 02:51:45   www.dummysite.co.uk Indexer           Processed 112,617 documents (287.79 GB)
+02/02/2016 02:52:05   www.dummysite.co.uk Indexer           Processed 113,735 documents (287.87 GB)
+02/02/2016 02:52:15   www.dummysite.co.uk Indexer           Processed 114,443 documents (287.92 GB)
+02/02/2016 02:57:13   www.dummysite.co.uk Indexer           Completed
+02/02/2016 02:57:14   www.dummysite.co.uk System            Started transferring files to processing node(s) in preparation for Post-Processing
+02/02/2016 02:57:14   www.dummysite.co.uk System            File transfer has completed
+02/02/2016 02:57:15   www.dummysite.co.uk System            Total Progress: 11%
+02/02/2016 02:57:15   www.dummysite.co.uk Validator         Starting component and waiting for resources
+02/02/2016 02:57:29   www.dummysite.co.uk Validator         Started
+02/02/2016 02:57:39   www.dummysite.co.uk Validator         Processing component: 11% complete. Next update in 15 seconds.
+02/02/2016 02:57:59   www.dummysite.co.uk Validator         Processing component: 23% complete. Next update in 15 seconds.
+02/02/2016 02:58:19   www.dummysite.co.uk Validator         Processing component: 23% complete. Next update in 15 seconds.
+02/02/2016 02:58:39   www.dummysite.co.uk Validator         Processing component: 23% complete. Next update in 15 seconds.
+02/02/2016 02:58:59   www.dummysite.co.uk Validator         Processing component: 23% complete. Next update in 15 seconds.
+02/02/2016 02:59:19   www.dummysite.co.uk Validator         Processing component: 23% complete. Next update in 15 seconds.
+02/02/2016 02:59:39   www.dummysite.co.uk Validator         Processing component: 23% complete. Next update in 15 seconds.
+02/02/2016 03:00:39   www.dummysite.co.uk Validator         Processing component: 23% complete. Next update at Tue Feb 02 03:01:39 GMT 2016
+02/02/2016 03:01:40   www.dummysite.co.uk Validator         Processing component: 23% complete. Next update at Tue Feb 02 03:02:40 GMT 2016
+02/02/2016 03:02:40   www.dummysite.co.uk Validator         Processing component: 23% complete. Next update at Tue Feb 02 03:03:40 GMT 2016
+02/02/2016 03:03:40   www.dummysite.co.uk Validator         Processing component: 23% complete. Next update at Tue Feb 02 03:04:40 GMT 2016
+02/02/2016 03:04:40   www.dummysite.co.uk Validator         Processing component: 23% complete. Next update at Tue Feb 02 03:05:40 GMT 2016
+02/02/2016 03:05:40   www.dummysite.co.uk Validator         Processing component: 23% complete. Next update at Tue Feb 02 03:06:40 GMT 2016
+02/02/2016 03:06:40   www.dummysite.co.uk Validator         Processing component: 23% complete. Next update at Tue Feb 02 03:07:40 GMT 2016
+02/02/2016 03:07:40   www.dummysite.co.uk Validator         Processing component: 23% complete. Next update at Tue Feb 02 03:08:40 GMT 2016
+02/02/2016 03:08:40   www.dummysite.co.uk Validator         Processing component: 82% complete. Next update at Tue Feb 02 03:09:40 GMT 2016
+02/02/2016 03:09:40   www.dummysite.co.uk Validator         Processing component: 82% complete. Next update at Tue Feb 02 03:10:40 GMT 2016
+02/02/2016 03:10:40   www.dummysite.co.uk Validator         Processing component: 82% complete. Next update at Tue Feb 02 03:11:40 GMT 2016
+02/02/2016 03:11:40   www.dummysite.co.uk Validator         Processing component: 82% complete. Next update at Tue Feb 02 03:12:40 GMT 2016
+02/02/2016 03:12:41   www.dummysite.co.uk Validator         Processing component: 82% complete. Next update at Tue Feb 02 03:13:41 GMT 2016
+02/02/2016 03:13:41   www.dummysite.co.uk Validator         Processing component: 82% complete. Next update at Tue Feb 02 03:14:41 GMT 2016
+02/02/2016 03:14:41   www.dummysite.co.uk Validator         Processing component: 82% complete. Next update at Tue Feb 02 03:15:41 GMT 2016
+02/02/2016 03:15:41   www.dummysite.co.uk Validator         Processing component: 82% complete. Next update at Tue Feb 02 03:16:41 GMT 2016
+02/02/2016 03:16:41   www.dummysite.co.uk Validator         Processing component: 82% complete. Next update at Tue Feb 02 03:17:41 GMT 2016
+02/02/2016 03:17:41   www.dummysite.co.uk Validator         Processing component: 88% complete. Next update at Tue Feb 02 03:18:41 GMT 2016
+02/02/2016 03:18:41   www.dummysite.co.uk Validator         Processing component: 88% complete. Next update at Tue Feb 02 03:19:41 GMT 2016
+02/02/2016 03:19:41   www.dummysite.co.uk Validator         Processing component: 88% complete. Next update at Tue Feb 02 03:20:41 GMT 2016
+02/02/2016 03:20:41   www.dummysite.co.uk Validator         Processing component: 88% complete. Next update at Tue Feb 02 03:21:41 GMT 2016
+02/02/2016 03:21:41   www.dummysite.co.uk Validator         Processing component: 88% complete. Next update at Tue Feb 02 03:22:41 GMT 2016
+02/02/2016 03:22:41   www.dummysite.co.uk Validator         Processing component: 88% complete. Next update at Tue Feb 02 03:23:41 GMT 2016
+02/02/2016 03:23:42   www.dummysite.co.uk Validator         Processing component: 88% complete. Next update at Tue Feb 02 03:24:42 GMT 2016
+02/02/2016 03:24:42   www.dummysite.co.uk Validator         Processing component: 88% complete. Next update at Tue Feb 02 03:25:42 GMT 2016
+02/02/2016 03:25:42   www.dummysite.co.uk Validator         Processing component: 88% complete. Next update at Tue Feb 02 03:26:42 GMT 2016
+02/02/2016 03:26:42   www.dummysite.co.uk Validator         Processing component: 88% complete. Next update at Tue Feb 02 03:27:42 GMT 2016
+02/02/2016 03:27:42   www.dummysite.co.uk Validator         Processing component: 88% complete. Next update at Tue Feb 02 03:28:42 GMT 2016
+02/02/2016 03:28:42   www.dummysite.co.uk Validator         Processing component: 88% complete. Next update at Tue Feb 02 03:29:42 GMT 2016
+02/02/2016 03:29:42   www.dummysite.co.uk Validator         Processing component: 88% complete. Next update at Tue Feb 02 03:30:42 GMT 2016
+02/02/2016 03:30:42   www.dummysite.co.uk Validator         Processing component: 88% complete. Next update at Tue Feb 02 03:31:42 GMT 2016
+02/02/2016 03:31:42   www.dummysite.co.uk Validator         Processing component: 88% complete. Next update at Tue Feb 02 03:32:42 GMT 2016
+02/02/2016 03:32:42   www.dummysite.co.uk Validator         Processing component: 88% complete. Next update at Tue Feb 02 03:33:42 GMT 2016
+02/02/2016 03:33:43   www.dummysite.co.uk Validator         Processing component: 88% complete. Next update at Tue Feb 02 03:34:43 GMT 2016
+02/02/2016 03:34:43   www.dummysite.co.uk Validator         Processing component: 88% complete. Next update at Tue Feb 02 03:35:43 GMT 2016
+02/02/2016 03:35:07   www.dummysite.co.uk Validator         100% completed
+02/02/2016 03:35:07   www.dummysite.co.uk System            Total Progress: 22%
+02/02/2016 03:35:07   www.dummysite.co.uk Threader          Starting component and waiting for resources
+02/02/2016 03:35:20   www.dummysite.co.uk Threader          Started
+02/02/2016 03:35:30   www.dummysite.co.uk Threader          Processing component: 0% complete. Next update in 15 seconds.
+02/02/2016 03:35:50   www.dummysite.co.uk Threader          Processing component: 2% complete. Next update in 15 seconds.
+02/02/2016 03:36:10   www.dummysite.co.uk Threader          Processing component: 6% complete. Next update in 15 seconds.
+02/02/2016 03:36:30   www.dummysite.co.uk Threader          Processing component: 10% complete. Next update in 15 seconds.
+02/02/2016 03:36:50   www.dummysite.co.uk Threader          Processing component: 14% complete. Next update in 15 seconds.
+02/02/2016 03:37:10   www.dummysite.co.uk Threader          Processing component: 19% complete. Next update in 15 seconds.
+02/02/2016 03:37:30   www.dummysite.co.uk Threader          Processing component: 23% complete. Next update in 15 seconds.
+02/02/2016 03:38:31   www.dummysite.co.uk Threader          Processing component: 38% complete. Next update at Tue Feb 02 03:39:31 GMT 2016
+02/02/2016 03:39:21   www.dummysite.co.uk Threader          100% completed
+02/02/2016 03:39:21   www.dummysite.co.uk System            Total Progress: 33%
+02/02/2016 03:39:21   www.dummysite.co.uk SearchAnalytics   Starting component and waiting for resources
+02/02/2016 03:39:36   www.dummysite.co.uk SearchAnalytics   Started
+02/02/2016 03:39:46   www.dummysite.co.uk SearchAnalytics   Processing component: 11% complete. Next update in 15 seconds.
+02/02/2016 03:40:06   www.dummysite.co.uk SearchAnalytics   Processing component: 31% complete. Next update in 15 seconds.
+02/02/2016 03:40:26   www.dummysite.co.uk SearchAnalytics   Processing component: 34% complete. Next update in 15 seconds.
+02/02/2016 03:40:46   www.dummysite.co.uk SearchAnalytics   Processing component: 38% complete. Next update in 15 seconds.
+02/02/2016 03:41:06   www.dummysite.co.uk SearchAnalytics   Processing component: 40% complete. Next update in 15 seconds.
+02/02/2016 03:41:26   www.dummysite.co.uk SearchAnalytics   Processing component: 40% complete. Next update in 15 seconds.
+02/02/2016 03:41:46   www.dummysite.co.uk SearchAnalytics   Processing component: 40% complete. Next update in 15 seconds.
+02/02/2016 03:42:46   www.dummysite.co.uk SearchAnalytics   Processing component: 40% complete. Next update at Tue Feb 02 03:43:46 GMT 2016
+02/02/2016 03:43:46   www.dummysite.co.uk SearchAnalytics   Processing component: 40% complete. Next update at Tue Feb 02 03:44:46 GMT 2016
+02/02/2016 03:44:47   www.dummysite.co.uk SearchAnalytics   Processing component: 40% complete. Next update at Tue Feb 02 03:45:47 GMT 2016
+02/02/2016 03:45:47   www.dummysite.co.uk SearchAnalytics   Processing component: 40% complete. Next update at Tue Feb 02 03:46:47 GMT 2016
+02/02/2016 03:46:47   www.dummysite.co.uk SearchAnalytics   Processing component: 40% complete. Next update at Tue Feb 02 03:47:47 GMT 2016
+02/02/2016 03:47:47   www.dummysite.co.uk SearchAnalytics   Processing component: 40% complete. Next update at Tue Feb 02 03:48:47 GMT 2016
+02/02/2016 03:48:47   www.dummysite.co.uk SearchAnalytics   Processing component: 40% complete. Next update at Tue Feb 02 03:49:47 GMT 2016
+02/02/2016 03:49:47   www.dummysite.co.uk SearchAnalytics   Processing component: 40% complete. Next update at Tue Feb 02 03:50:47 GMT 2016
+02/02/2016 03:50:47   www.dummysite.co.uk SearchAnalytics   Processing component: 40% complete. Next update at Tue Feb 02 03:51:47 GMT 2016
+02/02/2016 03:51:47   www.dummysite.co.uk SearchAnalytics   Processing component: 40% complete. Next update at Tue Feb 02 03:52:47 GMT 2016
+02/02/2016 03:52:47   www.dummysite.co.uk SearchAnalytics   Processing component: 40% complete. Next update at Tue Feb 02 03:53:47 GMT 2016
+02/02/2016 03:53:47   www.dummysite.co.uk SearchAnalytics   Processing component: 40% complete. Next update at Tue Feb 02 03:54:47 GMT 2016
+02/02/2016 03:54:47   www.dummysite.co.uk SearchAnalytics   Processing component: 51% complete. Next update at Tue Feb 02 03:55:47 GMT 2016
+02/02/2016 03:55:48   www.dummysite.co.uk SearchAnalytics   Processing component: 51% complete. Next update at Tue Feb 02 03:56:48 GMT 2016
+02/02/2016 03:56:48   www.dummysite.co.uk SearchAnalytics   Processing component: 51% complete. Next update at Tue Feb 02 03:57:48 GMT 2016
+02/02/2016 03:57:48   www.dummysite.co.uk SearchAnalytics   Processing component: 51% complete. Next update at Tue Feb 02 03:58:48 GMT 2016
+02/02/2016 03:58:48   www.dummysite.co.uk SearchAnalytics   Processing component: 51% complete. Next update at Tue Feb 02 03:59:48 GMT 2016
+02/02/2016 03:59:48   www.dummysite.co.uk SearchAnalytics   Processing component: 52% complete. Next update at Tue Feb 02 04:00:48 GMT 2016
+02/02/2016 04:00:48   www.dummysite.co.uk SearchAnalytics   Processing component: 52% complete. Next update at Tue Feb 02 04:01:48 GMT 2016
+02/02/2016 04:01:48   www.dummysite.co.uk SearchAnalytics   Processing component: 52% complete. Next update at Tue Feb 02 04:02:48 GMT 2016
+02/02/2016 04:02:48   www.dummysite.co.uk SearchAnalytics   Processing component: 52% complete. Next update at Tue Feb 02 04:03:48 GMT 2016
+02/02/2016 04:03:48   www.dummysite.co.uk SearchAnalytics   Processing component: 52% complete. Next update at Tue Feb 02 04:04:48 GMT 2016
+02/02/2016 04:04:48   www.dummysite.co.uk SearchAnalytics   Processing component: 52% complete. Next update at Tue Feb 02 04:05:48 GMT 2016
+02/02/2016 04:05:48   www.dummysite.co.uk SearchAnalytics   Processing component: 54% complete. Next update at Tue Feb 02 04:06:48 GMT 2016
+02/02/2016 04:06:49   www.dummysite.co.uk SearchAnalytics   Processing component: 54% complete. Next update at Tue Feb 02 04:07:49 GMT 2016
+02/02/2016 04:07:49   www.dummysite.co.uk SearchAnalytics   Processing component: 54% complete. Next update at Tue Feb 02 04:08:49 GMT 2016
+02/02/2016 04:08:49   www.dummysite.co.uk SearchAnalytics   Processing component: 57% complete. Next update at Tue Feb 02 04:09:49 GMT 2016
+02/02/2016 04:09:15   www.dummysite.co.uk SearchAnalytics   100% completed
+02/02/2016 04:09:15   www.dummysite.co.uk System            Total Progress: 44%
+02/02/2016 04:09:15   www.dummysite.co.uk ImagingAnalysis   Starting component and waiting for resources
+02/02/2016 04:09:31   www.dummysite.co.uk ImagingAnalysis   Started
+02/02/2016 04:09:41   www.dummysite.co.uk ImagingAnalysis   Processing component: 0% complete. Next update in 15 seconds.
+02/02/2016 04:10:01   www.dummysite.co.uk ImagingAnalysis   Processing component: 0% complete. Next update in 15 seconds.
+02/02/2016 04:10:21   www.dummysite.co.uk ImagingAnalysis   Processing component: 0% complete. Next update in 15 seconds.
+02/02/2016 04:10:41   www.dummysite.co.uk ImagingAnalysis   Processing component: 0% complete. Next update in 15 seconds.
+02/02/2016 04:11:01   www.dummysite.co.uk ImagingAnalysis   Processing component: 3% complete. Next update in 15 seconds.
+02/02/2016 04:11:21   www.dummysite.co.uk ImagingAnalysis   Processing component: 9% complete. Next update in 15 seconds.
+02/02/2016 04:11:28   www.dummysite.co.uk ImagingAnalysis   100% completed
+02/02/2016 04:11:28   www.dummysite.co.uk System            Total Progress: 55%
+02/02/2016 04:11:28   www.dummysite.co.uk Statistics        Starting component and waiting for resources
+02/02/2016 04:11:41   www.dummysite.co.uk Statistics        Started
+02/02/2016 04:11:51   www.dummysite.co.uk Statistics        Processing component: 99% complete. Next update in 15 seconds.
+02/02/2016 04:12:00   www.dummysite.co.uk Statistics        100% completed
+02/02/2016 04:12:00   www.dummysite.co.uk System            Total Progress: 66%
+02/02/2016 04:12:00   www.dummysite.co.uk DistributedMerge  Starting...
+02/02/2016 04:12:10   www.dummysite.co.uk DistributedMerge  Processing component: 53% complete. Next update in 15 seconds.
+02/02/2016 04:12:30   www.dummysite.co.uk DistributedMerge  Processing component: 80% complete. Next update in 15 seconds.
+02/02/2016 04:12:50   www.dummysite.co.uk DistributedMerge  Processing component: 100% complete. Next update in 15 seconds.
+02/02/2016 04:13:08   www.dummysite.co.uk DistributedMerge  Processing component: 100% complete. Next update in 15 seconds.
+02/02/2016 04:13:08   www.dummysite.co.uk DistributedMerge  completed
+02/02/2016 04:13:08   www.dummysite.co.uk DistributedMerge  Completed
+02/02/2016 04:13:08   www.dummysite.co.uk System            Total Progress: 77%
+02/02/2016 04:13:08   www.dummysite.co.uk CentralizedMerge  Merging processing results...
+02/02/2016 04:13:12   www.dummysite.co.uk CentralizedMerge  Cleaning up temporary data...
+02/02/2016 04:13:12   www.dummysite.co.uk CentralizedMerge  Processing component: 100% complete. Next update in 15 seconds.
+02/02/2016 04:13:13   www.dummysite.co.uk Consolidator      Acquiring write consolidation Lock
+02/02/2016 04:13:13   www.dummysite.co.uk Consolidator      Acquired write consolidation Lock
+02/02/2016 04:13:15   www.dummysite.co.uk Consolidator      Releasing write consolidation Lock
+02/02/2016 04:13:15   www.dummysite.co.uk Consolidator      Released write consolidation Lock
+02/02/2016 04:13:15   www.dummysite.co.uk Consolidator      Completed main operation and new review data is available...
+02/02/2016 04:13:23   www.dummysite.co.uk System            Total Progress: 100%
+02/02/2016 04:13:23   www.dummysite.co.uk System            Processing Summary
+02/02/2016 04:13:23   www.dummysite.co.uk System                        Indexer    3d 12h 59m 42.930s
+02/02/2016 04:13:23   www.dummysite.co.uk System                      Validator           37m 51.822s
+02/02/2016 04:13:23   www.dummysite.co.uk System                       Threader           04m 14.382s
+02/02/2016 04:13:23   www.dummysite.co.uk System                SearchAnalytics           29m 53.564s
+02/02/2016 04:13:23   www.dummysite.co.uk System                ImagingAnalysis           02m 12.744s
+02/02/2016 04:13:23   www.dummysite.co.uk System                     Statistics               32.262s
+02/02/2016 04:13:23   www.dummysite.co.uk System               DistributedMerge           01m 07.596s
+02/02/2016 04:13:23   www.dummysite.co.uk System               CentralizedMerge               04.181s
+02/02/2016 04:13:23   www.dummysite.co.uk System                   Consolidator               03.822s
+02/02/2016 04:13:23   www.dummysite.co.uk System            Total Processing Time : 3d 14h 15m 43.303s
+02/02/2016 04:13:24   Completed normally: 2015-TEST-CASE (TEST) : Process documents from "Batch_Test_0001" in batch "Batch_Test_0001".
+
+			    
+ 
+
+

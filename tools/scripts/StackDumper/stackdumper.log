@@ -1,0 +1,141 @@
+2013-09-03 19:07:32,523 INFO  [StackDumper] 
+2013-09-03 19:07:32,534 INFO  [StackDumper] #########################################
+2013-09-03 19:07:32,594 INFO  [StackDumper] 2013/09/03 19:07:32
+2013-09-03 19:07:32,594 INFO  [StackDumper] STARTING STACK DUMP COMMAND:
+2013-09-03 19:07:32,594 INFO  [StackDumper] D:CWV711\b.bat admin-client monitor.thread getAllStackTraces 
+2013-09-03 19:07:32,594 INFO  [StackDumper] Dump number 1 of 1 dumps.
+2013-09-03 19:07:32,594 INFO  [StackDumper] #########################################
+2013-09-03 19:07:32,640 ERROR [StackDumper] java.io.IOException: Cannot run program "D:CWV711\b.bat": CreateProcess error=2, The system cannot find the file specified
+2013-09-03 19:07:32,644 INFO  [StackDumper] #########################################
+2013-09-03 19:07:32,644 INFO  [StackDumper] 2013/09/03 19:07:32
+2013-09-03 19:07:32,644 INFO  [StackDumper] COMPLETED STACK DUMP COMMAND
+2013-09-03 19:07:32,644 INFO  [StackDumper] Dump number 1 of 1 dumps.
+2013-09-03 19:07:32,644 INFO  [StackDumper] #########################################
+2013-09-03 19:08:01,717 INFO  [StackDumper] 
+2013-09-03 19:08:01,728 INFO  [StackDumper] #########################################
+2013-09-03 19:08:01,776 INFO  [StackDumper] 2013/09/03 19:08:01
+2013-09-03 19:08:01,776 INFO  [StackDumper] STARTING STACK DUMP COMMAND:
+2013-09-03 19:08:01,776 INFO  [StackDumper] D:CWV711\b.bat admin-client monitor.thread getAllStackTraces 
+2013-09-03 19:08:01,776 INFO  [StackDumper] Dump number 1 of 2 dumps.
+2013-09-03 19:08:01,776 INFO  [StackDumper] #########################################
+2013-09-03 19:08:01,818 ERROR [StackDumper] java.io.IOException: Cannot run program "D:CWV711\b.bat": CreateProcess error=2, The system cannot find the file specified
+2013-09-03 19:08:01,822 INFO  [StackDumper] #########################################
+2013-09-03 19:08:01,822 INFO  [StackDumper] 2013/09/03 19:08:01
+2013-09-03 19:08:01,822 INFO  [StackDumper] COMPLETED STACK DUMP COMMAND
+2013-09-03 19:08:01,822 INFO  [StackDumper] Dump number 1 of 2 dumps.
+2013-09-03 19:08:01,822 INFO  [StackDumper] #########################################
+2013-09-03 19:08:01,822 INFO  [StackDumper] 
+2013-09-03 19:08:01,822 INFO  [StackDumper] Sleeping for 10 seconds before next stack dump ...
+2013-09-03 19:08:01,822 INFO  [StackDumper] 
+2013-09-03 19:08:11,823 INFO  [StackDumper] 
+2013-09-03 19:08:11,823 INFO  [StackDumper] #########################################
+2013-09-03 19:08:11,823 INFO  [StackDumper] 2013/09/03 19:08:11
+2013-09-03 19:08:11,823 INFO  [StackDumper] STARTING STACK DUMP COMMAND:
+2013-09-03 19:08:11,823 INFO  [StackDumper] D:CWV711\b.bat admin-client monitor.thread getAllStackTraces 
+2013-09-03 19:08:11,823 INFO  [StackDumper] Dump number 2 of 2 dumps.
+2013-09-03 19:08:11,823 INFO  [StackDumper] #########################################
+2013-09-03 19:08:11,856 ERROR [StackDumper] java.io.IOException: Cannot run program "D:CWV711\b.bat": CreateProcess error=2, The system cannot find the file specified
+2013-09-03 19:08:11,856 INFO  [StackDumper] #########################################
+2013-09-03 19:08:11,856 INFO  [StackDumper] 2013/09/03 19:08:11
+2013-09-03 19:08:11,856 INFO  [StackDumper] COMPLETED STACK DUMP COMMAND
+2013-09-03 19:08:11,856 INFO  [StackDumper] Dump number 2 of 2 dumps.
+2013-09-03 19:08:11,856 INFO  [StackDumper] #########################################
+2013-09-03 19:14:52,678 INFO  [StackDumper] 
+2013-09-03 19:14:52,684 INFO  [StackDumper] #########################################
+2013-09-03 19:14:52,731 INFO  [StackDumper] 2013/09/03 19:14:52
+2013-09-03 19:14:52,731 INFO  [StackDumper] STARTING STACK DUMP COMMAND:
+2013-09-03 19:14:52,731 INFO  [StackDumper] C:CWV711\b.bat admin-client monitor.thread getAllStackTraces 
+2013-09-03 19:14:52,731 INFO  [StackDumper] Dump number 1 of 1 dumps.
+2013-09-03 19:14:52,731 INFO  [StackDumper] #########################################
+2013-09-03 19:14:52,731 INFO  [StackDumper] #########################################
+2013-09-03 19:14:52,731 INFO  [StackDumper] 2013/09/03 19:14:52
+2013-09-03 19:14:52,731 INFO  [StackDumper] COMPLETED STACK DUMP COMMAND
+2013-09-03 19:14:52,731 INFO  [StackDumper] Dump number 1 of 1 dumps.
+2013-09-03 19:14:52,731 INFO  [StackDumper] #########################################
+2013-09-03 19:15:59,296 INFO  [StackDumper] 
+2013-09-03 19:15:59,301 INFO  [StackDumper] #########################################
+2013-09-03 19:15:59,348 INFO  [StackDumper] 2013/09/03 19:15:59
+2013-09-03 19:15:59,348 INFO  [StackDumper] STARTING STACK DUMP COMMAND:
+2013-09-03 19:15:59,349 INFO  [StackDumper] C:CWV711\b.bat admin-client monitor.thread getAllStackTraces 
+2013-09-03 19:15:59,349 INFO  [StackDumper] Dump number 1 of 1 dumps.
+2013-09-03 19:15:59,349 INFO  [StackDumper] #########################################
+2013-09-03 19:15:59,349 INFO  [StackDumper] #########################################
+2013-09-03 19:15:59,349 INFO  [StackDumper] 2013/09/03 19:15:59
+2013-09-03 19:15:59,349 INFO  [StackDumper] COMPLETED STACK DUMP COMMAND
+2013-09-03 19:15:59,349 INFO  [StackDumper] Dump number 1 of 1 dumps.
+2013-09-03 19:15:59,349 INFO  [StackDumper] #########################################
+2013-09-03 19:17:26,960 INFO  [StackDumper] 
+2013-09-03 19:17:26,966 INFO  [StackDumper] #########################################
+2013-09-03 19:17:27,013 INFO  [StackDumper] 2013/09/03 19:17:27
+2013-09-03 19:17:27,013 INFO  [StackDumper] STARTING STACK DUMP COMMAND:
+2013-09-03 19:17:27,013 INFO  [StackDumper] C:CWV711\b.bat admin-client monitor.thread getAllStackTraces 
+2013-09-03 19:17:27,013 INFO  [StackDumper] Dump number 1 of 1 dumps.
+2013-09-03 19:17:27,013 INFO  [StackDumper] #########################################
+2013-09-03 19:17:27,013 INFO  [StackDumper] #########################################
+2013-09-03 19:17:27,013 INFO  [StackDumper] 2013/09/03 19:17:27
+2013-09-03 19:17:27,013 INFO  [StackDumper] COMPLETED STACK DUMP COMMAND
+2013-09-03 19:17:27,013 INFO  [StackDumper] Dump number 1 of 1 dumps.
+2013-09-03 19:17:27,013 INFO  [StackDumper] #########################################
+2013-09-03 19:53:40,830 INFO  [StackDumper] 
+2013-09-03 19:53:40,836 INFO  [StackDumper] #########################################
+2013-09-03 19:53:40,883 INFO  [StackDumper] 2013/09/03 19:53:40
+2013-09-03 19:53:40,883 INFO  [StackDumper] STARTING STACK DUMP COMMAND:
+2013-09-03 19:53:40,883 INFO  [StackDumper] C:CWV711\b.bat admin-client monitor.thread getAllStackTraces 
+2013-09-03 19:53:40,883 INFO  [StackDumper] Dump number 1 of 1 dumps.
+2013-09-03 19:53:40,883 INFO  [StackDumper] #########################################
+2013-09-03 19:53:40,883 INFO  [StackDumper] #########################################
+2013-09-03 19:53:40,884 INFO  [StackDumper] 2013/09/03 19:53:40
+2013-09-03 19:53:40,884 INFO  [StackDumper] COMPLETED STACK DUMP COMMAND
+2013-09-03 19:53:40,884 INFO  [StackDumper] Dump number 1 of 1 dumps.
+2013-09-03 19:53:40,884 INFO  [StackDumper] #########################################
+2013-09-03 19:55:12,808 INFO  [StackDumper] 
+2013-09-03 19:55:12,813 INFO  [StackDumper] #########################################
+2013-09-03 19:55:12,860 INFO  [StackDumper] 2013/09/03 19:55:12
+2013-09-03 19:55:12,860 INFO  [StackDumper] STARTING STACK DUMP COMMAND:
+2013-09-03 19:55:12,860 INFO  [StackDumper] C:CWV711\b.bat admin-client monitor.thread getAllStackTraces 
+2013-09-03 19:55:12,860 INFO  [StackDumper] Dump number 1 of 1 dumps.
+2013-09-03 19:55:12,860 INFO  [StackDumper] #########################################
+2013-09-03 19:55:12,861 INFO  [StackDumper] #########################################
+2013-09-03 19:55:12,861 INFO  [StackDumper] 2013/09/03 19:55:12
+2013-09-03 19:55:12,861 INFO  [StackDumper] COMPLETED STACK DUMP COMMAND
+2013-09-03 19:55:12,861 INFO  [StackDumper] Dump number 1 of 1 dumps.
+2013-09-03 19:55:12,861 INFO  [StackDumper] #########################################
+2013-09-03 20:11:36,833 INFO  [StackDumper] 
+2013-09-03 20:11:36,834 INFO  [StackDumper] #########################################
+2013-09-03 20:11:36,908 INFO  [StackDumper] 2013/09/03 20:11:36
+2013-09-03 20:11:36,909 INFO  [StackDumper] STARTING STACK DUMP COMMAND:
+2013-09-03 20:11:36,909 INFO  [StackDumper] C:\CW\V711\b.bat admin-client monitor.thread getAllStackTraces 
+2013-09-03 20:11:36,911 INFO  [StackDumper] Dump number 1 of 1 dumps.
+2013-09-03 20:11:36,911 INFO  [StackDumper] #########################################
+2013-09-03 20:11:36,913 INFO  [StackDumper] #########################################
+2013-09-03 20:11:36,914 INFO  [StackDumper] 2013/09/03 20:11:36
+2013-09-03 20:11:36,915 INFO  [StackDumper] COMPLETED STACK DUMP COMMAND
+2013-09-03 20:11:36,916 INFO  [StackDumper] Dump number 1 of 1 dumps.
+2013-09-03 20:11:36,916 INFO  [StackDumper] #########################################
+2013-09-03 20:11:45,622 INFO  [StackDumper] 
+2013-09-03 20:11:45,623 INFO  [StackDumper] #########################################
+2013-09-03 20:11:45,633 INFO  [StackDumper] 2013/09/03 20:11:45
+2013-09-03 20:11:45,633 INFO  [StackDumper] STARTING STACK DUMP COMMAND:
+2013-09-03 20:11:45,634 INFO  [StackDumper] C:\CW\V711\b.bat admin-client monitor.thread getAllStackTraces 
+2013-09-03 20:11:45,635 INFO  [StackDumper] Dump number 1 of 2 dumps.
+2013-09-03 20:11:45,635 INFO  [StackDumper] #########################################
+2013-09-03 20:11:45,637 INFO  [StackDumper] #########################################
+2013-09-03 20:11:45,638 INFO  [StackDumper] 2013/09/03 20:11:45
+2013-09-03 20:11:45,638 INFO  [StackDumper] COMPLETED STACK DUMP COMMAND
+2013-09-03 20:11:45,639 INFO  [StackDumper] Dump number 1 of 2 dumps.
+2013-09-03 20:11:45,640 INFO  [StackDumper] #########################################
+2013-09-03 20:11:45,641 INFO  [StackDumper] 
+2013-09-03 20:11:45,641 INFO  [StackDumper] Sleeping for 5 seconds before next stack dump ...
+2013-09-03 20:11:45,642 INFO  [StackDumper] 
+2013-09-03 20:11:50,643 INFO  [StackDumper] 
+2013-09-03 20:11:50,643 INFO  [StackDumper] #########################################
+2013-09-03 20:11:50,644 INFO  [StackDumper] 2013/09/03 20:11:50
+2013-09-03 20:11:50,644 INFO  [StackDumper] STARTING STACK DUMP COMMAND:
+2013-09-03 20:11:50,645 INFO  [StackDumper] C:\CW\V711\b.bat admin-client monitor.thread getAllStackTraces 
+2013-09-03 20:11:50,646 INFO  [StackDumper] Dump number 2 of 2 dumps.
+2013-09-03 20:11:50,648 INFO  [StackDumper] #########################################
+2013-09-03 20:11:50,649 INFO  [StackDumper] #########################################
+2013-09-03 20:11:50,650 INFO  [StackDumper] 2013/09/03 20:11:50
+2013-09-03 20:11:50,651 INFO  [StackDumper] COMPLETED STACK DUMP COMMAND
+2013-09-03 20:11:50,651 INFO  [StackDumper] Dump number 2 of 2 dumps.
+2013-09-03 20:11:50,652 INFO  [StackDumper] #########################################

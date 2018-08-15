@@ -1,0 +1,149 @@
+System.Net Verbose: 0 : [4380] WebRequest::Create(http://www.webservicex.net/globalweather.asmx)
+System.Net Verbose: 0 : [4380] HttpWebRequest#58130472::HttpWebRequest(http://www.webservicex.net/globalweather.asmx#-1884890808)
+System.Net Information: 0 : [4380] Current OS installation type is 'Client'.
+System.Net Information: 0 : [4380] RAS supported: True
+System.Net Verbose: 0 : [4380] Exiting HttpWebRequest#58130472::HttpWebRequest() 
+System.Net Verbose: 0 : [4380] Exiting WebRequest::Create() 	-> HttpWebRequest#58130472
+System.Net Verbose: 0 : [4380] HttpWebRequest#58130472::GetRequestStream()
+System.Net Error: 0 : [4380] Can't retrieve proxy settings for Uri 'http://www.webservicex.net/globalweather.asmx'. Error code: 12180.
+System.Net Verbose: 0 : [4380] ServicePoint#31421019::ServicePoint(www.webservicex.net:80)
+System.Net Information: 0 : [4380] Associating HttpWebRequest#58130472 with ServicePoint#31421019
+System.Net Information: 0 : [4380] Associating Connection#14353717 with HttpWebRequest#58130472
+System.Net Information: 0 : [4380] Connection#14353717 - Created connection from 192.168.0.4:49653 to 173.201.44.188:80.
+System.Net Information: 0 : [4380] Associating HttpWebRequest#58130472 with ConnectStream#62074597
+System.Net Verbose: 0 : [4380] Exiting HttpWebRequest#58130472::GetRequestStream() 	-> ConnectStream#62074597
+System.Net Verbose: 0 : [4380] ConnectStream#62074597::Write()
+System.Net Verbose: 0 : [4380] Data from ConnectStream#62074597::Write
+System.Net Verbose: 0 : [4380] <<<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><GetCitiesByCountry xmlns="http://www.webserviceX.NET"><CountryName>france</CountryName></GetCitiesByCountry>>>
+System.Net Verbose: 0 : [4380] Exiting ConnectStream#62074597::Write() 
+System.Net Verbose: 0 : [4380] ConnectStream#62074597::Write()
+System.Net Verbose: 0 : [4380] Data from ConnectStream#62074597::Write
+System.Net Verbose: 0 : [4380] <<</soap:Body></soap:Envelope>>>
+System.Net Verbose: 0 : [4380] Exiting ConnectStream#62074597::Write() 
+System.Net Verbose: 0 : [4380] ConnectStream#62074597::Close()
+System.Net Verbose: 0 : [4380] Exiting ConnectStream#62074597::Close() 
+System.Net Verbose: 0 : [4380] HttpWebRequest#58130472::GetResponse()
+System.Net Information: 0 : [4380] HttpWebRequest#58130472 - Request: POST /globalweather.asmx HTTP/1.1
+
+System.Net Information: 0 : [4380] ConnectStream#62074597 - Sending headers
+{
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; MS Web Services Client Protocol 4.0.30319.42000)
+Content-Type: text/xml; charset=utf-8
+SOAPAction: "http://www.webserviceX.NET/GetCitiesByCountry"
+Host: www.webservicex.net
+Content-Length: 355
+Expect: 100-continue
+Connection: Keep-Alive
+}.
+System.Net Information: 0 : [4380] Connection#14353717 - Received status line: Version=1.1, StatusCode=100, StatusDescription=Continue.
+System.Net Information: 0 : [4380] Connection#14353717 - Received headers
+{
+
+}.
+System.Net Verbose: 0 : [4380] Data from ConnectStream#62074597::ResubmitWrite
+System.Net Verbose: 0 : [4380] <<<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><GetCitiesByCountry xmlns="http://www.webserviceX.NET"><CountryName>france</CountryName></GetCitiesByCountry></soap:Body></soap:Envelope>>>
+System.Net Information: 0 : [4380] Connection#14353717 - Received status line: Version=1.1, StatusCode=200, StatusDescription=OK.
+System.Net Information: 0 : [4380] Connection#14353717 - Received headers
+{
+Content-Length: 15613
+Cache-Control: private, max-age=0
+Content-Type: text/xml; charset=utf-8
+Date: Sun, 23 Oct 2016 17:20:35 GMT
+Server: Microsoft-IIS/7.0
+X-AspNet-Version: 4.0.30319
+X-Powered-By: ASP.NET
+}.
+System.Net Information: 0 : [4380] ConnectStream#21800467::ConnectStream(Buffered 15613 bytes.)
+System.Net Information: 0 : [4380] Associating HttpWebRequest#58130472 with ConnectStream#21800467
+System.Net Information: 0 : [4380] Associating HttpWebRequest#58130472 with HttpWebResponse#61986480
+System.Net Verbose: 0 : [4380] Exiting HttpWebRequest#58130472::GetResponse() 	-> HttpWebResponse#61986480
+System.Net Verbose: 0 : [4380] HttpWebResponse#61986480::GetResponseStream()
+System.Net Information: 0 : [4380] ContentLength=15613
+System.Net Verbose: 0 : [4380] Exiting HttpWebResponse#61986480::GetResponseStream() 	-> ConnectStream#21800467
+System.Net Verbose: 0 : [4380] ConnectStream#21800467::Read()
+System.Net Verbose: 0 : [4380] Data from ConnectStream#21800467::Read
+System.Net Verbose: 0 : [4380] (printing 1024 out of 3864)
+System.Net Verbose: 0 : [4380] <<<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><GetCitiesByCountryResponse xmlns="http://www.webserviceX.NET"><GetCitiesByCountryResult>&lt;NewDataSet&gt;
+  &lt;Table&gt;
+    &lt;Country&gt;France&lt;/Country&gt;
+    &lt;City&gt;Le Touquet&lt;/City&gt;
+  &lt;/Table&gt;
+  &lt;Table&gt;
+    &lt;Country&gt;France&lt;/Country&gt;
+    &lt;City&gt;Agen&lt;/City&gt;
+  &lt;/Table&gt;
+  &lt;Table&gt;
+    &lt;Country&gt;France&lt;/Country&gt;
+    &lt;City&gt;Cazaux&lt;/City&gt;
+  &lt;/Table&gt;
+  &lt;Table&gt;
+    &lt;Country&gt;France&lt;/Country&gt;
+    &lt;City&gt;Bordeaux / Merignac&lt;/City&gt;
+  &lt;/Table&gt;
+  &lt;Table&gt;
+    &lt;Country&gt;France&lt;/Country&gt;
+    &lt;City&gt;Bergerac&lt;/City&gt;
+  &lt;/Table&gt;
+  &lt;Table&gt;
+    &lt;Country&gt;France&lt;/Country&gt;
+    &lt;City&gt;Toulouse / Francazal&lt;/City>>
+System.Net Verbose: 0 : [4380] Exiting ConnectStream#21800467::Read() 	-> Int32#3864
+System.Net Verbose: 0 : [4380] ConnectStream#21800467::Read()
+System.Net Verbose: 0 : [4380] Data from ConnectStream#21800467::Read
+System.Net Verbose: 0 : [4380] <<ity&gt;
+  &lt;/Table&gt;
+  &lt;Table&gt;
+    &lt;Country&gt;France&lt;/Country&gt;
+    &lt;City&gt;Calvi&lt;/City&gt;
+  &lt;/Table&gt;
+  &lt;Table&gt;
+    &lt;Country&gt;France&lt;/Country&gt;
+    &lt;City&gt;Figari&lt;/City&gt;
+  &lt;/Table&gt;
+  &lt;Table&gt;
+    &lt;Cou>>
+System.Net Verbose: 0 : [4380] Exiting ConnectStream#21800467::Read() 	-> Int32#284
+System.Net Verbose: 0 : [4380] ConnectStream#21800467::Read()
+System.Net Verbose: 0 : [4380] Data from ConnectStream#21800467::Read
+System.Net Verbose: 0 : [4380] (printing 1024 out of 11465)
+System.Net Verbose: 0 : [4380] <<ntry&gt;France&lt;/Country&gt;
+    &lt;City&gt;Ajaccio&lt;/City&gt;
+  &lt;/Table&gt;
+  &lt;Table&gt;
+    &lt;Country&gt;France&lt;/Country&gt;
+    &lt;City&gt;Solenzara&lt;/City&gt;
+  &lt;/Table&gt;
+  &lt;Table&gt;
+    &lt;Country&gt;France&lt;/Country&gt;
+    &lt;City&gt;Auxerre&lt;/City&gt;
+  &lt;/Table&gt;
+  &lt;Table&gt;
+    &lt;Country&gt;France&lt;/Country&gt;
+    &lt;City&gt;Chambery / Aix-Les-Bains&lt;/City&gt;
+  &lt;/Table&gt;
+  &lt;Table&gt;
+    &lt;Country&gt;France&lt;/Country&gt;
+    &lt;City&gt;Clermont-Ferrand&lt;/City&gt;
+  &lt;/Table&gt;
+  &lt;Table&gt;
+    &lt;Country&gt;France&lt;/Country&gt;
+    &lt;City&gt;Bourges&lt;/City&gt;
+  &lt;/Table&gt;
+  &lt;Table&gt;
+    &lt;Country&gt;France&lt;/Country&gt;
+    &lt;City&gt;Lyon / Satolas&lt;/City&gt;
+  &lt;/Table&gt;
+  &lt;Table&gt;
+    &lt;Country&gt;France&lt;/Country&gt;
+    &lt;City&gt;Macon&lt;/City&gt;
+  &lt;/Table&gt;
+  &lt;Table&gt;
+    &lt;Country&gt;France&lt;/Country&gt;
+    &lt;City&gt;Saint-Yan&lt;/C>>
+System.Net Verbose: 0 : [4380] Exiting ConnectStream#21800467::Read() 	-> Int32#11465
+System.Net Verbose: 0 : [4380] ConnectStream#21800467::Read()
+System.Net Verbose: 0 : [4380] Exiting ConnectStream#21800467::Read() 	-> Int32#0
+System.Net Verbose: 0 : [4380] ConnectStream#21800467::Read()
+System.Net Verbose: 0 : [4380] Exiting ConnectStream#21800467::Read() 	-> Int32#0
+System.Net Verbose: 0 : [4380] ConnectStream#21800467::Close()
+System.Net Verbose: 0 : [4380] Exiting ConnectStream#21800467::Close() 

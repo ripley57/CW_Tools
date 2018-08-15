@@ -1,0 +1,58 @@
+TOOLS_DIR=$*
+
+# Description:
+#   Join file parts of a binary file split by the "splitfile" command.
+#
+# Usage:
+#   joinfile <prefix>
+#
+# Example:
+#   The following will join the files named yDocV66_aa, yDocV66_ab, etc,
+#   found in the current directory, into the final output file yDocV66:
+#
+#   join_files yDocV66_
+#
+function joinfile() {
+    local _prefix="$1"
+
+    if [ "$1" = '-h' -o x = "x$_prefix" ]; then
+        usage joinfile
+        return
+    fi
+
+    local _output_file=$(echo $_prefix | sed -n 's/\(.*\)_.*$/\1/p')
+    local _input_filelist=$(ls -1 | grep $_prefix | sort | tr '\n' ' ')
+
+    echo "Combining $_input_filelist into $_output_file ..."
+    cat $_input_filelist > $_output_file
+}
+
+
+# Description:
+#   Split a file into binary chunks
+#
+#   See also the joinfiles comand.
+#
+# Usage:
+#   splitfile <prefix>
+#
+# Example:
+#   The following will join the files named yDocV66_aa, yDocV66_ab, etc,
+#   found in the current directory, into the final output file yDocV66:
+#
+#   splitfiles yDocV66_
+#
+function splitfile() {
+    local _prefix="$1"
+
+    if [ "$1" = '-h' -o x = "x$_prefix" ]; then
+        usage joinfile
+        return
+    fi
+
+    local _output_file=$(echo $_prefix | sed -n 's/\(.*\)_.*$/\1/p')
+    local _input_filelist=$(ls -1 | grep $_prefix | sort | tr '\n' ' ')
+
+    echo "Combining $_input_filelist into $_output_file ..."
+    cat $_input_filelist > $_output_file
+}

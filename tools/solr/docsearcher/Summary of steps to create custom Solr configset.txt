@@ -1,0 +1,218 @@
+STEPS TO CUSTOMIZE SOLR EXAMPLE CONFIGSET FOR GENERAL USE
+=========================================================
+
+PART 1 - THE SOLRITAS BASIC UI LAYOUT CHANGES
+
+1) Remove the tabs at the top of the page:
+Replace “conf/velocity/tabs.vm” with an empty file.
+
+2) Remove the footer:
+Replace “conf/velocity/footer.vm” with an empty file.
+
+3) Remove “Field Facets, Query Facets, Range, Facets, Pivot Facets, Clusters” from left column:
+Replace “conf/velocity/facets.vm” with an empty file.
+Note: This does not remove the column – effectively leaving an indent on the left hand side. We'll deal with this next.
+
+4) Remove the indent on the left-hand-side (including the indent to the left of the search box):
+$ diff -c ./velocity/main.css.orig ./velocity/main.css
+*** ./velocity/main.css.orig    2018-05-09 09:31:08.000000000 +0100
+--- ./velocity/main.css 2018-07-17 08:59:34.680957300 +0100
+***************
+*** 154,160 ****
+  }
+
+  .query-box .inputs{
+!   left: 180px;
+    position: relative;
+
+  }
+--- 154,160 ----
+  }
+
+  .query-box .inputs{
+!   left: 18px;
+    position: relative;
+
+  }
+***************
+*** 178,184 ****
+    border: 1px solid #999;
+    padding: 5px;
+    margin: 5px;
+!   margin-left: 210px;
+    margin-bottom: 15px;
+  }
+
+--- 178,184 ----
+    border: 1px solid #999;
+    padding: 5px;
+    margin: 5px;
+!   margin-left: 21px;
+    margin-bottom: 15px;
+  }
+
+5) Remove the “Boost by Price” checkbox:
+$ diff ./velocity/query_form.vm.orig ./velocity/query_form.vm
+15,25d14
+<       <div class="query-boost">
+<         <span #annTitle("Add the boost function &bf=price to the query")>
+<           <input type="checkbox" name="bf" value="price"
+<             #if($request.params.get('bf') == 'price')checked="true"#end
+<           >
+<             Boost by Price
+<           </input>
+<         </span>
+<       #parse("query_spatial.vm")
+<       #parse("query_group.vm")
+<       </div>
+
+
+PART 2 - THE SOLRITAS DOCUMENT RESULT UI CHANGES 
+
+1) Fix missing icons for msg and docx files:
+cp ./solr-7.3.1/server/solr-webapp/webapp/img/filetypes/doc.png ./solr-7.3.1/server/solr-webapp/webapp/img/filetypes/docx.png
+cp ./solr-7.3.1/server/solr-webapp/webapp/img/ico/mail.png ./solr-7.3.1/server/solr-webapp/webapp/img/filetypes/msg.png
+
+2) Change keyword hit highlighting colour to bold red:
+$ diff -c ./conf/solrconfig.xml.orig ./conf/solrconfig.xml
+*** ./conf/solrconfig.xml.orig  2018-07-17 09:30:33.211651000 +0100
+--- ./conf/solrconfig.xml       2018-07-17 09:31:58.874689400 +0100
+***************
+*** 880,887 ****
+         <str name="hl.fl">content features title name</str>
+         <str name="hl.preserveMulti">true</str>
+         <str name="hl.encoder">html</str>
+!        <str name="hl.simple.pre">&lt;b&gt;</str>
+!        <str name="hl.simple.post">&lt;/b&gt;</str>
+         <str name="f.title.hl.fragsize">0</str>
+         <str name="f.title.hl.alternateField">title</str>
+         <str name="f.name.hl.fragsize">0</str>
+--- 880,887 ----
+         <str name="hl.fl">content features title name</str>
+         <str name="hl.preserveMulti">true</str>
+         <str name="hl.encoder">html</str>
+!        <str name="hl.simple.pre">&lt;b&gt;&lt;font color=&quot;red&quot;&gt;</str>
+!        <str name="hl.simple.post">&lt;/font&gt;&lt;/b&gt;</str>
+         <str name="f.title.hl.fragsize">0</str>
+         <str name="f.title.hl.alternateField">title</str>
+         <str name="f.name.hl.fragsize">0</str>
+NOTE: This changes requires Solr to be restarted.
+
+3) Make the "Id: file:/..." link clickable, and display the path decoded (i.e. with chars including %20 decoded to a space character).
+$ diff -c ./conf/velocity/richtext_doc.vm.orig ./conf/velocity/richtext_doc.vm
+*** ./conf/velocity/richtext_doc.vm.orig        2018-07-17 09:39:05.410380100 +0100
+--- ./conf/velocity/richtext_doc.vm     2018-07-17 09:42:22.002736400 +0100
+***************
+*** 71,77 ****
+
+  ## Row 2?: ID / URL
+  <div>
+!   Id: #field('id')
+  </div>
+
+  ## Resource Name
+--- 71,84 ----
+
+  ## Row 2?: ID / URL
+  <div>
+!   ## JeremyC. Id hyperlinked, to try and launch native application.
+!   ##Id: #field('id')
+!   #if($doc.getFieldValue('id'))
+!     #set($id_link = $doc.getFieldValue('id'))
+!     #set($id_link2 = $id_link.replace("file:/","file:///"))
+!     #set($id_decoded = $link.decode($id_link2))
+!   #end
+!   Id: <a href="${id_link2}" target="_blank">${id_decoded}</a>
+  </div>
+
+NOTE: This requires the Velocity "LinkTool" (https://velocity.apache.org/tools/1.2/view/LinkTool.html). The LinkTool is already included in Solr file "./contrib/velocity/lib/velocity-tools-2.0.jar", however, we need to 'load' it via Solr file "./dist/solr-velocity-7.3.1.jar". To do that, we need to rebuild that Solr jar file with the following change to VelocityResponseWriter.java:
+
+$ diff -c ./solr-7.3.1/solr/contrib/velocity/src/java/org/apache/solr/response/VelocityResponseWriter.java.orig ./solr-7.3.1/solr/contrib/velocity/src/java/org/apache/solr/response/VelocityResponseWriter.java
+*** ./solr-7.3.1/solr/contrib/velocity/src/java/org/apache/solr/response/VelocityResponseWriter.java.orig       2018-07-17 10:02:15.614356700 +0100
+--- ./solr-7.3.1/solr/contrib/velocity/src/java/org/apache/solr/response/VelocityResponseWriter.java    2018-07-17 10:38:28.689633400 +0100
+***************
+*** 55,60 ****
+--- 55,62 ----
+  import org.apache.velocity.tools.generic.NumberTool;
+  import org.apache.velocity.tools.generic.ResourceTool;
+  import org.apache.velocity.tools.generic.SortTool;
++ // JeremyC
++ import org.apache.velocity.tools.generic.LinkTool;
+  import org.slf4j.Logger;
+  import org.slf4j.LoggerFactory;
+
+***************
+*** 207,212 ****
+--- 209,216 ----
+      context.put("date", new ComparisonDateTool());
+      context.put("list", new ListTool());
+      context.put(SORT, new SortTool());
++       // JeremyC
++       context.put("link", new LinkTool());
+
+      MathTool mathTool = new MathTool();
+      mathTool.configure(toolConfig);
+
+ 
+To rebuild Solr, see my document "Building Solr (including solr-velocity-4.5.1.jar).docx". 
+NOTE: Each document "Id: file:///..." link now looks good, but clicking it doesn't do anything. We'll fix that next. 
+ 
+4) Launching a document's native application when clicking the "Id: file:///..." link.
+For security reasons, a web browser will only let you launch a "file:///..." link that references a file on the local filesystem,if the web page itself was loaded from the local filesystem. That isn't true when using the Solr/Solritas UI, so we need to use a trick to enable this to work. What we do is a create a Windows Registry entry to call our own wrapper program "appurl.exe" to launch the document's native application. See document "Workaround for launching “file” link from a web page.docx" for the details.
+
+To create the Windows Registry entry, and install our appurl.exe (into c:\temp\), the DocSearcher main application (Menu.bat) automatically calls function ":FUNC-SOLR-INSTALL-APPURL". (NOTE: This function won't do anything if file "C:\temp\apurl.exe" already exists.)
+
+Now we need to update the "Id: file:///.." values in the Solritas search result, to change the link to use "appurl://" instead:
+$ diff -c ./solr-7.3.1/server/solr/collection2/conf/velocity/richtext_doc.vm.before_appurl_change ./solr-7.3.1/server/solr/collection2/conf/velocity/richtext_doc.vm
+*** ./solr-7.3.1/server/solr/collection2/conf/velocity/richtext_doc.vm.before_appurl_change     2018-07-17 10:56:23.099522200 +0100
+--- ./solr-7.3.1/server/solr/collection2/conf/velocity/richtext_doc.vm  2018-07-17 10:56:45.859114900 +0100
+***************
+*** 75,81 ****
+    ##Id: #field('id')
+    #if($doc.getFieldValue('id'))
+      #set($id_link = $doc.getFieldValue('id'))
+!     #set($id_link2 = $id_link.replace("file:/","file:///"))
+      #set($id_decoded = $link.decode($id_link2))
+    #end
+    Id: <a href="${id_link2}" target="_blank">${id_decoded}</a>
+--- 75,81 ----
+    ##Id: #field('id')
+    #if($doc.getFieldValue('id'))
+      #set($id_link = $doc.getFieldValue('id'))
+!     #set($id_link2 = $id_link.replace("file:/","appurl://"))
+      #set($id_decoded = $link.decode($id_link2))
+    #end
+    Id: <a href="${id_link2}" target="_blank">${id_decoded}</a>
+
+And if you want to stop the Solr/Solirtas UI from opening a *new* blank web browser each time you click a document, change the last line to the following:
+    Id: <a href="${id_link2}" target="_NEW">${id_decoded}</a>
+	
+That's it. Clicking on an msg file, for example, will now automatically launch Outlook to display the document!
+
+
+PART 3 - CONFIGURE MISC OTHER THINGS
+
+1) Add the Luke request handler.
+See https://wiki.apache.org/solr/LukeRequestHandler
+Add the following to the solrconfig.xml file:
+ <requestHandler name="/admin/luke" class="org.apache.solr.handler.admin.LukeRequestHandler" />
+
+2) Add a "schema" link to the right of the results count, to launch the Luke request handler.
+conf/velocity/pagination_top.vm:
+  Page <span class="page-num">$page.current_page_number</span>
+    of <span class="page-count">$page.page_count</span>
+	
+  ## JeremyC. Add link to see Luke schema view.
+  &nbsp;<a href="admin/luke?show=schema&wt=json" target="_NEW">schema</a>
+
+#end   ## end else non-grouped results, normal pagination
+
+NOTE: I=indexed, S=stored
+
+For usage examples see:
+https://wiki.apache.org/solr/LukeRequestHandler
+https://stackoverflow.com/questions/28889405/solr-where-to-find-the-luke-request-handler
+
+
+JeremyC 17-07-2018
+

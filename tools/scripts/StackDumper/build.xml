@@ -1,0 +1,23 @@
+
+<!--
+To install ant:
+
+Set environmental variables JAVA_HOME to your Java environment, ANT_HOME to the directory 
+you uncompressed Ant to, and add ${ANT_HOME}/bin (Unix) or %ANT_HOME%/bin (Windows) to 
+your PATH. See Setup for details.
+-->
+
+<project name="MyProject" default="sdjar" basedir=".">
+    <description>Build file to generate a single jar file</description>
+
+    <target name="sdjar">
+      <jar destfile="sd.jar">
+        <zipfileset src="stackdumper.jar"/>
+        <zipfileset src="log4j.jar"/>
+        <manifest>
+          <attribute name="Main-Class" value="StackDumper"/>
+        </manifest>
+      </jar>
+    </target>
+
+</project>

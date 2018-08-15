@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="myproject" default="init" basedir=".">
+
+<taskdef name="groovy" classname="org.codehaus.groovy.ant.Groovy"/>
+
+<target name="init" depends="">
+		<!-- Groovy demo. Also demos the Java built-in Preferences API. 
+		
+		     The following will create a Registry key named "Jeremydemo" with a
+		     value named "testval1" that has a value of "hello world". The value
+			 will then be retrieved from the Registry and displayed to stdout. 
+			 
+			 NOTE: Run ant from an administrator-level cmd.exe to prevent access 
+			       denied (5) errors on Windows 8. Similarly, to see the values 
+				   in the Registry (under HKLM\SOFTWARE\JavaSoft\Prefs) on Windows
+				   8, launch regedit from an administrator-level cmd.exe.
+		-->
+        <groovy>
+            import java.util.prefs.Preferences
+            n = Preferences.systemRoot().node("Jeremydemo")
+			n?.put("testval1", "hello world")
+			System.out.println("testval1=" + n?.get("testval1", ""))
+        </groovy>
+</target>
+
+</project>

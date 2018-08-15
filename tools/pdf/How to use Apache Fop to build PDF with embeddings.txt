@@ -1,0 +1,72 @@
+How to create a PDF with many embeddings
+========================================
+
+About Apache FOP:
+From http://xmlgraphics.apache.org/fop/
+"Apache™ FOP (Formatting Objects Processor) is a print formatter driven by XSL formatting objects (XSL-FO) and an output independent formatter. It is a Java application that reads a formatting object (FO) tree and renders the resulting pages to a specified output. Output formats currently supported include PDF, PS, PCL, AFP, XML (area tree representation), Print, AWT and PNG, and to a lesser extent, RTF and TXT. The primary output target is PDF."
+
+o Download Apache FOP from here:
+http://apache.mirrors.nublue.co.uk/xmlgraphics/fop/binaries/
+This should give you a file such as "fop-2.1-bin.zip". It is around 24MB.
+
+o Unzip the fop binary installation (100MB unzipped) and build the examples:
+1. examples/fo
+2. ant
+NOTE: There should be an "embedding" example pdf built:
+C:\tmp\fop-2.1\examples\fo>dir /s /b *embedding*
+C:\tmp\fop-2.1\examples\fo\svg\embedding.fo
+C:\tmp\fop-2.1\examples\fo\tests\embedding.pdf
+
+o Add our own extra embeddings:
+As you can see, the test input file (embedding.fo) is an XML file. If we want to embed our own (JPEG) images, we need to insert multiple lines like the following:
+<fox:external-document content-type="jpeg" src="jpegs/test_jpeg${i}.jpeg"/>
+
+I created a Bash script to generate my own version of "embedding.fo". I split the existing "embedding.fo" file into a beg.fo and end.fo and then wrote a Bash script to insert my extra content. Here's my script (generate_fo.sh):
+
+cat beg.fo > embedding_new.fo
+
+for i in {1..10000}
+ do
+
+	cat <<EOI >> embedding_new.fo
+
+<fox:external-document content-type="jpeg" src="jpegs/Image${i}.jpg"/>
+
+EOI
+
+done
+
+cat end.fo >> embedding_new.fo
+
+Line 17 in the existing "embedding.fo" file is where my extra lines were inserted:
+    11    master-name="first">
+    12        <fo:region-body margin-top="1cm"/>
+    13        <fo:region-before extent="1cm"/>
+    14        <fo:region-after extent="1.5cm"/>
+    15      </fo:simple-page-master>
+    16    </fo:layout-master-set>
+    17
+    18    <fo:page-sequence master-reference="first">
+    19      <fo:static-content flow-name="xsl-region-before">
+    20        <fo:block line-height="14pt" font-size="10pt"
+
+I then copied my new "emmbedding.fo" file in-place and ran "ant" again to rebuild the test files.
+NOTE: I had to copy my directory of jpeg files ("jpegs") to the same directory where I ran "ant" from, i.e. "C:\tmp\fop-2.1\examples\fo".
+
+
+Installing Ant (on Windows)
+===========================
+o Download (e.g. "apache-ant-1.10.0-bin.zip) from here:
+https://ant.apache.org/bindownload.cgi
+o Extract the zip directly under C:\
+o Set environmental variable JAVA_HOME to your Java environment.
+o Set environmental variable ANT_HOME to the directory you uncompressed Ant to.
+o Add %ANT_HOME%/bin to your PATH.
+
+The following can be used:
+set JAVA_HOME=C:\Program Files\Java\jdk1.8.0_45
+set ANT_HOME=C:\apache-ant-1.10.0
+set PATH=%ANT_HOME%/bin;%PATH%
+
+
+JeremyC 15/1/2017
