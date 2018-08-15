@@ -68,22 +68,3 @@ function installwindowsscripts() {
     cp "${TOOLS_DIR}/scripts/windows/cwtools.bat" "${_dir}/cwtools.bat"
 
 }
-
-
-# Description:
-#	Copy the build.bat script to the current directory.
-#
-# Usage:
-#	build
-#
-function build() {
-    if [ "$1" = '-h' ]; then
-        usage build
-        return
-    fi
-	
-    if [ ! -e "./buildbat" ]; then
-       cp "${TOOLS_DIR}/java/build.bat" . && echo "Copied build.bat to current directory."
-	   cp "${TOOLS_DIR}/scripts/Java/run.bat" .
-    fi
-}
