@@ -74,10 +74,10 @@ function _build_jetty() {
         usage _build_jetty
         return
     fi
-    (cd "$_cwd" && javac -cp "$_classpath" HelloServlet.java)
-    (cd "$_cwd" && javac -cp "$_classpath" MyServer.java)
 	(cd "$_cwd" && javac -cp "$_classpath" MyCGI.java && \
 		mkdir -p       org/eclipse/jetty/servlets/ && \
 		cp MyCGI.class org/eclipse/jetty/servlets/ \
 	)
+	(cd "$_cwd" && javac -cp "$_classpath" HelloServlet.java)
+    (cd "$_cwd" && javac -cp "$_classpath" MyServer.java)
 }
