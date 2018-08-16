@@ -1,0 +1,227 @@
+<html>
+<head>
+	<!-- See Listing 8.9 on page 186 of ExtJSInAction 2nd Edition -->
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	
+    <link rel="stylesheet" type="text/css" href="ext-4.2.0/resources/css/ext-all.css"/>
+    <script type="text/javascript" src="ext-4.2.0/ext-all-debug.js"></script>
+</head>
+<body>
+
+<script type="text/javascript">
+Ext.define('Employee', {
+    extend     : 'Ext.data.Model',
+    idProperty : 'id',
+    fields     : [
+        {name : 'id', type : 'int'},
+        {name : 'departmentId', type : 'int' },
+        {name : 'dateHired', type : 'date', format : 'Y-m-d'},
+        {name : 'dateFired', type : 'date', format : 'Y-m-d'},
+        {name : 'dob', type : 'date', format : 'Y-m-d'},
+        'firstName',
+        'lastName',
+        'title',
+        'street',
+        'city',
+        'state',
+        'zip'
+    ]
+});
+
+//var urlRoot = 'http://extjsinaction.com/crud.php?model=Employee&method=';
+var urlRoot = '/ctx1/cgi-bin2/crud.exe?model=Employee&method=';
+var employeeStore = Ext.create('Ext.data.Store', {
+    model    : 'Employee',
+    pageSize : 50,
+    proxy    : {
+        type   : 'jsonp',
+        api    : {
+            create  : urlRoot + 'CREATE',
+            read    : urlRoot + 'READ',
+            update  : urlRoot + 'UPDATE',
+            destroy : urlRoot + 'DESTROY'
+        },
+        reader : {
+            type            : 'json',
+            metaProperty    : 'meta',
+            root            : 'data',
+            idProperty      : 'id',
+            totalProperty   : 'meta.total',
+            successProperty : 'meta.success'
+        },
+        writer : {
+            type           : 'json',
+            encode         : true,
+            writeAllFields : true,
+            root           : 'data',
+            allowSingle    : true,
+            batch          : false,
+            writeRecords   : function(request, data) {
+                request.jsonData = data;
+                return request;
+            }
+        }
+    }
+});
+
+Ext.define('State', {
+    extend : 'Ext.data.Model',
+    fields : ['id', 'state']
+});
+
+var stateStore = Ext.create("Ext.data.Store", {
+    model : 'State',
+    proxy : {
+        type   : 'jsonp',
+        url    : '/ctx1/cgi-bin2/crud.exe?model=State&method=READ',
+        reader : {
+            type            : 'json',
+            root            : 'data',
+            idProperty      : 'id',
+            successProperty : 'meta.success'
+        }
+    }
+});
+
+    Ext.onReady(function() {
+        var rowEditing = Ext.create('Ext.grid.plugin.RowEditing', {
+            clicksToEdit : 2,
+            autoCancel   : false
+        });
+
+        var textField = {
+            xtype : 'textfield'
+        };
+
+        var stateEditor = {
+            xtype         : 'combo',
+            triggerAction : 'all',
+            displayField  : 'state',
+            valueField    : 'state',
+            store         : stateStore
+        };
+
+        var columns = [
+            {
+                header    : 'Last Name',
+                dataIndex : 'lastName',
+                sortable  : true,
+                editor    : textField
+            },
+            {
+                header    : 'First Name',
+                dataIndex : 'firstName',
+                sortable  : true,
+                editor    : textField
+            },
+            {
+                header    : 'Street Address',
+                dataIndex : 'street',
+                flex      : 1,
+                sortable  : true,
+                editor    : textField
+            },
+            {
+                header    : 'City',
+                dataIndex : 'city',
+                sortable  : true,
+                editor    : textField
+            },
+            {
+                header    : 'State',
+                dataIndex : 'state',
+                sortable  : true,
+                width     : 50,
+                editor    : stateEditor
+            },
+            {
+                header    : 'Zip Code',
+                dataIndex : 'zip',
+                sortable  : true,
+                editor    : textField
+            }
+        ];
+        var pagingToolbar = {
+            xtype       : 'pagingtoolbar',
+            store       : employeeStore,
+            displayInfo : true
+        };
+
+        var onDelete = function() {
+            var selected = grid.selModel.getSelection();
+            Ext.MessageBox.confirm(
+                    'Confirm delete',
+                    'Are you sure?',
+                    function(btn) {
+                        if (btn == 'yes') {
+                            grid.store.remove(selected);
+                            grid.store.sync();
+                        }
+                    }
+            );
+        };
+
+        var onInsertRecord = function() {
+            var selected = grid.selModel.getSelection();
+            console.log("selected index:%o", selected[0].index);
+            rowEditing.cancelEdit();
+            var newEmployee = Ext.create("Employee");
+            employeeStore.insert(selected[0].index, newEmployee);
+            rowEditing.startEdit(selected[0].index, 0);
+        };
+
+        var doRowCtxMenu = function(view, record, item, index, e) {
+            e.stopEvent();
+
+            if (!grid.rowCtxMenu) {
+                grid.rowCtxMenu = new Ext.menu.Menu({
+                    items : [
+                        {
+                            text    : 'Insert Record',
+                            handler : onInsertRecord
+                        },
+                        {
+                            text    : 'Delete Record',
+                            handler : onDelete
+                        }
+                    ]
+                });
+            }
+            grid.selModel.select(record);
+            grid.rowCtxMenu.showAt(e.getXY());
+        };
+
+        var grid = Ext.create('Ext.grid.Panel', {
+            columns    : columns,
+            store      : employeeStore,
+            loadMask   : true,
+            bbar       : pagingToolbar,
+            plugins    : [ rowEditing ],
+            stripeRows : true,
+            selType    : 'rowmodel',
+            viewConfig : {
+                forceFit : true
+            },
+            listeners  : {
+                itemcontextmenu : doRowCtxMenu,
+                destroy         : function(thisGrid) {
+                    if (thisGrid.rowCtxMenu) {
+                        thisGrid.rowCtxMenu.destroy();
+                    }
+                }
+            }
+        });
+
+        Ext.create('Ext.Window', {
+            height : 350,
+            width  : 600,
+            border : false,
+            layout : 'fit',
+            items  : grid
+        }).show();
+
+        employeeStore.load();
+    });
+</script>
+</body>
+</html>
