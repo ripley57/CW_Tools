@@ -14,6 +14,6 @@ function build() {
 	
     if [ ! -e "./buildbat" ]; then
        cp "${TOOLS_DIR}/java/build.bat" . && echo "Copied build.bat to current directory."
-	   cp "${TOOLS_DIR}/scripts/Java/run.bat" .
+       cp "${TOOLS_DIR}/java/run.bat" .
     fi
 }
