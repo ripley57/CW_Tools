@@ -4,6 +4,9 @@ TOOLS_DIR=$*
 #   Launch Luke for Lucene 3.5.0.
 #   See http://code.google.com/p/luke/
 #
+#   Using Luke:
+#   https://lingpipe-blog.com/2012/07/24/using-luke-the-lucene-index-browser-to-develop-search-queries/
+#
 # Usage:
 #   luke350
 #
@@ -21,6 +24,10 @@ alias luke=luke350
 #   https://github.com/DmitryKey/luke/releases/
 #   Note: These newer versions are using JavaFX for 
 #         the GUI and require Java 1.8.6 or newer.
+#
+#   Using Luke:
+#   https://lingpipe-blog.com/2012/07/24/using-luke-the-lucene-index-browser-to-develop-search-queries/
+#
 # Usage:
 #   luke731
 #
