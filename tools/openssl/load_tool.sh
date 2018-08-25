@@ -87,6 +87,8 @@ function _maxkeylen_run() {
 #
 #   Convert file to base64:
 #   openssl base64 -in TestPDF.pdf > TestPDF_base64.txt 
+#   Decode base64:
+#   openssl enc -base64 -d -in b64.txt > decoded.txt
 #
 function openssl() {
     if [ "$1" = '-h' ]; then
