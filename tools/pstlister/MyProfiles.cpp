@@ -33,6 +33,7 @@ static HRESULT FindDefaultMsgStore(LPMAPISESSION lpSession, ULONG* lpcbeid, LPEN
 static HRESULT ListFolderEmails(SRow row, LPMDB lpMdb, wstring folderpath);
 static FILE* createOutputFile();
 static void writeEmailW(wstring entryidStr, wstring creationtimeMS, wstring creationtimeStr, wstring subject, wstring folderpath);
+static HRESULT SearchFolder(tstring& profilename, tstring& foldername);
 
 // Output csv file.
 // NOTE: We need to write to an output file, because the Windows
@@ -78,6 +79,7 @@ void usage(tstring progname, tstring profilename)
 	_ftprintf(stderr, _T("%s                                                      \n"), progname.c_str());
 	_ftprintf(stderr, _T("                                                        \n"));
 	_ftprintf(stderr, _T("Usage:                                                  \n"));
+	_ftprintf(stderr, _T("    %s <pstfile> createsearchfolder                     \n"), progname.c_str());
 	_ftprintf(stderr, _T("    %s <pstfile> [-p]                                   \n"), progname.c_str());
 	_ftprintf(stderr, _T("    %s -d                                               \n"), progname.c_str());
 	_ftprintf(stderr, _T("                                                        \n"));
@@ -96,12 +98,14 @@ void usage(tstring progname, tstring profilename)
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	tstring 	profilename	= _T("PSTLister");	// This is the name you will see listed in mlcfg32.
+	tstring profilename		= _T("PSTLister");	// This is the name you will see listed in mlcfg32.
 	tstring	pstfile			= _T("undefined");
+	tstring foldername 		= _T("mysearchfolder");
 	int 	createProfile 	= 1;
 	int		listEmails		= 1;
 	int 	deleteProfile 	= 1;
 	int     requirepstfile 	= 1;
+	int		createsearchfolder = 0;
 	
 	tstring progname = tstring(argv[0]);
 	
@@ -127,6 +131,14 @@ int _tmain(int argc, _TCHAR* argv[])
 			listEmails 		= 0;
 			deleteProfile 	= 1;
 			requirepstfile 	= 0;
+		}
+		else
+		if (s == _T("createsearchfolder")) {
+			createsearchfolder 	= 1;
+			createProfile		= 1;
+			listEmails			= 0;
+			deleteProfile		= 1;
+			requirepstfile 		= 1;
 		}
 		else {
 			pstfile = s;
@@ -164,10 +176,19 @@ int _tmain(int argc, _TCHAR* argv[])
 			MAPIUninitialize();
 			exit(1);
 		}
-		if (!listEmails) 
-			tcerr << _T("Successfully created profile \"") << profilename << _T("\".") << endl;
+		tcout << _T("Successfully created profile \"") << profilename << _T("\".") << endl;
 	}
-	
+
+	if (createsearchfolder) {
+		hRes = SearchFolder(profilename, foldername);
+		if (FAILED(hRes)) {
+			tcerr << _T("ERROR: Could not create search folder. Error: ") << convert2hex(hRes) << endl;
+			DeleteProfile(profilename);
+			MAPIUninitialize();
+			exit(1);
+		}
+	}
+	else
 	if (listEmails) {
 		if (!createOutputFile()) {
 			tcerr << _T("ERROR: Could not open file: ") << gOutputFileName.c_str() << _T(". Check that the file is not already open.") << endl;
@@ -198,8 +219,7 @@ int _tmain(int argc, _TCHAR* argv[])
 			MAPIUninitialize();
 			exit(1);
 		}
-		if (!listEmails) 
-			tcerr << _T("Successfully deleted profile \"") << profilename << _T("\".") << endl;
+		tcout << _T("Successfully deleted profile \"") << profilename << _T("\".") << endl;
 	}
 	
 	MAPIUninitialize();
@@ -698,6 +718,134 @@ HRESULT ListFolderEmails(SRow row, LPMDB lpMdb, wstring folderpath)
 		
 	Log(_T("Leaving ListFolderEmails() ..."));
 	return hRes;
+}
+
+// See https://docs.microsoft.com/en-us/office/client-developer/outlook/mapi/searching-a-message-store
+HRESULT SearchFolder(tstring& profilename, tstring& foldername)
+{
+	Log("Entering SearchFolder() ...");
+	HRESULT hRes = S_OK;
+	LPSRowSet   lpRows = NULL;
+	ULONG       cRows = 0;
+	LPENTRYID   lpeid = NULL;
+    ULONG       cbeid = 0;
+		
+	IMAPISession *lpSession = NULL;
+	Log(_T("SearchFolder: Calling MAPILogonEx() for profile ") << profilename << " ...");
+	hRes = MAPILogonEx(	0, 
+						reinterpret_cast<LPTSTR>(const_cast<LPSTR>((tstring2string(profilename)).c_str())), 
+						NULL,	
+						MAPI_NEW_SESSION | MAPI_EXTENDED | MAPI_NO_MAIL | MAPI_EXPLICIT_PROFILE, 
+						&lpSession);
+	if (FAILED(hRes)) {
+		Log(_T("MAPILogonEx: Failed with error: ") << convert2hex(hRes));
+		return hRes;
+	}
+	MapiSessionResource sessResource(lpSession);
+	
+    ULONG		cbEid = 0;  
+    LPENTRYID	lpEid = NULL;
+	Log(_T("SearchFolder: Calling FindDefaultMsgStore() ..."));
+    hRes = FindDefaultMsgStore(lpSession, &cbEid, &lpEid); 
+    if (FAILED(hRes)) {
+		Log(_T("FindDefaultMsgStore() failed with error: ") << convert2hex(hRes));
+        return hRes;
+	}
+	MapiBufferResource lpEidBufferRes(lpEid);
+	
+	LPMDB lpMdb = NULL;
+	Log(_T("SearchFolder: Calling IMAPISession::OpenMsgStore() ..."));
+	hRes = lpSession->OpenMsgStore(0, cbEid, lpEid, NULL, MDB_WRITE | MAPI_DEFERRED_ERRORS | MDB_NO_DIALOG, &lpMdb);
+	if (FAILED(hRes)) {
+		Log(_T("IMAPISession::OpenMsgStore() failed with error: ") << convert2hex(hRes));
+	    return (hRes);
+	}
+	MapiResource lpMdbResource((IUnknown*)lpMdb);
+	
+	// Create a search results folder.
+	
+	// 1)
+	// Use IMAPIProps::GetProps to retrieve the PR_STORE_SUPPORT_MASK. We will also
+	// retrieve the PR_FINDER_ENTRYID property at the same time. Then we'll check if
+	// the STORE_SEARCH_OK flag is set, to indicate that searching is supported.
+	ULONG 			ulCount;
+	LPSPropValue	pProps;
+	SizedSPropTagArray(2, sptCols) = {2, PR_STORE_SUPPORT_MASK, PR_FINDER_ENTRYID};
+	hRes = lpMdb->GetProps((LPSPropTagArray)&sptCols, 0, &ulCount, &pProps);
+	if (FAILED(hRes)) {
+		Log(_T("LPMDB::GetProps() failed with error: ") << convert2hex(hRes));
+	    return (hRes);
+	}
+	MapiBufferResource lpMdbPropsResource(pProps);
+	
+	if (PR_STORE_SUPPORT_MASK == pProps[0].ulPropTag) {
+		if (pProps[0].Value.l & STORE_SEARCH_OK) {
+			tcout << _T("PR_STORE_SUPPORT_MASK contains STORE_SEARCH_OK (GOOD)") << endl;
+		} else {
+			tcout << _T("PR_STORE_SUPPORT_MASK does NOT contain STORE_SEARCH_OK (BAD)") << endl;
+		}
+	}
+	else {
+		tcout << _T("WARNING: Failed to retrieve property PR_STORE_SUPPORT_MASK")  << endl;
+	}
+	
+	ULONG		cbeid2 = 0;  
+    LPENTRYID	lpeid2 = NULL;
+	if (PR_FINDER_ENTRYID == pProps[1].ulPropTag) {
+	    cbeid2 = pProps[1].Value.bin.cb;
+		MAPIAllocateBuffer(cbeid2, (void **)&lpeid2);
+		CopyMemory(lpeid2, pProps[1].Value.bin.lpb, cbeid2);
+	}
+	else {
+		tcout << _T("ERROR: Failed to retrieve property PR_FINDER_ENTRYID") << endl;
+	    return (hRes);
+	}
+	MapiBufferResource lpEidResource(lpeid2);
+	
+	// 2) 	Call IMsgStore::OpenEntry to open the folder represented by PR_FINDER_ENTRYID.
+    ULONG			ulObjType = 0;
+	LPMAPIFOLDER    lpFolder = NULL;
+	hRes = lpMdb->OpenEntry(cbeid2, lpeid2, NULL, MAPI_MODIFY|MAPI_DEFERRED_ERRORS, &ulObjType, (LPUNKNOWN *)&lpFolder);
+	if (FAILED(hRes)) {
+		Log(_T("SearchFolder(): LPMDB::OpenEntry() failed with error: ") << convert2hex(hRes));
+		return (hRes);
+	}
+	MapiResource lpFolderResource(lpFolder);	
+	
+	// 3)	Call the folder's IMAPIFolder::CreateFolder method to create a search-results
+	//		folder with the FOLDER_SEARCH flag set.
+	LPMAPIFOLDER    lpSearchFolder = NULL;
+	hRes = lpFolder->CreateFolder(FOLDER_SEARCH, reinterpret_cast<LPTSTR>(const_cast<LPSTR>((tstring2string(foldername)).c_str())), NULL, NULL, MAPI_UNICODE, &lpSearchFolder);
+	if (hRes == S_OK) {
+		tcout << _T("Search folder created successfully: S_OK") << endl;
+	}
+	else 
+	if (hRes == MAPI_E_COLLISION) {
+		tcout << _T("ERROR: Failed to create search folder. Folder already exists: MAPI_E_COLLISION") << endl;
+	}
+	else 
+	if (hRes == MAPI_E_BAD_CHARWIDTH) {
+		tcout << _T("ERROR: Failed to create search folder: MAPI_E_BAD_CHARWIDTH") << endl;
+	}
+	else {
+		tcout << _T("ERROR: Failed to create search folder: ") << endl;
+	}
+	
+	// 4)	Build a restriction to hold your search criteria.
+	// 5)	Create an array of entry identifiers that represent the folders to be searched.
+	//		(this step is unnecessary if the search-results folder has been used before and
+	//		you want to search the same folders).
+	// 6)	Call the search-results folder's IMAPIContainer::SetSearchCriteria method, pointing
+	//		lpContainerList to the entry id array and lpRestriction to the restriction (search filter).
+	// 7)	If you have registered for search-complete notifications with the message store,
+	//		wait for the notification to arrive.
+	// 8)	View the results or the search by calling the search-result folder's IMAPIContainer::GetContentsTable
+	//		method to access its contents table.
+	// 9)	Call the contents table's IMAPITable::QueryRows method to retrieve the messages that
+	//		satisfy the search criteria.
+	
+	Log(_T("Leaving SearchFolder() ..."));
+	return hRes;	
 }
 
 HRESULT FindDefaultMsgStore(LPMAPISESSION lpSession, ULONG* lpcbeid, LPENTRYID* lppeid)
