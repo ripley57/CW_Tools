@@ -33,7 +33,7 @@ static HRESULT FindDefaultMsgStore(LPMAPISESSION lpSession, ULONG* lpcbeid, LPEN
 static HRESULT ListFolderEmails(SRow row, LPMDB lpMdb, wstring folderpath);
 static FILE* createOutputFile();
 static void writeEmailW(wstring entryidStr, wstring creationtimeMS, wstring creationtimeStr, wstring subject, wstring folderpath);
-static HRESULT SearchFolder(tstring& profilename, tstring& foldername);
+static HRESULT SearchFolder(tstring& profilename, tstring& foldername, int createseachfolder, int deletesearchfolder);
 
 // Output csv file.
 // NOTE: We need to write to an output file, because the Windows
@@ -80,6 +80,7 @@ void usage(tstring progname, tstring profilename)
 	_ftprintf(stderr, _T("                                                        \n"));
 	_ftprintf(stderr, _T("Usage:                                                  \n"));
 	_ftprintf(stderr, _T("    %s <pstfile> createsearchfolder                     \n"), progname.c_str());
+	_ftprintf(stderr, _T("    %s <pstfile> deletesearchfolder                     \n"), progname.c_str());
 	_ftprintf(stderr, _T("    %s <pstfile> [-p]                                   \n"), progname.c_str());
 	_ftprintf(stderr, _T("    %s -d                                               \n"), progname.c_str());
 	_ftprintf(stderr, _T("                                                        \n"));
@@ -106,6 +107,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	int 	deleteProfile 	= 1;
 	int     requirepstfile 	= 1;
 	int		createsearchfolder = 0;
+	int		deletesearchfolder = 0;
 	
 	tstring progname = tstring(argv[0]);
 	
@@ -135,6 +137,14 @@ int _tmain(int argc, _TCHAR* argv[])
 		else
 		if (s == _T("createsearchfolder")) {
 			createsearchfolder 	= 1;
+			createProfile		= 1;
+			listEmails			= 0;
+			deleteProfile		= 1;
+			requirepstfile 		= 1;
+		}
+		else
+		if (s == _T("deletesearchfolder")) {
+			deletesearchfolder  = 1;
 			createProfile		= 1;
 			listEmails			= 0;
 			deleteProfile		= 1;
@@ -179,8 +189,8 @@ int _tmain(int argc, _TCHAR* argv[])
 		tcout << _T("Successfully created profile \"") << profilename << _T("\".") << endl;
 	}
 
-	if (createsearchfolder) {
-		hRes = SearchFolder(profilename, foldername);
+	if (createsearchfolder || deletesearchfolder) {
+		hRes = SearchFolder(profilename, foldername, createsearchfolder, deletesearchfolder);
 		if (FAILED(hRes)) {
 			tcerr << _T("ERROR: Could not create search folder. Error: ") << convert2hex(hRes) << endl;
 			DeleteProfile(profilename);
@@ -720,6 +730,10 @@ HRESULT ListFolderEmails(SRow row, LPMDB lpMdb, wstring folderpath)
 	return hRes;
 }
 
+// If a MAPI provider's functions return MAPI_E_EXTENDED_ERROR, then they should also
+// provide more error information by running GetLastError() on the MAPI object where 
+// the call failed. 
+// See https://docs.microsoft.com/en-us/office/client-developer/outlook/mapi/mapi-extended-errors 
 void DisplayGetLastError(LPMAPIERROR pErr, const char* functionname, unsigned int lineno)
 {
 	printf("##################\n");	
@@ -734,7 +748,7 @@ void DisplayGetLastError(LPMAPIERROR pErr, const char* functionname, unsigned in
 }
 
 // See https://docs.microsoft.com/en-us/office/client-developer/outlook/mapi/searching-a-message-store
-HRESULT SearchFolder(tstring& profilename, tstring& foldername)
+HRESULT SearchFolder(tstring& profilename, tstring& foldername, int createsearchfolder, int deletesearchfolder)
 {
 	Log("Entering SearchFolder() ...");
 	HRESULT hRes = S_OK;
@@ -837,43 +851,149 @@ HRESULT SearchFolder(tstring& profilename, tstring& foldername)
 		return (hRes);
 	}
 	MapiResource lpFolderResource(lpFolder);	
-	
+
 	// 3)	Call the folder's IMAPIFolder::CreateFolder method to create a search-results
-	//		folder with the FOLDER_SEARCH flag set.
-	LPMAPIFOLDER    lpSearchFolder = NULL;
-	hRes = lpFolder->CreateFolder(FOLDER_SEARCH, reinterpret_cast<LPTSTR>(const_cast<LPSTR>((tstring2string(foldername)).c_str())), NULL, NULL, 0/*MAPI_UNICODE*/, &lpSearchFolder);
-	if (hRes == S_OK) {
-		tcout << _T("Search folder created successfully (S_OK)") << endl;
-	}
-	else 
-	if (hRes == MAPI_E_COLLISION) {
-		tcout << _T("ERROR: Failed to create search folder. Folder already exists (MAPI_E_COLLISION) (") << convert2hex(hRes) << _T(")") << endl;
-		LPMAPIERROR pErr;
-		if (S_OK == lpFolder->GetLastError(hRes, 0/*MAPI_UNICODE*/, &pErr)) {
-			tstring functionname = _T("SearchFolder: MAPIFOLDER::CreateFolder()");
-			DisplayGetLastError(pErr, "SearchFolder: MAPIFOLDER::CreateFolder()", __LINE__);
-			MAPIFreeBuffer(pErr);
+	//		folder with the FOLDER_SEARCH flag set.	
+	if (createsearchfolder) {
+		LPMAPIFOLDER    lpSearchFolder = NULL;
+		hRes = lpFolder->CreateFolder(FOLDER_SEARCH, reinterpret_cast<LPTSTR>(const_cast<LPSTR>((tstring2string(foldername)).c_str())), NULL, NULL, 0/*MAPI_UNICODE*/, &lpSearchFolder);
+		if (hRes == S_OK) {
+			tcout << _T("Search folder created successfully (S_OK)") << endl;
+		}
+		else 
+		if (hRes == MAPI_E_COLLISION) {
+			tcout << _T("ERROR: Failed to create search folder. Folder already exists (MAPI_E_COLLISION) (") << convert2hex(hRes) << _T(")") << endl;
+			LPMAPIERROR pErr;
+			if (S_OK == lpFolder->GetLastError(hRes, 0/*MAPI_UNICODE*/, &pErr)) {
+				tstring functionname = _T("SearchFolder: MAPIFOLDER::CreateFolder()");
+				DisplayGetLastError(pErr, "SearchFolder: MAPIFOLDER::CreateFolder()", __LINE__);
+				MAPIFreeBuffer(pErr);
+			}
+		}
+		else
+		if (hRes == MAPI_E_BAD_CHARWIDTH) {
+			tcout << _T("ERROR: Failed to create search folder (MAPI_E_BAD_CHARWIDTH) (") << convert2hex(hRes) << _T(")") << endl;
+			LPMAPIERROR pErr;
+			if (S_OK == lpFolder->GetLastError(hRes, 0/*MAPI_UNICODE*/, &pErr)) {
+				tstring functionname = _T("SearchFolder: MAPIFOLDER::CreateFolder()");
+				DisplayGetLastError(pErr, "SearchFolder: MAPIFOLDER::CreateFolder()", __LINE__);
+				MAPIFreeBuffer(pErr);
+			}
+		}
+		else {
+			tcout << _T("ERROR: Failed to create search folder, with error: ") << convert2hex(hRes) << endl;
+			LPMAPIERROR pErr;
+			if (S_OK == lpFolder->GetLastError(hRes, 0/*MAPI_UNICODE*/, &pErr)) {
+				tstring functionname = _T("SearchFolder: MAPIFOLDER::CreateFolder()");
+				DisplayGetLastError(pErr, "SearchFolder: MAPIFOLDER::CreateFolder()", __LINE__);
+				MAPIFreeBuffer(pErr);
+			}
 		}
 	}
-	else
-	if (hRes == MAPI_E_BAD_CHARWIDTH) {
-		tcout << _T("ERROR: Failed to create search folder (MAPI_E_BAD_CHARWIDTH) (") << convert2hex(hRes) << _T(")") << endl;
-		LPMAPIERROR pErr;
-		if (S_OK == lpFolder->GetLastError(hRes, 0/*MAPI_UNICODE*/, &pErr)) {
-			tstring functionname = _T("SearchFolder: MAPIFOLDER::CreateFolder()");
-			DisplayGetLastError(pErr, "SearchFolder: MAPIFOLDER::CreateFolder()", __LINE__);
-			MAPIFreeBuffer(pErr);
+	
+	if (deletesearchfolder) {
+		LPMAPITABLE lpHierarchyTable = NULL;
+		hRes = lpFolder->GetHierarchyTable(MAPI_DEFERRED_ERRORS, &lpHierarchyTable);
+		if (FAILED(hRes)) {
+			Log(_T("MAPIFOLDER::GetHierarchyTable() failed with error: ") << convert2hex(hRes));
+			return (hRes);
 		}
-	}
-	else {
-		tcout << _T("ERROR: Failed to create search folder, with error: ") << convert2hex(hRes) << endl;
-		LPMAPIERROR pErr;
-		if (S_OK == lpFolder->GetLastError(hRes, 0/*MAPI_UNICODE*/, &pErr)) {
-			tstring functionname = _T("SearchFolder: MAPIFOLDER::CreateFolder()");
-			DisplayGetLastError(pErr, "SearchFolder: MAPIFOLDER::CreateFolder()", __LINE__);
-			MAPIFreeBuffer(pErr);
+		MapiResource lpHierarchyTableResource(lpHierarchyTable);
+		
+		enum { 
+			ePR_ENTRYID,
+			ePR_DISPLAY_NAME_W,
+			ePR_DISPLAY_NAME_A,
+			NUMCOLS
+		};
+		SizedSPropTagArray(NUMCOLS, tableProps) = {
+			NUMCOLS,
+			{
+				PR_ENTRYID,
+				PR_DISPLAY_NAME_W,
+				PR_DISPLAY_NAME_A
+			}
+		};
+		hRes = lpHierarchyTable->SetColumns((LPSPropTagArray)&tableProps, 0);
+		if (FAILED(hRes)) {
+			Log(_T("MAPITABLE::SetColumns() failed with error: ") << convert2hex(hRes));
+			return hRes;
 		}
-	}
+		
+		// Go to  beginning of table.
+	    hRes = lpHierarchyTable->SeekRow(BOOKMARK_BEGINNING, 0, NULL);
+		if(FAILED(hRes)) {
+			Log(_T("MAPITABLE::SeekRow() failed with error: ") << convert2hex(hRes));
+			return hRes;
+		}
+		
+		// Get row count.
+		hRes = lpHierarchyTable->GetRowCount(0, &cRows);
+		if(FAILED(hRes)) {
+			Log(_T("MAPITABLE::GetRowCount() failed with error: ") << convert2hex(hRes));
+			return hRes;
+		}
+		if (cRows == 0) {
+			tcout << _T("*** No search folders found") << endl;
+			return hRes;
+		}
+		
+		// Read all the rows.
+		hRes = lpHierarchyTable->QueryRows(cRows, 0, &lpRows);
+		if(FAILED(hRes)) {
+			Log(_T("MAPITABLE::QueryRows() failed with error: ") << convert2hex(hRes));
+			return hRes;
+		}
+		MapiTableRowsResource tableRowsResource(lpRows);
+		Log(_T("MAPITABLE::QueryRows() lpRows->cRows=") << lpRows->cRows);
+
+		// List all top-level folders as we delete the requested one (if it exists).
+		wstring folderpath = _T("");
+		ULONG i = 0;
+		for (i = 0; i < cRows; i++) {
+			SRow row = lpRows->aRow[i];
+			wstring folderpath = _T("");
+			
+			// Construct full folder path.
+			wstring folderpath_w = row.lpProps[1].Value.lpszW;		// PR_DISPLAY_NAME_W
+			string  folderpath_a = row.lpProps[2].Value.lpszA;		// PR_DISPLAY_NAME_A
+			if (row.lpProps[1].Value.err == MAPI_E_BAD_CHARWIDTH)	// Fallback to use ANSI
+				folderpath = string2wstring(folderpath_a);
+			else
+				folderpath = folderpath_w;
+			tcout << _T("*** Found search folder: ") << folderpath << endl;
+		
+			// Is this the requested search folder to be deleted?
+			if (folderpath == foldername) {
+				tcout << _T("*** Deleting search folder: ") << folderpath << _T(" ...") << endl;
+
+				// Get the entryid for the folder.	
+				ULONG		cbeid = 0;  
+				LPENTRYID	lpeid = NULL;
+				cbeid = row.lpProps[0].Value.bin.cb;
+				MAPIAllocateBuffer(cbeid, (void **)&lpeid);
+				CopyMemory(lpeid, row.lpProps[0].Value.bin.lpb, cbeid);
+				MapiBufferResource lpEidResource(lpeid);
+		
+				// Delete the folder.
+				hRes = lpFolder->DeleteFolder(cbeid, lpeid, 0, NULL, DEL_FOLDERS | DEL_MESSAGES);
+				if (FAILED(hRes)) {
+					Log(_T("SearchFolder: MAPIFOLDER::DeleteFolder() for search folder failed with error: ") << convert2hex(hRes));
+					LPMAPIERROR pErr;
+					if (S_OK == lpMdb->GetLastError(hRes, 0/*MAPI_UNICODE*/, &pErr)) {
+						tstring functionname = _T("SearchFolder: MAPIFOLDER::DeleteFolder()");
+						DisplayGetLastError(pErr, "SearchFolder: MAPIFOLDER::DeleteFolder()", __LINE__);
+						MAPIFreeBuffer(pErr);
+					}
+				}
+				else {
+					tcout << _T("*** Successfully deleted search folder: ") << folderpath << endl;
+				}
+				return hRes;
+			}
+		}	
+		tcout << _T("*** Search folder not found: ") << foldername << endl;
+ 	}
 	
 	// 4)	Build a restriction to hold your search criteria.
 	// 5)	Create an array of entry identifiers that represent the folders to be searched.
