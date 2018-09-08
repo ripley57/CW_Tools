@@ -720,6 +720,19 @@ HRESULT ListFolderEmails(SRow row, LPMDB lpMdb, wstring folderpath)
 	return hRes;
 }
 
+void DisplayGetLastError(LPMAPIERROR pErr, const char* functionname, unsigned int lineno)
+{
+	printf("##################\n");	
+	printf("GetLastError: %s, line number: %u\n", 			functionname, lineno);
+	if (pErr->lpszError)		
+	printf("lpszError=%s\n", pErr->lpszError);
+	if (pErr->lpszComponent) 	
+	printf("lpszComponent=%s\n", pErr->lpszComponent);	
+	printf("ulLowLevelError=%lu (ULONG)\n", pErr->ulLowLevelError);
+	printf("ulContext=%lu (ULONG)\n", pErr->ulContext);
+	printf("##################\n");
+}
+
 // See https://docs.microsoft.com/en-us/office/client-developer/outlook/mapi/searching-a-message-store
 HRESULT SearchFolder(tstring& profilename, tstring& foldername)
 {
@@ -738,26 +751,29 @@ HRESULT SearchFolder(tstring& profilename, tstring& foldername)
 						MAPI_NEW_SESSION | MAPI_EXTENDED | MAPI_NO_MAIL | MAPI_EXPLICIT_PROFILE, 
 						&lpSession);
 	if (FAILED(hRes)) {
-		Log(_T("MAPILogonEx: Failed with error: ") << convert2hex(hRes));
-		return hRes;
+		Log(_T("SearchFolder: MAPILogonEx() failed with error: ") << convert2hex(hRes));
+		return (hRes);
 	}
 	MapiSessionResource sessResource(lpSession);
 	
     ULONG		cbEid = 0;  
     LPENTRYID	lpEid = NULL;
-	Log(_T("SearchFolder: Calling FindDefaultMsgStore() ..."));
     hRes = FindDefaultMsgStore(lpSession, &cbEid, &lpEid); 
     if (FAILED(hRes)) {
-		Log(_T("FindDefaultMsgStore() failed with error: ") << convert2hex(hRes));
+		Log(_T("SearchFolder: FindDefaultMsgStore() failed with error: ") << convert2hex(hRes));
         return hRes;
 	}
 	MapiBufferResource lpEidBufferRes(lpEid);
 	
 	LPMDB lpMdb = NULL;
-	Log(_T("SearchFolder: Calling IMAPISession::OpenMsgStore() ..."));
 	hRes = lpSession->OpenMsgStore(0, cbEid, lpEid, NULL, MDB_WRITE | MAPI_DEFERRED_ERRORS | MDB_NO_DIALOG, &lpMdb);
 	if (FAILED(hRes)) {
-		Log(_T("IMAPISession::OpenMsgStore() failed with error: ") << convert2hex(hRes));
+		Log(_T("SearchFolder: MAPISESSION::OpenMsgStore() failed with error: ") << convert2hex(hRes));
+		LPMAPIERROR pErr;
+		if (S_OK == lpSession->GetLastError(hRes, 0/*MAPI_UNICODE*/, &pErr)) {
+			DisplayGetLastError(pErr, "SearchFolder: MAPISESSION::OpenMsgStore()", __LINE__);
+			MAPIFreeBuffer(pErr);
+		}
 	    return (hRes);
 	}
 	MapiResource lpMdbResource((IUnknown*)lpMdb);
@@ -773,21 +789,25 @@ HRESULT SearchFolder(tstring& profilename, tstring& foldername)
 	SizedSPropTagArray(2, sptCols) = {2, PR_STORE_SUPPORT_MASK, PR_FINDER_ENTRYID};
 	hRes = lpMdb->GetProps((LPSPropTagArray)&sptCols, 0, &ulCount, &pProps);
 	if (FAILED(hRes)) {
-		Log(_T("LPMDB::GetProps() failed with error: ") << convert2hex(hRes));
+		Log(_T("SearchFolder: MDB::GetProps() for PR_FINDER_ENTRYID failed with error: ") << convert2hex(hRes));
+		LPMAPIERROR pErr;
+		if (S_OK == lpMdb->GetLastError(hRes, 0/*MAPI_UNICODE*/, &pErr)) {
+			tstring functionname = _T("SearchFolder: MDB::GetProps()");
+			DisplayGetLastError(pErr, "SearchFolder: MDB::GetProps() for PR_FINDER_ENTRYID", __LINE__);
+			MAPIFreeBuffer(pErr);
+		}
 	    return (hRes);
 	}
 	MapiBufferResource lpMdbPropsResource(pProps);
 	
 	if (PR_STORE_SUPPORT_MASK == pProps[0].ulPropTag) {
-		if (pProps[0].Value.l & STORE_SEARCH_OK) {
+		if (pProps[0].Value.l & STORE_SEARCH_OK) 
 			tcout << _T("PR_STORE_SUPPORT_MASK contains STORE_SEARCH_OK (GOOD)") << endl;
-		} else {
+		else 
 			tcout << _T("PR_STORE_SUPPORT_MASK does NOT contain STORE_SEARCH_OK (BAD)") << endl;
-		}
 	}
-	else {
+	else
 		tcout << _T("WARNING: Failed to retrieve property PR_STORE_SUPPORT_MASK")  << endl;
-	}
 	
 	ULONG		cbeid2 = 0;  
     LPENTRYID	lpeid2 = NULL;
@@ -807,7 +827,13 @@ HRESULT SearchFolder(tstring& profilename, tstring& foldername)
 	LPMAPIFOLDER    lpFolder = NULL;
 	hRes = lpMdb->OpenEntry(cbeid2, lpeid2, NULL, MAPI_MODIFY|MAPI_DEFERRED_ERRORS, &ulObjType, (LPUNKNOWN *)&lpFolder);
 	if (FAILED(hRes)) {
-		Log(_T("SearchFolder(): LPMDB::OpenEntry() failed with error: ") << convert2hex(hRes));
+		Log(_T("SearchFolder: MDB::OpenEntry() for PR_FINDER_ENTRYID failed with error: ") << convert2hex(hRes));
+		LPMAPIERROR pErr;
+		if (S_OK == lpMdb->GetLastError(hRes, 0/*MAPI_UNICODE*/, &pErr)) {
+			tstring functionname = _T("SearchFolder: MDB::OpenEntry()");
+			DisplayGetLastError(pErr, "SearchFolder: MDB::OpenEntry() for PR_FINDER_ENTRYID", __LINE__);
+			MAPIFreeBuffer(pErr);
+		}
 		return (hRes);
 	}
 	MapiResource lpFolderResource(lpFolder);	
@@ -817,18 +843,36 @@ HRESULT SearchFolder(tstring& profilename, tstring& foldername)
 	LPMAPIFOLDER    lpSearchFolder = NULL;
 	hRes = lpFolder->CreateFolder(FOLDER_SEARCH, reinterpret_cast<LPTSTR>(const_cast<LPSTR>((tstring2string(foldername)).c_str())), NULL, NULL, 0/*MAPI_UNICODE*/, &lpSearchFolder);
 	if (hRes == S_OK) {
-		tcout << _T("Search folder created successfully: S_OK") << endl;
+		tcout << _T("Search folder created successfully (S_OK)") << endl;
 	}
 	else 
 	if (hRes == MAPI_E_COLLISION) {
-		tcout << _T("ERROR: Failed to create search folder. Folder already exists: MAPI_E_COLLISION") << endl;
+		tcout << _T("ERROR: Failed to create search folder. Folder already exists (MAPI_E_COLLISION) (") << convert2hex(hRes) << _T(")") << endl;
+		LPMAPIERROR pErr;
+		if (S_OK == lpFolder->GetLastError(hRes, 0/*MAPI_UNICODE*/, &pErr)) {
+			tstring functionname = _T("SearchFolder: MAPIFOLDER::CreateFolder()");
+			DisplayGetLastError(pErr, "SearchFolder: MAPIFOLDER::CreateFolder()", __LINE__);
+			MAPIFreeBuffer(pErr);
+		}
 	}
-	else 
+	else
 	if (hRes == MAPI_E_BAD_CHARWIDTH) {
-		tcout << _T("ERROR: Failed to create search folder: MAPI_E_BAD_CHARWIDTH") << endl;
+		tcout << _T("ERROR: Failed to create search folder (MAPI_E_BAD_CHARWIDTH) (") << convert2hex(hRes) << _T(")") << endl;
+		LPMAPIERROR pErr;
+		if (S_OK == lpFolder->GetLastError(hRes, 0/*MAPI_UNICODE*/, &pErr)) {
+			tstring functionname = _T("SearchFolder: MAPIFOLDER::CreateFolder()");
+			DisplayGetLastError(pErr, "SearchFolder: MAPIFOLDER::CreateFolder()", __LINE__);
+			MAPIFreeBuffer(pErr);
+		}
 	}
 	else {
-		tcout << _T("ERROR: Failed to create search folder: ") << endl;
+		tcout << _T("ERROR: Failed to create search folder, with error: ") << convert2hex(hRes) << endl;
+		LPMAPIERROR pErr;
+		if (S_OK == lpFolder->GetLastError(hRes, 0/*MAPI_UNICODE*/, &pErr)) {
+			tstring functionname = _T("SearchFolder: MAPIFOLDER::CreateFolder()");
+			DisplayGetLastError(pErr, "SearchFolder: MAPIFOLDER::CreateFolder()", __LINE__);
+			MAPIFreeBuffer(pErr);
+		}
 	}
 	
 	// 4)	Build a restriction to hold your search criteria.
