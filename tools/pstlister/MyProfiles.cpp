@@ -815,7 +815,7 @@ HRESULT SearchFolder(tstring& profilename, tstring& foldername)
 	// 3)	Call the folder's IMAPIFolder::CreateFolder method to create a search-results
 	//		folder with the FOLDER_SEARCH flag set.
 	LPMAPIFOLDER    lpSearchFolder = NULL;
-	hRes = lpFolder->CreateFolder(FOLDER_SEARCH, reinterpret_cast<LPTSTR>(const_cast<LPSTR>((tstring2string(foldername)).c_str())), NULL, NULL, MAPI_UNICODE, &lpSearchFolder);
+	hRes = lpFolder->CreateFolder(FOLDER_SEARCH, reinterpret_cast<LPTSTR>(const_cast<LPSTR>((tstring2string(foldername)).c_str())), NULL, NULL, 0/*MAPI_UNICODE*/, &lpSearchFolder);
 	if (hRes == S_OK) {
 		tcout << _T("Search folder created successfully: S_OK") << endl;
 	}
