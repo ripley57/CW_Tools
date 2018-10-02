@@ -1,0 +1,114 @@
+<html>
+
+<!-- 
+     See:
+     https://medium.com/@jamesfuthey/simulating-the-creation-of-website-thumbnail-screenshots-using-iframes-7145269891db 
+
+     The following might also be useful if I ever want to automate the generation of similar iframe code:
+     https://www.dyn-web.com/tutorials/iframes/dyn-gen/#marker
+     https://www.developerfusion.com/thread/33979/creating-iframe-through-javascript/
+-->
+
+<head>
+<style>
+
+/*
+** Include enough width and height to show all of the page.
+*/
+.thumbnail iframe {
+  width: 1440px;
+  height: 900px;
+}
+
+/*
+** Scale-down the iframe so it looks more like a thumbnail.
+**
+** Note the comment from the developer:
+** "CSS3 image scaling a 2d transformation (like this), will work in all modern desktop and mobile browsers (IE9+). 
+**  The only caveat to this being that some mobile browsers will run into memory limit issues if you attempt to use 
+**  this technique to create a large number of “simulated” thumbnails, since the total size of the webpage being 
+**  rendered will be much larger than a typical webpage."
+*/
+.thumbnail {
+  position: relative;
+  -ms-zoom: 0.25;
+  -moz-transform: scale(0.25);
+  -moz-transform-origin: 0 0;
+  -o-transform: scale(0.25);
+  -o-transform-origin: 0 0;
+  -webkit-transform: scale(0.25);
+  -webkit-transform-origin: 0 0;
+}
+
+/*
+** Mask the image so that it behaves like a regular html image.
+** We don't want the user to see any scroll bars in the image,
+** or be able to interact with anything on the page such as any
+** clickable buttons.
+*/
+.thumbnail:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+/*
+** Position our simulated thumbnail an an inline block element,
+** just like a regular html img element.
+*/ 
+.thumbnail-container {
+  width: calc(1440px * 0.25);
+  height: calc(900px * 0.25);
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+}
+
+/*
+** Use Javascript onload to fade-in our thumbnails once
+** everyting has loaded.
+*/
+.thumbnail iframe {
+  opacity: 0;
+  transition: all 300ms ease-in-out;
+}
+
+/*
+** Because we are going to fade-in our thumbnails when they are ready,
+** we'll display a pseudo placeholder image until that time, to indicate
+** that an image is to be displayed.
+*/
+.thumbnail-container {
+  background: #f9f9f9;
+}
+.thumbnail-container::before {
+  position: absolute;
+  left: calc(50% — 16px);
+  top: calc(50% — 18px);
+  opacity: 0.2;
+  display: block;
+ 
+  content: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkJz48c3ZnIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDMyIDMyIiBoZWlnaHQ9IjMycHgiIGlkPSJMYXllcl8xIiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAzMiAzMiIgd2lkdGg9IjMycHgiIHhtbDpzcGFjZT0icHJlc2VydmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxnIGlkPSJwaG90b18xXyI+PHBhdGggZD0iTTI3LDBINUMyLjc5MSwwLDEsMS43OTEsMSw0djI0YzAsMi4yMDksMS43OTEsNCw0LDRoMjJjMi4yMDksMCw0LTEuNzkxLDQtNFY0QzMxLDEuNzkxLDI5LjIwOSwwLDI3LDB6ICAgIE0yOSwyOGMwLDEuMTAyLTAuODk4LDItMiwySDVjLTEuMTAzLDAtMi0wLjg5OC0yLTJWNGMwLTEuMTAzLDAuODk3LTIsMi0yaDIyYzEuMTAyLDAsMiwwLjg5NywyLDJWMjh6IiBmaWxsPSIjMzMzMzMzIi8+PHBhdGggZD0iTTI2LDRINkM1LjQ0Nyw0LDUsNC40NDcsNSw1djE4YzAsMC41NTMsMC40NDcsMSwxLDFoMjBjMC41NTMsMCwxLTAuNDQ3LDEtMVY1QzI3LDQuNDQ3LDI2LjU1Myw0LDI2LDR6ICAgIE0yNiw1djEzLjg2OWwtMy4yNS0zLjUzQzIyLjU1OSwxNS4xMjMsMjIuMjg3LDE1LDIyLDE1cy0wLjU2MSwwLjEyMy0wLjc1LDAuMzM5bC0yLjYwNCwyLjk1bC03Ljg5Ni04Ljk1ICAgQzEwLjU2LDkuMTIzLDEwLjI4Nyw5LDEwLDlTOS40NCw5LjEyMyw5LjI1LDkuMzM5TDYsMTMuMDg3VjVIMjZ6IE02LDE0LjZsNC00LjZsOC4wNjYsOS4xNDNsMC41OCwwLjY1OEwyMS40MDgsMjNINlYxNC42eiAgICBNMjIuNzQsMjNsLTMuNDI4LTMuOTU1TDIyLDE2bDQsNC4zNzlWMjNIMjIuNzR6IiBmaWxsPSIjMzMzMzMzIi8+PHBhdGggZD0iTTIwLDEzYzEuNjU2LDAsMy0xLjM0MywzLTNzLTEuMzQ0LTMtMy0zYy0xLjY1OCwwLTMsMS4zNDMtMywzUzE4LjM0MiwxMywyMCwxM3ogTTIwLDhjMS4xMDIsMCwyLDAuODk3LDIsMiAgIHMtMC44OTgsMi0yLDJjLTEuMTA0LDAtMi0wLjg5Ny0yLTJTMTguODk2LDgsMjAsOHoiIGZpbGw9IiMzMzMzMzMiLz48L2c+PC9zdmc+");
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Note: One major limitation of this approach is that clicking the
+           thumbnail image does not take you to the page. Instead, we
+		   need to add a separate link after the thumbnail image. -->
+<div class="thumbnail-container">
+  <div class="thumbnail">
+   <iframe src="http://www.iamsacha.nl/" frameborder="0" onload="var that=this;setTimeout(function() { that.style.opacity = 1 }, 300)"></iframe>
+  </div>
+</div>
+<a href="http://www.iamsacha.nl/">http://www.iamsacha.nl/</a>
+
+</body>
+</html>
