@@ -9,6 +9,11 @@
 ** JeremyC 03-06-2017
 */
 
+#define INITGUID
+#include <objbase.h>
+
+#define USES_IID_IMessage
+
 #include <tchar.h>	
 #include <assert.h>
 #include <iostream>
@@ -18,6 +23,7 @@
 #include <mspst.h>
 #include <mapiutil.h>
 #include <mapidefs.h>
+#include <Imessage.h>
 #include <strsafe.h>
 
 #include "CommonDefines.h"
@@ -34,6 +40,7 @@ static HRESULT ListFolderEmails(SRow row, LPMDB lpMdb, wstring folderpath);
 static FILE* createOutputFile();
 static void writeEmailW(wstring entryidStr, wstring creationtimeMS, wstring creationtimeStr, wstring subject, wstring folderpath);
 static HRESULT SearchFolder(tstring& profilename, tstring& foldername, int createseachfolder, int deletesearchfolder);
+static HRESULT exportEmail(LPMDB, SPropValue* eid);
 
 // Output csv file.
 // NOTE: We need to write to an output file, because the Windows
@@ -44,6 +51,8 @@ tstring gOutputFileName = _T("output.csv");
 // Logging.
 #define Log(x)	{if (gDebug) {tstringstream ss; ss << x; tcout << ss.str() << endl;}}
 int gDebug = 0;	// Set to 1 for verbose logging.
+
+int gExport = 0; // Set to 1 export the messages as msg files.
 
 FILE* createOutputFile()
 {
@@ -81,17 +90,18 @@ void usage(tstring progname, tstring profilename)
 	_ftprintf(stderr, _T("Usage:                                                  \n"));
 	_ftprintf(stderr, _T("    %s <pstfile> createsearchfolder                     \n"), progname.c_str());
 	_ftprintf(stderr, _T("    %s <pstfile> deletesearchfolder                     \n"), progname.c_str());
-	_ftprintf(stderr, _T("    %s <pstfile> [-p]                                   \n"), progname.c_str());
+	_ftprintf(stderr, _T("    %s <pstfile> [-p] [-e]                              \n"), progname.c_str());
 	_ftprintf(stderr, _T("    %s -d                                               \n"), progname.c_str());
 	_ftprintf(stderr, _T("                                                        \n"));
 	_ftprintf(stderr, _T("Where:                                                  \n"));
+	_ftprintf(stderr, _T("    -e                 Extract msg files to current dir.\n"));
 	_ftprintf(stderr, _T("    -p                 Create profile \"%s\" only.      \n"), profilename.c_str());
 	_ftprintf(stderr, _T("    -d                 Delete profile \"%s\" only.      \n"), profilename.c_str());
 	_ftprintf(stderr, _T("    -v                 Verbose logging.                 \n"));
 	_ftprintf(stderr, _T("    -h                 Display this help information.   \n"));
 	_ftprintf(stderr, _T("                                                        \n"));
 	_ftprintf(stderr, _T("Examples:                                               \n"));
-	_ftprintf(stderr, _T("    %s D:\\generated.pst                                \n"), progname.c_str());
+	_ftprintf(stderr, _T("    %s D:\\generated.pst -e                             \n"), progname.c_str());
 	_ftprintf(stderr, _T("    %s D:\\generated.pst -v                             \n"), progname.c_str());
 	_ftprintf(stderr, _T("    %s -d                                               \n"), progname.c_str());
 	_ftprintf(stderr, _T("    %s D:\\generated.pst -p                             \n"), progname.c_str());
@@ -122,6 +132,9 @@ int _tmain(int argc, _TCHAR* argv[])
 		if (s == _T("-v"))		// Enable verbose logging. 
 			gDebug = 1;
 		else 
+		if (s == _T("-e"))		// Extract msg files. 
+			gExport = 1;
+		else
 		if (s == _T("-p")) {	// Create profile only.
 			createProfile	= 1;
 			listEmails 		= 0;
@@ -670,6 +683,11 @@ HRESULT ListFolderEmails(SRow row, LPMDB lpMdb, wstring folderpath)
 
 		Log(_T("Calling writeEmailW() ..."));
 		writeEmailW(entryidStr_w, creationtimeMS_w, creationtimeStr_w, subject_w, folderpath);
+
+		if (gExport) {
+			Log(_T("Calling exportEmail() ..."));
+			exportEmail(lpMdb, &(lpRows->aRow[0].lpProps[ePR_ENTRYID]));
+		}
 	}
 	
 	// Process any sub-folders (i.e. containers) in this folder.
@@ -1100,4 +1118,125 @@ HRESULT FindDefaultMsgStore(LPMAPISESSION lpSession, ULONG* lpcbeid, LPENTRYID* 
 
 	Log(_T("Leaving FindDefaultMsgStore() ..."));
     return (hr);
+}
+
+// https://support.microsoft.com/en-us/help/171907/info-save-message-to-msg-compound-file
+// https://support.microsoft.com/en-gb/help/239795/how-to-list-messages-in-the-inbox-with-mapi
+// {00020D0B-0000-0000-C000-000000000046}
+DEFINE_GUID(CLSID_MailMessage,
+0x00020D0B,
+0x0000, 0x0000, 0xC0, 0x00, 0x0, 0x00, 0x0, 0x00, 0x00, 0x46);
+HRESULT exportEmail(LPMDB lpMDB, SPropValue* eid)
+{
+	Log(_T("Entering exportEmail() ..."));
+	HRESULT		hRes = NOERROR;
+	LPMESSAGE	lpMessage = NULL;
+	ULONG 		ulObjType = NULL;
+			
+	hRes = lpMDB->OpenEntry(eid->Value.bin.cb,
+			(LPENTRYID)eid->Value.bin.lpb, 
+            NULL,//default interface
+            MAPI_BEST_ACCESS,
+            &ulObjType,
+            (LPUNKNOWN *)&lpMessage);	
+		
+	// Location of parent directory for extracted msg file.
+	TCHAR szPath[_MAX_PATH];
+	GetCurrentDirectory(_MAX_PATH, szPath);
+	//GetTempPath(_MAX_PATH, szPath);
+	_tcscat(szPath, _T("\\msgs"));
+	_tmkdir(szPath);
+	
+	// Location of extracted msg file named after the entryid.
+	tstring entryidStr = convertENTRYIDtostring(eid);
+	//Log(_T("exportEmail() entryidStr=") << entryidStr.c_str());
+	TCHAR strMsgFile[_MAX_PATH];
+    _tcscpy(strMsgFile, szPath);
+	_tcscat(strMsgFile, _T("\\"));
+    _tcscat(strMsgFile, (wchar_t*)(tstring2wstring(entryidStr).c_str()));
+    _tcscat(strMsgFile, _T(".msg"));
+	Log(_T("exportEmail() strMsgFile=") << strMsgFile);
+	
+	// get memory allocation function
+    LPMALLOC pMalloc = MAPIGetDefaultMalloc();
+
+#if 0
+	// Convert new file name to WideChar
+	ULONG cbStrSize = 0L;
+	LPWSTR lpWideCharStr = NULL;
+    cbStrSize = MultiByteToWideChar(CP_ACP, MB_PRECOMPOSED, strMsgFile, -1, lpWideCharStr, 0);
+	MAPIAllocateBuffer(cbStrSize * sizeof(WCHAR), (LPVOID *)&lpWideCharStr);
+	MultiByteToWideChar(CP_ACP, MB_PRECOMPOSED, strMsgFile, -1, lpWideCharStr, cbStrSize);
+#endif
+
+	// create compound file
+	LPSTORAGE pStorage = NULL;
+    hRes = ::StgCreateDocfile(strMsgFile,
+                              STGM_READWRITE |
+                              STGM_TRANSACTED |
+                              STGM_CREATE, 0, &pStorage);
+
+	// Open an IMessage session.
+	LPMSGSESS pMsgSession =  NULL;
+    hRes = ::OpenIMsgSession(pMalloc, 0, &pMsgSession);
+
+	// Open an IMessage interface on an IStorage object.
+	LPMESSAGE pIMsg = NULL;
+    hRes = ::OpenIMsgOnIStg(pMsgSession,
+                            MAPIAllocateBuffer,
+                            MAPIAllocateMore,
+                            MAPIFreeBuffer,
+                            pMalloc,
+                            NULL,
+                            pStorage,
+                            NULL, 0, 0, &pIMsg);
+							
+	// write the CLSID to the IStorage instance - pStorage. This will
+    // only work with clients that support this compound document type
+    // as the storage medium. If the client does not support
+    // CLSID_MailMessage as the compound document, you will have to use
+    // the CLSID that it does support.
+    hRes = WriteClassStg(pStorage, CLSID_MailMessage);							
+
+	// Specify properties to exclude in the copy operation. These are
+    // the properties that Exchange excludes to save bits and time.
+    // Should not be necessary to exclude these, but speeds the process
+    // when a lot of messages are being copied.
+	SizedSPropTagArray ( 7, excludeTags );
+    excludeTags.cValues = 7;
+    excludeTags.aulPropTag[0] = PR_ACCESS;
+    excludeTags.aulPropTag[1] = PR_BODY;
+    excludeTags.aulPropTag[2] = PR_RTF_SYNC_BODY_COUNT;
+    excludeTags.aulPropTag[3] = PR_RTF_SYNC_BODY_CRC;
+    excludeTags.aulPropTag[4] = PR_RTF_SYNC_BODY_TAG;
+    excludeTags.aulPropTag[5] = PR_RTF_SYNC_PREFIX_COUNT;
+    excludeTags.aulPropTag[6] = PR_RTF_SYNC_TRAILING_COUNT;
+							
+	// copy message properties to IMessage object opened on top of IStorage.
+    hRes = lpMessage->CopyTo(0, NULL,
+                            (LPSPropTagArray)&excludeTags,
+                            NULL, NULL,
+                            (LPIID)&IID_IMessage,
+                            pIMsg, 0, NULL);						
+			
+	// save changes to IMessage object.
+    pIMsg->SaveChanges(KEEP_OPEN_READWRITE);
+		
+	 // save changes in storage of new doc file.
+    hRes = pStorage->Commit(STGC_DEFAULT);
+
+	// free objects and clean up memory.
+    //MAPIFreeBuffer(lpWideCharStr);
+    pStorage->Release();
+    pIMsg->Release();
+    CloseIMsgSession(pMsgSession);
+	
+	pStorage = NULL;
+    pIMsg = NULL;
+    pMsgSession = NULL;
+    //lpWideCharStr = NULL;
+		
+	UlRelease(lpMessage);
+	Log(_T("Leaving exportEmail() ..."));
+    return (hRes);
 }
