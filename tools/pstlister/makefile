@@ -1,17 +1,17 @@
 # Build instructions:
 #
-# 1. Install the Microsoft SDK.
-#    http://download.microsoft.com/download/F/1/0/F10113F5-B750-4969-A255-274341AC6BCE/GRMSDKX_EN_DVD.iso
-#    http://stackoverflow.com/questions/1901279/windows-7-sdk-installation-failure
+# 1. Install VC++ from my CD titled "Visual Studio 2010 SP1 Express (Aug 2014)":
+#    F:\VCExpress\setup.exe
 #
-# 2. Point to the MAPI header files in "..\include\Office 2010 Developer Resources\Outlook 2010 MAPI Headers".
+# 2. Launch a VC++ command window:
+#    %comspec% /k ""C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\vcvarsall.bat"" x86
 #
-# 3. Setup the environment to build 32-bit.
-#    3.1 Open the Windows SDK command prompt window:
-#        Click Start, All Programs, Microsoft Windows SDK v7.1, 
-#    3.2 setenv /debug /x86
+# 3. Point to the MAPI header files using -I"..\include\Office 2010 Developer Resources\Outlook 2010 MAPI Headers"
 #
-# 4. Build program:
+# 4. MapiStubLibrary.cpp includes <winsock2.h>. To successfully find this header file, add the following to the include path:
+#    -I"C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\Include"
+#
+# 5. Build program:
 #    nmake -f makefile
 #
 # Comments:
@@ -31,7 +31,7 @@
 cc=cl
 link=link
 
-include=-I"..\include\Office 2010 Developer Resources\Outlook 2010 MAPI Headers" -I"C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include" -I"C:\WinSDK\Include"
+include=-I"..\include\Office 2010 Developer Resources\Outlook 2010 MAPI Headers" -I"C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include" -I"C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\Include"
 
 cflags=/c /Zi /EHsc -DUNICODE -D_UNICODE
 lflags=Advapi32.lib kernel32.lib user32.lib wsock32.lib winmm.lib ole32.lib /nologo /subsystem:console /out:pstlister.exe /debug /pdb:pstlister.pdb 
