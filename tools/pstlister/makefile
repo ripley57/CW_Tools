@@ -4,11 +4,7 @@
 #    http://download.microsoft.com/download/F/1/0/F10113F5-B750-4969-A255-274341AC6BCE/GRMSDKX_EN_DVD.iso
 #    http://stackoverflow.com/questions/1901279/windows-7-sdk-installation-failure
 #
-# 2. Install the MAPI header files.
-#    Run installer Outlook2010MAPIHeaders.exe from here:
-#    http://www.microsoft.com/en-us/download/details.aspx?id=12905
-#    The header files will be installed here:
-#    C:\Office 2010 Developer Resources\Outlook 2010 MAPI Headers
+# 2. Point to the MAPI header files in "..\include\Office 2010 Developer Resources\Outlook 2010 MAPI Headers".
 #
 # 3. Setup the environment to build 32-bit.
 #    3.1 Open the Windows SDK command prompt window:
@@ -35,7 +31,7 @@
 cc=cl
 link=link
 
-include=-I"C:\Office 2010 Developer Resources\Outlook 2010 MAPI Headers" -I"C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include" -I"C:\WinSDK\Include"
+include=-I"..\include\Office 2010 Developer Resources\Outlook 2010 MAPI Headers" -I"C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include" -I"C:\WinSDK\Include"
 
 cflags=/c /Zi /EHsc -DUNICODE -D_UNICODE
 lflags=Advapi32.lib kernel32.lib user32.lib wsock32.lib winmm.lib ole32.lib /nologo /subsystem:console /out:pstlister.exe /debug /pdb:pstlister.pdb 
