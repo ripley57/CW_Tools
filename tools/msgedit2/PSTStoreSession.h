@@ -4,6 +4,7 @@
 #include <mapix.h>
 #include "Logger.h"
 #include "Session.h"
+#include "PSTProfile.h"
 
 class PSTStoreSession
 {
@@ -15,6 +16,8 @@ private:
 	
 	Logger* 		m_pLogger;
 	
+	PSTProfile		m_PSTProfile;
+	
 public:
 	PSTStoreSession(string profileName, string pstFileName, Session* pSession);
 	~PSTStoreSession();
@@ -22,6 +25,7 @@ public:
 	bool deleteProfile();
 	bool close();
 	bool createProfile();
+	bool createPSTFile();
 
 	static std::string convertHRESULTtoHex(HRESULT hRes);
 	std::string GetLastError(HRESULT hRes);

@@ -73,6 +73,9 @@ PSTStoreSession.obj: PSTStoreSession.cpp
 
 PSTWriter.obj: PSTWriter.cpp
 	$(cc) $(cflags) $(include) PSTWriter.cpp
+
+PSTProfile.obj: PSTProfile.cpp
+	$(cc) $(cflags) $(include) PSTProfile.cpp
 	
 Logger.obj: Logger.cpp
 	$(cc) $(cflags) $(include) Logger.cpp
@@ -86,8 +89,8 @@ wingetopt.obj: wingetopt.cpp
 main.obj: main.cpp
 	$(cc) $(cflags) $(include) main.cpp
 	
-msgedit2.exe: setup32bitenv $(stub_objs) CSVReader.obj Msg.obj MSGEdit.obj Session.obj PSTStoreSession.obj PSTWriter.obj Logger.obj Utils.obj wingetopt.obj main.obj 
-    $(link) $(stub_objs) CSVReader.obj Msg.obj MSGEdit.obj Session.obj PSTStoreSession.obj PSTWriter.obj Logger.obj Utils.obj wingetopt.obj main.obj $(lflags)
+msgedit2.exe: setup32bitenv $(stub_objs) CSVReader.obj Msg.obj MSGEdit.obj Session.obj PSTStoreSession.obj PSTWriter.obj PSTProfile.obj Logger.obj Utils.obj wingetopt.obj main.obj 
+    $(link) $(stub_objs) CSVReader.obj Msg.obj MSGEdit.obj Session.obj PSTStoreSession.obj PSTWriter.obj PSTProfile.obj Logger.obj Utils.obj wingetopt.obj main.obj $(lflags)
 
 clean:
 	del *.obj

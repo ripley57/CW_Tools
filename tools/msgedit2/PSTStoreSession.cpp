@@ -15,19 +15,25 @@ PSTStoreSession::~PSTStoreSession()
 }
 
 bool
-PSTStoreSession::deleteProfile()
+PSTStoreSession::createPSTFile()
 {
 	return false;
 }
 
 bool
-PSTStoreSession::close()
+PSTStoreSession::deleteProfile()
 {
-	return false;
+	return m_PSTProfile.deleteProfile();
 }
 
 bool
 PSTStoreSession::createProfile()
+{
+	return m_PSTProfile.createProfile();
+}
+
+bool
+PSTStoreSession::close()
 {
 	return false;
 }
