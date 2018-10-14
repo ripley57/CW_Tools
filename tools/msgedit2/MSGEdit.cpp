@@ -85,7 +85,7 @@ MSGEdit::processOpenCommand(msgcommand& cmd)
 		m_pPSTWriter = NULL;
 	}
 	
-	m_pPSTWriter = new PSTWriter(cmd_pstname);
+	m_pPSTWriter = new PSTWriter(cmd_pstname, m_pSession);
 	bool ret = m_pPSTWriter->open();
 	
 	return ret;

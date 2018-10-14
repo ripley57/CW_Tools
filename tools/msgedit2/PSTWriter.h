@@ -5,12 +5,13 @@
 #include <iostream>
 
 #include "Logger.h"
+#include "Session.h"
 #include "PSTStoreSession.h"
 
 class PSTWriter
 {
 private:	
-	LPMAPISESSION 	m_pSession;
+	Session			*m_pSession;
 	PSTStoreSession	*m_pPSTStoreSession;
 	
 	std::string 	m_PSTFileName;
@@ -20,7 +21,7 @@ private:
 	Logger* 		m_pLogger;
 	
 public:
-	PSTWriter(string pstFileName);
+	PSTWriter(string pstFileName, Session *pSession);
 	~PSTWriter();
 
 	bool open();

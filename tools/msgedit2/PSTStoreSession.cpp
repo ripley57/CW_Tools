@@ -4,8 +4,8 @@
 
 using namespace std;
 
-PSTStoreSession::PSTStoreSession(string profileName, string pstFileName)
-	:m_profileName(profileName),m_PSTFileName(pstFileName),m_pSession(NULL)
+PSTStoreSession::PSTStoreSession(string profileName, string pstFileName, Session* pSession)
+	:m_profileName(profileName),m_PSTFileName(pstFileName),m_pSession(pSession)
 {
 	m_pLogger = Logger::getLogger("PSTSTORESESSION");
 }
@@ -44,15 +44,9 @@ string
 PSTStoreSession::GetLastError(HRESULT hRes)
 {
 	string		sErr("unknown");
-	LPMAPIERROR pErr = NULL;
 	
 	assert(m_pSession != NULL);
-	
-	if (S_OK == m_pSession->GetLastError(hRes, 0, &pErr))
-	{
-		sErr = string(pErr->lpszError);
-		MAPIFreeBuffer((LPVOID)pErr);
-	}
-	
+	sErr = m_pSession->GetLastError(hRes);
+
 	return sErr;
 }

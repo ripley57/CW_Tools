@@ -5,16 +5,15 @@
 
 using namespace std;
 
-PSTWriter::PSTWriter(string pstFileName)
+PSTWriter::PSTWriter(string pstFileName, Session* pSession)
 	:m_PSTFileName(pstFileName),
 	m_rootFolder("@PR_IPM_SUBTREE_ENTRYID"),
-	m_pPSTStoreSession(NULL),
-	m_pSession(NULL)
+	m_pSession(pSession)
 {
 	m_pLogger = Logger::getLogger("PSTWRITER");
 	
 	m_profileName = createProfileName();
-	m_pPSTStoreSession = new PSTStoreSession(m_profileName, m_PSTFileName);
+	m_pPSTStoreSession = new PSTStoreSession(m_profileName, m_PSTFileName, m_pSession);
 }
 
 PSTWriter::~PSTWriter()
@@ -58,15 +57,9 @@ string
 PSTWriter::GetLastError(HRESULT hRes)
 {
 	string		sErr("unknown");
-	LPMAPIERROR pErr = NULL;
 	
 	assert(m_pSession != NULL);
-	
-	if (S_OK == m_pSession->GetLastError(hRes, 0, &pErr))
-	{
-		sErr = string(pErr->lpszError);
-		MAPIFreeBuffer((LPVOID)pErr);
-	}
+	sErr = m_pSession->GetLastError(hRes);
 	
 	return sErr;
 }

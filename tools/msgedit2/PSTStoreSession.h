@@ -3,11 +3,12 @@
 
 #include <mapix.h>
 #include "Logger.h"
+#include "Session.h"
 
 class PSTStoreSession
 {
 private:
-	LPMAPISESSION 	m_pSession;
+	Session*	 	m_pSession;
 	
 	std::string		m_profileName;
 	std::string		m_PSTFileName;
@@ -15,7 +16,7 @@ private:
 	Logger* 		m_pLogger;
 	
 public:
-	PSTStoreSession(string profileName, string pstFileName);
+	PSTStoreSession(string profileName, string pstFileName, Session* pSession);
 	~PSTStoreSession();
 
 	bool deleteProfile();
