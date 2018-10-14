@@ -4,6 +4,7 @@
 #include "CSVReader.h"
 #include "Logger.h"
 #include "Session.h"
+#include "PSTWriter.h"
 
 typedef std::vector<string>	msgcommand;
 typedef std::vector<string>::iterator msgiter;
@@ -13,6 +14,7 @@ class MSGEdit
 private:
 	CSVReader 	m_csvReader;
 	Session*	m_pSession;
+	PSTWriter*	m_pPSTWriter;
 	
 	Logger* m_pLogger;
 	

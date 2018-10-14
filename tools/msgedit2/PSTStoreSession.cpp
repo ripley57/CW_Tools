@@ -4,14 +4,32 @@
 
 using namespace std;
 
-PSTStoreSession::PSTStoreSession()
-	:m_pSession(NULL)
+PSTStoreSession::PSTStoreSession(string profileName, string pstFileName)
+	:m_profileName(profileName),m_PSTFileName(pstFileName),m_pSession(NULL)
 {
 	m_pLogger = Logger::getLogger("PSTSTORESESSION");
 }
 
 PSTStoreSession::~PSTStoreSession()
 {
+}
+
+bool
+PSTStoreSession::deleteProfile()
+{
+	return false;
+}
+
+bool
+PSTStoreSession::close()
+{
+	return false;
+}
+
+bool
+PSTStoreSession::createProfile()
+{
+	return false;
 }
 
 string

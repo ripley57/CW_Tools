@@ -4,14 +4,13 @@
 #include "MSGEdit.h"
 
 MSGEdit::MSGEdit(CSVReader& csvReader, Session* session)
-	: m_csvReader(csvReader), m_pSession(session)
+	: m_csvReader(csvReader), m_pSession(session), m_pPSTWriter(NULL)
 {
 	m_pLogger = Logger::getLogger("MSGEDIT");
 }
 
 MSGEdit::~MSGEdit()
 {
-	
 }
 
 bool
@@ -72,7 +71,24 @@ MSGEdit::processOpenCommand(msgcommand& cmd)
 {
 	string c	= cmd[0];		// "OPEN"
 	
-	return false;
+	string cmd_pstname = cmd[1];
+	
+	if (m_pPSTWriter != NULL)
+	{
+		if (cmd_pstname.compare(m_pPSTWriter->getPSTFileName()) == 0)
+			return true;
+	}
+	else
+	{
+		m_pPSTWriter->close();	
+		delete m_pPSTWriter;
+		m_pPSTWriter = NULL;
+	}
+	
+	m_pPSTWriter = new PSTWriter(cmd_pstname);
+	bool ret = m_pPSTWriter->open();
+	
+	return ret;
 }
 
 /*
@@ -89,7 +105,20 @@ MSGEdit::processCloseCommand(msgcommand& cmd)
 {
 	string c	= cmd[0];		// "CLOSE"
 	
-	return false;
+	string cmd_pstname = cmd[1];
+	
+	bool ret = false;
+	if (m_pPSTWriter != NULL) 
+	{
+		if (cmd_pstname.compare(m_pPSTWriter->getPSTFileName()) == 0)
+		{
+			ret = m_pPSTWriter->close();
+			delete m_pPSTWriter;
+			m_pPSTWriter = NULL;
+		}
+	}
+	
+	return ret;
 }
 
 bool 
