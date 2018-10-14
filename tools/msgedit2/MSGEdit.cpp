@@ -30,6 +30,16 @@ MSGEdit::processCommand(msgcommand cmd)
 {
 	string c = cmd[0];		// Actual command, e.g. "UPDATE". The remaining command args vary depending on this.
 
+	if (c.compare("OPEN") == 0)
+	{
+		return processOpenCommand(cmd);
+	}
+	else
+	if (c.compare("CLOSE") == 0)
+	{
+		return processCloseCommand(cmd);
+	}		
+	else
 	if (c.compare("UPDATE") == 0)
 	{
 		return processUpdateCommand(cmd);
@@ -46,6 +56,40 @@ MSGEdit::processCommand(msgcommand cmd)
 	}
 	
 	return false;	// Failure.
+}
+
+/*
+** processOpenCommand()
+**
+** Description:
+**	Create named PST file or open existing PST file.
+**
+** Example CSV entry:
+**	"OPEN","test.pst"
+*/
+bool
+MSGEdit::processOpenCommand(msgcommand& cmd)
+{
+	string c	= cmd[0];		// "OPEN"
+	
+	return false;
+}
+
+/*
+** processCloseCommand()
+**
+** Description:
+**	Close the specified PST file.
+**
+** Example CSV entry:
+**	"CLOSE","test.pst"
+*/
+bool
+MSGEdit::processCloseCommand(msgcommand& cmd)
+{
+	string c	= cmd[0];		// "CLOSE"
+	
+	return false;
 }
 
 bool 

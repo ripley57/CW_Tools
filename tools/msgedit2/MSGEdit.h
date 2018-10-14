@@ -22,6 +22,8 @@ public:
 	
 	bool getNextCommand(msgcommand& cmd);
 	bool processCommand(msgcommand);
+	bool processOpenCommand(msgcommand& cmd);
+	bool processCloseCommand(msgcommand& cmd);
 	bool processUpdateCommand(msgcommand cmd);
 	bool processUpdateSubjectCommand(msgcommand cmd);
 	bool processUpdateRecipientsCommand(msgcommand cmd);
