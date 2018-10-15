@@ -11,11 +11,18 @@ class PSTProfile
 private:	
 	Logger* 		m_pLogger;
 	
+	std::string		m_profileName;
+	std::string 	m_pstFileName;
+	
+	std::string convert2hex(HRESULT hRes);
+	
 public:
-	PSTProfile();
+	PSTProfile(string profileName, string pstFileName);
 	~PSTProfile();
 	
 	bool createProfile();
 	bool deleteProfile();
+	std::string getProfileName() { return m_profileName; }
+	std::string getPstFileName() { return m_pstFileName; }
 };
 #endif

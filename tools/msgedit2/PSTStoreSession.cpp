@@ -1,17 +1,23 @@
 #include <sstream>
 #include <cassert>
+
 #include "PSTStoreSession.h"
 
 using namespace std;
 
 PSTStoreSession::PSTStoreSession(string profileName, string pstFileName, Session* pSession)
-	:m_profileName(profileName),m_PSTFileName(pstFileName),m_pSession(pSession)
+	:m_pPSTProfile(NULL), m_pSession(pSession)
 {
 	m_pLogger = Logger::getLogger("PSTSTORESESSION");
+	
+	m_pPSTProfile = new PSTProfile(profileName, pstFileName);
 }
 
 PSTStoreSession::~PSTStoreSession()
 {
+	if (m_pPSTProfile != NULL) {
+		delete m_pPSTProfile;
+	}
 }
 
 bool
@@ -23,13 +29,13 @@ PSTStoreSession::createPSTFile()
 bool
 PSTStoreSession::deleteProfile()
 {
-	return m_PSTProfile.deleteProfile();
+	return m_pPSTProfile->deleteProfile();
 }
 
 bool
 PSTStoreSession::createProfile()
 {
-	return m_PSTProfile.createProfile();
+	return m_pPSTProfile->createProfile();
 }
 
 bool
