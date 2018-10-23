@@ -28,6 +28,7 @@ public:
 	bool close();
 	std::string createProfileName();
 	std::string getPSTFileName() { return m_PSTFileName; }
+	PSTStoreSession* getPSTStoreSession() { return m_pPSTStoreSession; }
 	
 	static std::string convertHRESULTtoHex(HRESULT hRes);
 	std::string GetLastError(HRESULT hRes);

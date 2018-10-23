@@ -2,6 +2,7 @@
 
 #include "Msg.h"
 #include "MSGEdit.h"
+#include "Utils.h"
 
 MSGEdit::MSGEdit(CSVReader& csvReader, Session* session)
 	: m_csvReader(csvReader), m_pSession(session), m_pPSTWriter(NULL)
@@ -69,25 +70,30 @@ MSGEdit::processCommand(msgcommand cmd)
 bool
 MSGEdit::processOpenCommand(msgcommand& cmd)
 {
-	string c	= cmd[0];		// "OPEN"
+	m_pLogger->detail("MSGEdit::processOpenCommand: Entering...");
 	
+	string c	= cmd[0];		// "OPEN"
 	string cmd_pstname = cmd[1];
 	
 	if (m_pPSTWriter != NULL)
 	{
-		if (cmd_pstname.compare(m_pPSTWriter->getPSTFileName()) == 0)
+		if (cmd_pstname.compare(m_pPSTWriter->getPSTFileName()) == 0) {
+			m_pLogger->debug("MSGEdit::processOpenCommand: PST file already open: " + cmd_pstname);
 			return true;
+		}
+		else
+		{
+			m_pPSTWriter->close();	
+			delete m_pPSTWriter;
+			m_pPSTWriter = NULL;
+		}
 	}
-	else
-	{
-		m_pPSTWriter->close();	
-		delete m_pPSTWriter;
-		m_pPSTWriter = NULL;
-	}
-	
+
+	assert(m_pSession != NULL);
 	m_pPSTWriter = new PSTWriter(cmd_pstname, m_pSession);
 	bool ret = m_pPSTWriter->open();
 	
+	m_pLogger->detail("MSGEdit::processOpenCommand: Exiting...");
 	return ret;
 }
 
@@ -103,8 +109,9 @@ MSGEdit::processOpenCommand(msgcommand& cmd)
 bool
 MSGEdit::processCloseCommand(msgcommand& cmd)
 {
-	string c	= cmd[0];		// "CLOSE"
+	m_pLogger->detail("MSGEdit::processCloseCommand: Entering...");
 	
+	string c	= cmd[0];		// "CLOSE"
 	string cmd_pstname = cmd[1];
 	
 	bool ret = false;
@@ -112,12 +119,14 @@ MSGEdit::processCloseCommand(msgcommand& cmd)
 	{
 		if (cmd_pstname.compare(m_pPSTWriter->getPSTFileName()) == 0)
 		{
+			m_pLogger->debug("MSGEdit::processCloseCommand() Closing PSTWriter for PST: " + cmd_pstname + " ...");
 			ret = m_pPSTWriter->close();
 			delete m_pPSTWriter;
 			m_pPSTWriter = NULL;
 		}
 	}
 	
+	m_pLogger->detail("MSGEdit::processCloseCommand: Exiting... ret=" +  bool_as_text(ret));
 	return ret;
 }
 
@@ -159,11 +168,47 @@ MSGEdit::processAddCommand(msgcommand cmd)
 		return processAddAttachment(cmd);
 	}
 	else
+	if (c1.compare("MSG") == 0)
+	{
+		return processAddMsg(cmd);
+	}
+	else
 	{
 		m_pLogger->error("MSGEdit::processAddCommand: Bad command: " + c1);
 	}
 
 	return false;	// Failure.
+}
+
+/*
+** processAddMsg()
+**
+** Description:
+**	Add an MSG to the currently open PST.
+**
+** Example CSV entry:
+**	"ADD","MSG","C:\temp\testemail_1.msg","folderA\folderB\folderC"
+*/
+bool
+MSGEdit::processAddMsg(msgcommand cmd)
+{
+	m_pLogger->detail("MSGEdit::processAddMsg() Entering...");
+	
+	string	c	= cmd[0];	// "ADD"
+	string	c1	= cmd[1];	// "MSG"
+	bool	ret = false;
+	
+	assert( c.compare("ADD")	== 0);
+	assert(c1.compare("MSG")	== 0);
+	
+	string cmd_msgpath		= cmd[2];
+	string cmd_folderpath	= cmd[3];
+	
+	assert(m_pPSTWriter != NULL);
+	ret = m_pPSTWriter->getPSTStoreSession()->writeMsg(cmd_msgpath, cmd_folderpath);
+	
+	m_pLogger->detail("MSGEdit::processAddMsg() Exiting...");
+	return ret;
 }
 
 /*
@@ -326,8 +371,6 @@ MSGEdit::processAllCommands()
 	msgcommand cmd;
 	while (getNextCommand(cmd))
 	{
-		m_pLogger->debug("MSGEdit::processAllCommands: Number of args in command: " + cmd.size());
-		
 		// DEBUG - print the command args.
 		if (m_pLogger->is_debug_on())
 		{
@@ -335,7 +378,7 @@ MSGEdit::processAllCommands()
 			int i;
 			for (iter = cmd.begin(), i = 1; iter != cmd.end(); iter++, i++)
 			{
-				m_pLogger->debug("MSGEdit::processAllCommands: command arg: " + i + string(": ") + string(*iter));
+				m_pLogger->debug("MSGEdit::processAllCommands: command arg: " + int_as_text(i) + string(": ") + string(*iter));
 			}
 		}
 		

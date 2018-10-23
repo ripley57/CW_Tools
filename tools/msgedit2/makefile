@@ -37,7 +37,7 @@ cflags=/c /Zi /EHsc
 #lflags=Advapi32.lib kernel32.lib user32.lib wsock32.lib winmm.lib ole32.lib /nologo /subsystem:console /machine:I386  /out:msgedit2.exe /debug  /pdb:msgedit2.pdb
 lflags=Advapi32.lib kernel32.lib user32.lib wsock32.lib winmm.lib ole32.lib /nologo /subsystem:console /out:msgedit2.exe /debug  /pdb:msgedit2.pdb
 
-include=-I"..\include\Office 2010 Developer Resources\Outlook 2010 MAPI Headers" -I"C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include" -I"C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\Include"
+include=-I"..\include\Office 2010 Developer Resources\Outlook 2010 MAPI Headers" -I"C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include" -I"C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\Include" -I"..\include\mfcmapi"
 
 all:: msgedit2.exe
 
@@ -76,6 +76,9 @@ PSTWriter.obj: PSTWriter.cpp
 
 PSTProfile.obj: PSTProfile.cpp
 	$(cc) $(cflags) $(include) PSTProfile.cpp
+
+PSTFolder.obj: PSTFolder.cpp
+	$(cc) $(cflags) $(include) PSTFolder.cpp
 	
 Logger.obj: Logger.cpp
 	$(cc) $(cflags) $(include) Logger.cpp
@@ -89,8 +92,8 @@ wingetopt.obj: wingetopt.cpp
 main.obj: main.cpp
 	$(cc) $(cflags) $(include) main.cpp
 	
-msgedit2.exe: setup32bitenv $(stub_objs) CSVReader.obj Msg.obj MSGEdit.obj Session.obj PSTStoreSession.obj PSTWriter.obj PSTProfile.obj Logger.obj Utils.obj wingetopt.obj main.obj 
-    $(link) $(stub_objs) CSVReader.obj Msg.obj MSGEdit.obj Session.obj PSTStoreSession.obj PSTWriter.obj PSTProfile.obj Logger.obj Utils.obj wingetopt.obj main.obj $(lflags)
+msgedit2.exe: setup32bitenv $(stub_objs) CSVReader.obj Msg.obj MSGEdit.obj Session.obj PSTStoreSession.obj PSTWriter.obj PSTProfile.obj PSTFolder.obj Logger.obj Utils.obj wingetopt.obj main.obj 
+    $(link) $(stub_objs) CSVReader.obj Msg.obj MSGEdit.obj Session.obj PSTStoreSession.obj PSTWriter.obj PSTProfile.obj PSTFolder.obj Logger.obj Utils.obj wingetopt.obj main.obj $(lflags)
 
 clean:
 	del *.obj

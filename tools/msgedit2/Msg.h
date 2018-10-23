@@ -10,10 +10,12 @@ class Msg
 {
 private:
 	string		m_msgpath;
-	bool		m_msgopen;	// Indicates if the msg file has been opened, i.e. read from disk.
+	bool		m_msgopen;				// Indicates if the msg file has been opened, i.e. read from disk.
 
 	IStorage* 	m_pIStorage;
     IMessage* 	m_pIMessage;
+	LPMSGSESS	m_pMsgSession;			// Message session used for serialization/deserialization
+	LPMESSAGE 	m_pIMsg;				// The underlying IMesssage object
 	
 	Session*	m_pSession;
 	
@@ -48,4 +50,7 @@ public:
 	bool delete_PR_RTF_COMPRESSED();
 	
 	bool setBody(string& sBodyFilePath);
+	
+	bool deserializeIMsgFromFile();
+	LPMESSAGE getIMessage(void) { return m_pIMsg; };
 };

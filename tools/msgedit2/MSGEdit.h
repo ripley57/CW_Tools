@@ -34,6 +34,7 @@ public:
 	bool processAddAttachment(msgcommand cmd);
 	bool processDelete_PR_RTF_COMPRESSED(msgcommand cmd);
 	bool processUpdateBodyCommand(msgcommand cmd);
+	bool processAddMsg(msgcommand cmd);
 };
 
 #endif

@@ -35,7 +35,67 @@ Msg::convertHRESULTtoHex(HRESULT hRes)
 	ss << std::hex << hRes;
 	return ss.str();
 }
-		
+	
+bool
+Msg::deserializeIMsgFromFile()
+{
+	m_pLogger->detail("Msg::deserializeIMsgFromFile() Entering...");
+
+	IMalloc* pMalloc = MAPIGetDefaultMalloc();
+	if (pMalloc == NULL) {
+		m_pLogger->error("OpenMsg: MAPIGetDefaultMalloc failed");
+		return false;
+	}
+	
+	std::wstring w_msgpath = std::wstring(m_msgpath.begin(), m_msgpath.end());
+	m_pLogger->detail("Msg::deserializeIMsgFromFile() About to call StgOpenStorageEx() to open: " + m_msgpath);
+	
+	STGOPTIONS myOpts = {0};
+	myOpts.usVersion = 1,//STGOPTIONS_VERSION;
+	myOpts.reserved = 0;
+	myOpts.ulSectorSize = 4096;
+	#if STGOPTIONS_VERSION >= 2
+	myOpts.pwcsTemplateFile = 0;
+	#endif 
+
+	// Open a IStorage Interface on top of the compound file.
+	DWORD grfMode = STGM_DIRECT_SWMR | STGM_READ | STGM_SHARE_DENY_NONE;
+	HRESULT hRes = StgOpenStorageEx ((LPOLESTR)w_msgpath.c_str(), 
+							 grfMode,
+							 STGFMT_DOCFILE,
+                             0, //FILE_FLAG_NO_BUFFERING,
+							&myOpts,
+							0,
+							__uuidof(IStorage),
+							(LPVOID*)&m_pIStorage);
+    if (FAILED(hRes)) {
+		return false;
+	}
+	
+	// Open an IMessage session.
+    hRes = OpenIMsgSession(pMalloc, 0, &m_pMsgSession);
+	if (FAILED(hRes)) {
+		return false;
+	}
+	
+	// Open an IMessage interface on the IStorage object.
+	ULONG ulFlags=fMapiUnicode;
+   	hRes = OpenIMsgOnIStg((LPMSGSESS)m_pMsgSession,
+                            MAPIAllocateBuffer,
+                            MAPIAllocateMore,
+                            MAPIFreeBuffer,
+                            (LPMALLOC)pMalloc,
+                            NULL,
+                            (LPSTORAGE)m_pIStorage,
+                            NULL, 0, ulFlags, (LPMESSAGE*)&m_pIMsg);
+	if (FAILED(hRes)) {
+		return false;
+	}
+	
+	m_pLogger->detail("Msg::deserializeIMsgFromFile() Exiting...");
+	return true;
+}
+	
 bool
 Msg::OpenMsg()
 {
