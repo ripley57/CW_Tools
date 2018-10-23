@@ -1,0 +1,3 @@
+"OPEN","mytest.pst"
+"ADD","MSG","c:\temp\test.msg","folder_a\folder_b"
+"CLOSE","mytest.pst"
