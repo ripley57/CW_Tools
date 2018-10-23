@@ -1,5 +1,20 @@
 TOOLS_DIR=$*
 
+# Description:
+#   Launch cmd.exe suitable for building VC++ 2010 programns on the command-line.
+#
+# Usage:
+#   vc++
+#
+function vc++()
+{
+    if [ "$1" = '-h' ]; then
+        usage vc++
+        return
+    fi
+	cmd /c start cmd /k "C:\Program^ Files^ ^(x86^)\Microsoft^ Visual^ Studio^ 10.0\VC\vcvarsall.bat" x86
+}
+
 # Return path to CW_Tools directory for Windows user.
 function _cwtoolsdir()
 {
