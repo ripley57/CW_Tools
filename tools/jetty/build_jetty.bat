@@ -17,3 +17,4 @@ set CLASSPATH=.;%BASE_PATH%\classes;^
 javac MyServer.java
 javac HelloServlet.java
 javac SpitServlet.java
+javac DummyResponseServlet.java

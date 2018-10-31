@@ -15,10 +15,13 @@
 **     4. Simple demo servlet.
 **        Accessed via http://localhost:9090/ctx0/it
 **
+**	   5. Simple dummy response servlet.
+**        Accessed via http://localhost:8080/ctx2/dummyresponse/
+**
 **   To enable DEBUG logging, make sure that file
 **   jetty-logging.properties is on the classpath.
 **
-**   JeremyC 24/03/2014
+**   JeremyC 31/10/2018
 */
  
 import org.apache.commons.codec.binary.Base64;
@@ -143,6 +146,9 @@ public class MyServer
 
 	ServletHolder holder_ctx2 = new ServletHolder(new SpitServlet());
 	context2.addServlet(holder_ctx2, "/spit/*");
+	
+		ServletHolder holder_ctx3 = new ServletHolder(new DummyResponseServlet());
+		context2.addServlet(holder_ctx3, "/dummyresponse/*");	
 		
        	server.start();
        	server.join();
