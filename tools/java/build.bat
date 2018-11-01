@@ -97,6 +97,7 @@ setlocal
 set _classpath=%WEB-INF_PATH%\classes;^
 %BASE_PATH%\Myrmidon.jar;^
 %BASE_PATH%\tomcat\lib\servlet-api.jar;^
+%LIB_PATH%\commons-fileupload-1.3.2.jar;^
 %LIB_PATH%\struts-1.2.4.jar;^
 %LIB_PATH%\json-1.0-cw.jar;^
 %LIB_PATH%\jdom-1.0.1-cw.jar;^
