@@ -4,6 +4,14 @@
 ** To load this JavaScript demo, load file_upload_demo.html via the Jetty web server, e.g.:
 ** http://localhost:8080/list/file_upload_demo.html
 **
+** This demo was created to try and reproduce the following issue whereby the web browser wraps an HTML "<PRE>" tag around a JSON 
+** response from the web server handling the Ajax request:
+**   https://www.sencha.com/forum/archive/index.php/t-17248.html
+**   https://docs.sencha.com/ext/5.0.0/api/src/Connection.js.html
+** See also the screenshot Capture-no-PRE-tag-with-extjs420.png which shows where to set a breakpoint in order to see the server's 
+** JSON response. My testing indicates (using a Windows 10 ie11 vm where this issue has been seen when using a v3-based extjs version), 
+** that this issue does not occur with extjs v4.2.0.
+**
 ** Note: This demo uses my DummyResponseServlet to return a JSON "success" response.
 **
 ** See also similar JavaScript demo here:
