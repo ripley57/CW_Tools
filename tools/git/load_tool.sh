@@ -1,6 +1,22 @@
 TOOLS_DIR=$*
 
 # Description:
+#   Load markdown help page.
+#
+# Usage:
+#   markdown
+#
+function markdown() {
+    if [ "$1" = '-h' ]; then
+        usage markdown
+        return
+    fi
+    local _browser=$(_get_web_browser)
+    "$_browser" "https://www.markdownguide.org/basic-syntax/" &
+}
+
+
+# Description:
 #   Useful git commands and links.
 #
 # Usage:
@@ -66,7 +82,7 @@ Github pages:
 https://www.thinkful.com/learn/a-guide-to-using-github-pages/start/new-project/project-page/
 http://jmcglone.com/guides/github-pages/
 Markdown cheatsheet:
-http://packetlife.net/media/library/16/Markdown.pdf
+https://www.markdownguide.org/basic-syntax/
 
 EOI
 }
