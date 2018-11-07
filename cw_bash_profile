@@ -351,7 +351,7 @@ function nf() {
 #        n <filename1> [<filename2> ...]
 #
 function n() {
-    local _file=$*
+    local _files=$*
 
     if [ "$1" = '-h' ]; then
         usage n
