@@ -27,7 +27,7 @@ function uml() {
 		
 	# Extract.
 	if [ ! -f "$umlet_exe" ]; then
-              (cd "$TOOLS_DIR/uml" && unzip "umlet.zip" && chmod ugo+rx "$umlet_exe")
+              (cd "$TOOLS_DIR/uml" && unzip "$umlet_zip" && chmod ugo+rx "$umlet_exe")
 	fi
 	
 	# Launch.
