@@ -12,7 +12,7 @@ function uml() {
         	return
     	fi
 	
-	local umlet_download="https://www.dropbox.com/s/.../umlet.zip?dl=1"
+	local umlet_download="https://www.dropbox.com/s/4840hgj2ljjobkk/umlet.zip?dl=1"
 	local umlet_zip="umlet.zip"
 	local umlet_exe="$TOOLS_DIR/uml/umlet-standalone-14.3.0/Umlet/Umlet.exe"
 
