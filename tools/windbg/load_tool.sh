@@ -1,6 +1,32 @@
 TOOLS_DIR=$*
 
 # Description:
+#   Download the x86 and x64 versions of windbg from the Windows SDK 10.
+#
+#   This function will simply download the windbg exe installers to the 
+#   current directory. No installation will be performed.
+#
+# Usage:
+#   download_windbg
+#
+function download_windbg() {
+	if [ "$1" = '-h' ]; then
+		usage download_windbg
+		return
+	fi
+	
+	local download_x86="https://www.dropbox.com/s/ox28ffov8of7690/X86%20Debuggers%20And%20Tools-x86_en-us.msi?dl=1"
+	local download_x64="https://www.dropbox.com/s/0c7o8qdp6qcgj68/X64%20Debuggers%20And%20Tools-x64_en-us.msi?dl=1"
+	
+	download_file "$download_x86" "X86_Debuggers_And_Tools-x86_en-us.msi"
+	download_file "$download_x64" "X64_Debuggers_And_Tools-x64_en-us.msi"
+	
+	# Launch Windows Explorer, to show the downloads.
+	e
+}
+
+
+# Description:
 #	Show helpful windbg usage examples.
 #
 # Usage:
