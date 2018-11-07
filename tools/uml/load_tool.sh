@@ -8,9 +8,9 @@ TOOLS_DIR=$*
 #
 function uml() {
 	if [ "$1" = '-h' ]; then
-        usage uml
-        return
-    fi
+        	usage uml
+        	return
+    	fi
 	
 	local umlet_download="https://www.dropbox.com/s/.../umlet.zip?dl=1"
 	local umlet_zip="umlet.zip"
@@ -20,16 +20,16 @@ function uml() {
 	# this was probably a failed download due to lack of Internet connection.
 	(cd "$TOOLS_DIR/uml" && [ -f "$umlet_zip" ] && [ ! -s "$umlet_zip" ] && rm "$umlet_zip")
 	
-	# Download the zip file.
-	if [ ! -f "$umlet_zip" ]; then
-	   (cd "$TOOLS_DIR/uml" && download_file "$DOWNLOAD_UMLET" "umlet.zip")
+	# Download.
+	if [ ! -f "$TOOLS_DIR/uml/$umlet_zip" ]; then
+      	      (cd "$TOOLS_DIR/uml" && download_file "$umlet_download" "$umlet_zip")
 	fi
 		
-	# Extract the zip file.
+	# Extract.
 	if [ ! -f "$umlet_exe" ]; then
-       (cd "$TOOLS_DIR/uml" && unzip "umlet.zip" && chmod ugo+rx "umlet_exe")
+              (cd "$TOOLS_DIR/uml" && unzip "umlet.zip" && chmod ugo+rx "$umlet_exe")
 	fi
 	
-	# Launch the exe.
-    "$umlet_exe" &
+	# Launch.
+    	"$umlet_exe" &
 }
