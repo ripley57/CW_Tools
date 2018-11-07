@@ -351,14 +351,14 @@ function nf() {
 #        n <filename1> [<filename2> ...]
 #
 function n() {
-    local _files=$*
+    local _file=$*
 
     if [ "$1" = '-h' ]; then
         usage n
         return
     fi
 
-    # Determine the editor to use. Fall back to notepad.
+    # Determine the editor to use.
     local _editor=$(_get_text_editor)
 
     if [ "$1" = '-' ]; then
@@ -367,40 +367,51 @@ function n() {
        return
     fi
 
-    # Launch files specified on command-line.
-    if [ ! -z "$_files" ]; then
-        local _f
-        for _f in "$@" ; do
-            if [ -f "$_f" ]; then
-                $_editor $(cygpath -aw "$_f") &
-            else
-                echo "WARNING: Ignoring file $_f"
-            fi
-        done
+    # If the number of input arguments is greater than one, we
+    # assume this is a spacey file path, that we need to enclose
+    # in quotes. Note: This function used to be able to accept
+    # multiple filepaths of the command-line, but I don't ever
+    # use that option, so I think it's more useful to replace 
+    # that with this automatic wrapping of a single space path.
+    if [ $# -gt 1 ]; then
+        $_editor "$(cygpath -aw "$*")" &
         return
     fi
+	
+    #07-11-2018: Old code to launch multiple files listed on the command-line:
+    #if [ ! -z "$_files" ]; then
+    #    local _f
+    #    for _f in "$@" ; do
+    #        if [ -f "$_f" ]; then
+    #            $_editor $(cygpath -aw "$_f") &
+    #        else
+    #            echo "WARNING: Ignoring file $_f"
+    #        fi
+    #    done
+    #    return
+    #fi
 
     # If no files were specified on the command-line, use Windows clipboard.
-    if [ -z "$_files" ]; then
-        local _clip=$(getclip)
-        if [ x"$_clip" != x ]; then
-            getclip > "$TMP/n.$$"
-            # Force newline, so we read all lines in clipboard.
-            echo >> "$TMP/n.$$"
-            local _f
-            while read _f ; do
-                if [ -f "$_f" ]; then
-                    $_editor $(cygpath -aw $_f) &
-                else
-                    echo "WARNING: Ignoring file $_f"
-                fi
-	    done < "$TMP/n.$$"
-            rm -f "$TMP/n.$$"
-        fi
-    fi
+    #07-11-2018: I don't remember ever using this, so commenting it out.
+    #if [ -z "$_files" ]; then
+    #    local _clip=$(getclip)
+    #    if [ x"$_clip" != x ]; then
+    #        getclip > "$TMP/n.$$"
+    #        # Force newline, so we read all lines in clipboard.
+    #        echo >> "$TMP/n.$$"
+    #        local _f
+    #        while read _f ; do
+    #            if [ -f "$_f" ]; then
+    #                $_editor $(cygpath -aw $_f) &
+    #            else
+    #                echo "WARNING: Ignoring file $_f"
+    #            fi
+    #        done < "$TMP/n.$$"
+    #        rm -f "$TMP/n.$$"
+    #    fi
+    #fi
 
-    # Just launch the editor with no files.
-    $_editor
+    $_editor "$(cygpath -aw "$*")" &
 }
 
 
