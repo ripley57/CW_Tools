@@ -31,6 +31,7 @@ rem set proxyargs=-DproxySet=true -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=
 
 REM Run your program here
 REM Example (WSClient.class):
+REM TODO: Why not pass the target class file as an input argument, or deduce it by searching for "main()"?
 java %debugargs% WSClient
 goto :END
 
