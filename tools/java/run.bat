@@ -52,7 +52,7 @@ for /f %%A in ('dir /b /s %BASE_PATH%\tomcat\*.jar 2^>nul') do (
   echo %%~nxA | findstr /r /i /c:".*tomcat.*.jar" >nul && (
   call set jar_files_tomcat=%%jar_files_tomcat%%;%%A)
 )
-set _classpath=%WEB-INF_PATH%\classes;%jar_files%;%jar_files_tomcat%
+set _classpath=classes;%WEB-INF_PATH%\classes;%jar_files%;%jar_files_tomcat%
 endlocal & set CLASSPATH=%_classpath%
 goto :eof
 
