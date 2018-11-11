@@ -15,5 +15,4 @@ Running the demo in a Windows cmd.exe:
 
 
 TODO:
-o Send the generated Java files to a local "src" directory by using the "javacc" Ant task.
-o Compile the java files to a local "classes" directory and run the demo from there also.
+o Perhaps try using the "javacc" Ant task.

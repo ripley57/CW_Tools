@@ -1,4 +1,4 @@
-/* adder.jj Adding up numbers */
+/* adder.jj Adding up numbers - see tutorial1 */
 options {
 	STATIC = false ;
 }
@@ -19,22 +19,28 @@ SKIP : { "\n" | "\r" | "\r\n" }
 TOKEN : { < PLUS : "+" > }
 TOKEN : { < NUMBER : (["0"-"9"])+ > }
 
-int Start() :
+int Start() throws NumberFormatException :
 {
 	Token t;
 	int i;
 	int value;
 }
 {
-	t = <NUMBER>
-	{ i = Integer.parseInt( t.image ); }
-	{ value = i; }
+	value = Primary()
 	(
 		<PLUS>
-		t = <NUMBER>
-		{ i = Integer.parseInt( t.image ); }
+		i = Primary()
 		{ value += i; }
 	)*
 	<EOF>
 	{ return value; }
+}
+
+int Primary() throws NumberFormatException :
+{
+	Token t;
+}
+{
+	t=<NUMBER>
+	{ return Integer.parseInt( t.image ); }
 }
