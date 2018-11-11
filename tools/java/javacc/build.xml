@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='ISO-8859-1' ?>
+
+<project name="adder Demo" default="compile-and-test" basedir=".">
+  <property name="version" value="1.0"></property>
+  <property name="javacc.root" value="."></property>
+  <property name="debug_parser" value="false"></property>
+  <property name="debug_scanner" value="false"></property>
+
+  <target name="compile-and-test" depends="compile">
+     <exec failonerror="true" executable="java">
+           <arg value="-classpath"/>
+           <arg value="."/>
+           <arg value="JavaParser"/>
+           <arg value="JavaGenerics.java"/>
+     </exec>
+
+     <exec failonerror="true" executable="java">
+           <arg value="-classpath"/>
+           <arg value="."/>
+           <arg value="JavaParser"/>
+           <arg value="JavaParser.java"/>
+     </exec>
+  </target>
+
+  <target name="compile" depends="generated-files">
+    <javac srcdir="."
+           destdir="." >
+    </javac>
+  </target>
+
+  <target name="clean">
+    <delete>
+      <fileset dir=".">
+         <include name="xxJavaParser.java"/>
+         <include name="xxJavaParserTokenManager.java"/>
+         <include name="xxJavaParserConstants.java"/>
+         <include name="xx*CharStream*.java"/>
+         <include name="xxToken.java"/>
+         <include name="xxTokenMgrError.java"/>
+         <include name="xxParseException.java"/>
+         <include name="xx*.class"/>
+      </fileset>
+    </delete>
+  </target>
+
+  <target name="parser-files-init">
+        <uptodate property="parser.gen"
+                  targetfile="adder.jj">
+            <srcfiles dir="." includes="xxJavaParser.java"/>
+        </uptodate>
+  </target>
+
+  <target name="generated-files" depends="parser-files-init" if="parser.gen">
+	 <java classname="javacc" fork="true" failonerror="true" >
+	 		<classpath>
+				<fileset file="${javacc.root}/bin/lib/javacc.jar"/>
+			</classpath>
+			<arg value="-DEBUG_PARSER=${debug_parser}"/>
+            <arg value="-DEBUG_TOKEN_MANAGER=${debug_scanner}"/>
+            <arg value="adder.jj"/>
+     </java>
+  </target>
+</project>
