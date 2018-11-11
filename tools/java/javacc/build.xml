@@ -1,44 +1,34 @@
 <?xml version='1.0' encoding='ISO-8859-1' ?>
 
 <project name="adder Demo" default="compile-and-test" basedir=".">
-  <property name="version" value="1.0"></property>
-  <property name="javacc.root" value="."></property>
-  <property name="debug_parser" value="false"></property>
-  <property name="debug_scanner" value="false"></property>
+  <property name="version" value="1.0" />
+  <property name="javacc.root" value="." />
+  <property name="debug_parser" value="false" />
+  <property name="debug_scanner" value="false" />
 
   <target name="compile-and-test" depends="compile">
-     <exec failonerror="true" executable="java">
+     <exec failonerror="true" executable="java" input="input.txt">
            <arg value="-classpath"/>
            <arg value="."/>
-           <arg value="JavaParser"/>
-           <arg value="JavaGenerics.java"/>
-     </exec>
-
-     <exec failonerror="true" executable="java">
-           <arg value="-classpath"/>
-           <arg value="."/>
-           <arg value="JavaParser"/>
-           <arg value="JavaParser.java"/>
+           <arg value="Adder"/>
      </exec>
   </target>
 
   <target name="compile" depends="generated-files">
-    <javac srcdir="."
-           destdir="." >
-    </javac>
+    <javac includeantruntime="false" srcdir="." destdir="." />
   </target>
 
   <target name="clean">
     <delete>
       <fileset dir=".">
-         <include name="xxJavaParser.java"/>
-         <include name="xxJavaParserTokenManager.java"/>
-         <include name="xxJavaParserConstants.java"/>
-         <include name="xx*CharStream*.java"/>
-         <include name="xxToken.java"/>
-         <include name="xxTokenMgrError.java"/>
-         <include name="xxParseException.java"/>
-         <include name="xx*.class"/>
+	  	<include name="Adder.java" />
+		<include name="AdderConstants.java" />
+		<include name="AdderTokenManager.java" />
+		<include name="ParseException.java" />
+		<include name="SimpleCharStream.java" />
+		<include name="Token.java" />
+		<include name="TokenMgrError.java" />
+		<include name="*.class"/>
       </fileset>
     </delete>
   </target>
@@ -46,7 +36,7 @@
   <target name="parser-files-init">
         <uptodate property="parser.gen"
                   targetfile="adder.jj">
-            <srcfiles dir="." includes="xxJavaParser.java"/>
+            <srcfiles dir="." includes="Adder.java"/>
         </uptodate>
   </target>
 
