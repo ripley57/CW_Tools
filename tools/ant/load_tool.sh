@@ -46,8 +46,8 @@ function ant() {
 		local ant_path="$(cygpath -aw "$TOOLS_DIR/ant/$ant_dir/bin")"
 		cat <<EOI >"$TOOLS_DIR/ant/setenv.cmd"
 @echo off
-set ANT_HOME="$ant_home"
-set PATH="$ant_path";%PATH%
+set ANT_HOME=$ant_home
+set PATH=$ant_path;%PATH%
 EOI
 	fi
 	
