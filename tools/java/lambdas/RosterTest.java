@@ -1,4 +1,9 @@
 /*
+ * Simple demo of using Java Lambda expressions, from:
+ * https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html
+ * This demo also includes some usage of genetics and streams (see the last few examples).
+ *
+ *
  * Copyright (c) 2013, Oracle and/or its affiliates. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
