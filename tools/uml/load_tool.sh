@@ -12,8 +12,11 @@ function uml() {
         	return
 	fi
 	
-	local umlet_download="https://www.dropbox.com/s/4840hgj2ljjobkk/umlet.zip?dl=1"
-	local umlet_zip="umlet.zip"
+		set DOCSEARCH_ANT_DOWNLOAD_ZIP_URL=https://archive.apache.org/dist/ant/binaries/apache-ant-1.10.1-bin.zip
+	set DOCSEARCH_ANT_DOWNLOAD_ZIP_FILENAME=apache-ant-1.10.1-bin.zip
+	
+	local ant_download="https://archive.apache.org/dist/ant/binaries/apache-ant-1.10.1-bin.zip"
+	local ant_zip="umlet.zip"
 	local umlet_exe="$TOOLS_DIR/uml/Umlet/Umlet.exe"
 
 	# Delete the existing zip download if the file size was zero bytes, as
