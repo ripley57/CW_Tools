@@ -66,3 +66,12 @@ Type "inference" means that this...
   Pair<Integer, String> p2 = new Pair<>(2, "pear");
   boolean same = Util.compare(p1, p2);
   
+### Using "the diamand" to take advantage of type inference:  
+This...
+  Map<String, List<String>> myMap = new HashMap<String, List<String>>();
+...can be replaced with this:
+  Map<String, List<String>> myMap = new HashMap<>();  
+  
+  
+
+
