@@ -5,7 +5,7 @@ Generics were introduced to the Java language to provide tighter type checks at 
 * https://docs.oracle.com/javase/tutorial/java/generics/index.html  
 * https://docs.oracle.com/javase/tutorial/extra/generics/index.html
 
-### Naming type parameters  
+### Conventions used for naming type parameters  
 By convention, type parameter names are single, uppercase letters. The most commonly used type parameter names are:  
 E - Element (used extensively by the Java Collections Framework)  
 K - Key  
