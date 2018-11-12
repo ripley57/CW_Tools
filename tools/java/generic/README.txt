@@ -76,3 +76,16 @@ This...
 Say you want a method that works on List<Integer>, List<Double>, and List<Number>. You can achieve this by using an upper bounded wildcard:
   public void process(List<? extends Number> list)  { /* ... */ }
 Note: in this context, "extends" means either "extends" (as in classes) or "implements" (as in interfaces).
+
+The following example works because "Number" is a superclass of "Integer" and "Double":
+  public static double sumOfList(List<? extends Number> list) {
+    double s = 0.0;
+    for (Number n : list)
+      s += n.doubleValue();
+    return s;
+  }
+  List<Integer> li = Arrays.asList(1, 2, 3);
+  System.out.println("sum = " + sumOfList(li));
+  List<Double> ld = Arrays.asList(1.2, 2.3, 3.5);
+  System.out.println("sum = " + sumOfList(ld));
+
