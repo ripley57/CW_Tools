@@ -1,11 +1,11 @@
 TOOLS_DIR=$*
 
 # Description:
-#   Download and launch ant.
+#   Download and launch Ant.
 #
-#	Note: Launching ant will fail if Java is not set up
-#         correctly, but that is not the responsbility 
-#         of this function.
+#   Note: Ant will fail if the Java env is not set up.
+#         This function will not set up the Java env.
+#         Set JAVA_HOME to set up the Java env.
 #
 # Usage:
 #   ant [args]
