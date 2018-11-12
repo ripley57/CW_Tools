@@ -72,7 +72,7 @@ This...
 ...can be replaced with this:
   Map<String, List<String>> myMap = new HashMap<>();  
   
-### The question mark (?), called the wildcard, represents an unknown type:  
+### The question mark (?) is called the "wildcard" and represents an unknown type:  
 Say you want a method that works on List<Integer>, List<Double>, and List<Number>. You can achieve this by using an upper bounded wildcard:
   public void process(List<? extends Number> list)  { /* ... */ }
 Note: in this context, "extends" means either "extends" (as in classes) or "implements" (as in interfaces).
