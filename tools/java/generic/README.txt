@@ -1,5 +1,5 @@
 # Generics  
-Generics were introduced to the Java language to provide tighter type checks at compile time and to support generic programming. 
+Generics were introduced to the Java language to provide tighter type checks at compile time (e.g. casts can be removed) and to support generic programming. 
 
 ### Tutorials  
 * https://docs.oracle.com/javase/tutorial/java/generics/index.html  
