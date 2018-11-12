@@ -50,4 +50,14 @@ To instantiate this class:
 To instaice thie class:
   Pair<String, Integer> p1 = new OrderedPair<String, Integer>("Even", 8);  
   
+### Generic Methods:  
+Generic methods are methods that introduce their own type parameters:
+  public class Util {
+    public static <K, V> boolean compare(Pair<K, V> p1, Pair<K, V> p2) {
+      return p1.getKey().equals(p2.getKey()) && p1.getValue().equals(p2.getValue());
+    }
+  }
+  
+  
+
 
