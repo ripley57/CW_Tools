@@ -14,7 +14,7 @@ S,U,V etc. - 2nd, 3rd, 4th types
 ### "type parameter" vs "type argument"  
 The "T" in "Foo<T>" is a type parameter and the "String" in "Foo<String>" f is a type argument.
 
-### Example of a generic class:  
+### Example of a generic class with a single type parameter:  
   /**
   * Generic version of the Box class.
   * @param <T> the type of the value being boxed
@@ -29,5 +29,25 @@ The "T" in "Foo<T>" is a type parameter and the "String" in "Foo<String>" f is a
 To instantiate this class:  
   Box<Integer> integerBox = new Box<Integer>();
   
+### Example of a generic class with multiple type parameters:  
+  public interface Pair<K, V> {
+    public K getKey();
+    public V getValue();
+  }
+
+  public class OrderedPair<K, V> implements Pair<K, V> {
+    private K key;
+    private V value;
   
+    public OrderedPair(K key, V value) {
+      this.key = key;
+      this.value = value;
+    }
   
+    public K getKey()	{ return key; }
+    public V getValue() { return value; }
+  }
+To instaice thie class:
+  Pair<String, Integer> p1 = new OrderedPair<String, Integer>("Even", 8);  
+  
+
