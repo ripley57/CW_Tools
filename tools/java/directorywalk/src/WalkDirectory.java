@@ -1,8 +1,13 @@
 /*
 ** Description:
-**		Demonstrates a flexible way to walk a directory tree.
+**	Demonstrates a flexible way to walk a directory tree.
+**	See also other examples here:
+**	https://stackoverflow.com/questions/29574167/how-to-use-files-walk-to-get-a-graph-of-files-based-on-conditions
 **		
-**		Note: This uses Java8 features.
+**	Note: This uses Java8 features:
+**		Files class and Files.walk()
+**		Streams
+**		Lambda expressions
 **
 ** JeremyC 12-11-2018
 */
