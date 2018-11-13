@@ -1,69 +1,13 @@
 <?xml version='1.0' encoding='ISO-8859-1' ?>
 
-<project name="adder Demo" default="compile-and-test" basedir=".">
-  <property name="javacc.root" value="." />
-  <property name="debug_parser" value="false" />
-  <property name="debug_scanner" value="false" />
-  <property name="src_dir" value="src" />
-  <property name="classes_dir" value="classes" />
-  <property name="input_file" value="input.txt" />
+<project name="JavaCC Demos" default="adder" basedir=".">
 
-  <target name="compile-and-test" depends="compile">
-	 <java classname="Adder" fork="true" failonerror="true" input="${input_file}">
-		<classpath>
-			<pathelement path="${classes_dir}"/>
-		</classpath>
-     </java>
-  </target>
+	<target name="adder">
+        <ant antfile="build-adder.xml" />
+	</target>
+	
+	<target name="flw">
+        <ant antfile="build-flw.xml" />
+	</target>
 
-  <target name="compile" depends="generated-files">
-	<mkdir dir="${classes_dir}"/>
-    <javac includeantruntime="false" srcdir="${src_dir}" destdir="${classes_dir}" />
-  </target>
-
-  <target name="generated-files" depends="parser-files-init" if="parser.gen">
-	 <!--
-		To see the javacc usage options:
-		
-		java -cp javacc.jar javacc
-		
-		NOTE: You cannot run "java -jar javacc.jar" because the jar file
-		      does not contain a manifest file.
-	 -->
-	 <java classname="javacc" fork="true" failonerror="true" >
-	  		<classpath>
-				<fileset file="${javacc.root}/bin/lib/javacc.jar" />
-			</classpath>
-			<arg value="-OUTPUT_DIRECTORY=${src_dir}"/>
-			<arg value="-DEBUG_PARSER=${debug_parser}"/>
-            <arg value="-DEBUG_TOKEN_MANAGER=${debug_scanner}"/>
-            <arg value="adder.jj"/>
-     </java>
-  </target>
-  
-  <target name="parser-files-init">
-        <uptodate property="parser.gen" targetfile="adder.jj">
-            <srcfiles dir="." includes="Adder.java"/>
-        </uptodate>
-  </target>
-  
-  <target name="clean">
-    <delete failonerror="false">
-      <fileset dir="${src_dir}">
-	  	<include name="Adder.java" />
-		<include name="AdderConstants.java" />
-		<include name="AdderTokenManager.java" />
-		<include name="ParseException.java" />
-		<include name="SimpleCharStream.java" />
-		<include name="Token.java" />
-		<include name="TokenMgrError.java" />
-	  </fileset>
-	  <fileset dir="${classes_dir}">
-		<include name="*.class"/>
-      </fileset>
-    </delete>
-	<delete dir="${src_dir}" />
-	<delete dir="${classes_dir}" />
-  </target>
-   
 </project>
