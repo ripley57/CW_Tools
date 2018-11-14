@@ -6,7 +6,11 @@
 
 ## Tips  
 ### Code completion (page 25)
-You can invoke code completion manually at any time by pressing Ctrl+Space. The exact effect will depend on the context, and you may wish to experiment a bit with this feature to become familiar with it. It can be useful, for example, after typing the first few letters of a particularly long class name.
+You can invoke code completion manually at any time by pressing Ctrl+Space. The exact effect will depend on the context, and you may wish to experiment a bit with this feature to become familiar with it. It can be useful, for example, after typing the first few letters of a particularly long class name.  
+
+### Debugging - Step with Filters  
+The "Step With Filters" button works the same as "Step Into", but it’s selective about what methods it will step into. You normally want to step only into methods in your own classes and not into the standard Java packages or third-party packages. You can specify which methods Step Filter will execute and return from immediately by selecting "Window"→"Preferences"→"Java"→"Debug"→"Step Filtering" and
+defining step filters by checking the packages and classes listed there. Taking a moment to set these filters is well worth the trouble, because Step With Filters saves you from getting lost deep in unknown code—something that can happen all too often when you use "Step Into".
 
 ## Q & A
 Q: There is an exclamation icon next to the project name. What does it mean?  
