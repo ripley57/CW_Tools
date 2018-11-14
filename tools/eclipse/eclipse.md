@@ -5,11 +5,10 @@
 * luna: https://help.eclipse.org/luna
 
 ## Tips  
-### code completion (page 25)
+### Code completion (page 25)
 You can invoke code completion manually at any time by pressing Ctrl+Space. The exact effect will depend on the context, and you may wish to experiment a bit with this feature to become familiar with it. It can be useful, for example, after typing the first few letters of a particularly long class name.
 
 ## Q & A
-
 Q: There is an exclamation icon next to the project name. What does it mean?  
 A: To see the issues or errors: "Window → Show View → Problems" or "Window → Show View → Error Log".  
 See: https://stackoverflow.com/questions/3812987/eclipse-shows-errors-but-i-cant-find-them  
