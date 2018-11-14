@@ -1,11 +1,11 @@
-(Also see my eBook "EclipseInAction.pdf").  
+(Also see eBook "EclipseInAction.pdf").  
 
 ## Eclipse online documnentation:  
 * juno: http://help.eclipse.org/juno
 * luna: https://help.eclipse.org/luna
 
 ## Tips  
-### code completion
+### code completion (page 25)
 You can invoke code completion manually at any time by pressing Ctrl+Space. The exact effect will depend on the context, and you may wish to experiment a bit with this feature to become familiar with it. It can be useful, for example, after typing the first few letters of a particularly long class name.
 
 ## Q & A
