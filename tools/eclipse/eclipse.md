@@ -42,3 +42,7 @@ A: java -agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=8000 Demo 
 
 Q: How do I launch Ecipse with an older Java version?  
 A: eclipse -vm c:\jrockit-jdk1.6.0_29-R28.2.0-4.1.0-x32\bin\javaw  
+
+Q: How do I rename a source file in Eclipse?  
+A: Right-click file -> refactor -> rename  
+
