@@ -1,4 +1,4 @@
-**Note:** To import an existing Eclipse project, see example tools/java/props2objs  
+**Note:** To import an existing Eclipse project, see the README.txt file in tools/java/props2objs  
 
 ## Eclipse documnentation:  
 * juno: http://help.eclipse.org/juno
