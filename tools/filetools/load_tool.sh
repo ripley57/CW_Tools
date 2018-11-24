@@ -1,6 +1,23 @@
 TOOLS_DIR=$*
 
 # Description:
+#	Count the files and lines in the text-based
+#	files in the current directory.
+#
+# Usage:
+#	codecounter
+#
+function codecounter() {
+	if [ "$1" = '-h' ]; then
+        usage codecounter
+        return
+    fi
+	
+	sh "${TOOLS_DIR}/filetools/codecounter/codecounter.sh"
+}
+
+
+# Description:
 #   Perl tail command.
 #
 # Usage:
