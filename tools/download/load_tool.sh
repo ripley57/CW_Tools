@@ -138,14 +138,15 @@ function install_eclipse() {
 
     # Change to D or C drive.
     local _pwd=$(PWD)
-    cd /cygdrive/d/ 2>/dev/null
-	if [ $? -ne 0 ]
-	then
-		cd /cygdrive/c/ 2>/dev/null
-        if [ $? -ne 0 ]
-		then
-			echo "ERROR: Could not change to D or C directory. Aborting..."
-			return
+    cd /cygdrive/d/ 2>/dev/null && touch xyzxyzxyz 2>/dev/null && rm xyzxyzxyz 2>/dev/null
+	if [ $? -ne 0 ]; then
+		cd /cygdrive/c/ 2>/dev/null && touch xyzxyzxyz 2>/dev/null && rm xyzxyzxyz 2>/dev/null
+        if [ $? -ne 0 ]; then
+			cd /cygdrive/c/eclipse 2>/dev/null
+			if [ $? -ne 0 ]; then
+				echo "ERROR: Could not change to D or C directory. Aborting..."
+				return
+			fi
 		fi
 	fi
   
