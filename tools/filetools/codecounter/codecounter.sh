@@ -6,10 +6,8 @@
 
 # 1. Get the line counts for each file.
 # Note: We are ignoring binary files (this method ain't too quick however).
-find . -type f -exec sh -c 'file "$1" | grep -q text && wc -l "$1"' _ {} \; > "$TMP/codecounter_files.log"
-
-echo $PWD
+#find . -type f -exec sh -c 'file "$1" | grep -q text && wc -l "$1"' _ {} \; > "$TMP/codecounter_files.log"
 
 # 2. Run the output from above through awk to display the total counts.
 SCRIPTDIR=$(dirname "$0")
-/usr/bin/gawk -f "${SCRIPTDIR}/codecounter.awk" "$TMP/codecounter_files.log"
+/usr/bin/gawk -v var_loggingdir="$TMP" -v var_showfilesignoredbyextension="no" -f "${SCRIPTDIR}/codecounter.awk" "$TMP/codecounter_files.log"
