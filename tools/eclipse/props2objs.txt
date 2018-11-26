@@ -1,0 +1,3 @@
+See the Eclipse project in "tools/java/props2apps". This includes a README.txt that explains how to import the project into Eclipse.
+
+JeremyC 26-11-2018
