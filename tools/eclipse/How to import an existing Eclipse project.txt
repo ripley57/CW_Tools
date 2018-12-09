@@ -1,0 +1,35 @@
+How to import an existing Eclipse project into Eclipse
+======================================================
+NOTE: See the example Eclipse project in in tools/java/props2objs 
+
+Steps to import the project...
+
+
+1. Import the project directory (e.g. "props2objs") into Eclipse:
+"File > Import > General > Existing Projects into Workspace".
+
+
+2. Change the Java version used by Eclipse:
+If you have imported the project into a different appliance, you may need to re-point the project to an existing Java installation.
+2.1. First go here:
+"Project > Properties > Libraries"
+2.2. Then, if the "JRE System Library [jdk...]" says "(unbound)", you need to point to a new Java installation. Double-click the entry and either point to an existing  "c:\jdk-..." directory, or select the option "Workspace default JRE (jdk-...).
+
+
+3. The Project's "Run > Run Configurations..." and "Run > Debug Configurations..." configurations:
+You don't need to do anything here! The "Java Application > action1" and "Java Application > action2" run and debug launchers should already be present. These supply the input argument "action1" or "action2" respectively.
+
+These launch configurations were imported automatically because they have been configured as shared files, as follows:
+1. Right-click on the Project name and select "New > Folder". This is where our launch configurations will be saved by Eclipse.
+2. Go to "Run > Run Configurations..." and select each of "FW (disable)" and "FW (enable)". 
+3. Select the "Common" tab and select "Shared file". 
+4. Click "Browse..." and navigate to the new folder we added earlier.
+5. Click "Apply". You should now see two ".launch" files in the directory.
+(see also https://www-01.ibm.com/support/docview.wss?uid=swg21264629)
+
+
+4. Run the "action1" or "action2" launcher from "Run > Run Configurations..." or "Run > Debug Configurations...". 
+Output should be seen in the Eclipse console window.
+
+
+9-12-2018

@@ -1,9 +1,12 @@
-**Note:** To import an existing Eclipse project, see the README.txt file in tools/java/props2objs  
+# Eclipse   
 
 ## Eclipse documnentation:  
 * juno: http://help.eclipse.org/juno
 * luna: https://help.eclipse.org/luna
 * Also see my eBook **EclipseInAction.pdf**
+
+### Importing an existing Eclipe project.  
+To import an existing Eclipse project, see the README.txt file in tools/java/props2objs  
 
 ## Tips  
 ### Code completion (page 25)
