@@ -1,5 +1,8 @@
 /**
- * Implementation of the <I>Controller</I> pattern.
+ * NOTE: This JUnit demo is based on pages up to page 53 of JUnit In Action.
+ *
+ * This class implements the <I>Controller</I> pattern.
+ *
  * <P>
  * In general, a controller does the following:
  * o Accepts requests
@@ -53,7 +56,7 @@ public class DefaultController implements Controller
 	* Register a handler for a specific <CODE>Request</CODE>
 	* <P>
 	* Registering a handler with the controller is an example of Inversion of Control. You
-	* may know this pattern as the Hollywood Principle, or ìDonít call us, weíll call you.î
+	* may know this pattern as the Hollywood Principle, or ‚ÄúDon‚Äôt call us, we‚Äôll call you.‚Äù
 	* Objects register as handlers for an event. When the event occurs, a hook method
 	* on the registered object is invoked. Inversion of Control lets frameworks manage
 	* the event lifecycle while allowing developers to plug in custom handlers for framework events.
