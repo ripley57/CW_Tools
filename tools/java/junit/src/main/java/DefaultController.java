@@ -10,6 +10,13 @@
  * o Selects an appropriate request handler
  * o Routes the request so that the handler can execute the relevant business logic
  * o May provide a top-level handler for errors and exceptions
+ *
+ * For example, in a presentation-tier pattern, a web controller accepts HTTP requests 
+ * and extracts HTTP parameters, cookies, and HTTP headers, perhaps making the HTTP 
+ * elements easily accessible to the rest of the application. A web controller determines 
+ * the appropriate business logic component to call based on elements in the request, 
+ * perhaps with the help of persistent data in the HTTP session, a database, or some other 
+ * resource. The Apache Struts framework is an example of a web controller. "
  * </P>
  *
  * @author JeremyC
