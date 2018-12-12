@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="demo" default="test" basedir=".">
+	
+	<property name="src.dir" 		location="src" />
+	<property name="classes.dir" 	location="classes" />
+	<property name="lib.dir" 		location="lib" />
+	<property name="doc.dir" 		location="docs" />
+	
+	<path id="demo.classpath">
+        <pathelement location="${classes.dir}" />
+		<fileset dir="${lib.dir}" includes="*.jar" />
+    </path>
+
+	<target name="compile">
+		<mkdir dir="${classes.dir}"/>
+		<javac 
+			includeantruntime="false" 
+			srcdir="${src.dir}"
+			destdir="${classes.dir}" >
+			<classpath refid="demo.classpath" />
+		</javac>
+	</target>
+	
+    <target name="test" depends="compile">
+        <java
+            classname="org.junit.runner.JUnitCore"
+            fork="true"
+            failonerror="true">
+            <classpath refid="demo.classpath" />
+			<arg value="TestDefaultController"/>
+        </java>
+    </target>
+	
+	<!-- 	More on JavaDocs here:
+			https://docstore.mik.ua/orelly/java-ent/jnut/ch07_03.htm
+	-->
+	<target name="doc" description="generate documentation">
+		<delete dir="${doc.dir}" />
+		<mkdir dir="${doc.dir}" />
+		<javadoc destdir="${doc.dir}">
+			<fileset dir="${src.dir}" />
+			<classpath refid="demo.classpath" />
+		</javadoc>
+	</target>
+	
+	<target name="clean">
+        <delete dir="${classes.dir}" failonerror="false"/>
+    </target>
+
+</project>
