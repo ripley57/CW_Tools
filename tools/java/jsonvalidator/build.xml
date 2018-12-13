@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="jsonvalidator" default="run" basedir=".">
+	
+	<property name="src.dir" 			location="src" />
+	<property name="classes.dir" 		location="classes" />
+	<property name="lib.dir" 			location="lib" />
+	<property name="lib.downloaded.dir"	location="lib_downloaded" />
+	
+	<!--
+		Initialise programm command-line arguments.
+		These will be replaced with values passed on
+		the command-line, i.e. using -Darg1="..." -Darg2="..."
+	-->
+	<property name="arg1"			value="" />
+	<property name="arg2"			value="" />
+	
+	<path id="jsonvalidator.classpath">
+        <pathelement location="${classes.dir}" />
+		<fileset dir="${lib.dir}" includes="*.jar" />
+		<fileset dir="${lib.downloaded.dir}" includes="*.jar" />
+    </path>
+
+	<target name="compile" depends="downloadjars">
+		<mkdir dir="${classes.dir}"/>
+		<javac 
+			includeantruntime="false" 
+			srcdir="${src.dir}"
+			destdir="${classes.dir}" 
+			debug="true" 
+			debuglevel="lines,vars,source">
+			<classpath refid="jsonvalidator.classpath" />
+		</javac>
+	</target>
+	
+	<!--
+		JUnit tests
+	-->
+	<target name="test" depends="compile">
+        <java
+            classname="org.junit.runner.JUnitCore"
+            fork="true"
+            failonerror="true">
+            <classpath refid="jsonvalidator.classpath" />
+			<arg value="TestJSONValidator"/>
+        </java>
+    </target>
+		
+	<target name="downloadjars">
+		<mkdir dir="${lib.downloaded.dir}"/>
+		<get src="http://central.maven.org/maven2/org/json/json/20140107/json-20140107.jar" dest="${lib.downloaded.dir}" usetimestamp="true" quiet="true" verbose="false"/>
+		<get src="http://central.maven.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.9.7/jackson-databind-2.9.7.jar"	dest="${lib.downloaded.dir}" usetimestamp="true" quiet="true" verbose="false"/>
+		<get src="http://central.maven.org/maven2/com/fasterxml/jackson/core/jackson-core/2.9.7/jackson-core-2.9.7.jar" dest="${lib.downloaded.dir}" usetimestamp="true" quiet="true" verbose="false"/>
+		<get src="http://central.maven.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.9.7/jackson-annotations-2.9.7.jar" dest="${lib.downloaded.dir}" usetimestamp="true" quiet="true" verbose="false"/>
+		<get src="http://central.maven.org/maven2/com/github/fge/jackson-coreutils/1.8/jackson-coreutils-1.8.jar" dest="${lib.downloaded.dir}" usetimestamp="true" quiet="true" verbose="false"/>
+		<get src="http://central.maven.org/maven2/com/github/fge/json-schema-validator/2.2.6/json-schema-validator-2.2.6.jar" dest="${lib.downloaded.dir}" usetimestamp="true" quiet="true" verbose="false"/>
+		<get src="http://central.maven.org/maven2/com/github/fge/json-schema-core/1.2.5/json-schema-core-1.2.5.jar" dest="${lib.downloaded.dir}" usetimestamp="true" quiet="true" verbose="false"/>
+		<get src="http://central.maven.org/maven2/com/github/fge/btf/1.2/btf-1.2.jar" dest="${lib.downloaded.dir}" usetimestamp="true" quiet="true" verbose="false"/>
+		<get src="http://central.maven.org/maven2/com/github/fge/msg-simple/1.1/msg-simple-1.1.jar" dest="${lib.downloaded.dir}" usetimestamp="true" quiet="true" verbose="false"/>
+		<get src="http://central.maven.org/maven2/com/google/guava/guava/27.0.1-jre/guava-27.0.1-jre.jar" dest="${lib.downloaded.dir}" usetimestamp="true" quiet="true" verbose="false"/>
+		<get src="https://github.com/JodaOrg/joda-time/releases/download/v2.10.1/joda-time-2.10.1.jar" dest="${lib.downloaded.dir}" usetimestamp="true" quiet="true" verbose="false"/>
+		<get src="http://central.maven.org/maven2/javax/mail/mail/1.4.7/mail-1.4.7.jar" dest="${lib.downloaded.dir}" usetimestamp="true" quiet="true" verbose="false"/>
+		<get src="http://central.maven.org/maven2/com/googlecode/libphonenumber/libphonenumber/8.10.2/libphonenumber-8.10.2.jar" dest="${lib.downloaded.dir}" usetimestamp="true" quiet="true" verbose="false"/>
+		<get src="http://central.maven.org/maven2/com/github/fge/uri-template/0.5/uri-template-0.5.jar" dest="${lib.downloaded.dir}" usetimestamp="true" quiet="true" verbose="false"/>
+		<get src="http://central.maven.org/maven2/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.jar" dest="${lib.downloaded.dir}" usetimestamp="true" quiet="true" verbose="false"/>
+		
+	</target>
+	
+	<!--
+		Pass program command-line args like this:
+		ant -Darg1="data.json" -Darg2="schema.json"
+	-->
+    <target name="run" depends="compile">
+        <java
+            classname="JSONValidator"
+            fork="true"
+            failonerror="true">
+	        <arg value="${arg1}"/>
+			<arg value="${arg2}"/>
+			<classpath refid="jsonvalidator.classpath" />
+        </java>
+    </target>
+	
+	<!--
+	<target name="inputargs" unless="args" description="prompt for command line arguments if necessary">
+		<input addProperty="args" message="Type the desired command line arguments:"/>
+	</target>
+	-->
+	
+	<target name="clean">
+        <delete dir="${classes.dir}" failonerror="false"/>
+		<delete dir="${lib.downloaded.dir}" failonerror="false"/>
+    </target>
+
+</project>
