@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.List;
+import java.nio.charset.Charset;
 import java.nio.file.*;
 import org.json.*;
 
@@ -31,41 +32,87 @@ public class JSONValidator
 			System.exit(1);
 		}
 		
-		String data_json = convertToString(args[0]);
+		String data_json = args[0];
+		System.out.println("Json data: " + data_json);
 		
 		String schema_json = EMPTY_SCHEMA;
 		if (args.length == 2 && args[1].length() > 1)
-			schema_json = convertToString(args[1]);
+			schema_json = args[1];
+		System.out.println("Json schema: " + schema_json);
 			
 		new JSONValidator().validate(data_json, schema_json);
 	}
 	
-	private static String convertToString(String str) throws IOException
+	private JsonNode loadJson(String str_json) throws IOException
 	{
-		File f = new File(str);
+		JsonNode node = null;
+		File f = new File(str_json);
 		if (f.exists()) {
-			System.err.println("Treating input argument as file: " + str + "...");
-			List<String> lines = Files.readAllLines(Paths.get(str));
-			StringBuilder sb = new StringBuilder();
-			for (String s: lines)
-				sb.append(s);
-			return sb.toString();
+			//System.err.println("Treating input argument as file: \"" + str_json + "\"...");
+			node = JsonLoader.fromFile(f);
+		} else {
+			node = JsonLoader.fromString(str_json);
 		}
-		return str;
+		return node;
+	}
+	
+	private void reportSuccess() 
+	{	
+		System.out.println("SUCCESS: Validation was successful.");		
+	}
+	
+	private void reportFailure(String msgText, Exception error)
+	{
+		System.out.println(String.format("\nFAILED: %s\n\n%s\n", msgText, error));
+	}
+	
+	private void reportFailure(String msgText)
+	{
+		System.out.println(String.format("\nFAILED: %s\n", msgText));
 	}
 	
 	public boolean validate(String str_json, String str_schema) throws IOException, ProcessingException
 	{
-		JsonNode dataNode	= JsonLoader.fromString(str_json);
-		JsonNode schemaNode	= JsonLoader.fromString(str_schema);
+		JsonNode dataNode = null;
+		try {
+			dataNode = loadJson(str_json);
+		} 
+		catch (Exception e) 
+		{
+			reportFailure("Syntax validation failure of the data file!", e);
+			return false;
+		}
+		
+		JsonNode schemaNode = null;
+		try {
+			schemaNode	= loadJson(str_schema);
+		}
+		catch (Exception e) {
+			reportFailure("Syntax validation failure of the schema file!", e);
+			return false;
+		}
 				
 		JsonSchemaFactory factory = JsonSchemaFactory.byDefault();
 
-		// Validate data against the schema.		
+		// Validate the json data against the json schema.		
 		// http://java-json-tools.github.io/json-schema-validator/2.2.x/com/github/fge/jsonschema/main/JsonSchema.html
 		JsonSchema schema = factory.getJsonSchema(schemaNode);
-		ProcessingReport report = schema.validate(dataNode, true);
-		//System.err.println("report.isSuccess()=" + report.isSuccess());
+		
+		ProcessingReport report = null;
+		try {
+			report = schema.validate(dataNode, true);
+		}
+		catch (Exception e) {
+			reportFailure("Validation against schema failed!", e);
+			return false;
+		}
+		
+		if (report.isSuccess()) {
+			reportSuccess();
+		} else {
+			reportFailure("Validation against schema failed!\n\n" + report);
+		}
+
 		return report.isSuccess();
 	}
 }

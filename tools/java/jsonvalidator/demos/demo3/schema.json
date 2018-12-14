@@ -1,0 +1,32 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"type": "object",
+	"definitions": {
+		"testimonials": {
+			"type": "array",
+			"items": {
+				"type" : "object",
+				"required": [
+					"testimonial",
+					"jobtitle"
+				],
+				"properties" : {
+					"testimonial": {
+						"type": "string"
+					},
+					"jobtitle": {
+						"type": "string"
+					}
+				}
+			}
+		}
+	},
+	"required": [
+		"testimonials"
+	],
+	"properties": {
+		"testimonials": {
+			"$ref": "#/definitions/testimonials"
+		}
+	},,
+}	

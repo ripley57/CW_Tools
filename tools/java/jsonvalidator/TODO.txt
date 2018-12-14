@@ -1,6 +1,0 @@
-TODO
-====
-o Create a CW tools load_tool.sh with "jsonvalidate" command.
-o Should input json files be kept as files, so that we get useful line number errors? 
-
-JeremyC 

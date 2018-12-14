@@ -33,6 +33,21 @@
 	</target>
 	
 	<!--
+		Package all the jars into a single jar.
+		https://stackoverflow.com/questions/515428/clean-way-to-combine-multiple-jars-preferably-using-ant
+	-->
+	<target name="package" depends="compile">
+		<!-- https://ant.apache.org/manual/Tasks/jar.html -->
+		<jar destfile="jsonvalidator.jar">
+			<fileset dir="${classes.dir}" excludes="**/Test*.class" />
+			<zipgroupfileset dir="${lib.downloaded.dir}" includes="*.jar" /> 
+			<manifest>
+				<attribute name="Main-Class" value="JSONValidator" />
+			</manifest>
+		</jar>
+	</target>
+	
+	<!--
 		JUnit tests
 	-->
 	<target name="test" depends="compile">
@@ -69,14 +84,12 @@
 		Pass program command-line args like this:
 		ant -Darg1="data.json" -Darg2="schema.json"
 	-->
-    <target name="run" depends="compile">
-        <java
-            classname="JSONValidator"
-            fork="true"
-            failonerror="true">
+    <target name="run" depends="package">
+		<java jar="jsonvalidator.jar"
+			fork="true"
+			failonerror="true">
 	        <arg value="${arg1}"/>
 			<arg value="${arg2}"/>
-			<classpath refid="jsonvalidator.classpath" />
         </java>
     </target>
 	
