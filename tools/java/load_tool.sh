@@ -23,11 +23,11 @@ function build() {
 #    optionally with validation against a json schema file.
 #
 #    NOTE:
-#    If an input file does not exist, the tool with
-#   treat the input as a json string to validate.
+#    If an input file does not exist, the tool will
+#    treat the input as a json string to validate.
 #
 # Usage:
-#	jsonvalidator <data.json> [<schema.json>]
+#    jsonvalidator <data.json> [<schema.json>]
 #
 function jsonvalidator() {
     if [ "$1" = '-h' ]; then
