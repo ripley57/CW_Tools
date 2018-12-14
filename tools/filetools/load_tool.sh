@@ -255,7 +255,7 @@ function newer() {
 		   find . -type f -newer "$1" -print0
 	   else
 		   # Use the default MARKER file.
-           find . -type f -newer $MARKER -print0
+           find . -type f -newer $MARKER -print
 	   fi
     fi
 }
