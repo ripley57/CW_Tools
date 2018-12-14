@@ -1091,3 +1091,23 @@ if [ "$(uname)" = "Linux" ]; then
 else
     funcs no_list_public
 fi
+
+# Description:
+#   Load any additional .aliases file that could be
+#	present in the user's Windows home directory.
+#
+# Usage:
+#   load_aliases
+#
+function load_aliases() {
+    if [ "$1" = '-h' ]; then
+        usage load_aliases
+        return
+    fi
+	local _winhomedir=$(_windir)
+	if [ -f "${_winhomedir}/.aliases" ]; then
+		echo "Loading additional aliases from ${_winhomedir}/.aliases..."
+		source "${_winhomedir}/.aliases"
+	fi
+}
+load_aliases
