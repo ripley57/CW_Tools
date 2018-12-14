@@ -266,10 +266,11 @@ function newer() {
 #   Then cache the marker file path in our general variable cache.
 #
 # Usage:
-#   create_marker <marker-name>
+#   create_marker <marker-name> [YYYYMMDDHHMM]
 #
-# Example:
+# Examples:
 #   create_marker "CHANGES-SINCE-13THAPRIL"
+#	create_marker "CHANGES-SINCE-13THAPRIL" 201804130000
 #
 function create_marker() {
     if [ "$1" = '-h' ]; then
@@ -279,12 +280,21 @@ function create_marker() {
 	local _marker_name="$1"
 	if [ x"$_marker_name" = "x" ]; then
 	    echo "ERROR: create_marker: No marker name specified!" >&2
-		echo ""
 		return
 	fi
 
 	local _marker_file_path="$TMP/.create_marker___$_marker_name"
-	date > "$_marker_file_path"
+	
+	if echo "$2" | grep -q '^[0-9]*$' ; then
+		# Set passed YYYYMMDDHHMM as the file LMD.
+		touch -t "$2" "$_marker_file_path"
+		date -r "$_marker_file_path" > "${_marker_file_path}.tmp"
+		cat "${_marker_file_path}.tmp" > "$_marker_file_path"
+		rm -f "${_marker_file_path}.tmp"
+		touch -t "$2" "$_marker_file_path"
+	else
+		date > "$_marker_file_path"
+	fi
 
 	# Cache the marker file path for future retrieval.
 	cache "$_marker_name" "$_marker_file_path" 1>/dev/null
@@ -340,7 +350,7 @@ function cwupdates_configure()
         usage cwupdates_configure
         return
     fi
-    create_marker "CWUPDATES-MARKER-13042018"
+    create_marker "CWUPDATES-MARKER-13042018" 201804130000
 }
 
 
@@ -359,6 +369,18 @@ function getcwupdates() {
 	local _marker_name="CWUPDATES-MARKER-13042018"
 	local _dir
 	
+	# Re-create the special CW marker if it is not there.
+	local _marker_file_path=$(cache "$_marker_name")
+	if [ x"$_marker_file_path" = "x" ]; then
+		cwupdates_configure
+		echo 
+		echo "WARNING: The CW marker file was re-created: $(cache "$_marker_name")"
+		echo "Please re-run getcwupdates() now that the marker file exists."
+		echo
+		return
+	fi
+
+	# Do the mystuff_Clearwell directory.
 	_dir="/cygdrive/c/mystuff_Clearwell"
     if [ -d "$_dir" ]; then
 		local _target_file=mystuff_CW.tar.gz
@@ -370,6 +392,7 @@ function getcwupdates() {
 		echo "ERROR: getcwupdates: No such directory: $_dir"
 	fi
 	
+	# Do the mystuff directory.
     _dir="/cygdrive/c/mystuff"
     if [ -d "$_dir" ] ; then
 		local _target_file=mystuff.tar.gz
