@@ -1,6 +1,29 @@
 TOOLS_DIR=$*
 
 # Description:
+#    Present a menu of the installed java versions and allow
+#    the user to select one. This will set JAVA_HOME and PATH,
+#    in order to run Java from Cygwin.
+#
+# Usage:
+#    javasetup [search]
+#
+# Where:
+#    search  -  Search for installed java versions and persist
+#               the list.
+#
+function javasetup() {
+    if [ "$1" = '-h' ]; then
+        usage javasetup
+        return
+    fi
+
+    if [ "$1" == "search" ; then
+        echo "Searching for java installations..."
+    fi
+}
+
+# Description:
 #	Copy the build.bat script to the current directory.
 #
 # Usage:
