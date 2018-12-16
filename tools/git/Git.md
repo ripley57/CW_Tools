@@ -17,7 +17,9 @@ Without the previous commit history I expected the size to be noticeably smaller
 I can only assume that git is very clever with repository history and disk space usage, but at least  
 we know this approach is useful for removing the previous history, so people cannot see past commits.
 
-## Github push error: "error: RPC failed; curl 56 OpenSSL SSL_read: SSL_ERROR_SYSCALL, errno 10054"  
-Solution:
-    git config http.postBuffer 524288000
-
+## Git FAQ  
+**QUESTION**: How do I fix the Github push error: "error: RPC failed; curl 56 OpenSSL SSL_read: SSL_ERROR_SYSCALL, errno 10054"  
+**ANSWER:** git config http.postBuffer 524288000  
+  
+**QUESTION**: How do I rename a file?  
+**ANSWER**: git mv old-file new-file
