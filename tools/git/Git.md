@@ -19,5 +19,5 @@ we know this approach is useful for removing the previous history, so people can
 
 ## Git FAQ  
 #### **QUESTION:** How do I fix the Github push error: "error: RPC failed; curl 56 OpenSSL SSL_read: SSL_ERROR_SYSCALL, errno 10054"  
-#### **ANSWER:** git config http.postBuffer 524288000
+**ANSWER:** git config http.postBuffer 524288000
 
