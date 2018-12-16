@@ -18,9 +18,23 @@ function javasetup() {
         return
     fi
 
-    if [ "$1" == "search" ; then
-        echo "Searching for java installations..."
-    fi
+    if [ "$1" == "search" ]; then
+        echo "Searching for java JDK installations..."
+		find /cygdrive/c/ -iname "*javac.exe" > "${TMP}/.javasetup" 2>/dev/null
+	
+        if [ ! -f "${TMP}/.javasetup" ]; then
+            echo "javasetup: Error searching for Java JDK installations."
+            return
+        fi
+
+		# Read the java installations list into an array.
+		local _java_installs
+		local _i
+        IFS=$'\n' _java_installs=( `cat "${TMP}/.javasetup" | sort`)
+        for _i in "${_java_installs[@]}"; do
+            echo $_i
+        done
+	fi
 }
 
 # Description:
