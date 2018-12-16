@@ -22,4 +22,4 @@ we know this approach is useful for removing the previous history, so people can
 **ANSWER:** git config http.postBuffer 524288000  
   
 **QUESTION**: How do I rename a file?  
-**ANSWER**: git mv <oldfile> <newfile>  
+**ANSWER**: git mv old-file new-file
