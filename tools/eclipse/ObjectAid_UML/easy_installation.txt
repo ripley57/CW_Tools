@@ -1,3 +1,7 @@
 Use Eclipse's "Help > Install New Software", with these values:
 Name: ObjectAid UML Explorer
 URL: http://www.objectaid.com/update/current
+
+If you are running JDK 6 or 7, please use the 1.1.x release:
+Name: ObjectAid UML Explorer 1.1.x
+URL: http://www.objectaid.com/update/1.1
