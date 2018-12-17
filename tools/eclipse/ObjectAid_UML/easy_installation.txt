@@ -1,3 +1,5 @@
+See also http://www.objectaid.com/installation)
+
 Use Eclipse's "Help > Install New Software", with these values:
 Name: ObjectAid UML Explorer
 URL: http://www.objectaid.com/update/current
