@@ -44,7 +44,7 @@ You can list your remotes (you can have more than one) as follows:
 ``origin  https://github.com/ripley57/personal (push)``  
 To pull the files from the remote repository into our local testing site:  
 ``git pull origin master``  
-**Note:** Because we already have a "_config.yml" file in our local site directory, we will have to delete (or rename) it, to avoid a "git pull" conflict error.
+**Note:** Because we already have the files "_config.yml", "index.md" and ".gitignore" in our local site directory, we will have to delete (or rename) them, in order to avoid a "git pull" conflict error. 
 8. After editing our local Jekyll site files as desired, we can now build and preview the changes using Jekyll.  
    - Run this:  
 ``bundle exec jekyll serve``  
