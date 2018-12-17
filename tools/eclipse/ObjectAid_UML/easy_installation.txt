@@ -1,4 +1,4 @@
-See also http://www.objectaid.com/installation)
+See also http://www.objectaid.com/installation
 
 Use Eclipse's "Help > Install New Software", with these values:
 Name: ObjectAid UML Explorer
