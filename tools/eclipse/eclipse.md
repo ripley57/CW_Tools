@@ -56,9 +56,8 @@ A: Go to "Properties > Java Build Path", delete the existing "src" entry, and ad
 Q: How to I add a log4j.proeperties file to my project?
 A: Add a folder named "resources" to your project, then using "Properties > Java Build Path" to add the folder to the "Sources" tab. The contents of the "resources" folder will now be copied to the runtime output directory "bin" that Eclipse uses. This will ensure that the log4j.properties file is on the classpath (see https://stackoverflow.com/questions/25162773/how-do-i-add-a-directory-to-the-eclipse-classpath).  
 
+Q: How do I automatically create an Ant build.xml file from my Eclipse project?  
+A: "File > Export", select "General > Ant Buildfiles". This will create a build.xml file in the project's top-level directory.  
 
-
-
-
-
-
+Q: How do I list the targets in my build.xml file?
+A: "ant -p"  
