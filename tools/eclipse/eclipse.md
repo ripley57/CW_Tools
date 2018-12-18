@@ -53,5 +53,12 @@ A: Right-click file -> refactor -> rename
 Q: I added JUnit test source files to my project, which I've placed in the directory "src/test/java". My main source files are kept in the directory "src/main/java". Eclipse is complaining that "The declared package "" does not match the expected package "main.java"". How do I tell Eclipse that the source directories are "src/test/java" and "src/main/java", instead of just "src"?  
 A: Go to "Properties > Java Build Path", delete the existing "src" entry, and add two new src entries for "src/test/java" and "src/main/java". **NOTE**: This requires a restart of Eclipse afterwards.  
 
+Q: How to I add a log4j.proeperties file to my project?
+A: Add a folder named "resources" to your project, then using "Properties > Java Build Path" to add the folder to the "Sources" tab. The contents of the "resources" folder will now be copied to the runtime output directory "bin" that Eclipse uses. This will ensure that the log4j.properties file is on the classpath (see https://stackoverflow.com/questions/25162773/how-do-i-add-a-directory-to-the-eclipse-classpath).  
+
+
+
+
+
 
 
