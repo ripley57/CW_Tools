@@ -10,6 +10,7 @@ function lcd() {
 }
 
 alias clr='clearscreen'
+alias func='funcs'
 
 function tools() {
     load_tools ; funcs
