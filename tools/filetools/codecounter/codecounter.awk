@@ -102,7 +102,7 @@ function printResultSeparatorLine(sep,		localvar1) {
 	printf("%s\n", repeatCharacter(sep,50));
 }
 
-function printResultsTable(title,file_count_total,line_count_total, file_counts_array,line_counts_array,	extensions_sorted,extension,no_extension_count_present,n,i) {
+function printResultsTable(title,file_count_total,line_count_total, file_counts_array,line_counts_array,	extensions_sorted,ext,no_extension_count_present,n,i) {
 	printf("%s\n", title);
 	printResultSeparatorLine("-");
 	printResultLine("Extension", "File count", "Line count", "|");
@@ -113,16 +113,16 @@ function printResultsTable(title,file_count_total,line_count_total, file_counts_
 	
 	no_extension_count_present = 0;
 	for (i=1; i<=n; i++) {
-		extension = extensions_sorted[i];
+		ext = extensions_sorted[i];
 	
-		if (extension == key_no_extension) {
+		if (ext == key_no_extension) {
 			no_extension_count_present = 1;
 			continue;
 		}
 		
-		printResultLine(	sprintf(".%s", extension), 
-							file_counts_array[extension], 
-							line_counts_array[extension],
+		printResultLine(	sprintf(".%s", ext), 
+							file_counts_array[ext], 
+							line_counts_array[ext],
 							"|"	);
 	}
 	
