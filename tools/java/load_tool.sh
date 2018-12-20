@@ -139,3 +139,30 @@ function jsonvalidator() {
 	
     java -jar "$(cygpath -aw "${TOOLS_DIR}/java/jsonvalidator/jsonvalidator.jar")" "$@"
 }
+
+# Description:
+#    Check the SSL access to a remote server and optionally
+#    dump the server certificate-chain to a local file, so
+#    that you can manually add them to the appropriate 
+#    Java keystore or Windows trustore.
+#
+# Usage:
+#    sslpoke [dump] <host> <port>
+#
+# Example:
+#    sslpoke dump github.com 443
+#
+function sslpoke() {
+	if [ "$1" = '-h' ] || [ $# -ne 3 -a  $# -ne 2 ]; then
+        	usage sslpoke
+        	return
+    	fi
+	
+	local _dump_certs=
+	if [ "$1" = "dump" ]; then
+		_dump_certs=-Ddump_certs
+		shift
+	fi
+	
+	java "$_dump_certs" -jar "$(cygpath -aw "${TOOLS_DIR}/java/SSLPoke/sslpoke.jar")" "$@"
+}
