@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="sslpoke" default="package" basedir=".">
+	
+	<property name="src.dir" 			location="src" />
+	<property name="classes.dir" 		location="classes" />
+
+	<target name="compile">
+		<mkdir dir="${classes.dir}"/>
+		<javac 
+			includeantruntime="false" 
+			srcdir="${src.dir}"
+			destdir="${classes.dir}" 
+			debug="true" 
+			debuglevel="lines,vars,source">
+		</javac>
+	</target>
+	
+	<target name="package" depends="compile">
+		<jar destfile="sslpoke.jar">
+			<fileset dir="${classes.dir}" />
+			<manifest>
+				<attribute name="Main-Class" value="SSLPoke" />
+			</manifest>
+		</jar>
+	</target>
+	
+	<target name="clean">
+        <delete dir="${classes.dir}" failonerror="false"/>
+    </target>
+
+</project>
