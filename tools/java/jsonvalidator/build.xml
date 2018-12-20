@@ -60,8 +60,22 @@
         </java>
     </target>
 		
+	<!-- 
+		If any HTTPS downloads fail due to cert-chain validation failures, use my
+		SSLPoke.java tool to download the server's CA cert(s) and manually add it
+		to the Java cacerts file.
+	-->
 	<target name="downloadjars">
 		<mkdir dir="${lib.downloaded.dir}"/>
+		<antcall target="download-jars-from-http_central_maven_org"/>
+		<antcall target="download-jars-from-https_github_com"/>
+	</target>
+		
+	<target name="download-jars-from-https_github_com" description="download jars from https://github.com">
+		<get src="https://github.com/JodaOrg/joda-time/releases/download/v2.10.1/joda-time-2.10.1.jar" dest="${lib.downloaded.dir}" usetimestamp="true" quiet="true" verbose="false"/>	
+	</target>
+	
+	<target name="download-jars-from-http_central_maven_org" description="download jars from http://central.maven.org">
 		<get src="http://central.maven.org/maven2/org/json/json/20140107/json-20140107.jar" dest="${lib.downloaded.dir}" usetimestamp="true" quiet="true" verbose="false"/>
 		<get src="http://central.maven.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.9.7/jackson-databind-2.9.7.jar"	dest="${lib.downloaded.dir}" usetimestamp="true" quiet="true" verbose="false"/>
 		<get src="http://central.maven.org/maven2/com/fasterxml/jackson/core/jackson-core/2.9.7/jackson-core-2.9.7.jar" dest="${lib.downloaded.dir}" usetimestamp="true" quiet="true" verbose="false"/>
@@ -72,12 +86,10 @@
 		<get src="http://central.maven.org/maven2/com/github/fge/btf/1.2/btf-1.2.jar" dest="${lib.downloaded.dir}" usetimestamp="true" quiet="true" verbose="false"/>
 		<get src="http://central.maven.org/maven2/com/github/fge/msg-simple/1.1/msg-simple-1.1.jar" dest="${lib.downloaded.dir}" usetimestamp="true" quiet="true" verbose="false"/>
 		<get src="http://central.maven.org/maven2/com/google/guava/guava/27.0.1-jre/guava-27.0.1-jre.jar" dest="${lib.downloaded.dir}" usetimestamp="true" quiet="true" verbose="false"/>
-		<get src="https://github.com/JodaOrg/joda-time/releases/download/v2.10.1/joda-time-2.10.1.jar" dest="${lib.downloaded.dir}" usetimestamp="true" quiet="true" verbose="false"/>
 		<get src="http://central.maven.org/maven2/javax/mail/mail/1.4.7/mail-1.4.7.jar" dest="${lib.downloaded.dir}" usetimestamp="true" quiet="true" verbose="false"/>
 		<get src="http://central.maven.org/maven2/com/googlecode/libphonenumber/libphonenumber/8.10.2/libphonenumber-8.10.2.jar" dest="${lib.downloaded.dir}" usetimestamp="true" quiet="true" verbose="false"/>
 		<get src="http://central.maven.org/maven2/com/github/fge/uri-template/0.5/uri-template-0.5.jar" dest="${lib.downloaded.dir}" usetimestamp="true" quiet="true" verbose="false"/>
 		<get src="http://central.maven.org/maven2/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.jar" dest="${lib.downloaded.dir}" usetimestamp="true" quiet="true" verbose="false"/>
-		
 	</target>
 	
 	<!--
