@@ -5,9 +5,6 @@
 * luna: https://help.eclipse.org/luna
 * Also see my eBook **EclipseInAction.pdf**
 
-### Importing an existing Eclipe project.  
-To import an existing Eclipse project, see the README.txt file in tools/java/props2objs  
-
 ## Tips  
 ### Code completion (page 25)
 You can invoke code completion manually at any time by pressing Ctrl+Space. The exact effect will depend on the context, and you may wish to experiment a bit with this feature to become familiar with it. It can be useful, for example, after typing the first few letters of a particularly long class name.  
@@ -17,6 +14,9 @@ You normally want to only "Step Into" methods in your own classes and not into t
 defining the packages and classes listed there. 
 
 ## Q & A
+Q: How do I import an existing Eclipse project?  
+A: See README.txt in tools/java/props2objs  
+  
 Q: How do I use my own custom Ant build.xml file with Eclipse?  
 A: See https://www.ibm.com/developerworks/opensource/tutorials/os-ecl-easyant/index.html  
   
