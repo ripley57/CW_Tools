@@ -22,6 +22,7 @@ A: See https://www.ibm.com/developerworks/opensource/tutorials/os-ecl-easyant/in
   
 Q: Why can't my Ant build find javac ("Unable to find a javac compiler")?  
 A: https://wiki.eclipse.org/FAQ_Why_can%27t_my_Ant_build_find_javac%3F  
+**Note:** The easiest solution looks to be making Eclipse use a JDK instead of JRE (see https://www.gamefromscratch.com/post/2011/11/15/Telling-Eclipse-to-use-the-JDK-instead-of-JRE.aspx)  
   
 Q: There is an exclamation icon next to the project name. What does it mean?  
 A: To see the issues or errors: "Window → Show View → Problems" or "Window → Show View → Error Log".  
