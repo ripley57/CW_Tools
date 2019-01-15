@@ -20,6 +20,9 @@ defining the packages and classes listed there.
 Q: How do I use my own custom Ant build.xml file with Eclipse?  
 A: See https://www.ibm.com/developerworks/opensource/tutorials/os-ecl-easyant/index.html  
   
+Q: Why can't my Ant build find javac ("Unable to find a javac compiler")?  
+A: https://wiki.eclipse.org/FAQ_Why_can%27t_my_Ant_build_find_javac%3F  
+  
 Q: There is an exclamation icon next to the project name. What does it mean?  
 A: To see the issues or errors: "Window → Show View → Problems" or "Window → Show View → Error Log".  
 See: https://stackoverflow.com/questions/3812987/eclipse-shows-errors-but-i-cant-find-them  
