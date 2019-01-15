@@ -14,6 +14,7 @@
   
 **Q: How do I use my own custom Ant build.xml file with Eclipse?**  
 **A:** See https://www.ibm.com/developerworks/opensource/tutorials/os-ecl-easyant/index.html  
+Local link: [Make Ant easy with Eclipse]({{ site.baseurl }}{% link assets/Make_Ant_easy_with_Eclipse.pdf %})  
   
 **Q: Why can't my Ant build find javac ("Unable to find a javac compiler")?**  
 **A:** https://wiki.eclipse.org/FAQ_Why_can%27t_my_Ant_build_find_javac%3F  
