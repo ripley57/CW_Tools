@@ -1,4 +1,4 @@
-# Description:	Move multiple files to a new directory, using the "$@" variable. 
+# Description:	Move multiple files to a new directory, NOT using the "$@" variable. 
 
 mkdir dirA1
 
