@@ -17,6 +17,9 @@ You normally want to only "Step Into" methods in your own classes and not into t
 defining the packages and classes listed there. 
 
 ## Q & A
+Q: How do I use my own custom Ant build.xml file with Eclipse?  
+A: See https://www.ibm.com/developerworks/opensource/tutorials/os-ecl-easyant/index.html  
+  
 Q: There is an exclamation icon next to the project name. What does it mean?  
 A: To see the issues or errors: "Window → Show View → Problems" or "Window → Show View → Error Log".  
 See: https://stackoverflow.com/questions/3812987/eclipse-shows-errors-but-i-cant-find-them  
