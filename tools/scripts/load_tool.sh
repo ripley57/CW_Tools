@@ -15,23 +15,6 @@ function vc++()
 	cmd /c start cmd /k "C:\Program^ Files^ ^(x86^)\Microsoft^ Visual^ Studio^ 10.0\VC\vcvarsall.bat" x86
 }
 
-# Return path to CW_Tools directory for Windows user.
-function _cwtoolsdir()
-{
-    local _homedir="$(_windir)"
-    local _toolsdir="${_homedir}/Cygwin/home/${USERNAME}/CW_Tools/"
-    echo "${_toolsdir}"
-}
-
-# Return Windows user home directory.
-function _windir()
-{
-    local _homedrive=$(echo "$HOMEDRIVE" | sed 's/://')
-    local _homepath=$(echo "$HOMEPATH" | sed 's#\\#/#g')
-    local _homedir="/cygdrive/${_homedrive}/${_homepath}"
-    echo "${_homedir}"
-}
-
 
 # Description:
 #   Cd to user CW_Tools directory.

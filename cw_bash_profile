@@ -51,9 +51,15 @@ EOI
     return
 fi
 
+
+function isLinux() {
+    [ "$(uname)" = "Linux" ]
+}
+
+
 # Support for running on Linux.
 function _cygpath() {
-    if [ "$(uname)" = "Linux" ]; then
+    if isLinux ; then
         # Return path unchanged.
         shift
         echo $*
@@ -678,13 +684,40 @@ function _sd() {
     unset IFS
 }
 
+
+# Return Windows user home directory.
+function _windir()
+{
+    local _homedrive=$(echo "$HOMEDRIVE" | sed 's/://')
+    local _homepath=$(echo "$HOMEPATH" | sed 's#\\#/#g')
+    local _homedir="/cygdrive/${_homedrive}/${_homepath}"
+    echo "${_homedir}"
+}
+
+
+function _gethomedir()
+{
+    if isLinux ; then
+        echo $HOME
+    else
+        $(_windir)
+    fi
+}
+
+
+function _cwtoolsdir()
+{
+    echo "$(_gethomedir)/CW_Tools/"
+}
+
+
 # Persist the saved dirs to a file, so that they can be
 # loaded automatically by bash when it next starts.
 function _persistdirs() {
     IFS='!'
     local _debug=0
-	local _winhomedir=$(_windir)
-    local presavefile="${_winhomedir}/.presave"
+    local _homedir=$(_gethomedir)
+    local presavefile="${_homedir}/.presave"
 	
 	# Remove the current file.
 	rm -f "$presavefile"
@@ -1104,10 +1137,10 @@ function load_aliases() {
         usage load_aliases
         return
     fi
-	local _winhomedir=$(_windir)
-	if [ -f "${_winhomedir}/.aliases" ]; then
-		echo "Loading additional aliases from ${_winhomedir}/.aliases..."
-		source "${_winhomedir}/.aliases"
+	local _homedir=$(_gethomedir)
+	if [ -f "${_homedir}/.aliases" ]; then
+		echo "Loading additional aliases from ${_homedir}/.aliases..."
+		source "${_homedir}/.aliases"
 	fi
 }
 load_aliases
