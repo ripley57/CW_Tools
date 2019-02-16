@@ -245,17 +245,17 @@ function newer() {
        touch -d "$_time_earlier_string" $MARKER2
 
        # Find the files.
-       find . -type f -newer $MARKER2 -print
+       find . -type f \( -newer $MARKER2 -o -cnewer $MARKER2 \) -print
     else
        # Find files newer than a marker file created
 	   # previously using the create_marker function.
 	   if [ x"$1" != x ] && [ -f "$1" ]; then
-	       # Use the specified marker file.
-		   #echo "Using specified marker file: $1"
-		   find . -type f -newer "$1" -print0
+	   	# Use the specified marker file.
+	   	#echo "Using specified marker file: $1"
+	   	find . -type f \( -newer "$1" -o -cnewer "$1" \) -print0
 	   else
-		   # Use the default MARKER file.
-           find . -type f -newer $MARKER -print
+	   	# Use the default MARKER file.
+           	find . -type f \( -newer $MARKER -o -cnewer $MARKER \) -print
 	   fi
     fi
 }
