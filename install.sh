@@ -19,13 +19,17 @@ function profile_code()
 # Prevent warning about /tmp not existing.
 [ "\$OS" = Windows_NT ] && mkdir -p /tmp
 
-# Return path to windows home directory.
-function winhomedir()
+# Return path to user's home directory.
+function gethomedir()
 {
-    local _homedrive=\$(echo "\$HOMEDRIVE" | sed 's/://')
-    local _homepath=\$(echo "\$HOMEPATH" | sed 's#\\\#/#g')
-    local _homedir="/cygdrive/\${_homedrive}/\${_homepath}"
-    echo "\${_homedir}"
+    if [ "\$(uname)" = "Linux" ]; then
+        echo \$HOME
+    else
+        local _homedrive=\$(echo "\$HOMEDRIVE" | sed 's/://')
+        local _homepath=\$(echo "\$HOMEPATH" | sed 's#\\\#/#g')
+        local _homedir="/cygdrive/\${_homedrive}/\${_homepath}"
+        echo "\${_homedir}"
+    fi
 }
 
 # Add CYGWIN_HOME/bin to front of path, so that we do not
@@ -106,12 +110,11 @@ ENV_BC_EXE="/cygdrive/c/Program Files/Beyond Compare 4/bcompare.exe"
 #presavedir 1 "/cygdrive/d/CW/V66/exe/filefilter" "stellent dir"
 
 # Pre-load previously saved directory paths.
-_winhomedir=\$(winhomedir)
-if [ -f "\${_winhomedir}/.presave" ]; then
-   echo Loading \$(cygpath -aw "\${_winhomedir}/.presave") ...
-   . "\${_winhomedir}/.presave"
+_homedir=\$(gethomedir)
+if [ -f "\${_homedir}/.presave" ]; then
+   echo Loading \$(cygpath -aw "\${_homedir}/.presave") ...
+   . "\${_homedir}/.presave"
 fi
-
 
 # OPTIONAL: Pre-load all the CW cache directory paths.
 #presavecachedirs
