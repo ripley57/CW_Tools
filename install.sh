@@ -112,7 +112,7 @@ ENV_BC_EXE="/cygdrive/c/Program Files/Beyond Compare 4/bcompare.exe"
 # Pre-load previously saved directory paths.
 _homedir=\$(gethomedir)
 if [ -f "\${_homedir}/.presave" ]; then
-   echo Loading \$(cygpath -aw "\${_homedir}/.presave") ...
+   echo "Loading \${_homedir}/.presave ..."
    . "\${_homedir}/.presave"
 fi
 
