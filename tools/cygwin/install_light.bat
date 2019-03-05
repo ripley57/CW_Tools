@@ -39,7 +39,7 @@ IF EXIST %CYGWIN_INSTALL_DIR% (
 mkdir %CYGWIN_INSTALL_DIR%
 
 REM -- Packages we will install (in addition to the default packages)
-SET PACKAGES=wget,diffutils,cygutils-extra,vim,bc,curl,unzip,inetutils,dos2unix
+SET PACKAGES=wget,diffutils,cygutils-extra,vim,bc,curl,unzip,inetutils,dos2unix,netcat
 REM I did try adding "git" but it nearly quadruples the size from 57MB to over 200MB!
 
 REM -- Cygwin mirror
