@@ -72,7 +72,7 @@ function _gethomedir()
     if isLinux ; then
         echo $HOME
     else
-        $(_windir)
+        _windir
     fi
 }
 
