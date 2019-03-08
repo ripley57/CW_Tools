@@ -17,5 +17,5 @@ function gawk() {
         usage gawk
         return
     fi
-    $TOOLS_DIR/gawk/gawk.exe "$@"
+    "$TOOLS_DIR/gawk/gawk.exe" "$@"
 }

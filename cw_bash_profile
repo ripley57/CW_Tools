@@ -52,8 +52,34 @@ EOI
 fi
 
 
+# Return Windows user home directory.
+function _windir()
+{
+    local _homedrive=$(echo "$HOMEDRIVE" | sed 's/://')
+    local _homepath=$(echo "$HOMEPATH" | sed 's#\\#/#g')
+    local _homedir="/cygdrive/${_homedrive}/${_homepath}"
+    echo "${_homedir}"
+}
+
+ 
 function isLinux() {
     [ "$(uname)" = "Linux" ]
+}
+
+
+function _gethomedir()
+{
+    if isLinux ; then
+        echo $HOME
+    else
+        $(_windir)
+    fi
+}
+
+
+function _cwtoolsdir()
+{
+    echo "$(_gethomedir)/CW_Tools/"
 }
 
 
@@ -684,33 +710,6 @@ function _sd() {
     unset IFS
 }
 
-
-# Return Windows user home directory.
-function _windir()
-{
-    local _homedrive=$(echo "$HOMEDRIVE" | sed 's/://')
-    local _homepath=$(echo "$HOMEPATH" | sed 's#\\#/#g')
-    local _homedir="/cygdrive/${_homedrive}/${_homepath}"
-    echo "${_homedir}"
-}
-
-
-function _gethomedir()
-{
-    if isLinux ; then
-        echo $HOME
-    else
-        $(_windir)
-    fi
-}
-
-
-function _cwtoolsdir()
-{
-    echo "$(_gethomedir)/CW_Tools/"
-}
-
-
 # Persist the saved dirs to a file, so that they can be
 # loaded automatically by bash when it next starts.
 function _persistdirs() {
@@ -953,18 +952,17 @@ function cw_tools_dir() {
     dirname "$CW_BASH_PROFILE_PATH"
 }
 
-# Load tools and return list of load files.
+# Load tools and also build array of each tool load file.
+declare -A TOOL_LOAD_FILES=()
 function load_tools() {
     local _tools_dir="$(cw_tools_dir)/tools"
-    . $_tools_dir/load_tools.sh
-    TOOL_LOAD_FILES=
-    local _t
+    . "$_tools_dir/load_tools.sh"
     for _t in $(tools)
     do
         local _lf="$_tools_dir/$_t/load_tool.sh"
-        source "$_lf" "$_tools_dir" && TOOL_LOAD_FILES="$_lf $TOOL_LOAD_FILES"
+        source "$_lf" "$_tools_dir" 
+	TOOL_LOAD_FILES["$_lf"]="$_lf"
     done
-    echo $_load_files
 }
 # Do not load the tools on a true Linux OS.
 # This prevents any bootup failure or hang.
@@ -972,20 +970,25 @@ if [ "$(uname)" != "Linux" ]; then
     load_tools
 fi
 
+function _cat_tool_load_files()
+{
+    cat "$CW_BASH_PROFILE_PATH" "${!TOOL_LOAD_FILES[@]}"
+}
+
 # Display description of the specified function. We do this by
 # parsing this file, combined with all the tool function definitions.
 # For this to work, the description above each function needs to match
 # the expected format.
 function usage() {
     local _fname=$1
-    cat $CW_BASH_PROFILE_PATH $TOOL_LOAD_FILES | \
+    _cat_tool_load_files | \
     sed -e '/# Description:/{h;d;}' -e "/^function $_fname()/!{H;d;}" -e "/^function $_fname()/{x;}" | \
     sed '/Description:/{x;p;x;}' | sed '$d' | sed 's/^#//'
 }
 
 # List all 'public' functions.
 function public_funcs() {
-    cat $CW_BASH_PROFILE_PATH $TOOL_LOAD_FILES | \
+    _cat_tool_load_files | \
     sed -e '/Description:/{h;d;}' -e "/function /!{H;d;}" -e '/function /{H;}' -e "x;/Usage/!d" | \
     grep '^function ' | grep -v '^function _' | sed -e 's/^function //' -e 's/ {//' -e 's/()//'
     #| sort -k1.1,1.1
@@ -997,11 +1000,11 @@ function private_funcs() {
     # list all functions and then exlcude the 'public' ones.
 
     # All funcs.
-    cat $CW_BASH_PROFILE_PATH $TOOL_LOAD_FILES | grep '^function ' | grep -v '^function _' | \
-    sed -e 's/^function //' -e 's/ {//' -e 's/()//' | sort > ${TMP}/all_funcs.tmp
+    _cat_tool_load_files | grep '^function ' | grep -v '^function _' | \
+    sed -e 's/^function //' -e 's/ {//' -e 's/()//' | sort > "${TMP}/all_funcs.tmp"
 
     # Public funcs.
-    public_funcs | sort > ${TMP}/public_funcs.tmp
+    public_funcs | sort > "${TMP}/public_funcs.tmp"
 
     # Display the difference.
     comm -23 "${TMP}/all_funcs.tmp" "${TMP}/public_funcs.tmp" | sed '$G'
@@ -1070,7 +1073,7 @@ function funcs() {
         return
     fi
 
-	# Option to not list the public functions.
+    # Option to not list the public functions.
     if [ "$1" = 'no_list_public' ]; then
         _display_public_funcs=no
 	shift
@@ -1137,10 +1140,10 @@ function load_aliases() {
         usage load_aliases
         return
     fi
-	local _homedir=$(_gethomedir)
-	if [ -f "${_homedir}/.aliases" ]; then
-		echo "Loading additional aliases from ${_homedir}/.aliases..."
-		source "${_homedir}/.aliases"
+	local _winhomedir=$(_windir)
+	if [ -f "${_winhomedir}/.aliases" ]; then
+		echo "Loading additional aliases from ${_winhomedir}/.aliases..."
+		source "${_winhomedir}/.aliases"
 	fi
 }
 load_aliases

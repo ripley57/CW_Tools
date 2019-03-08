@@ -23,7 +23,7 @@ function profile_code()
 function gethomedir()
 {
     if [ "\$(uname)" = "Linux" ]; then
-        echo \$HOME
+        echo "\$HOME"
     else
         local _homedrive=\$(echo "\$HOMEDRIVE" | sed 's/://')
         local _homepath=\$(echo "\$HOMEPATH" | sed 's#\\\#/#g')
@@ -71,7 +71,7 @@ ENV_DB_DOWNLOAD_DIR=/cygdrive/c/users/jcdc/Dropbox/Public/tmp
 # Load cw_bash_profile and tools.
 CW_BASH_PROFILE_PATH=~/CW_Tools/cw_bash_profile
 export CW_BASH_PROFILE_PATH
-. \$CW_BASH_PROFILE_PATH
+. "\$CW_BASH_PROFILE_PATH"
 
 # Load optional bash aliases.
 [ -f ~/CW_Tools/aliases ] && . ~/CW_Tools/aliases
@@ -101,7 +101,7 @@ export CW_BASH_PROFILE_PATH
 ENV_WEB_BROWSER="/cygdrive/c/Program Files/Internet Explorer/iexplore.exe"
 
 # OPTIONAL: Specify preferred text editor.
-ENV_TEXT_EDITOR=\$TOOLS_DIR/notepad++/Notepad++.exe
+ENV_TEXT_EDITOR="\$TOOLS_DIR/notepad++/Notepad++.exe"
 
 # OPTIONAL: Specify location of Beyond Compare (bcompare.exe)
 ENV_BC_EXE="/cygdrive/c/Program Files/Beyond Compare 4/bcompare.exe"
