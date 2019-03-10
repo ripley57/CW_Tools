@@ -14,4 +14,7 @@ Where:
 I've seen this happily cope with 1m records in the input XML file, before you get a Java heap error. It's possible
 that explicitly specifying a large heap size could help here - I think a default heap size is used by default.
 
+NOTE: Apparently, it is difficult to find v2 - compliant XSLT engines, hence I had to use this:
+https://www.saxonica.com/html/documentation/using-xsl/commandline/
+
 JeremyC 10-03-2019
