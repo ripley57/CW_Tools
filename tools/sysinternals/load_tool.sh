@@ -71,7 +71,7 @@ function handle() {
         usage handle
         return
     fi
-    $TOOLS_DIR/sysinternals/handle.exe /accepteula
+    "$TOOLS_DIR/sysinternals/handle.exe" /accepteula
 }
 
 # Description:
@@ -87,7 +87,7 @@ function tcpview() {
         usage tcpview
         return
     fi
-    $TOOLS_DIR/sysinternals/Tcpview.exe /accepteula
+    "$TOOLS_DIR/sysinternals/Tcpview.exe" /accepteula
 }
 
 # Description:
@@ -103,7 +103,7 @@ function procexp() {
         usage procexp
         return
     fi
-    $TOOLS_DIR/sysinternals/procexp.exe /accepteula
+    "$TOOLS_DIR/sysinternals/procexp.exe" /accepteula
 }
 
 # Description:
@@ -118,7 +118,7 @@ function procmon() {
         usage procmon
         return
     fi
-    $TOOLS_DIR/sysinternals/procmon.exe /accepteula /noconnect
+    "$TOOLS_DIR/sysinternals/procmon.exe" /accepteula /noconnect
 }
 
 # Description:
@@ -134,7 +134,7 @@ function strings() {
         usage strings
         return
     fi
-    $TOOLS_DIR/sysinternals/strings.exe /accepteula
+    "$TOOLS_DIR/sysinternals/strings.exe" /accepteula
 }
 
 # Description:
@@ -155,30 +155,30 @@ function bginfo() {
         return
     fi
 	
-	local _bginfo_exe=$TOOLS_DIR/sysinternals/bginfo.exe
-	local _registry_vbs_script=$TOOLS_DIR/registry/registry.vbs
-	local _shorcuts_vbs_script=$TOOLS_DIR/shortcuts/shortcuts.vbs
+	local _bginfo_exe="$TOOLS_DIR/sysinternals/bginfo.exe"
+	local _registry_vbs_script="$TOOLS_DIR/registry/registry.vbs"
+	local _shorcuts_vbs_script="$TOOLS_DIR/shortcuts/shortcuts.vbs"
 	local _bginfo_shortcut_filename="cwtools_bginfo.lnk"
 	local _bginfo_shortcut_description="My link to bginfo"
-	local _bginfo_shortcut_target="$(cygpath -aw $TOOLS_DIR/sysinternals/bginfo.exe)"
-	local _bginfo_cfg_file="$(cygpath -aw $TOOLS_DIR/sysinternals/bginfo/cwtools_bginfo_cfg.bgi)"
+	local _bginfo_shortcut_target="$(cygpath -aw "$TOOLS_DIR/sysinternals/bginfo.exe")"
+	local _bginfo_cfg_file="$(cygpath -aw "$TOOLS_DIR/sysinternals/bginfo/cwtools_bginfo_cfg.bgi")"
 	
 	if [ $# -eq 0 ]; then
-		$_bginfo_exe /nolicprompt "$_bginfo_cfg_file"
+		"$_bginfo_exe" /nolicprompt "$_bginfo_cfg_file"
 		return
 	fi
 	
 	case "$1" in
 	silent)
 		# Silently launch bginfo, i.e. do not display the GUI.
-		$_bginfo_exe /nolicprompt "$_bginfo_cfg_file" /timer:0 /silent
+		"$_bginfo_exe" /nolicprompt "$_bginfo_cfg_file" /timer:0 /silent
 		;;
 	install)
 		# Create our "cwtools_biginfo" shortcut here:
 		# C:\Users\<user name>\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 		# Note: We don't need to determine the username, since we are using the "Startup"
 		# special folder (see https://ss64.com/vb/special.html).
-		cmd /c cscript /nologo "$(cygpath -aw $TOOLS_DIR/shortcuts/shortcuts.vbs)" \
+		cmd /c cscript /nologo "$(cygpath -aw "$TOOLS_DIR/shortcuts/shortcuts.vbs")" \
 				   "/create:yes" \
 				   "/destdirspecial:Startup" \
 				   "/destdir2:""""" \
@@ -189,13 +189,13 @@ function bginfo() {
 		# Copy our vbs script to c:\temp. We do this because this is the easiest/only way to
 		# have the script in a known location that our pre-configured bginfo config can find.
 		mkdir -p /cygdrive/c/temp
-		cp -f $TOOLS_DIR/sysinternals/bginfo/bginfo_vbscript1.vbs /cygdrive/c/temp/
+		cp -f "$TOOLS_DIR/sysinternals/bginfo/bginfo_vbscript1.vbs" /cygdrive/c/temp/
 		# Force immediate update to the desktop.
 		bginfo silent
 		;;
 	remove)
 		# Remove our "cwtools_bginfo" shortcut.
-		cmd /c cscript /nologo "$(cygpath -aw $TOOLS_DIR/shortcuts/shortcuts.vbs)" \
+		cmd /c cscript /nologo "$(cygpath -aw "$TOOLS_DIR/shortcuts/shortcuts.vbs")" \
 				   "/delete:yes" \
 				   "/sourcedirspecial:Startup" \
 				   "/sourcedir2:""""" \
