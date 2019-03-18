@@ -23,6 +23,6 @@ function fiddler() {
     if [ ! -f "$TOOLS_DIR/fiddler2/Fiddler.exe" ]; then
        (cd "$TOOLS_DIR/fiddler2" && unzip fiddler.zip)
     fi
-    chmod ugo+rx $TOOLS_DIR/fiddler2/Fiddler.exe
-    $TOOLS_DIR/fiddler2/Fiddler.exe
+    chmod ugo+rx "$TOOLS_DIR/fiddler2/Fiddler.exe"
+    "$TOOLS_DIR/fiddler2/Fiddler.exe"
 }
