@@ -24,7 +24,7 @@ public class CWTools {
 
 	private enum Cygwin {
 		GITHUB  ("url.github.cygwin","Cygwin_Light-master.zip","Cygwin_Light-master","Cygwin.zip"),
-		DROPBOX ("url.dropbox.cygwin","Cygwin.zip","Cygwin_Light_08072018-master:Cygwin_Light_09062018-master:Cygwin_Light_04062018-master:Cygwin_Light_22042018-master:Cygwin_Light_03032018-master:Cygwin_Light_05032019-master:Cygwin_Light_10032019:Cygwin_Light-master","Cygwin.zip");
+		DROPBOX ("url.dropbox.cygwin","Cygwin.zip","Cygwin_Light_05032019-master:Cygwin_Light_10032019-master:Cygwin_Light-master","Cygwin.zip");
 
 		private final String url_prop_name;
 		private final String zip_name;
