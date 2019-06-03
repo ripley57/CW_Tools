@@ -166,3 +166,25 @@ function sslpoke() {
 	
 	java "$_dump_certs" -jar "$(cygpath -aw "${TOOLS_DIR}/java/SSLPoke/sslpoke.jar")" "$@"
 }
+
+# help-func javahelp ^stack dump$|^jstack$
+#
+# Description:
+#   Display useful java commands.
+#
+# Usage:
+#   javahelp
+#
+function javahelp() {
+    if [ "$1" = '-h' ]; then
+        usage javahelp
+        return
+    fi
+
+    cat <<EOI
+
+o Generate a jstack:
+su slurp -c "/usr/java/default/bin/jstack -l \$(pgrep -f AgentRun)"
+
+EOI
+}
