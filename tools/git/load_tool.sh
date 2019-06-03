@@ -16,6 +16,8 @@ function markdown() {
 }
 
 
+# help-func githelp ^git$|^clone$|^annotate$
+#
 # Description:
 #   Useful git commands and links.
 #
