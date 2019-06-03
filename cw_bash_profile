@@ -365,7 +365,7 @@ function nf() {
     fi
 
     if [ ! -z "$_file" ]; then
-        $_editor $(cygpath -aw $_file) &
+        "$_editor" $(cygpath -aw $_file) &
     else
         echo "nl: No file names match \"$1\""
     fi
@@ -391,7 +391,7 @@ function n() {
     fi
 
     # Determine the editor to use.
-    local _editor=$(_get_text_editor)
+    local _editor="$(_get_text_editor)"
 
     if [ "$1" = '-' ]; then
        # Just launch the editor, with no files.
@@ -406,7 +406,7 @@ function n() {
     # use that option, so I think it's more useful to replace 
     # that with this automatic wrapping of a single space path.
     if [ $# -gt 1 ]; then
-        $_editor "$(cygpath -aw "$*")" &
+        "$_editor" "$(cygpath -aw "$*")" &
         return
     fi
 	
@@ -443,7 +443,7 @@ function n() {
     #    fi
     #fi
 
-    $_editor "$(cygpath -aw "$*")" &
+    "$_editor" "$(cygpath -aw "$*")" &
 }
 
 
@@ -1127,6 +1127,43 @@ if [ "$(uname)" = "Linux" ]; then
 else
     funcs no_list_public
 fi
+
+
+# Description:
+#   Call the <func>help function given one of the tags
+#   associated with function.
+#
+# Usage:
+#   help func-tag
+#   
+# Example: call "githelp" function:
+#   help git
+#
+function help() {
+    if [ "$1" = '-h' ]; then
+        usage help
+        return
+    fi
+    
+    local _str=$1   
+
+    # Example of func-tag in a function declaration:
+    # help-func githelp ^git$|^clone$|^annotate$
+    # The terms on the right is a regex.
+    local _func_match=$(_cat_tool_load_files | grep '^# help-func ' | \
+                        gawk -v str="$_str" '{f=$3;$1="";$2="";$3="";gsub(/^[ ]+/,"");if (match(str,$0)) {printf("%s ",f);}}' )
+    if [ $(echo "$_func_match" | wc -w | cut -d' ' -f1) -gt 1 ]; then
+        # Multiple function matches, so just list them.
+        echo $_func_match
+    elif [ ! -z "$_func_match" ]; then
+        # Single function match, so call it.
+        printf "\n*******************"
+        printf "\nCalling %s..." "$_func_match"
+        printf "\n*******************\n"
+        eval "$_func_match"
+    fi
+}
+
 
 # Description:
 #   Load any additional .aliases file that could be
