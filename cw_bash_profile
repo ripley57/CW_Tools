@@ -1160,7 +1160,7 @@ function help() {
         printf "\n*******************"
         printf "\nCalling %s..." "$_func_match"
         printf "\n*******************\n"
-        eval "$_func_match"
+        eval "$_func_match" | grep "$_str"
     fi
 }
 
