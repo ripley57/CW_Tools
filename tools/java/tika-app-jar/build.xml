@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="demo" default="package" basedir=".">
+	<property name="lib.dir" location="lib" />
+
+	<target name="download-jars">
+		<get src="http://central.maven.org/maven2/org/apache/tika/tika-app/1.17/tika-app-1.17.jar" dest="${lib.dir}" usetimestamp="true" quiet="true" verbose="true" />
+	</target>
+	
+	<!-- 
+	     What we are doing here is re-packaging the standalone tika-app jar together
+             with the Oracle file jai_imageio.jar. This enables us to extract tiff images
+             embedded in an image PDF document.
+
+             NOTE: While the jai image download contains several files (including a dll
+             for Windows or a .so for Linux), I found I only needed to use the jar file.
+
+             Example usage:
+             Extract metadata  : java -Djava.awt.headless=true -jar my-tika-app.jar -m file.pdf
+             Extract body text : java -Djava.awt.headless=true -jar my-tika-app.jar -T file.pdf
+             Extract Images    : java -Djava.awt.headless=true -jar my-tika-app.jar -z file.pdf
+             (For other tika-app options see http://www.mkjava.com/tutorial/apache-tika)
+             NOTE: The use of -Djava.awt.headless=true enables you to call tika-app without 
+                   the need to have a full X Windows environment configured on Linux.
+
+             References:
+             https://pdfbox.apache.org/2.0/dependencies.html
+             https://github.com/openmpf/openmpf/issues/414
+             https://stackoverflow.com/questions/7051603/jai-vendorname-null
+             https://download.java.net/media/jai-imageio/builds/release/1.1/INSTALL-jai_imageio.html
+             https://www.oracle.com/technetwork/java/javasebusiness/downloads/java-archive-downloads-java-client-419417.html#jaiio-1.0_01-oth-JPR
+             
+             JeremyC 6-6-2019 
+	-->
+
+	<target name="package" depends="download-jars">
+		<jar destfile="my-tika-app.jar">
+			<zipgroupfileset dir="${lib.dir}" includes="*.jar" />
+			<manifest>
+				<!-- Use same Main-Class entry taken from tika-app jar MANIFEST -->
+				<attribute name="Main-Class" value="org.apache.tika.cli.TikaCLI" />
+
+				<!-- 
+				     Prevent error "java.lang.IllegalArgumentException: vendorName == null!".
+				     See https://stackoverflow.com/questions/7051603/jai-vendorname-null 
+                                -->
+				<attribute name="Specification-Title"		value="Java Advanced Imaging Image I/O Tools" />
+				<attribute name="Specification-Version" 	value="1.1" />
+				<attribute name="Specification-Vendor" 		value="Sun Microsystems, Inc." />
+				<attribute name="Implementation-Title" 		value="com.sun.media.imageio" />
+				<attribute name="Implementation-Version" 	value="1.1" />
+				<attribute name="Implementation-Vendor"		value="Sun Microsystems, Inc." />
+			</manifest>
+		</jar>
+	</target>
+</project>
