@@ -19,7 +19,7 @@ TOOLS_DIR=$*
 #   Note: The following is a C# GUI wrapper tool around ImageMagick:
 #         https://github.com/MattDolan/ImageConverter/tree/master/vs2010
 #         This is handy becaue it displays the command-line used for
-#         your selected conversion, so you can make a note of it.
+#         your selected convert.exe conversion.
 #
 #   Note: If you get an error when running convert.exe on Windows, check
 #         that you are not invoking the Windows built-in convert.exe!!
