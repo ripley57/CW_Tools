@@ -1,10 +1,9 @@
 ## Git Cheatsheet  
 https://help.github.com/articles/git-cheatsheet
 
-
-## GitHub Pages Jekyll markdown language  
+## GitHub Markdown language  
 https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
-
+https://help.github.com/en/articles/basic-writing-and-formatting-syntax
 
 ## Re-basing a Git repository  
 How to extract a git repository without any history and then remove the ".git" folders:  
