@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="demo" default="package" basedir=".">
+	<!-- 
+	     	Description:
+
+	     	Rebuild the JNQ command-line test tool ("smb-browser-jar-with-dependencies.jar")
+		with a specific JNQ jar file embedded, ideally the one the appliance is using. 
+
+		NOTE: You will need ant installed in order to run this script.
+
+		Example usage:
+
+		ant -Djnq.jar=jNQ-1.0.2.br-4.9.Exonar.05.02.2019.jar
+
+		This will build a new version of the JNQ command-line tool "new-smb-browser.jar",
+		in the current directory, with the specified JNQ jar file embedded.
+
+		JeremyC 13-06-2019
+	-->
+
+	<property name="dir.smb-browser-old" value="smb-browser-old" />
+	<property name="dir.temp.jnq" value="temp-jnq" />
+	<property name="dir.temp.old" value="temp-old" />
+	<property name="new-smb-browser-jar" value="new-smb-browser.jar" />
+
+	<!--	Ask use for the name of the JNQ jar to embedd.
+	     	Alternatively, call ant with the JNQ jar file name, e.g. 
+		ant -Djnq.jar=jNQ-1.0.2.br-4.9.Exonar.05.02.2019.jar -->
+	<target name="ask-user-for-jnq-jar" unless="${jnq.jar}" >
+		<input message="JNQ jar file to embed: " addproperty="jnq.jar" />
+		<fail message="FILE NOT FOUND: ${jnq.jar}">
+			<condition>
+				<not>
+					<available file="${jnq.jar}" />
+				</not>
+			</condition>
+		</fail>
+	</target>
+
+	<target name="extract-jnq-jar" depends="ask-user-for-jnq-jar">
+		<!--<delete dir="${dir.temp.jnq}" />-->
+		<mkdir  dir="${dir.temp.jnq}" />
+		<unzip src="${jnq.jar}" dest="${dir.temp.jnq}" />
+	</target>
+
+	<target name="extract-smb-browser-jar">
+		<!--<delete dir="${dir.temp.old}" />-->
+		<mkdir  dir="${dir.temp.old}" />
+		<unzip dest="${dir.temp.old}">
+			<fileset dir="${dir.smb-browser-old}">
+				<include name="**/*.jar" />
+			</fileset>
+		</unzip>
+	</target>
+
+	<!-- 	This target requires two arguments:
+		param1	-	The path to the MANIFEST.MF file to display.
+		param2	-	The name of the jar file, so we can display. -->
+	<target name="display-jar-manifest">
+		<loadfile property="contents" srcFile="${param1}" />
+		<echo>**********************************************</echo>
+		<echo>Details from: ${param2}</echo>
+		<echo></echo>
+		<echo>${contents}</echo>
+	</target>
+
+	<target name="package" depends="extract-jnq-jar,extract-smb-browser-jar">
+		<jar destfile="${new-smb-browser-jar}">
+			<!-- Include org/ and com/exonar/ from the old smb-browser jar -->
+			<fileset dir="${dir.temp.old}">
+				<include name="**/*" />
+				<exclude name="com/visuality" />
+				<exclude name="META-INF" />
+			</fileset>
+ 
+			<!-- Include com/ from the JNQ jar -->
+			<fileset dir="${dir.temp.jnq}">
+				<include name="**/*" />
+				<exclude name="META-INF" />
+			</fileset>
+
+			<!-- Include the same manifest entry from the original smb-browser jar -->
+			<manifest>
+				<attribute name="Main-Class" value="com.exonar.smb.SmbBrowser" />
+			</manifest>
+		</jar>
+
+		<echo>**********************************************</echo>
+		<echo>Your new JNQ command-line tool is here:</echo>
+		<echo>${new-smb-browser-jar}</echo>
+		<echo>**********************************************</echo>
+
+		<echo>This includes the following JNQ ...</echo>
+		<antcall target="display-jar-manifest">
+			<param name="param1" value="${dir.temp.jnq}/META-INF/MANIFEST.MF" />
+			<param name="param2" value="${jnq.jar}" />
+		</antcall> 
+			
+		<!-- Tidy up -->
+		<delete dir="${dir.temp.old}" />
+		<delete dir="${dir.temp.jnq}" />
+	</target>
+</project>
