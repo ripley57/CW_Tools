@@ -1,3 +1,6 @@
+THE EXAMPLES BELOW ARE FROM AN ARTICLE IN VSJ JULY/AUGUST 2005
+
+
 INSTALL DERBY (into the local "./lib" directory):
 ant install-derby
 
@@ -129,6 +132,71 @@ ant run-embedded-demo
 ...simply run:
 ant run-networked-demo
 Note: But remember to first clear the "custs" and "orders" tables!
+
+
+
+DEMONSTRATING DERBY SUPPORT FOR REFERENTIAL CONSTRAINTS:
+When we delete an entry from our "custs" table, we should also delete the corresponding records
+from the "orders" table. To enforce (and automate this) we can define a constraint (see createdbref.sql).
+
+For example, using the ij command prompt we can see the following related records:
+
+ij> select count(*) from custs where id='700';
+1
+-----------
+1
+
+ij> select count(*) from orders where custid='700';
+1
+-----------
+10
+
+If you recreate the dabatase and tables using "run 'createdbref.sql';", you will see that the following
+command will delete all 11 records indicated above:
+
+ij> delete from custs where id='700';
+1 row inserted/updated/deleted
+ij> select count(*) from orders where custid='700';
+1
+-----------
+0
+
+
+
+DEMONSTRATING DERBY SUPPORT FOR STORED PROCEDURES:
+A stored procedure is implemented in Java code (jar) and is stored in the database.
+
+o To build our jar called "mystproc.jar":
+ant mystproc-jar
+
+o To make the file easy to find for the next step:
+copy mystproc.jar c:\temp\
+
+o Connect to the database using a networked (i.e. non-embedded connection) and install our jar file into the database:
+ij> call sqlj.install_jar('file:C:\temp\mystproc.jar','APP.cleanTable',0);
+Statement executed.
+This calls a stored procedure that will install our jar file, giving it an internal name of "cleanTable" in the database:
+To remove the JAR: call sqlj.remove_jar('APP.cleanTable',0);
+
+o Next we need to tell Derby to look at the jar:
+ij> call syscs_util.syscs_set_database_property('derby.database.classpath','APP.cleanTable');
+Statement executed.
+
+o Now we can finally define our stored procedurem, called "deleteAll()":
+ij>  create procedure deleteAll() parameter style java language java modifies sql data external name 'CleanTables.delAll';
+0 rows inserted/updated/deleted
+To remove the stored procedure: drop procedure deleteAll;
+
+o You can now invoke our stored procedure from ij like this:
+ij> call deleteAll();
+Statement executed.
+You can now verify that both database tables are now empty.
+
+o To list your stored procedures:
+ij> show procedures;
+PROCEDURE_SCHEM     |PROCEDURE_NAME                |REMARKS
+------------------------------------------------------------------------
+APP                 |DELETEALL                     |CleanTables.delAll
 
 
 JeremyC 23-06-2019
