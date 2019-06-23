@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="demo" default="compile" basedir=".">
+    <property name="src.dir" location="src" />
+    <property name="classes.dir" location="classes" />
+    <property name="lib.dir" location="lib" />
+    <property name="download.dir" location="download" />
+
+    <path id="demo.classpath">
+        <pathelement location="${classes.dir}" />
+        <fileset dir="${lib.dir}" includes="**/**.jar" />
+    </path>
+
+    <target name="download-derby">
+	<mkdir dir="${download.dir}" />
+        <get src="https://www-eu.apache.org/dist//db/derby/db-derby-10.14.2.0/db-derby-10.14.2.0-bin.zip" usetimestamp="true" dest="${download.dir}" />
+    </target>
+
+    <target name="install-derby" depends="download-derby">
+        <unzip dest="${lib.dir}">
+            <fileset dir="${download.dir}">
+                <include name="**/*.zip" />
+            </fileset>
+        </unzip>
+    </target>
+
+    <target name="compile" depends="install-derby">
+        <mkdir dir="${classes.dir}"/>
+        <javac 
+		includeantruntime="false" 
+		srcdir="${src.dir}"
+		destdir="${classes.dir}" 
+		debug="true" 
+		debuglevel="lines,vars,source">
+		<classpath refid="demo.classpath" />
+	</javac>
+    </target>
+
+    <!--
+        Invoke our db filler program, using an embedded
+        Apache Derby database.
+    -->
+    <target name="run-embedded-demo" depends="compile">
+        <java 
+            classname="TableFiller"
+            fork="true"
+            failonerror="true">
+            <classpath refid="demo.classpath" />
+            <arg value="embedded" />
+        </java>
+    </target>
+
+    <!--
+        Invoke our db filler program, using a traditional
+        client / server standalone Apache Derby database.
+    -->
+    <target name="run-networked-demo" depends="compile">
+        <java 
+            classname="TableFiller"
+            fork="true"
+            failonerror="true">
+            <classpath refid="demo.classpath" />
+            <arg value="networked" />
+        </java>
+    </target>
+
+    <target name="clean">
+        <delete dir="${classes.dir}" failonerror="false" />
+        <delete dir="$(download.dir)" failonerror="false" />
+    </target>
+</project>
