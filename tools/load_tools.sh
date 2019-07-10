@@ -13,6 +13,6 @@ function tools() {
     fi
 
     cat <<EOI
-$GAWK mfcmapi jd-gui jgit luke myjgui dependencywalker sysinternals mlcfg32 presavedir ydoc stripbom explorer openssl $WGET $NETCAT splitjoin pawk sawk fiddler2 notepad++ xmltools vim jetty gettimenow setlmtime listlmtimes filetimes settimenow getmfctime encoder hex filetools $ENV_CW_TOOLS $ENV_EXTRA_TOOLS download iexplorer snip wireshark Bit bc utf8tool image include git scripts ldap c# windbg shortcuts registry ldp mp3 pi addbom cygwin email java javascript uml fc ant
+$GAWK mfcmapi jd-gui jgit luke myjgui dependencywalker sysinternals mlcfg32 presavedir ydoc stripbom explorer openssl $WGET $NETCAT splitjoin pawk sawk fiddler2 notepad++ xmltools vim jetty gettimenow setlmtime listlmtimes filetimes settimenow getmfctime encoder hex filetools $ENV_CW_TOOLS $ENV_EXTRA_TOOLS download iexplorer snip wireshark Bit bc utf8tool image include git scripts ldap c# windbg shortcuts registry ldp mp3 pi addbom cygwin email java javascript uml fc ant maven
 EOI
 }
