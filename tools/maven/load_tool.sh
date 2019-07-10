@@ -4,11 +4,11 @@ TOOLS_DIR=$*
 #   Download and configure Maven.
 #
 # Usage:
-#   maven
+#   mvn
 #
-function maven() {
+function mvn() {
     if [ "$1" = '-h' ]; then
-        usage maven
+        usage mvn
         return
     fi
 
@@ -58,6 +58,6 @@ EOI
         fi
     fi
 		
-    printf "\nLaunching mvn -version ...\n"
-    mvn -version
+    printf "\nLaunching mvn ...\n"
+    "$TOOLS_DIR/maven/$mvn_dir/bin/mvn" $*
 }
