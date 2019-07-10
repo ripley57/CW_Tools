@@ -6,14 +6,22 @@ TOOLS_DIR=$*
 #   Comments:
 #   o Remember that Maven plugings are downloaded to ~/.m2/
 #
-#   o I got this error when compiling the chapter-2 BDDInAction example:
+#   o NOTE: I got this error when compiling the chapter-2 BDDInAction example:
+#
 #     [ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:2.3.2:compile (default-compile) on project train-timetables: Compilation failure: Compilation failure: 
 #     [ERROR] error: Source option 5 is no longer supported. Use 6 or later.
 #     [ERROR] error: Target option 1.5 is no longer supported. Use 1.6 or later.
-#     To fix this I added the following to the pom.xml file:
+#
+#     To fix this, ** DO NOT ** add this to the pom.xml file:
 #     <properties>
 #        <maven.compiler.source>1.6</maven.compiler.source>
 #        <maven.compiler.target>1.6</maven.compiler.target>
+#
+#     The solution for me on Mint19, was to switch to OpenJDK8 (from OpenJDK11):
+#     sudo apt list --installed | grep -i openjdk
+#     sudo apt-add-repository ppa:openjdk-r/ppa
+#     sudo apt-get install openjdk-8-jdk
+#     sudo update-alternatives --config java
 #
 # Usage:
 #   mvn
