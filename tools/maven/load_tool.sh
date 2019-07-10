@@ -58,6 +58,6 @@ EOI
         fi
     fi
 		
-    printf "\nLaunching mvn ...\n"
+    printf "\nLaunching CW_Tools mvn wrapper ...\n"
     "$TOOLS_DIR/maven/$mvn_dir/bin/mvn" $*
 }
