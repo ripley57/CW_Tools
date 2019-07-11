@@ -14,6 +14,7 @@ https://stackoverflow.com/questions/3914690/execute-my-groovy-script-with-ant-or
 However, knowing that the Groovy compiler creates regular Java byte-code, means that we 
 can alternatively run the demos as a Java program, like this:
 `mvn clean compile exec:java -Dexec.mainClass="com.manning.spock.chapter2.GettersSettersDemo"`
+(See http://www.vineetmanohar.com/2009/11/3-ways-to-run-java-main-from-maven/)
 
 
 ## Introduction to Groovy from the eBook "Java Testing with Spock":
