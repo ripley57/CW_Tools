@@ -32,32 +32,33 @@ function ant() {
 		(cd "$TOOLS_DIR/ant" && unzip "$ant_zip")
 	fi
 	
-	# Setup Ant env in Cygwin.
-	if [[ "$PATH" == *"apache-ant-"* ]]; then
-		: ;# echo "Path already includes apache ant"
-	else
-		export ANT_HOME="$TOOLS_DIR/ant/$ant_dir"
-		export PATH="$ANT_HOME/bin:$PATH"
+    	# Setup Ant environment in Linux or Cygwin.
+    	if [ "$(uname)" = "Linux" ] || type cygpath >/dev/null 2>&1; then
+		if [[ "$PATH" == *"apache-ant-"* ]]; then
+			: ;# echo "Path already includes apache ant"
+		else
+			export ANT_HOME="$TOOLS_DIR/ant/$ant_dir"
+			export PATH="$ANT_HOME/bin:$PATH"
+		fi
 	fi
 	
-	# Generate batch script to setup Ant env in Windows.
-	if [ ! -f "$TOOLS_DIR/ant/setenv.cmd" ]; then
-		local ant_home="$(cygpath -aw "$TOOLS_DIR/ant/$ant_dir")"
-		local ant_path="$(cygpath -aw "$TOOLS_DIR/ant/$ant_dir/bin")"
-		cat <<EOI >"$TOOLS_DIR/ant/setenv.cmd"
+    	# Generate batch script to setup env in Windows cmd window.
+    	if type cygpath >/dev/null 2>&1; then
+		if [ ! -f "$TOOLS_DIR/ant/setenv.cmd" ]; then
+			local ant_home="$(cygpath -aw "$TOOLS_DIR/ant/$ant_dir")"
+			local ant_path="$(cygpath -aw "$TOOLS_DIR/ant/$ant_dir/bin")"
+			cat <<EOI >"$TOOLS_DIR/ant/setenv.cmd"
 @echo off
 set ANT_HOME=$ant_home
 set PATH=$ant_path;%PATH%
 EOI
+			echo "Script to setup Ant environment on Windows:"
+			echo
+			echo \"$(cygpath -aw "$TOOLS_DIR/ant/setenv.cmd")\"
+			echo
+		fi
 	fi
-	
-	echo "Script to setup Ant environment on Windows:"
-	echo
-	echo \"$(cygpath -aw "$TOOLS_DIR/ant/setenv.cmd")\"
-	echo
 		
-	echo
-	echo "Launching Ant in Cygwin ..."
-	echo
+    	printf "\nLaunching CW_Tools ant wrapper ...\n"
 	"$TOOLS_DIR/ant/$ant_dir/bin/ant" $*
 }
