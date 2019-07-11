@@ -188,3 +188,64 @@ su slurp -c "/usr/java/default/bin/jstack -l \$(pgrep -f AgentRun)"
 
 EOI
 }
+
+# Description:
+#   Download and configure "groovy" command-line.
+#
+# Usage:
+#   groovy
+#
+function groovy() {
+    if [ "$1" = '-h' ]; then
+        usage groovy
+        return
+    fi
+
+    local groovy_download="https://bintray.com/artifact/download/groovy/maven/apache-groovy-binary-2.5.7.zip"
+    local groovy_zip=$(basename "$groovy_download")
+    local groovy_dir=groovy-2.5.7
+
+    # Delete the existing zip download if the file size was zero bytes, as
+    # this was probably a failed download due to lack of Internet connection.
+    (cd "$TOOLS_DIR/java/groovy" && [ -f "$groovy_zip" ] && [ ! -s "$groovy_zip" ] && rm "$groovy_zip")
+	
+    # Download and extract Maven.
+    if [ ! -d "$TOOLS_DIR/java/groovy/$groovy_dir" ]; then
+        echo "Downloading $groovy_download ..."
+        (cd "$TOOLS_DIR/java/groovy" && download_file "$groovy_download" "$groovy_zip")
+        echo "Extracting $groovy_zip ..."
+        (cd "$TOOLS_DIR/java/groovy" && unzip "$groovy_zip")
+    fi
+	
+    # Setup Maven environment in Linux or Cygwin.
+    if [ "$(uname)" = "Linux" ] || type cygpath >/dev/null 2>&1; then
+	if [[ "$PATH" == *"groovy"* ]]; then
+            : ;# echo "Path already includes Groovy"
+	else
+            export PATH=$groovy_dir/bin:$PATH 
+        fi
+    fi
+
+    # Generate batch script to setup env in Windows cmd window.
+    if type cygpath >/dev/null 2>&1; then
+        if [ ! -f "$TOOLS_DIR/java/groovy/setenv.cmd" ]; then
+            local groovy_bin="$(cygpath -aw "$TOOLS_DIR/java/groovy/$groovy_dir/bin")"
+            cat <<EOI >"$TOOLS_DIR/java/groovy/setenv.cmd"
+@echo off
+set PATH=$groovy_bin;%PATH%
+EOI
+            echo "Script to setup Groovy environment in Windows cmd.exe:"
+            echo
+            echo \"$(cygpath -aw "$TOOLS_DIR/java/groovy/setenv.cmd")\"
+            echo
+        fi
+    fi
+		
+    printf "\nLaunching CW_Tools groovy wrapper ...\n"
+    # NOTE: The "groovy" command (on Linux) is currently (11-07-2019)
+    #       displaying multiple "WARNING" lines when it is run, starting
+    #       with this line (even with me using OpenJDK 8) :
+    #       WARNING: An illegal reflective access operation has occurred
+    #       For now, we'll simply redirect stderr to /dev/null
+    "$TOOLS_DIR/java/groovy/$groovy_dir/bin/groovy" $* 2>/dev/null
+}
