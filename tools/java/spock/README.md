@@ -43,8 +43,11 @@ Remember that Maven has a finite number of built-in targets, inluding:
 - verify
 - install
 - deploy
-(See http://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html)
 Running "mvn verify" is usually sufficient to execute your JUnit & Spock tests.
+See:
+https://www.baeldung.com/maven-goals-phases
+http://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html
+
 
 *NOTE*: (By default) Maven expects JUnit tests to be in src/test/java and Spock tests in 
         src/test/groovy. If you don't use these names, your tests will be skipped.
