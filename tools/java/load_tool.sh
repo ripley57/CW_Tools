@@ -241,11 +241,11 @@ EOI
         fi
     fi
 		
-    printf "\nLaunching CW_Tools groovy wrapper ...\n"
+    printf "\nLaunching CW_Tools groovy wrapper ...\n\n"
     # NOTE: The "groovy" command (on Linux) is currently (11-07-2019)
     #       displaying multiple "WARNING" lines when it is run, starting
     #       with this line (even with me using OpenJDK 8) :
     #       WARNING: An illegal reflective access operation has occurred
-    #       For now, we'll simply redirect stderr to /dev/null
-    "$TOOLS_DIR/java/groovy/$groovy_dir/bin/groovy" $* 2>/dev/null
+    #       For now, we'll simply ignore these WARNINGs.
+    "$TOOLS_DIR/java/groovy/$groovy_dir/bin/groovy" $* 2>&1 | grep -v WARNING
 }
