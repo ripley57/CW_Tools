@@ -1,5 +1,8 @@
 ## Introduction to Spock
 
+NOTE: To run a specific Spock "Spec" file using Maven:
+`mvn test "-Dtest=ExpandoDemoSpec"`
+
 Spock is a comprehensive DSL (Domain Specific Language), for testing.
 For this reason, it is much nicer and more descriptive than JUnit. 
 Spock is written in the Groovy language.
