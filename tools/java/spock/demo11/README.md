@@ -1,6 +1,7 @@
 # Spock demo of stubbing/mocking capability.
 
 This demonstrates both stubbing and mocking using Spock. See page 83 of Java Testing with Spock.
+*NOTE:* This also includes a JUnit equivalent (CoolantSensorTest.java).
 
 This demo is similar to demo10, but this time we inject both a stub and a mock
 object into the class under test (ImprovedTemperatureMonitor.java).
@@ -21,6 +22,9 @@ To run the Spock test:
 `mvn clean verify`
 or to be more specific:
 mvn test "-Dtest=ImprovedCoolantSensorSpec"
+
+To run the (almost) equivalent JUnit test:
+mvn test "-Dtest=CoolantSensorTest"
 
 
 JeremyC 14-07-2019
