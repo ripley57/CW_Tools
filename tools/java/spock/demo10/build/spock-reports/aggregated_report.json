@@ -1,0 +1,1 @@
+{"com.manning.chapter3.coolant.CoolantSensorSpec":{"executedFeatures":["If current temperature difference is more than 20 degrees the alarm should sound","If current temperature difference is within limits everything is ok"],"ignoredFeatures":[],"stats":{"failures":0,"errors":0,"skipped":0,"totalRuns":2,"successRate":1.0,"time":328}}}
