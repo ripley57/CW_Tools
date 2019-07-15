@@ -1,4 +1,4 @@
-# Spock: Improving the readability of failed tests.
+# Spock: Improving the readability of failed tests, by overriding toString().
 
 The readaility of failed tests is important.
 
