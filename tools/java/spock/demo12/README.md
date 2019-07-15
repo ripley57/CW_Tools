@@ -127,6 +127,9 @@ assertion failure.
 
 "where:" block:
 This is used exclusively for parameterized tests.
+The "where: block" is responsible for holding all input and output parameters for 
+a parameterized test. It can be combined with all other blocks, but it has to be 
+the last block inside a Spock test.
 
 
 ## Spock Annotations
