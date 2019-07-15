@@ -1,0 +1,1 @@
+{"com.manning.chapter4.structure.HamcrestMatchersSpec":{"executedFeatures":["trivial test with Groovy closure","trivial test with Hamcrest","trivial test with Hamcrest (alt)"],"ignoredFeatures":[],"stats":{"failures":0,"errors":0,"skipped":0,"totalRuns":3,"successRate":1.0,"time":256}}}
