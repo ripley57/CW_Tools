@@ -8,10 +8,9 @@ import com.manning.chapter4.Product
 /*
 * This Spock spec demonstrates:
 *
-* o Grouping assertions using the Spock "with()" construct.
-*   (this construct is inspired from the Groovy "with()" construct.
-* o Grouping calls to the same object using the Groovy "with()" construct.
-* 
+* The Groovy "object.with()" construct can be used to group object parameterization inside Spock tests.
+* The Spock "Specification.with()" construct can be used to group assertions to a single object.
+*
 */
 
 class GroupingAssertionsSpec extends spock.lang.Specification{
