@@ -39,9 +39,11 @@ its collaborators. This code should ideally be as short as possible, to clearly 
 what’s being tested. The contents should be for testing just one particular feature.
 
 "then" block:
-This contains one or more test assertions. This is pure Groovy code.
+This contains one or more test assertions. 
 All assertions should examine the same feature. If you have unrelated assertions that 
 test different things then your Spock test should probably be broken up.
+A Spock test can have multiple "then:" blocks, which are executed in the order
+that they are declared.
 
 "and:" block:
 The initialization block ("given:" or "setup:") can be very large sometimes. The "and:" 
