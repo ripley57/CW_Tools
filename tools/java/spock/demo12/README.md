@@ -72,10 +72,10 @@ completely sure of the meaning of the Spock test. The "and:" block ise easy to a
 if you’re not careful."
 
 "expect:" block:
-This is a jack-of-all-trades in Spock tests. It can be used in many semantic ways, 
-and might improve, or worsen, the expressiveness of your Spock test.
-Like the "then:" block, it can contain assertions and will fail the Spock test if any
-of them don’t pass. It is most often used for simple tests that don't need any 
+The "expect:" block is a combination of "then:" and "when:" and can be used for
+trivial tests or as an intermediate precondition in longer tests.
+Like the "then:" block, it can contain assertions and will fail the Spock test if
+any of them don’t pass. It is most often used for simple tests that don't need any 
 initialization code. For example:
 	def "An empty basket has no weight"() {
 		expect: "zero weight when nothing is added"
