@@ -16,6 +16,9 @@ SharedSpec.groovy		-	More real-life example, showing use of "@Shared" annotation
 					special methods "def setup()", "def setupSpec()", "def cleanup()",
 					"def cleanupSpec()", and the "and:" block.
 
+*NOTE:* Spock also supports and understands JUnit annotations such as "@Before", "@After" ,
+        "@BeforeClass", and "@AfterClass".
+
 
 See below for details of each Spock syntax mentioned above ...
 
