@@ -209,6 +209,8 @@ For example:
 		def cleanupSpec() {
 			println "Will run once at the end"
 		}
+*NOTE:* The "setupSpec()" and "cleanupSpec()" methods work only with objects that are
+either static or marked with the "@Shared" annotation.
 
 
 JeremyC 14-07-2019
