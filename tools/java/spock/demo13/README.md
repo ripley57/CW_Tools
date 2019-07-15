@@ -1,4 +1,4 @@
-# Spock: Improving the readability of failed tests, by overriding toString().
+# Spock: Improve the readability of failed tests, by overriding toString().
 
 The readaility of failed tests is important.
 
@@ -13,6 +13,9 @@ com.manning.chapter1.Multiplier@161479c6
 
 However, sometimes, depending on our class under test, we have to give Spock some
 help, by overriding the "toString()" method to expose the internal implementation.
+Spock calls the Java "toString()" method automatically on any involved class when
+a test fails. Overriding this method allows you to define what will be shown for
+failed tests.
 
 
 ## ProblematicBasket.java
