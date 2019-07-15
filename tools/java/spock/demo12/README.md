@@ -162,9 +162,9 @@ Note that the "@Subject" annotation can be placed either at the class-level, or 
 each individual test method.
 
 "@Shared" annotation:
-You can indicate to Spock which objects you want to survive across all test methods by
-using the "@Shared" annotation. You can use this to ensure that an object is only 
-created once, usually inside method "def setupSpec()".
+The "@Shared" annotation marks long-lived objects that span all test methods.
+You can use this to ensure that an object is only created once, usually inside 
+the "def setupSpec()" method.
 For example:
 	class SharedSpec extends spock.lang.Specification{
 		@Shared
