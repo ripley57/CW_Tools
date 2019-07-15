@@ -7,7 +7,8 @@ Spock Examples:
 BasketWeightSpec.groovy		-	Normal use of "given:", "when:" and "then:" blocks.
 SetupBlockSpec.groovy		-	Simple demo to show that "setup:" is the same as "given:".
 BasketWeightDetailedSpec.groovy	-	Use of "@Narrative", "@Title" and "@Subject" annotations,
-					and also use of the "and:" block.
+					and also use of the "and:" block. NOTE: Although these are
+					optional, you should include them always, for readbility.
 LifecycleSpec.groovy		-	Use of special methods "def setup()", "def setupSpec()",
 					"def cleanup" and "def cleanupSpec()".
 CleanupBlockSpec.groovy		-	A simple example where you might use "def cleanup()".
