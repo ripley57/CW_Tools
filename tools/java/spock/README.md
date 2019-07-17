@@ -1,5 +1,8 @@
 ## Introduction to Spock
 
+Docs:
+http://spockframework.org/spock/docs/1.1-rc-1/all_in_one.html
+
 NOTE: To run a specific Spock "Spec" file using Maven:
 `mvn test "-Dtest=ExpandoDemoSpec"`
 
