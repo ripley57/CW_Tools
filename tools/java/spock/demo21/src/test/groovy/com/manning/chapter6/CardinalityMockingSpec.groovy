@@ -23,7 +23,7 @@ class CardinalityMockingSpec extends spock.lang.Specification{
 		when: "user checks out both products"
 		basket.addProduct tv
 		basket.addProduct camera
-		// !!! NOTE !!!
+		// NOTE: method interactions should be done inside the "when:" block.
 		// Spock records the interactions of mocks in the "when:" block.
 		// This means that, if we call a method that generates interactions
 		// that we want to check later in the "then:" block, then we must make
