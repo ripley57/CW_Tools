@@ -6,6 +6,7 @@ The following are (essentially) the same thing:
 - test doubles
 - fake collaborators
 
+
 Fake collaborators are a way to isolate a single class you want to test, so you 
 can examine it under a well-controlled environment. A fake collaborator is a 
 special class that replaces a real class in order to make its behaviour 
@@ -21,6 +22,12 @@ Fake collaborators:
 - When making requests to a real class, the request parameters are pre-programmed.
 - When answering requests from a real class, the answers are pre-programmed.
 
+
+*NOTE:* By design, Spock cannot mock/stub private or static methods. This is the same
+	for Mockito. Although this might seem like a limitation, you should see it as 
+        a motivation for writing testable code. If you are following TDD principles 
+        when you write your code, then you should find your code is easier to mock or 
+        stub.
 
 *NOTE:* Only the programmer knows the existence of the fake classes.
         From the point of view of the real class, everything is running normally
