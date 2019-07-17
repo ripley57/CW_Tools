@@ -26,8 +26,11 @@ Fake collaborators:
 *NOTE:* By design, Spock cannot mock/stub private or static methods. This is the same
 	for Mockito. Although this might seem like a limitation, you should see it as 
         a motivation for writing testable code. If you are following TDD principles 
-        when you write your code, then you should find your code is easier to mock or 
-        stub.
+        when you write your code, then you should find your code easier to mock/stub.
+	As with JUnit/Mockito, Spock is more easily applied to Java code that’s
+	designed to be testable in the first place.
+	You should refactor your Java code first before writing Spock tests, or
+	use PowerMock if you’re desperate.
 
 *NOTE:* Only the programmer knows the existence of the fake classes.
         From the point of view of the real class, everything is running normally
