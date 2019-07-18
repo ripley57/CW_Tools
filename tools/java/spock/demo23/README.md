@@ -13,14 +13,17 @@ tests to test a Java program that was built using the Spring Framework.
 
 
 To run the tests:
+`cd spring-standalone-swing`
 'mvn clean test`
 
 To build the application as a self-exectable jar:
+`cd spring-standalone-swing`
 `mvn clean package`
 To run:
 java -jar ./target/spring-standalone-swing-1.0.jar
 
 To run the application directly from Maven:
+`cd spring-standalone-swing`
 `mvn exec:java -Dexec.mainClass=com.manning.spock.warehouse.Launcher`
 
 

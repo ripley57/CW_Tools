@@ -9,6 +9,18 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+/*
+* JeremyC 18-07-2019
+*
+* The "@Repository"" annotation indicates that the class provides the mechanism
+* for storage, retrieval, search, update and delete operation on objects.
+* See https://www.journaldev.com/21460/spring-repository-annotation
+*
+* Notice the "em" object here and "setEm()" setter. I think it's fair to assume
+* that the "@PersistenceContext" annotation above the "em" object name is linked 
+* to the "setEm()" setter and Spring know that it needs to call this setter.
+*/
+
 @Repository
 public class ProductLoader {
 	@PersistenceContext

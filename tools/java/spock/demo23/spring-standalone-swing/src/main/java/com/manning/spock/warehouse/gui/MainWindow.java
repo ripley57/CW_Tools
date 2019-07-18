@@ -34,6 +34,12 @@ public class MainWindow extends JFrame implements ActionListener,TableModelListe
 	private JTable table;
 	private ProductTableModel tableModel;
 
+	/*
+	* JeremyC 18-070-2019
+	*
+	* How is this argument passed?
+	* ANSWER: See the "argument" value in security-context.xml
+	*/
 	public MainWindow(ProductLoader productLoader) {
 		super("Warehouse Management");
 		add(new JLabel("Sample spring"));
