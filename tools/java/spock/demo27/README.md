@@ -16,7 +16,11 @@ The "@Issue" annotation enables you to reference a bug number, e.g.:
 Again, this is purely informational. 
 *NOTE*: I generated a surefire report (see updates in pom.xml, but it did include the
 @Issue annotation values. I assume that, for now, the surefire reports does not make
-use of this annotation.
+use of this annotation. However, the Appendix to "Java Testing with Spock" does mention
+"Spock Reports" (https://github.com/renatoathaydes/spock-reports). There's a very good
+chance that this DOES display the @Issue annotation, and others.
+This is apparenty also another Spock reporting plugin called "Damage Control":
+https:// github.com/damage-control/report
 
 
 ## TimeoutLimitSpec.groovy - Using "@Timeout" to fail a test quickly.
