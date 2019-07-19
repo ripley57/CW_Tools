@@ -1,5 +1,6 @@
 # The Spring Framework
 
+[Guides](https://spring.io/guides)
 [Documentation](https://spring.io/docs)
 [Github](https://github.com/spring-projects/spring-framework)
 
