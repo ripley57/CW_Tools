@@ -1,5 +1,9 @@
 # Spock enterprise testing: Automating function tests driving a web browser using Geb and Tomcat.
 
+User experiences:
+https://rushby.silvrback.com/automation-with-geb-spock
+
+
 To run the tests:
 `cd web-ui-example`
 `mvn verify`
