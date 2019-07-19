@@ -2,6 +2,7 @@
 
 User experiences:
 https://rushby.silvrback.com/automation-with-geb-spock
+https://allegro.tech/2015/05/automated-tests-with-geb-spock-and-groovy.html
 
 
 To run the tests:
