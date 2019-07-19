@@ -1,11 +1,11 @@
 # Spock enterprise testing (continued): Code coverage.
 
-
 QUESTION: "How can I determine what percentage of my code is covered by jUnit tests?"
 ANSWER: This can be done using [JaCoCo](https://www.eclemma.org/jacoco/)
 
 *NOTE:* Because Spock uses the jUnit runner, this coverage report will automatically
-        include any Spock tests.
+        include any Spock tests. Remember, any tool that works with jUnit will also
+	automatically work with Spock.
 
 Just add JaCoCo to your pom.xml file.
 
@@ -23,4 +23,11 @@ Then find the report here:
 	./target/site/jacoco/index.html
 
 
-JeremyC 18-07-2019
+## Other code-coverage tools:
+- https://www.eclemma.org/jacoco/
+- https://www.sonarqube.org/
+- http://cobertura.github.io/cobertura/
+- https://www.atlassian.com/software/clover	("Java and Groovy code coverage")
+
+
+JeremyC 19-07-2019
