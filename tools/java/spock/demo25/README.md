@@ -1,4 +1,4 @@
-# Spock enterprise testing: Automating function tests driving a web browser using Geb and Tomcat.
+# Spock enterprise testing (continued): Automating function tests driving a web browser using Geb and Tomcat.
 
 User experiences:
 https://rushby.silvrback.com/automation-with-geb-spock
@@ -45,8 +45,8 @@ I downloaded the zip to match my chromium version (75), extracted the "chromedri
 **********************************
 **** Starting Tomcat manually ****
 **********************************
-These Spock tests automatically start and shutdown Tomcat (see the Maven pom.xml). But, outside
-of testing, you can manually start and stop Tomcat using Maven like this...
+These Spock tests automatically start Tomcat (see the Maven pom.xml and maven-testing-phases.png).
+But, outside of automatic testing, you can manually start and stop Tomcat using Maven like this...
 
 To manually start Tomcat:
 `cd web-ui-example`
