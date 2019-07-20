@@ -34,7 +34,10 @@
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
+			<!-- JeremyC. 20-07-2019. Update recommendation
 			<version>2.5.4</version>
+			-->
+			<version>2.9.9.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.codehaus.groovy.modules.http-builder</groupId>
