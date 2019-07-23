@@ -1,0 +1,10 @@
+{
+	"name" : "dirSetA",
+	"dirs" : [
+	         { "name" : "dirA", "members" : [
+	                                        { "type" : "FILE", "name" : "file1", "checksum" : "XXX" },
+	                                        { "type" : "FILE", "name" : "file2", "checksum" : "YYY" }
+	                                        ]
+	         }
+	       ]
+}

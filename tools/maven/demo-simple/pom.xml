@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<!-- 
+		JeremyC 23-07-2019
+
+		Description:
+		Minimal project demonstrating that a java app with dependencies can be built
+		and packaged with very little effort when using Maven.
+
+		NOTE: 	This is a great way to quickly build my small Java demo programs. 
+			For example, if you need to convert JSON to Objects, simply write the 
+			code and then add the recommended Maven plugin content in this pom.xml 
+			file, to pull in the necessary jar dependencies, and package them too. 
+
+		QUESTION:	What versions should we use for each "<plugin>" ?
+		ANSWER:		1. Go to https://mvnrepository.com/
+				2. Search for the artifactid, e.g. "maven-assembly-plugin"
+				3. Use the latest version number.
+				NOTE: 	For "jackson-core-asl" and "jackson-mapper-asl" below,
+					I used the highest *common* version number.
+				(See https://stackoverflow.com/questions/6818274/how-do-i-know-what-version-of-a-maven-plugin-to-use)
+
+		Steps I used to create this project:
+		1. Put my source files in the directory structure that is recognized by Maven:
+		   	src/main/java/com/jeremyc/...
+			src/test/java/com/jeremyc/...
+			src/test/groovy/com/jeremyc/...
+			src/main/resources/...
+			src/test/resources/...
+		2. Create a starting pom.xml file using https://start.spring.io/
+		   (You can probably also create such a file using various IDEs, but I haven't looked into this).
+		3. Remove any unnecessary content from the pom.xml file, including "spring" references.
+		4. Add section to specify main class for the executable jar.
+		5. Build the executable jar: 
+		   mvn clean verify
+		6. Run the program:
+		   java -jar target/demo-0.0.1-SNAPSHOT.jar
+	-->
+
+	<groupId>com.jeremyc</groupId>
+	<artifactId>demo</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>demo</name>
+	<description>Demo bare bones project using Maven</description>
+
+	<properties>
+		<java.version>1.8</java.version>
+	</properties>
+
+	<dependencies>
+		<!-- 	JeremyC 23-07-2019
+			Enable conversion from JSON to objects.
+			(See https://www.javainterviewpoint.com/jackson-tree-model-jsonnode/)
+		-->
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-core-asl</artifactId>
+			<version>1.9.13</version>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.9.13</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<!--	JeremyC 23-07-2019. 
+				Specify the main class of our built executable jar.
+				(See https://www.mkyong.com/maven/how-to-create-a-manifest-file-with-maven/)
+
+				To run the built jar:
+		   		java -jar target/demo-0.0.1-SNAPSHOT.jar
+
+				NOTE: 	This does NOT include jar dependencies, so you'll get a 
+					runtime error. That's why it's commented-out below!
+					See the next plugin section below :-)
+			-->
+			<!--
+    			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+	  				<archive>
+	    					<manifest>
+							<mainClass>com.jeremyc.Demo</mainClass>
+	    					</manifest>
+	  				</archive>
+				</configuration>
+			</plugin>
+			-->
+
+			<!-- 	JeremyC 23-07-2019
+				Specify main class for executable jar, and also include all jar dependencies.
+				(See https://www.logicbig.com/tutorials/build-tools/apache-maven/assembly-plugin.html)
+
+				To run the built jar:
+				java -jar target/demo-0.0.1-SNAPSHOT-jar-with-dependencies.jar 
+			-->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>3.1.1</version>
+    				<configuration>
+					<descriptorRefs>
+      						<descriptorRef>jar-with-dependencies</descriptorRef>
+    					</descriptorRefs>
+     					<archive>
+      						<manifest>
+       							<mainClass>com.jeremyc.Demo</mainClass>
+      						</manifest>
+     					</archive>
+    				</configuration>
+    				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
