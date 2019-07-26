@@ -146,8 +146,12 @@ function install_nodejs() {
 		fi
 	
 		# Run npm to install some stuff.
-		# Note: We don't use the npm install 'global' (-g) option, because that will
-		#       copy the exe (e.g. bin/http-server) to somewhere like /usr/local/bin.
+		#
+		# Remember: NPM is the node package manager, which installs packages locally into a 
+		#           project, specifically, into the "node_modules" folder.
+		#
+		# Note: We don't use the npm 'global' (-g) option here, because that will
+		#       copy the exe etc (e.g. bin/http-server) somewhere like /usr/lib
 		if isLinux ; then
 			chmod +x npm node
 			# Express (https://www.tutorialkart.com/nodejs/what-is-express-js/)
