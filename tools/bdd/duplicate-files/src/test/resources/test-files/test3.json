@@ -1,0 +1,31 @@
+{
+  "description" : "3 files in a single directory containing 0 duplicates",
+  "dirset": {
+    "name": "setA",
+    "dirs": [
+      {
+        "type": "DIRECTORY",
+        "name": "dir1",
+        "files": [
+          {
+            "type": "FILE",
+            "name": "file1",
+            "checksum": "XXX"
+          },
+          {
+            "type": "FILE",
+            "name": "file2",
+            "checksum": "YYY"
+          },
+          {
+            "type": "FILE",
+            "name": "file3",
+            "checksum": "ZZZ"
+          }
+        ]
+      }
+    ]
+  },
+  "expected": [
+  ]
+}

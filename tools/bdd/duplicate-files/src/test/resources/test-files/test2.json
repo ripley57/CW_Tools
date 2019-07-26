@@ -1,0 +1,45 @@
+{
+  "description" : "3 files across two directories containing 2 duplicates",
+  "dirset": {
+    "name": "setA",
+    "dirs": [
+      {
+        "type": "DIRECTORY",
+        "name": "dir1",
+        "files": [
+          {
+            "type": "FILE",
+            "name": "file1",
+            "checksum": "XXX"
+          },
+          {
+            "type": "FILE",
+            "name": "file2",
+            "checksum": "YYY"
+          }
+        ]
+      },
+      {
+        "type": "DIRECTORY",
+        "name": "dir2",
+        "files": [
+          {
+             "type": "FILE",
+             "name": "file3",
+             "checksum": "XXX"
+          }
+        ]
+      }
+    ]
+  },
+  "expected": [
+    {
+      "name": "file1",
+      "checksum": "XXX"
+    },
+    {
+      "name": "file3",
+      "checksum": "XXX"
+    }
+  ]
+}
