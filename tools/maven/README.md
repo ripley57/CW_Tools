@@ -32,6 +32,9 @@ To build an exeuctable jar, we can use the "maven-assembly-plugin" (see https://
 
 NOTE: A better alternative, is to create our own custom archetype - see CUSTOM_ARCHETYPE.md in this directory.
 
+NOTE: It looks like many people/organizations have installed their own archetypes remotely, see:
+https://maven-repository.com/archetypes
+
 
 ## Maven Surefire plugin vs Maven Failsafe plugin:
 From https://maven.apache.org/surefire/maven-failsafe-plugin/:

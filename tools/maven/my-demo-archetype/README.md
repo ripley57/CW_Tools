@@ -13,5 +13,10 @@ mvn archetype:generate -DarchetypeGroupId=com.jeremyc -DarchetypeArtifactId=my-d
 
 This command will ask you interactively for the Maven pom.xl attributes to go in your new proejcet, a project which is based on our custom archetype.
 
+Note how we specify the archetype version ("1.0-SNAPSHOT"). This is required, according to 
+https://maven.apache.org/guides/mini/guide-creating-archetypes.html:
+"Don't forget to include the version of your archetype (if you don't include the version, you 
+archetype creation may fail with a message that version:RELEASE was not found)".
+
 
 JeremyC 27-07-2019 
