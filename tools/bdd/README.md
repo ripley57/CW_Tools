@@ -1,5 +1,7 @@
 # BDD ("Behavioural Driven Development")
 
+[Dan North introduction to BDD](https://dannorth.net/introducing-bdd/)
+
 Building the "right thing" the "right way"
 ==========================================
 BDD is all about building "the right thing" (i.e features that tie-up with the
