@@ -32,12 +32,14 @@ Unit tests
 BDD practices can also be applied to unit tests, by focussing on low-level
 specifications, rather than simply excercising the methods of each class.
 
-
 The idea is that everything relates back to the business goals:
 Business Goals -> Capabilities -> Features -> User Stories -> Concrete Examples
 
-
 See eBook "BDD In Action", and also "Java Testing with Spock".
+
+
+## JBehave
+The JBehave "steps" can be written in Java or Groovy. See https://jbehave.org/reference/latest/using-groovy.html
 
 
 JeremyC 26-07-2019
