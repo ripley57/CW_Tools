@@ -1,7 +1,7 @@
 # The Spring Framework
 
 [What is the Spring framework really all about?](https://youtu.be/gq4S-ovWVlM)
-[Spring Boot REST walkthrough on YouTube](https://youtu.be/msXL2oDexqw)
+[Spring Boot REST walkthrough on YouTube](https://youtu.be/9Pl4rlVAoOc)
 [Guides](https://spring.io/guides)
 [Documentation](https://spring.io/docs)
 [Github](https://github.com/spring-projects/spring-framework)
