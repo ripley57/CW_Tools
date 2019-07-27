@@ -38,10 +38,15 @@ Business Goals -> Capabilities -> Features -> User Stories -> Concrete Examples
 See eBook "BDD In Action", and also "Java Testing with Spock".
 
 
-## JBehave
-The JBehave "steps" can be written in Java or Groovy. See https://jbehave.org/reference/latest/using-groovy.html
+## JBehave notes
+- The JBehave "steps" can be written in Java or Groovy. See https://jbehave.org/reference/latest/using-groovy.html
+- [JBehave (Selenium) Tutorial](https://github.com/jbehave/jbehave-tutorial)
 
-[JBehave (Selenium) Tutorial](https://github.com/jbehave/jbehave-tutorial)
+- Some notes from going through "BDD In Action":
+ - A testsuite is needed to invoke the JBehave steps, e.g.:
+     src/test/java/com/jeremyc/jbehave/AcceptanceTestSuite.java
+   What's interesting is that this contains very little code, i.e. the "binding" between the ".story" 
+   files and the JBehave steps Java (or Groovy) files, is done 'magically'.
 
 
 JeremyC 26-07-2019
