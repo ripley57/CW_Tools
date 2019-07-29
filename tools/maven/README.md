@@ -35,10 +35,13 @@ NOTE: A better alternative, is to create our own custom archetype - see CUSTOM_A
 NOTE: It looks like many people/organizations have installed their own archetypes remotely, see:
 https://maven-repository.com/archetypes
 
+Using an archetype is also demonstrated here: https://www.mkyong.com/webservices/jax-rs/jersey-hello-world-example/
+
 
 ## Maven Surefire plugin vs Maven Failsafe plugin:
 From https://maven.apache.org/surefire/maven-failsafe-plugin/:
 "The Failsafe Plugin is designed to run integration tests while the Surefire Plugin is designed to run unit tests."
+
 
 ## JFrog - https://www.jfrog.com/confluence/display/RTF/Maven+Repository
 From https://devops.stackexchange.com/questions/1898/what-is-an-artifactory:
