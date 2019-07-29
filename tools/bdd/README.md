@@ -40,15 +40,25 @@ Business Goals -> Capabilities -> Features -> User Stories -> Concrete Examples
 See eBook "BDD In Action", and also "Java Testing with Spock".
 
 
-## JBehave notes
+## JBehave 
+"JBehave is a framework for Behaviour-Driven Development (BDD). BDD is an evolution of 
+test-driven development (TDD) and acceptance-test driven design, and is intended to make 
+these practices more accessible and intuitive to newcomers and experts alike. BDD shifts 
+the vocabulary from being test-based to behaviour-based, and positions itself as a design 
+philosophy." 
+
+[Nice summary of JBehave (or Cucumber) usage](https://jbehave.org/reference/latest/index.html):
+1. Write story
+2. Map steps to story
+3. Configure stories (JUnit test runner)
+4. Run stories (and examine the reports)
+
 - The JBehave "steps" can be written in Java or Groovy. See https://jbehave.org/reference/latest/using-groovy.html
 - [JBehave (Selenium) Tutorial](https://github.com/jbehave/jbehave-tutorial)
-
-- Some notes from going through "BDD In Action":
- - A testsuite is needed to invoke the JBehave steps, e.g.:
-     src/test/java/com/jeremyc/jbehave/AcceptanceTestSuite.java
-   What's interesting is that this contains very little code, i.e. the "binding" between the ".story" 
-   files and the JBehave steps Java (or Groovy) files, is done 'magically'.
+- A testsuite is needed to invoke the JBehave steps, e.g.:
+	src/test/java/com/jeremyc/jbehave/AcceptanceTestSuite.java
+  What's interesting is that this contains very little code, i.e. the "binding" between the 
+  ".story" files and the JBehave steps Java (or Groovy) files, is done 'magically'.
 
 
 JeremyC 26-07-2019
