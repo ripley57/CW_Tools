@@ -1,11 +1,13 @@
 # Using BDD for Unit tests, aka "Low-level BDD", or "Practing TDD with a BDD flavour"
 
-From chapter 10 of "BDD In Action". This chapter walks you throw applying
-BDD practices to writing unit tests, asks "BDD unit tests".
+From chapter 10 of "BDD In Action". This chapter walks you through applying
+BDD practices to writing unit tests, asks "BDD unit tests". The examples also
+demonstrate using both JUnit and Spock, as well as use of assertion libraries
+including Hamcrest and FEST-Assert, which enable you to write mode readable
+"fluent" assertion expressions.
 
-NOTE: For sample projects, where BDD-stype unit tests have been writtem,
-      see the jbehave-based or cucumber-based demos under 
-      CW_Tools/tools/bdd/bdd_reports
+	For sample projects, see the jbehave-based & cucumber-based demos 
+	under CW_Tools/tools/bdd/bdd_reports
 
 "High-level requirements deal with the behavior of the system as a whole 
 from the point of view of the business. Low-level requirements deal with 
