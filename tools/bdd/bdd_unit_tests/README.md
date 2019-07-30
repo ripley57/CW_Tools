@@ -1,5 +1,12 @@
 # Using BDD for Unit tests, aka "Low-level BDD", or "Practing TDD with a BDD flavour"
 
+From chapter 10 of "BDD In Action". This chapter walks you throw applying
+BDD practices to writing unit tests, asks "BDD unit tests".
+
+NOTE: For sample projects, where BDD-stype unit tests have been writtem,
+      see the jbehave-based or cucumber-based demos under 
+      CW_Tools/tools/bdd/bdd_reports
+
 "High-level requirements deal with the behavior of the system as a whole 
 from the point of view of the business. Low-level requirements deal with 
 the behavior of a component, class, or API from the point of view of the 
@@ -67,4 +74,4 @@ The basic process (from high-level automated acceptance tests, to application co
 See example walkthrough on page 267 of "BDD In Action".
 
 
-JeremyC 29-07-2019
+JeremyC 30-07-2019
