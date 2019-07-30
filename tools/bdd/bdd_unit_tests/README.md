@@ -4,7 +4,7 @@ From chapter 10 of "BDD In Action". This chapter walks you through applying
 BDD practices to writing unit tests, asks "BDD unit tests". The examples also
 demonstrate using both JUnit and Spock, as well as use of assertion libraries
 including Hamcrest and FEST-Assert, which enable you to write mode readable
-"fluent" assertion expressions.
+"fluent" assertion expressions. Use of Mockito is also demonstrated.
 
 	For sample projects, see the jbehave-based & cucumber-based demos 
 	under CW_Tools/tools/bdd/bdd_reports
