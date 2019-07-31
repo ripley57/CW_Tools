@@ -1,5 +1,8 @@
 # BDD ("Behavioural Driven Development")
 
+"At the end of the day, BDD is about streamlining the whole development process
+and delivering value. And it’s much more a mindset than a particular toolset."
+
 [Dan North introduction to BDD](https://dannorth.net/introducing-bdd/)
 
 Building the "right thing" the "right way"
