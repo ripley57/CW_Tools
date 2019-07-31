@@ -11,9 +11,6 @@
 #       mp3edit.sh <mp3file> --list_mp3_brief
 #       mp3edit.sh <mp3file> [--image <file>] [--album <string|FOLDER|TODAY>] [--artist <string|FOLDER|TODAY>]
 
-set +x
-
-# debugging
 debug_on=1
 debug() 
 {
@@ -155,25 +152,28 @@ FOLDER=$(echo $PWD/ | sed -n 's#.*/\(.*\)/#\1#p')
 # specified in the input arguments.
 TODAY=$(date +%Y-%m-%d)
 
+echo "***********************"
 echo "Processing $MP3FILE... "
 	
 # Ensure a valid id3 tag.
-eyeD3 --to-v2.4 "$MP3FILE"
+eyeD3 --to-v2.4 "$MP3FILE" 
 
 # Strip comments.
-eyeD3 --remove-comments "$MP3FILE"
+eyeD3 --remove-all-comments "$MP3FILE" 
 
 # Embed image.
 if [ "x$IMAGE" != "x" ]; then
-    # Check that image exists.
+    # Our new image to embed.
     IMAGE=$(dirname "$MP3FILE")/$IMAGE
     [ -f "$IMAGE" ] || error "No such image file: $IMAGE"
 
     # Remove existing images.
-    eyeD3 --add-image=:OTHER "$MP3FILE"
-    eyeD3 --add-image=:FRONT_COVER "$MP3FILE"
-    #id3v2 --APIC “” "$MP3FILE"
-    # embed image.
+    eyeD3 --remove-all-images "$MP3FILE" 
+    ##eyeD3 --add-image=:OTHER "$MP3FILE"
+    ##eyeD3 --add-image=:FRONT_COVER "$MP3FILE"
+    ##id3v2 --APIC “” "$MP3FILE"
+
+    # Embed our new image.
     eyeD3 --add-image="$IMAGE":FRONT_COVER "$MP3FILE"
 fi
 
@@ -192,3 +192,4 @@ if [ "x$ARTIST" != "x" ]; then
 fi
 
 echo "Finshed updating $MP3FILE !"
+echo "***********************"
