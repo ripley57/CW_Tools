@@ -1,6 +1,23 @@
 TOOLS_DIR=$*
 
 # Description:
+#   Display the Maven cheatsheet.
+#
+# Usage:
+#   mavenhelp
+#
+function mavenhelp()
+{
+    if [ "$1" = '-h' ]; then
+        usage mavenhelp
+        return
+    fi
+
+    cat "$TOOLS_DIR/maven/MAVEN_CHEATSHEET.md"
+}
+
+
+# Description:
 #   Download and configure Maven.
 #
 #   Comments:
