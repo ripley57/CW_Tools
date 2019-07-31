@@ -6,10 +6,11 @@
  *  It is intended for educational and illustrative purposes only, and may not be re-published
  *  without the express written permission of the publisher.
  */
-package chapter29.main;
 
-import chapter29.ui.*;
-import chapter29.business.*;
+package com.jeremyc.main;
+
+import com.jeremyc.ui.*;
+import com.jeremyc.business.*;
 import javax.swing.*;
 
 public class Main {

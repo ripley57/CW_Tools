@@ -6,11 +6,14 @@
  *  It is intended for educational and illustrative purposes only, and may not be re-published
  *  without the express written permission of the publisher.
  */
-package chapter29.ui;
 
-import chapter29.business.*;
+package com.jeremyc.ui;
+
 import java.awt.*;
 import javax.swing.*;
+
+import com.jeremyc.business.*;
+
 
 public class EnginesFrame extends JFrame {
     
@@ -26,7 +29,6 @@ public class EnginesFrame extends JFrame {
     
     private Component buildUI() {
         JPanel uiPanel = new JPanel(new BorderLayout());
-        
         enginesPanel = new ManageEnginesPanel(this);
         BusinessFacade.INSTANCE.addEngineListener(enginesPanel);
         uiPanel.add(enginesPanel, BorderLayout.CENTER);

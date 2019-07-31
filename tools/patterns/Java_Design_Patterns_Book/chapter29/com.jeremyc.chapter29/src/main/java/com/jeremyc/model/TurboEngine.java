@@ -6,13 +6,13 @@
  *  It is intended for educational and illustrative purposes only, and may not be re-published
  *  without the express written permission of the publisher.
  */
-package chapter29.business;
 
-import java.io.*;
+package com.jeremyc.model;
 
-public interface Engine extends Serializable {
+public class TurboEngine extends AbstractEngine {
     
-    public int getSize();
-    public boolean isTurbo();
+    public TurboEngine(int size) {
+        super(size, true);
+    }
     
 }

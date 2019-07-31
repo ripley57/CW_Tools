@@ -6,16 +6,15 @@
  *  It is intended for educational and illustrative purposes only, and may not be re-published
  *  without the express written permission of the publisher.
  */
-package chapter29.db;
 
-public enum EntityKeyGenerator {
+package com.jeremyc.db;
+
+import java.util.*;
+
+
+public interface EntityListener extends EventListener {
     
-    ENGINE;
-    
-    private int nextKey;
-    
-    synchronized int getNextKey() {
-        return ++nextKey;
-    }
+    public void entityAdded(EntityEvent event);
+    public void entityRestored(EntityEvent event);
     
 }

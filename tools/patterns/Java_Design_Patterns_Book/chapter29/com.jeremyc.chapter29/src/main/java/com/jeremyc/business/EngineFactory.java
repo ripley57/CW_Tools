@@ -6,7 +6,19 @@
  *  It is intended for educational and illustrative purposes only, and may not be re-published
  *  without the express written permission of the publisher.
  */
-package chapter29.business;
+
+package com.jeremyc.business;
+
+/**
+ * JeremyC 31-07-2019.
+ * NOTE: I relocated this factory class from the "model" package to the
+ *       "business" package. Not sure if that's a good thing to do or not.
+ *       One consequence is that I now need all these import statements.
+*/
+import com.jeremyc.model.Engine;
+import com.jeremyc.model.StandardEngine;
+import com.jeremyc.model.TurboEngine;
+
 
 public class EngineFactory {
     

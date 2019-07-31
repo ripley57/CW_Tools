@@ -6,7 +6,8 @@
  *  It is intended for educational and illustrative purposes only, and may not be re-published
  *  without the express written permission of the publisher.
  */
-package chapter29.business;
+
+package com.jeremyc.model;
 
 public class StandardEngine extends AbstractEngine {
     

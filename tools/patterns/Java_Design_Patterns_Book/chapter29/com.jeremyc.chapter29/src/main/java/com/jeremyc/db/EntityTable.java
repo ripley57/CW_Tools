@@ -6,10 +6,23 @@
  *  It is intended for educational and illustrative purposes only, and may not be re-published
  *  without the express written permission of the publisher.
  */
-package chapter29.db;
+
+package com.jeremyc.db;
 
 import java.io.*;
 import java.util.*;
+
+
+/**
+ * JeremyC 31-07-2019
+ *
+ * This class is basically a holder of object entities, holding them inside
+ * a Map, and accessible by a (Integer) key.
+ *
+ * The class also includes methods for interested classes to register to be
+ * notified (Observer pattern) when a single entity is added, or all of the
+ * entities have been updated/restored.
+*/
 
 public class EntityTable implements Serializable {
     
@@ -55,14 +68,14 @@ public class EntityTable implements Serializable {
     void fireEntityAdded(Integer key, Object value) {
         EntityEvent event = new EntityEvent(key, value);
         for (EntityListener listener : listeners) {
-            listener.entityAdded(event);
+            listener.entityAdded(event);	// JeremyC 31-07-2019. Observer pattern.
         }
     }
     
     void fireEntityRestored() {
         EntityEvent event = new EntityEvent();
         for (EntityListener listener : listeners) {
-            listener.entityRestored(event);
+            listener.entityRestored(event);	// JeremyC 31-07-2019. Observer pattern.
         }
     }
     

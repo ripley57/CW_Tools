@@ -6,13 +6,20 @@
  *  It is intended for educational and illustrative purposes only, and may not be re-published
  *  without the express written permission of the publisher.
  */
-package chapter29.db;
 
-import java.util.*;
+package com.jeremyc.db;
 
-public interface EntityListener extends EventListener {
+import java.io.*;
+
+
+public abstract class AbstractEntityPersistenceStrategy {
     
-    public void entityAdded(EntityEvent event);
-    public void entityRestored(EntityEvent event);
+    String getFileName(EntityTable table) {
+        return table.getClass().getSimpleName();
+    }
+    
+    abstract String getFileSuffix();
+    abstract void save(EntityTable table) throws IOException;
+    abstract EntityTable restore(EntityTable table) throws IOException;
     
 }

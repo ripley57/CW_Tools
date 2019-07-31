@@ -6,9 +6,18 @@
  *  It is intended for educational and illustrative purposes only, and may not be re-published
  *  without the express written permission of the publisher.
  */
-package chapter29.db;
+
+package com.jeremyc.db;
 
 import java.util.*;
+
+
+/**
+ * JeremyC 31-07-2019
+ *
+ * At the moment, I don't see the benefit of extending java.util.EventObject
+ * What extra does this give us? Do we need it?
+ */
 
 public class EntityEvent extends EventObject {
     

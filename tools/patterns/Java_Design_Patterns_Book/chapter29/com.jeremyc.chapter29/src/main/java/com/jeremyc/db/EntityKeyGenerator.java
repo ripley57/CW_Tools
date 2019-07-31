@@ -6,12 +6,23 @@
  *  It is intended for educational and illustrative purposes only, and may not be re-published
  *  without the express written permission of the publisher.
  */
-package chapter29.business;
 
-public class TurboEngine extends AbstractEngine {
+package com.jeremyc.db;
+
+
+/**
+ * JeremyC 31-07-2019.
+ * Note again that we are using Java enum to create a Singleton.
+ */
+
+public enum EntityKeyGenerator {
     
-    public TurboEngine(int size) {
-        super(size, true);
+    ENGINE;
+    
+    private int nextKey;
+    
+    synchronized int getNextKey() {
+        return ++nextKey;
     }
     
 }

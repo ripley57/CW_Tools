@@ -6,12 +6,20 @@
  *  It is intended for educational and illustrative purposes only, and may not be re-published
  *  without the express written permission of the publisher.
  */
-package chapter29.ui;
 
-import chapter29.business.*;
+package com.jeremyc.ui;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+
+import com.jeremyc.business.*;
+
+/**
+ * JeremyC 31-07-2019
+ *
+ * Dialog to add a new engine.
+*/
 
 public class BuildEngineDialog extends JDialog {
     
@@ -26,11 +34,11 @@ public class BuildEngineDialog extends JDialog {
         // Form entry panel
         JPanel formPanel = new JPanel(new GridLayout(0, 2));
         
-        typeCombo = new JComboBox
-                (BusinessFacade.INSTANCE.getEngineTypes());
+        typeCombo = new JComboBox(BusinessFacade.INSTANCE.getEngineTypes());
         formPanel.add(new JLabel("Type"));
         formPanel.add(typeCombo);
         
+ 	// JeremyC 31-07-2019. Hmmm, shouldn't we perhaps have a method "BusinessFacade.INSTANCE.getEngineSizes()" here?
         sizeCombo = new JComboBox();
         sizeCombo.addItem(1300);
         sizeCombo.addItem(1600);
@@ -47,9 +55,8 @@ public class BuildEngineDialog extends JDialog {
         JButton okButton = new JButton("OK");
         okButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                BusinessFacade.INSTANCE.addEngine(
-                        (Integer)sizeCombo.getSelectedItem(),
-                        typeCombo.getSelectedItem());
+		// Add the new engine to our back-end. We pass selected size and selected type.
+                BusinessFacade.INSTANCE.addEngine((Integer)sizeCombo.getSelectedItem(), typeCombo.getSelectedItem());
                 setVisible(false);
             }
         });

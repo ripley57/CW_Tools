@@ -6,16 +6,20 @@
  *  It is intended for educational and illustrative purposes only, and may not be re-published
  *  without the express written permission of the publisher.
  */
-package chapter29.db;
+
+package com.jeremyc.db;
 
 import java.io.*;
 
+
 public class EntitySerializationStrategy extends AbstractEntityPersistenceStrategy {
 
+    @Override
     String getFileSuffix() {
         return ".ser";
     }
 
+    @Override
     void save(EntityTable table) throws IOException {
         File file = new File(getFileName(table) + getFileSuffix());
         FileOutputStream fos = new FileOutputStream(file);
@@ -25,6 +29,7 @@ public class EntitySerializationStrategy extends AbstractEntityPersistenceStrate
         oos.close();
     }
 
+    @Override
     EntityTable restore(EntityTable table) throws IOException {
         File file = new File(getFileName(table) + getFileSuffix());
         FileInputStream fis = new FileInputStream(file);
