@@ -28,7 +28,15 @@ public class EntityTable implements Serializable {
     
     private EntityKeyGenerator keyGenerator;
     private Map<Integer, Object> entities;
-    private Collection<EntityListener> listeners;
+
+    /**
+    * JeremyC 2-8-2019. We need to exclude this from serialization, because it references AWT
+    * components that are not serializable, and they give an error when we try to serialize
+    * this class! Fortunately, we don't need to serialize this member anyway.
+    *
+    * Regarding "transient", see https://stackoverflow.com/questions/14582440/how-to-exclude-field-from-class-serialization-in-runtime#14582551
+    **/
+    private transient Collection<EntityListener> listeners;
     
     EntityTable(EntityKeyGenerator keyGenerator) {
         this.keyGenerator = keyGenerator;
