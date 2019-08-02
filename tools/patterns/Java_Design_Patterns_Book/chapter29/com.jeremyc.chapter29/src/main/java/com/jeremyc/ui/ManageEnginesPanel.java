@@ -42,7 +42,7 @@ public class ManageEnginesPanel extends JPanel implements EntityListener {
         });
         buttonPanel.add(buildEngineButton);
 
-	// Button to save all engines
+        // Button to save all engines
         JButton saveButton = new JButton("Save");
         saveButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {

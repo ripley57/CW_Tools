@@ -18,18 +18,19 @@ public abstract class AbstractEngine implements Engine {
         this.size = size;
         this.turbo = turbo;
     }
-    
+ 
+    @Override   
     public int getSize() {
         return size;
     }
     
+    @Override
     public boolean isTurbo() {
         return turbo;
     }
     
     public String toString() {
-        return getClass().getSimpleName() + 
-                " (" + size + ")";
+        return getClass().getSimpleName() + " (" + size + ")";
     }
     
 }
