@@ -1,5 +1,5 @@
 o Git UIs for Linux:
-gitg, qgit, gitk, tig (console-based)
+gitg, tig (console-based)
 
 o Clone a repository:
 git clone https://github.com/ripley57/GitPlay.git
@@ -14,12 +14,19 @@ Remove:  git clean -f
 o Branches & Tags
 git branch		-	List current branch (http://edp-confluence.engba.vtas.com/display/DEVOPS/QA+Workflow)
 git branch -a		-	List all branches (https://githowto.com/remote_branches)
-git checkout V811_R1	-	Change branch (https://githowto.com/navigating_branches)
+git checkout V811_R1	-	Change to branch (https://githowto.com/navigating_branches)
 git tag			-	List tags
+
+o Create a branch
+git branch chapter-two
+git branch
+  chapter-two
+* master
 
 o Add a remote repository, named locally as "my-new-origin":
 git remote add my-new-origin https://github.com/ripley57/GitPlay.git
 (NOTE: Running a "git clone" will name the remote repository as "origin").
+https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes
 You can have multiple repositories linked to your local repository:
 git remote --verbose
 my-new-origin	https://github.com/ripley57/GitPlay.git (fetch)
@@ -30,7 +37,7 @@ my-new-origin-3	https://github.com/ripley57/GitPlay.git (fetch)
 my-new-origin-3	https://github.com/ripley57/GitPlay.git (push
 To work with one of these:
 git push --set-upstream my-new-origin-2 master
-Running "git status" will now confirm the one you are working with:
+Now running "git status" will confirm the one you are working with:
 git status 
 On branch master
 Your branch is up-to-date with 'my-new-origin-2/master
