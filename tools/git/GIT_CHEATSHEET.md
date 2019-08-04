@@ -22,10 +22,14 @@ o BRANCHES & TAGS
 A tag is similar to a branch, i.e. it's a pointer to a single commit, but the 
 pointer remains pointing to the same commit even when new commits are made.
 git branch			-	List current branch (http://edp-confluence.engba.vtas.com/display/DEVOPS/QA+Workflow).
-git branch -a			-	List all branches (https://githowto.com/remote_branches).
+git branch -a			-	List all branches, includes remotes (https://githowto.com/remote_branches).
 git checkout V811_R1		-	Change to branch (https://githowto.com/navigating_branches).
 git checkout --force V811_R1 	-	Force switch to a new branch, overwiring any local changes.
 git tag				-	List tags.
+To create a remote branch, create it locally, then "push" it:
+git branch some-branch
+git checkout some-branch
+git push -u origin some-branch
 
 o CREATE A **LOCAL** BRANCH
 In Git, a branch is no more than a pointer to a particular commit. See "git-pointers.png". 
