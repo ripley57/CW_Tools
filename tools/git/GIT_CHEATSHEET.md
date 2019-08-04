@@ -1,17 +1,24 @@
-o GIT GUIS:
+o GIT GUIS
 gitg, tig (console-based)
 
-o CLONE EXISTING REPOSITORY:
+o CLONE EXISTING REPOSITORY
 git clone https://github.com/ripley57/GitPlay.git
+git clone https://github.com/GitInPractice/GitInPracticeRedux.git
 
-o REVERT ALL LOCAL CHANGES:
+o REVERT ALL LOCAL CHANGES
 git reset HEAD^ --hard
 
-o REMOVE ALL UNTRACKED CHANGES:
+o REMOVE ALL UNTRACKED CHANGES
 Preview: git clean -n
 Remove:  git clean -f
 
-o BRANCHES & TAGS:
+o PUSH CHANGES TO A REMOTE REPOSITORY
+Push from local master to remote master:
+	git push --set-upstream origin master
+..this is the same as:
+	git push -u origin master
+
+o BRANCHES & TAGS
 A tag is similar to a branch, i.e. it's a pointer to a single commit, but the 
 pointer remains pointing to the same commit even when new commits are made.
 git branch			-	List current branch (http://edp-confluence.engba.vtas.com/display/DEVOPS/QA+Workflow).
@@ -20,7 +27,7 @@ git checkout V811_R1		-	Change to branch (https://githowto.com/navigating_branch
 git checkout --force V811_R1 	-	Force switch to a new branch, overwiring any local changes.
 git tag				-	List tags.
 
-o CREATE A **LOCAL** BRANCH:
+o CREATE A **LOCAL** BRANCH
 In Git, a branch is no more than a pointer to a particular commit. See "git-pointers.png". 
 The branch pointer moves as new commit are made on that branch. This is unlike other version 
 control systems such as Subversion, in which branches are subdirectories of the repository.
@@ -34,13 +41,13 @@ NOTE: A branch cannot have spaces or (..) in the name.
 	* master
 NOTE: "HEAD" pointer always points to the current branch.
 
-o CREATE A **REMOTE** BRANCH:
+o CREATE A **REMOTE** BRANCH
 To create a local branch and then make it a remote branch:
 	git branch chapter-two
 	git checkout chapter-two			(switch to the new branch)
 	git push --set-upstream origin chapter-two	(push it to the remote repository named "origin")
 
-o MERGING A BRANCH:
+o MERGING A BRANCH
 NOTE: A branch is always merged into the CURRENT branch.
 Example: Make a commit on the local branch "chapter-two" and merge that into the master branch:
 1. "git checkout chapter-two"		(ensure that we’re on the "chapter-two" branch).
@@ -48,55 +55,37 @@ Example: Make a commit on the local branch "chapter-two" and merge that into the
 3. "git checkout master" 		(check out the branch we wish to merge our changes into).
 4. "git merge chapter-two" 		(perform the merge of the "chapter-two" branch into master).
 
-o ADD A REMOTE REPOSITORY (named locally as "my-new-origin"):
-git remote add my-new-origin https://github.com/ripley57/GitPlay.git
-(NOTE: Running "git clone" will always name the remote repository "origin").
-(See https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes).
-You can have multiple repositories linked to your local repository:
-git remote --verbose
-my-new-origin	https://github.com/ripley57/GitPlay.git (fetch)
-my-new-origin	https://github.com/ripley57/GitPlay.git (push)
-my-new-origin-2	https://github.com/ripley57/GitPlay.git (fetch)
-my-new-origin-2	https://github.com/ripley57/GitPlay.git (push)
-my-new-origin-3	https://github.com/ripley57/GitPlay.git (fetch)
-my-new-origin-3	https://github.com/ripley57/GitPlay.git (push
-To work with one of these remote repositories:
-git push --set-upstream my-new-origin-2 master
-Now running "git status" will confirm which one you are working with:
-git status 
-On branch master
-Your branch is up-to-date with 'my-new-origin-2/master
-
-o "git pull" vs "git fetch"
+o PULL vs FETCH
 git pull	-	Fetches the changes from a remote repository AND merges them into the current branch.
-git fetch 	- 	Fetches the changes from a remote repository but SKIPS the mmerge step
-			You must do the merge manually, e.g. using "git merge origin/master"
+git fetch 	- 	Fetches the changes from a remote repository but SKIPS the mmerge step.
+			You must do the merge manually, e.g. using "git merge origin/master".
 			Note: "git status" will show you're "behind". To see these (unmerged) changes: "git diff origin/master"
 			(Remember: "git diff origin/master" shows the differences between the current working tree state and 
 			the "origin" remote’s master branch.)
 
-o  Diffs
+o DIFFS  
 git show 41b0904f278	-	Show changes in a commit.
 git log -- <filepath>	-	Show log history of a specific file (in all branches).
 git log -p		-	Show changes as patch diffs.
 git diff --stat		-	Show a line diff stat per file, e.g. "00-Preface.txtc | 2 ++" (=2 insertions)
 git diff --word-diff 	-	Show word diff, e.g. "wibble [-write book-]{+Is this funny?+}"
 
-o Expand a short ref to full ref, examples:
+o EXPAND A SHORT REF TO A FULL REF
 # git rev-parse master
 6b437c7739d24e29c8ded318e683eca8f03a5260
 # git rev-parse 6b437c7
 6b437c7739d24e29c8ded318e683eca8f03a5260
 
-o Remove a file completely from history (e.g. large file or passwords.txt)
+o REMOVE A FILE COMPLETELY FROM HISTORY (e.g. large file or passwords.txt)
 https://help.github.com/articles/removing-sensitive-data-from-a-repository/
 
-o USEFUL REFERENCES:
+o USEFUL REFERENCES
 http://try.github.io/
 https://githowto.com
 http://gitref.org/inspect/
 
-o GITHUB PAGES:
+o GITHUB PAGES
 https://www.markdownguide.org/basic-syntax/
 https://www.thinkful.com/learn/a-guide-to-using-github-pages/start/new-project/project-page/
 http://jmcglone.com/guides/github-pages/
+
