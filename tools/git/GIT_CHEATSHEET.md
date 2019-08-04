@@ -1,32 +1,57 @@
-o Git UIs for Linux:
+o GIT GUIS:
 gitg, tig (console-based)
 
-o Clone a repository:
+o CLONE EXISTING REPOSITORY:
 git clone https://github.com/ripley57/GitPlay.git
 
-o Revert all local changes:
+o REVERT ALL LOCAL CHANGES:
 git reset HEAD^ --hard
 
-o Remove all untracked changes:
+o REMOVE ALL UNTRACKED CHANGES:
 Preview: git clean -n
 Remove:  git clean -f
 
-o Branches & Tags
-git branch		-	List current branch (http://edp-confluence.engba.vtas.com/display/DEVOPS/QA+Workflow)
-git branch -a		-	List all branches (https://githowto.com/remote_branches)
-git checkout V811_R1	-	Change to branch (https://githowto.com/navigating_branches)
-git tag			-	List tags
+o BRANCHES & TAGS:
+A tag is similar to a branch, i.e. it's a pointer to a single commit, but the 
+pointer remains pointing to the same commit even when new commits are made.
+git branch			-	List current branch (http://edp-confluence.engba.vtas.com/display/DEVOPS/QA+Workflow).
+git branch -a			-	List all branches (https://githowto.com/remote_branches).
+git checkout V811_R1		-	Change to branch (https://githowto.com/navigating_branches).
+git checkout --force V811_R1 	-	Force switch to a new branch, overwiring any local changes.
+git tag				-	List tags.
 
-o Create a branch
-git branch chapter-two
-git branch
-  chapter-two
-* master
+o CREATE A **LOCAL** BRANCH:
+In Git, a branch is no more than a pointer to a particular commit. See "git-pointers.png". 
+The branch pointer moves as new commit are made on that branch. This is unlike other version 
+control systems such as Subversion, in which branches are subdirectories of the repository.
+NOTE: A branch cannot have spaces or (..) in the name.
+	git branch chapter-two
+...this is equivalent to specifing the branch point explicity:
+	git branch chapter-two master	
+..then, to list branches:
+	git branch
+	  chapter-two
+	* master
+NOTE: "HEAD" pointer always points to the current branch.
 
-o Add a remote repository, named locally as "my-new-origin":
+o CREATE A **REMOTE** BRANCH:
+To create a local branch and then make it a remote branch:
+	git branch chapter-two
+	git checkout chapter-two			(switch to the new branch)
+	git push --set-upstream origin chapter-two	(push it to the remote repository named "origin")
+
+o MERGING A BRANCH:
+NOTE: A branch is always merged into the CURRENT branch.
+Example: Make a commit on the local branch "chapter-two" and merge that into the master branch:
+1. "git checkout chapter-two"		(ensure that we’re on the "chapter-two" branch).
+2. Commit some change in the "chapter_two" branch.
+3. "git checkout master" 		(check out the branch we wish to merge our changes into).
+4. "git merge chapter-two" 		(perform the merge of the "chapter-two" branch into master).
+
+o ADD A REMOTE REPOSITORY (named locally as "my-new-origin"):
 git remote add my-new-origin https://github.com/ripley57/GitPlay.git
-(NOTE: Running a "git clone" will name the remote repository as "origin").
-https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes
+(NOTE: Running "git clone" will always name the remote repository "origin").
+(See https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes).
 You can have multiple repositories linked to your local repository:
 git remote --verbose
 my-new-origin	https://github.com/ripley57/GitPlay.git (fetch)
@@ -35,9 +60,9 @@ my-new-origin-2	https://github.com/ripley57/GitPlay.git (fetch)
 my-new-origin-2	https://github.com/ripley57/GitPlay.git (push)
 my-new-origin-3	https://github.com/ripley57/GitPlay.git (fetch)
 my-new-origin-3	https://github.com/ripley57/GitPlay.git (push
-To work with one of these:
+To work with one of these remote repositories:
 git push --set-upstream my-new-origin-2 master
-Now running "git status" will confirm the one you are working with:
+Now running "git status" will confirm which one you are working with:
 git status 
 On branch master
 Your branch is up-to-date with 'my-new-origin-2/master
@@ -54,8 +79,8 @@ o  Diffs
 git show 41b0904f278	-	Show changes in a commit.
 git log -- <filepath>	-	Show log history of a specific file (in all branches).
 git log -p		-	Show changes as patch diffs.
-git diff --stat		-	Show line diff stats, per file, e.g. "00-Preface.txtc | 2 ++" (=2 insertions)
-git diff --word-diff 	-	Show word diff, e.g. "TODO: [-write book-]{+Is this funny?+}"
+git diff --stat		-	Show a line diff stat per file, e.g. "00-Preface.txtc | 2 ++" (=2 insertions)
+git diff --word-diff 	-	Show word diff, e.g. "wibble [-write book-]{+Is this funny?+}"
 
 o Expand a short ref to full ref, examples:
 # git rev-parse master
@@ -75,4 +100,3 @@ o GITHUB PAGES:
 https://www.markdownguide.org/basic-syntax/
 https://www.thinkful.com/learn/a-guide-to-using-github-pages/start/new-project/project-page/
 http://jmcglone.com/guides/github-pages/
-
