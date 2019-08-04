@@ -51,13 +51,15 @@ To create a local branch and then make it a remote branch:
 	git checkout chapter-two			(switch to the new branch)
 	git push --set-upstream origin chapter-two	(push it to the remote repository named "origin")
 
-o MERGING A BRANCH
+o MERGE A BRANCH
 NOTE: A branch is always merged into the CURRENT branch.
 Example: Make a commit on the local branch "chapter-two" and merge that into the master branch:
 1. "git checkout chapter-two"		(ensure that we’re on the "chapter-two" branch).
 2. Commit some change in the "chapter_two" branch.
 3. "git checkout master" 		(check out the branch we wish to merge our changes into).
 4. "git merge chapter-two" 		(perform the merge of the "chapter-two" branch into master).
+NOTE: After manually resolving a merge conflict, to commit the change use "-i":
+git commit -i -m"Merge conflict fixed" .
 
 o PULL vs FETCH
 git pull	-	Fetches the changes from a remote repository AND merges them into the current branch.
