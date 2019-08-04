@@ -1,6 +1,11 @@
 o GIT GUIs
 gitg, tig (console-based)
 
+o GIT PREVIEW 
+--dry-run
+-n
+NOTE: This does not apply for all git commands!
+
 o GIT .gitinore FILE
 Examples: https://github.com/github/gitignore
 
@@ -92,11 +97,10 @@ NOTE: In Git, once a branch has been merged, the history of the branch is still 
 
 o PULL vs FETCH
 git pull	-	Fetches the changes from a remote repository AND merges them into the current branch.
-git fetch 	- 	Fetches the changes from a remote repository but SKIPS the mmerge step.
+git fetch 	- 	Fetches the changes from a remote repository but SKIPS the merge step.
 			You must do the merge manually, e.g. using "git merge origin/master".
-			Note: "git status" will show you're "behind". To see these (unmerged) changes: "git diff origin/master"
-			(Remember: "git diff origin/master" shows the differences between the current working tree state and 
-			the "origin" remote’s master branch.)
+			Note: "git status" will show you're "behind", but tTo see these (unmerged) changes, you
+			need to query the working directory with the remote branch, e.g.: "git diff origin master"
 
 o DIFFS  
 git show 41b0904f278	-	Show changes in a commit.
