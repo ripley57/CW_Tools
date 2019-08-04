@@ -55,11 +55,23 @@ o MERGE A BRANCH
 NOTE: A branch is always merged into the CURRENT branch.
 Example: Make a commit on the local branch "chapter-two" and merge that into the master branch:
 1. "git checkout chapter-two"		(ensure that we’re on the "chapter-two" branch).
-2. Commit some change in the "chapter_two" branch.
+2. Commit some change in the "chapter-two" branch.
 3. "git checkout master" 		(check out the branch we wish to merge our changes into).
 4. "git merge chapter-two" 		(perform the merge of the "chapter-two" branch into master).
 NOTE: After manually resolving a merge conflict, to commit the change use "-i":
 git commit -i -m"Merge conflict fixed" .
+To remove a remote branch:
+git push --delete origin chapter-two
+To remove a local branch:
+git branch --delete chapter-two
+(Deleting "origin/chapter-two" first means the local "chapter-two branch" can be deleted with 
+"git branch --delete" without Git complaining that "chapter-two" has changes that need to be 
+pushed to "origin/chapter-two").
+
+git checkout chapter-two
+git push --delete origin 
+NOTE: In Git, once a branch has been merged, the history of the branch is still visible in the history, 
+      and the branch can be safely deleted,
 
 o PULL vs FETCH
 git pull	-	Fetches the changes from a remote repository AND merges them into the current branch.
