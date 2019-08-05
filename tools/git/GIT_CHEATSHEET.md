@@ -50,7 +50,8 @@ pointer remains pointing to the same commit even when new commits are made.
 git branch			-	List current branch (http://edp-confluence.engba.vtas.com/display/DEVOPS/QA+Workflow).
 git branch -a			-	List all branches including remotes (https://githowto.com/remote_branches).
 git checkout V811_R1		-	Change to branch (https://githowto.com/navigating_branches).
-git checkout --force V811_R1 	-	Force switch to a new branch, overwiring any local changes.
+                                        NOTE: Specify a remote branch name here to track it and switch to a local copy.
+git checkout --force V811_R1 	-	Force switch to a new branch, overwriting any local changes!
 git tag				-	List tags.
 To create a remote branch, create it locally, then "push" it:
 git branch some-branch
@@ -78,6 +79,7 @@ git checkout chapter-two			(switch to the new branch)
 git push --set-upstream origin chapter-two	(push it to the remote repository named "origin")
 
 o MERGE A BRANCH
+See also git_merge.md
 NOTE: A branch is always merged into the CURRENT branch.
 Example: Make a commit on the local branch "chapter-two" and merge that into the master branch:
 1. "git checkout chapter-two"			(ensure that we’re on the "chapter-two" branch).
@@ -85,6 +87,9 @@ Example: Make a commit on the local branch "chapter-two" and merge that into the
 3. "git checkout master" 			(check out the branch we wish to merge our changes into).
 4. "git merge chapter-two" 			(perform the merge of the "chapter-two" branch into master).
 git commit -i -m"Merged" . 		-	You must use "-i" to commit your manually merged changes.
+						NOTE: It is preferably to not specify -m"..." here, and instead
+						create a comment based on the pre-populated text, which lists 
+						the file names that had conflicts. This is handy to have.
 git push --delete origin chapter-two	-	Remove a remote branch.
 git branch --delete chapter-two		-	Remove a local branch.
 NOTE: Deleting "origin/chapter-two" first, means the local "chapter-two branch" can be deleted 
@@ -133,12 +138,14 @@ git bisect run ./my-test.sh
 checkout does not compile your test).
 
 o GIT SHOW, GIT LOG & GIT DIFF 
-git show 41b0904f278	-	Show changes in a SINGLE commit. Equivalent to "git log --max-count=1 -p".
-git log -p		-	Show all changes as patch diffs.
-git log -- <filepath>	-	Show log history of a specific file.
-git log --oneline	-	Shows first line of each commit message.
-git diff --stat		-	Show a line diff stat per file, e.g. "00-Preface.txtc | 2 ++" (=2 insertions)
-git diff --word-diff 	-	Show word diff, e.g. "wibble [-write book-]{+Is this funny?+}"
+git show 41b0904f278			-	Show changes in a SINGLE commit. Equivalent to "git log --max-count=1 -p".
+git show branchname:filename		-	Show contents of file in a particular branch.
+git show origin/branchname:filename	-	Show contents of file in a particular remote branch.
+git log -p				-	Show all changes as patch diffs.
+git log -- <filepath>			-	Show log history of a specific file.
+git log --oneline			-	Shows first line of each commit message.
+git diff --stat				-	Show a line diff stat per file, e.g. "00-Preface.txtc | 2 ++" (=2 insertions)
+git diff --word-diff 			-	Show word diff, e.g. "wibble [-write book-]{+Is this funny?+}"
 More complex examples:
 git log --author "Mike McQuaid" --after "Nov 10 2013" --grep 'file\.'
 git log --format=email --reverse --max-count 2
