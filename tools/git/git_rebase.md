@@ -45,4 +45,17 @@ Applying: e1
 Applying: e2
 
 
+## git rebase --interactive	(interactively rebase the history of a branch)
+From page 117 of "Git In Practice":
+"I typically always use an interactive rebase before I push a branch upstream; it allows 
+me to take stock and consider what I want the history to look like. The factors I consider 
+are whether any commits are now redundant or only cleaning up previous commits, whether 
+any commit messages can be improved, whether any commits need to be reordered to make more 
+sense..."
+
+TBC: SO, you'd create some temporary local branch, rebase your dev branch into this
+temporary branch, changing the comments etc as you want, then finally push this temporary
+branch to the remote?
+
+
 JeremyC 5-8-2019
