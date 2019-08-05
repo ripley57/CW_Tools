@@ -1,10 +1,13 @@
 o GIT GUIs
 gitg, tig (console-based)
 
+o CHECK INTEGRITY OF REPOSITORY:
+git fsck
+
 o GIT PREVIEW 
 --dry-run
 -n
-NOTE: This does not apply for all git commands!
+NOTE: This option does not apply to all git commands!
 
 o GIT .gitinore FILE
 Examples: https://github.com/github/gitignore
@@ -29,9 +32,12 @@ git clean --force -X	-	Only remove ignored files (captial 'X').
 o REVERT ALL NON-COMMITTED CHANGES (IN WORKING DIRECTORY)
 (Example: You added some debugging statements and now you want to reset these changes.)
 git reset --hard		-	Returns the working directory to the state of the last commit.
-git reset			-	Only undoes "git add" and does not also any file modifications.
 WARNING: The "--hard" option reverts all changes and you will any un-committed work!!
          This includes sub-directories!!
+git reset			-	Only undoes "git add" and does not also undo any file modifications.
+git reset HEAD^			-	Revert the last committed change. Use "git reset --hard" to also then 
+					revert any file modifications.
+git reset HEAD^ -- myfile.txt	-	Revert a particular file to the state before the last commit.
 
 o RENAME FILES & DIRECTORIES
 git mv name new-name ; git commit -m"Renamed" .
@@ -40,11 +46,26 @@ git log --follow filename
 
 o PUSH CHANGES TO A REMOTE REPOSITORY
 Push from local master to remote master:
-	git push --set-upstream origin master
+git push --set-upstream origin master
 ..this is the same as:
-	git push -u origin master
+git push -u origin master
 
-o BRANCHES & TAGS
+o TAGS
+NOTE: Tags are created locally and then pushed remotely.
+git tag					-	List tags.
+git tag -l *v*				-	List tags matching name regexp.
+git tag v1.0				-	Create a new tag locally.
+git tag v1.0 -f				-	Force re-use of existing tag.
+git tag v1.1 -d				-	Delete a tag.
+git push --tags				-	Push tags to remote.
+git checkout -b v0.1-release v0.1	-	Create a branch from a tag (and switch to it).
+To auto-generate a tag name suitable for an "About" box:
+git describe --tags
+v1.0-1-g06178d0
+This is based on the most recent tag created on this branch ("v1.0"), combined with the number of
+commits since that tag was created ("1"), followed by the git commit ref, prepended with "g" for git.
+
+o BRANCHES
 A tag is similar to a branch, i.e. it's a pointer to a single commit, but the 
 pointer remains pointing to the same commit even when new commits are made.
 git branch			-	List current branch (http://edp-confluence.engba.vtas.com/display/DEVOPS/QA+Workflow).
@@ -52,11 +73,14 @@ git branch -a			-	List all branches including remotes (https://githowto.com/remo
 git checkout V811_R1		-	Change to branch (https://githowto.com/navigating_branches).
                                         NOTE: Specify a remote branch name here to track it and switch to a local copy.
 git checkout --force V811_R1 	-	Force switch to a new branch, overwriting any local changes!
-git tag				-	List tags.
 To create a remote branch, create it locally, then "push" it:
-git branch some-branch
+git branch some-branch		-	You can use "git checkout -b some-branch" to combine these two steps.
 git checkout some-branch
 git push -u origin some-branch
+List commits in some-branch that are not yet in the master branch:
+git checkout some-branch
+git cherry --verbose master
+NOTE: "+" indicates the change is missing.
 
 o CREATE A *LOCAL* BRANCH
 In Git, a branch is no more than a pointer to a particular commit. See "git-pointers.png". 
@@ -73,7 +97,7 @@ git branch
 NOTE: "HEAD" pointer always points to the current branch.
 
 o CREATE A *REMOTE* BRANCH
-	To create a local branch and then make it a remote branch:
+Create a local branch and then make it a remote branch:
 git branch chapter-two
 git checkout chapter-two			(switch to the new branch)
 git push --set-upstream origin chapter-two	(push it to the remote repository named "origin")
@@ -145,7 +169,9 @@ git log -p				-	Show all changes as patch diffs.
 git log -- <filepath>			-	Show log history of a specific file.
 git log --oneline			-	Shows first line of each commit message.
 git diff --stat				-	Show a line diff stat per file, e.g. "00-Preface.txtc | 2 ++" (=2 insertions)
+git diff --stat HEAD^			-	See names of files changed in the last commit.
 git diff --word-diff 			-	Show word diff, e.g. "wibble [-write book-]{+Is this funny?+}"
+git diff ccc6f5e..fc43842		-	Diff between two revisions.
 More complex examples:
 git log --author "Mike McQuaid" --after "Nov 10 2013" --grep 'file\.'
 git log --format=email --reverse --max-count 2
