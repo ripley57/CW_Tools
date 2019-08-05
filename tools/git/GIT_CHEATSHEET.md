@@ -172,6 +172,7 @@ git diff --stat				-	Show a line diff stat per file, e.g. "00-Preface.txtc | 2 +
 git diff --stat HEAD^			-	See names of files changed in the last commit.
 git diff --word-diff 			-	Show word diff, e.g. "wibble [-write book-]{+Is this funny?+}"
 git diff ccc6f5e..fc43842		-	Diff between two revisions.
+git diff origin/inspiration		-	Diff current branch with remove branch "inspiration".
 More complex examples:
 git log --author "Mike McQuaid" --after "Nov 10 2013" --grep 'file\.'
 git log --format=email --reverse --max-count 2
