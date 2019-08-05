@@ -31,7 +31,11 @@ function e() {
             echo "Directory \"$_d\" does not exist, so skipping."
             _rtn=1
         else
-            explorer "$(cygpath -aw "$_d")"
+	    if isLinux ; then
+                xdg-open "$_d"
+	    else
+                explorer "$(cygpath -aw "$_d")"
+	    fi
         fi
     done
     return $_rtn
