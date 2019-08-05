@@ -71,7 +71,8 @@ pointer remains pointing to the same commit even when new commits are made.
 git branch			-	List current branch (http://edp-confluence.engba.vtas.com/display/DEVOPS/QA+Workflow).
 git branch -a			-	List all branches including remotes (https://githowto.com/remote_branches).
 git checkout V811_R1		-	Change to branch (https://githowto.com/navigating_branches).
-                                        NOTE: Specify a remote branch name here to track it and switch to a local copy.
+                                       	NOTE: Specify a remote branch name here to track it and switch to a local copy.
+git checkout some-branch -- hello_world.txt	-	Extract a copy of a single file from a different branch.
 git checkout --force V811_R1 	-	Force switch to a new branch, overwriting any local changes!
 To create a remote branch, create it locally, then "push" it:
 git branch some-branch		-	You can use "git checkout -b some-branch" to combine these two steps.
