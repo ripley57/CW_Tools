@@ -86,4 +86,24 @@ push this local branch, it will have a simpler, cleaner history. Once you unders
 how torebase and solve conflicts, I recommend using "git pull --rebase" by default.
 
 
+## Forcing a push after a "git rebase" using "+some-branch"
+WARNING: Only do this if you know what your're doing! Re-writing history by doing a
+"git rebase" and then publishing those changes could seriously break the existing 
+copies of the repository being used by other people!
+See page 120 of "Git In Practice".
+
+
+## git filter-branch
+See "Pro Git" page 161.
+This can be used to re-write the entire commit history of a branch. 
+This is useful if you accidentally committed confidential files early in the project, or
+you commited some huge binary files.
+
+This example removes a file named "passwords.txt":
+git filter-branch  --tree-filter 'rm -f passwords.txt' HEAD
+
+You can also re-write commit messages - see "--msg-filter".
+NOTE: Add "-all" to update all your branches.
+
+
 JeremyC 5-8-2019
