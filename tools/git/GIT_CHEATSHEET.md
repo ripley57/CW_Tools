@@ -1,22 +1,13 @@
+o DISPLAY GIT HELP IN WEB PAGE
+git config --help --web
+
 o GIT GUIs
 gitg, tig (console-based)
-
-o CREATE AN EMPTY COMMIT
-git commit --allow-empty -m "Trigger test"
-NOTE: An empty commit means no file changes. It does not mean empty commit message.
-      You might use this to test some action that is triggered by a git commit.
-
-o CHECK INTEGRITY OF REPOSITORY:
-git fsck
 
 o GIT PREVIEW 
 --dry-run
 -n
 NOTE: This option does not apply to all git commands!
-
-o GIT .gitinore FILE
-See "Pro Git" page 20
-Examples: https://github.com/github/gitignore
 
 o CLONE AN EXISTING REPOSITORY
 git clone https://github.com/ripley57/GitPlay.git
@@ -256,4 +247,27 @@ o GITHUB PAGES
 https://www.markdownguide.org/basic-syntax/
 https://www.thinkful.com/learn/a-guide-to-using-github-pages/start/new-project/project-page/
 http://jmcglone.com/guides/github-pages/
+
+o INDICATE CURRENT GIT BRANCH IN BASH PROMPT. 
+Add the following to the end of ~/.bashrc
+# Indicate current branch in bash prompt. From "Git In Practice" eBook.
+git_branch() {
+GIT_BRANCH=$(git symbolic-ref --short HEAD 2>/dev/null) || return
+[ -n "$GIT_BRANCH" ] && echo "($GIT_BRANCH)"
+}
+PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(git_branch)\$ '
+PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+
+o CREATE AN EMPTY COMMIT
+git commit --allow-empty -m "Trigger test"
+NOTE: An empty commit means no file changes. It does not mean empty commit message.
+      You might use this to test some action that is triggered by a git commit.
+
+o CHECK INTEGRITY OF REPOSITORY:
+git fsck
+
+o GIT .gitinore FILE
+See "Pro Git" page 20
+https://github.com/github/gitignore
+http://dotfiles.github.io/
 

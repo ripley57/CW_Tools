@@ -15,6 +15,14 @@ Applies to your specific user.
 3) .git/config (in each repository)  
 Values in this file trump those in /etc/gitconfig.
 
+Example: Change the email address, but just for the current repository:
+git config --local user.email bob@smith.com 
+("--local" is actually the default, so it's not really needed here)
+To confirm the change:
+git config --local user.email
+bob@smith.com
+
+
 To see the current settings:  
 `git config [--system|--global] --list`
 
