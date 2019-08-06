@@ -1,6 +1,11 @@
 o GIT GUIs
 gitg, tig (console-based)
 
+o CREATE AN EMPTY COMMIT
+git commit --allow-empty -m "Trigger test"
+NOTE: An empty commit means no file changes. It does not mean empty commit message.
+      You might use this to test some action that is triggered by a git commit.
+
 o CHECK INTEGRITY OF REPOSITORY:
 git fsck
 
@@ -124,8 +129,9 @@ git checkout chapter-two			(switch to the new branch)
 git push --set-upstream origin chapter-two	(push it to the remote repository named "origin")
 
 o MERGE A BRANCH
-See also git_merge.md
+See also git_rebase.md and git_merge.md 
 NOTE: A branch is always merged into the CURRENT branch.
+NOTE: It is recommended to use "git pull --rebase" when merging a branch. See git_rebase.md.
 Example: Make a commit on the local branch "chapter-two" and merge that into the master branch:
 1. "git checkout chapter-two"			(ensure that we’re on the "chapter-two" branch).
 2. Commit some change in the "chapter-two" branch.
@@ -146,11 +152,15 @@ NOTE: In Git, once a branch has been merged, the history of the branch is still 
       and the branch can be safely deleted.
 
 o PULL vs FETCH
-git pull	-	Fetches the changes from a remote repository AND merges them into the current branch.
-git fetch 	- 	Fetches the changes from a remote repository but SKIPS the merge step.
+git fetch 	- 	Fetches the changes (including info about any new remote branches) from a remote 
+			repository, but SKIPS the merge step.
 			You must do the merge manually, e.g. using "git merge origin/master".
-			Note: "git status" will show you're "behind", but tTo see these (unmerged) changes, you
-			need to query the working directory with the remote branch, e.g.: "git diff origin master"
+			Note: "git status" will show you're "behind", but to see these (unmerged) changes, you
+			need to query the working directory with the remote branch, e.g.: "git diff origin/master"
+git pull	-	Fetches the changes from a remote repository AND merges them into the current branch.
+			NOTE: Using "git fetch" and then "git pull" is preferred to "git pull", because it givesa
+			you more control over the merge.
+			NOTE: It is recommended to use "git pull --rebase" when merging a branch. See git_rebase.md.
 
 o GIT BLAME
 git blame [--show-email|-e] FILENAME	-	Optionally show author email address.
