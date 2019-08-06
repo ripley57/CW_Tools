@@ -10,11 +10,15 @@ o GIT PREVIEW
 NOTE: This option does not apply to all git commands!
 
 o GIT .gitinore FILE
+See "Pro Git" page 20
 Examples: https://github.com/github/gitignore
 
 o CLONE AN EXISTING REPOSITORY
 git clone https://github.com/ripley57/GitPlay.git
 git clone https://github.com/GitInPractice/GitInPracticeRedux.git
+git clone https://github.com/schacon/simplegit-progit.git
+git clone https://github.com/git/git
+NOTE: "git clone" automatically sets up your local master branch to track the remote master branch.
 
 o LIST FILES TRACKED BY GIT
 git ls-files -v
@@ -22,6 +26,8 @@ H = A committed file.
 h = File marked by user to be considered as unchanged.
 List files NOT managed by Git:
 git ls-files -o
+To remove (untrack) a file from git, without removing the local copy:
+git rm --cached readme.txt	(Followed by a "git commmit")
 
 o REMOVE ALL UNTRACKED FILES (IN WORKING DIRECTORY)
 git clean --dry-run	-	Preview first. Recommended!
@@ -29,7 +35,7 @@ git clean --force	-	Force option is required because this is a destructive actio
 git clean --force -d 	-	Include sub-directories.
 git clean --force -X	-	Only remove ignored files (captial 'X').
 
-o REVERT ALL NON-COMMITTED CHANGES (IN WORKING DIRECTORY)
+o REVERT NON-COMMITTED CHANGES (IN WORKING DIRECTORY)
 (Example: You added some debugging statements and now you want to reset these changes.)
 git reset --hard		-	Returns the working directory to the state of the last commit.
 WARNING: The "--hard" option reverts all changes and you will any un-committed work!!
@@ -38,50 +44,64 @@ git reset			-	Only undoes "git add" and does not also undo any file modification
 git reset HEAD^			-	Revert the last committed change. Use "git reset --hard" to also then 
 					revert any file modifications.
 git reset HEAD^ -- myfile.txt	-	Revert a particular file to the state before the last commit.
+git checkout -- readme.txt	-	Lose your local modifications, by overwriting with the original file.
 
 o RENAME FILES & DIRECTORIES
 git mv name new-name ; git commit -m"Renamed" .
 NOTE: To see the history of a renamed file:
 git log --follow filename
 
-o PUSH CHANGES TO A REMOTE REPOSITORY
-Push from local master to remote master:
-git push --set-upstream origin master
-..this is the same as:
-git push -u origin master
+o REMOTE REPOSITORIES
+git remote --verbose			-	List remotes. Remember: "git clone" names the remote "origin".
+git push --set-upstream origin master	-	Push from local master to remote master.
+git push -u origin master		-	Same as above.
+To add some other remote (without using "clone", e.g. this could be a project collaborator's repository):
+git remote add paulb git://github.com/paulbonne/ticgit.git
+You can now run "git fetch paulb", to retrieve remote data such as the branches on the remote.
+To preview new remote branches that you don't have before running "git fetch paulb", run "git remote show paulb".
 
 o TAGS
 NOTE: Tags are created locally and then pushed remotely.
 git tag					-	List tags.
 git tag -l *v*				-	List tags matching name regexp.
-git tag v1.0				-	Create a new tag locally.
+git tag v1.0				-	Create a new (lightweight) tag, locally.
 git tag v1.0 -f				-	Force re-use of existing tag.
+git tag -a v1.4 -m "my version 1.4"	-	Create an annotated tag. These are check-summed, contain a message, etc.
+git show v1.4				-	Display the details associated with an annotated tag.
 git tag v1.1 -d				-	Delete a tag.
-git push --tags				-	Push tags to remote.
+git push origin v1.5			-	Push a specific tag to remote.
+git push --tags				-	Push all tags to remote.
 git checkout -b v0.1-release v0.1	-	Create a branch from a tag (and switch to it).
 To auto-generate a tag name suitable for an "About" box:
 git describe --tags
 v1.0-1-g06178d0
 This is based on the most recent tag created on this branch ("v1.0"), combined with the number of
 commits since that tag was created ("1"), followed by the git commit ref, prepended with "g" for git.
+Tag a specific commit:
+git tag -a v1.2 9fceb02
+You can now use "git show v1.2" to retrieve the commit, with its comment.
 
 o BRANCHES
 A tag is similar to a branch, i.e. it's a pointer to a single commit, but the 
 pointer remains pointing to the same commit even when new commits are made.
-git branch			-	List current branch (http://edp-confluence.engba.vtas.com/display/DEVOPS/QA+Workflow).
-git branch -a			-	List all branches including remotes (https://githowto.com/remote_branches).
-git checkout V811_R1		-	Change to branch (https://githowto.com/navigating_branches).
-                                       	NOTE: Specify a remote branch name here to track it and switch to a local copy.
+git branch					-	List current branch (http://edp-confluence.engba.vtas.com/display/DEVOPS/QA+Workflow).
+git branch -a					-	List all branches including remotes (https://githowto.com/remote_branches).
+git checkout V811_R1				-	Change to branch (https://githowto.com/navigating_branches).
+git checkout -b somebranch origin/some-branch	-	Track a remote branch in a new local branch.
+git checkout --track origin/some-branch		-	Same as above. Tracks a remote branch.
 git checkout some-branch -- hello_world.txt	-	Extract a copy of a single file from a different branch.
-git checkout --force V811_R1 	-	Force switch to a new branch, overwriting any local changes!
+git checkout --force V811_R1 			-	Force switch to a new branch, overwriting any local changes - WARNING!
 To create a remote branch, create it locally, then "push" it:
-git branch some-branch		-	You can use "git checkout -b some-branch" to combine these two steps.
-git checkout some-branch
+git checkout -b some-branch
 git push -u origin some-branch
 List commits in some-branch that are not yet in the master branch:
 git checkout some-branch
 git cherry --verbose master
 NOTE: "+" indicates the change is missing.
+git branch -d some-branch			-	Delete a local branch.
+git push origin :some-branch			- 	Delete a remote branch. Note we push a null local branch.
+git branch --no-merged				-	List all branches that contain worked you haven't yet merged in.
+git branch --merged				-	List branches already merged into the branch you're on.
 
 o CREATE A *LOCAL* BRANCH
 In Git, a branch is no more than a pointer to a particular commit. See "git-pointers.png". 
@@ -162,26 +182,35 @@ git bisect run ./my-test.sh
 (You can exit with 125 in your script if you need to do a "git bisect skip", e.g. if that particular
 checkout does not compile your test).
 
-o GIT SHOW, GIT LOG & GIT DIFF 
-git show 41b0904f278			-	Show changes in a SINGLE commit. Equivalent to "git log --max-count=1 -p".
-git show branchname:filename		-	Show contents of file in a particular branch.
-git show origin/branchname:filename	-	Show contents of file in a particular remote branch.
+o GIT LOG
 git log -p				-	Show all changes as patch diffs.
 git log -- <filepath>			-	Show log history of a specific file.
 git log --oneline			-	Shows first line of each commit message.
+More complex examples:
+git log --author "Mike McQuaid" --after "Nov 10 2013" --grep 'file\.'
+git log --format=email --reverse --max-count 2
+NOTE: "--max-count 2" is the same as "-2"
+NOTE: --author 					-	Is a regexp.
+NOTE: --after (--before, --since, --until) 	-	Can include: today, yesterday, Nov 10 2013 , 2014-01-30
+NOTE: --grep 					-	Matches the commit message.
+git log --oneline --graph --decorate	-	Visualizes branching and merging on the console.
+Uses the custom formatter. See "Pro Git" page 29:
+git log --pretty=format:"%h (%an) (%ar) %s" --graph --decorate
+
+o GIT SHOW
+git show 41b0904f278			-	Show changes in a SINGLE commit. Equivalent to "git log --max-count=1 -p".
+git show branchname:filename		-	Show contents of file in a particular branch.
+git show origin/branchname:filename	-	Show contents of file in a particular remote branch.
+
+o GIT DIFF
+NOTE: "git diff" by default shows only unstaged changes (i.e. you haven't done a "git add" yet).
+       This is why you can made a change, run "git add", but then "git diff" shows no changes!
+git diff --staged			-	Show staged changes (i.e. where you have done a "git add").
 git diff --stat				-	Show a line diff stat per file, e.g. "00-Preface.txtc | 2 ++" (=2 insertions)
 git diff --stat HEAD^			-	See names of files changed in the last commit.
 git diff --word-diff 			-	Show word diff, e.g. "wibble [-write book-]{+Is this funny?+}"
 git diff ccc6f5e..fc43842		-	Diff between two revisions.
 git diff origin/inspiration		-	Diff current branch with remove branch "inspiration".
-More complex examples:
-git log --author "Mike McQuaid" --after "Nov 10 2013" --grep 'file\.'
-git log --format=email --reverse --max-count 2
-NOTE: --author 					-	Is a regexp.
-NOTE: --after (--before, --since, --until) 	-	Can include: today, yesterday, Nov 10 2013 , 2014-01-30
-NOTE: --grep 					-	Matches the commit message.
-git log --format="%ar %an did: %s"	-	Uses the custom formatter.
-git log --oneline --graph --decorate	-	Visualizes branching and merging on the console.
 
 o  GIT STASH
 Creates a temporary commit with a prepopulated commit message and then returns 

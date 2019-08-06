@@ -31,6 +31,12 @@ Every Git commit 'bakes' this information into your commits, e.g.:
 `git config --global user.email "johndoe@example.com"`  
 Note (from above): Remove the "--global" if you want to override these values for a specific repository.
 
+core.editor
+===========
+git config --global core.editor emacs
+NOTE: "git commit -v" will pre-populate your editor with the code change to be committed,
+       but it will be below a special marker line, so it won't be included in the message.
+       This is useful if you need to see the changes in order to write your commit comment.
 
 core.autocrlf
 =============

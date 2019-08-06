@@ -1,11 +1,12 @@
 # git commit --amend
 
 To correct your comment in the last commit:
+OPTIONAL: First add any files you forgot to stage, using "git add"
 git commit --amend
-The previous commit message will be displayed in the editor. You can then change
-the message and re-save. 
+Your previous commit message will be displayed in the editor. 
+You can then change the message and re-commit. 
 
-Note that this replaces the commit refid with a new one, e.g.
+Note that this replaces the commit refid with a new one...
 
 before "git commit --amend":
 $ git log --oneline --max-count=5
@@ -22,7 +23,6 @@ f050732 Resolved
 3d7e5b4 (origin/chapter-two, chapter-two) Some commit
 66b9078 Revert "x"
 7400ad7 x
-
 
 *****************************************************************************************************
 * Rewriting history is a bad practice if the commit to be reverted has already been pushed publicly *
