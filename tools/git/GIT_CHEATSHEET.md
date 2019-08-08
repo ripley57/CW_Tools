@@ -1,20 +1,28 @@
-o DISPLAY GIT HELP IN WEB PAGE
+o DISPLAY GIT HELP IN WEB BROWSER
 git config --help --web
 
-o GIT GUIs
-gitg, tig (console-based)
+o WRITING GOOD GIT COMMIT MESSAGES
+https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
 
-o GIT PREVIEW 
+o GIT GUIs
+gitg, gitk, tig (console-based)		Good for seeing commit history.
+git gui (apt install git-gui)		Enables you to selectively stage chunks.
+git instaweb				Launches a local web view of history (requires web server):
+					apt-get install ruby
+					git instaweb --httpd=webrick
+
+o GIT PREVIEW COMMAND OPTION (applies to some commands only) 
 --dry-run
 -n
-NOTE: This option does not apply to all git commands!
 
 o CLONE AN EXISTING REPOSITORY
 git clone https://github.com/ripley57/GitPlay.git
 git clone https://github.com/GitInPractice/GitInPracticeRedux.git
 git clone https://github.com/schacon/simplegit-progit.git
 git clone https://github.com/git/git
-NOTE: "git clone" automatically sets up your local master branch to track the remote master branch.
+NOTE: "git clone" automatically tracks the local master branch with the remote master branch.
+git clone --mirror https://github.com/ripley57/GitPlay.git	-	Create an exact copy of a remote repository.
+git daemon --verbose --base-path=. --export-all			-	Share your local repository across the local network.
 
 o LIST FILES TRACKED BY GIT
 git ls-files -v
@@ -37,8 +45,8 @@ git reset --hard		-	Returns the working directory to the state of the last commi
 WARNING: The "--hard" option reverts all changes and you will any un-committed work!!
          This includes sub-directories!!
 git reset			-	Only undoes "git add" and does not also undo any file modifications.
-git reset HEAD^			-	Revert the last committed change. Use "git reset --hard" to also then 
-					revert any file modifications.
+git reset HEAD^			-	Revert the last committed change (un-published, i.e. not yet pushed!). 
+					Use "git reset --hard" to also then revert any file modifications.
 git reset HEAD^ -- myfile.txt	-	Revert a particular file to the state before the last commit.
 git checkout -- readme.txt	-	Lose your local modifications, by overwriting with the original file.
 
