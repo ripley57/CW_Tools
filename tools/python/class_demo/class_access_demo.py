@@ -5,6 +5,11 @@
 	See page 224 of "The Quick Python Books 3rd Ed".
 """
 
+# A quick note on private members (see also class_private_members.py):
+# Class variables are inherited from superclasses unless they begin with two
+# underscores (__) , in which case they’re private and can’t be seen by subclasses.
+
+
 # When you're in a method of a class, you have direct access to...
 #
 # ...the "local namespace":
