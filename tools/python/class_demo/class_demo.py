@@ -1,3 +1,4 @@
+# This must be run with python3
 
 class Shape:
 	def __init__(self, x, y):
