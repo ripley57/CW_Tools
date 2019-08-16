@@ -3,6 +3,9 @@
 	Jupyter notebook is a web application that allows you to create and share documents
 	that contain live code, equations, visualizations, and explanatory text.
 
+	NOTE: 	You Jupyter notebooks can be save to a ".ipynb" file, so you can keep 
+		these as your own record, or share them with others.
+
 	Several languages are now supported, but it orginated in connection to IPython,
 	an alternative Python shell developed for the scientific community.
 
