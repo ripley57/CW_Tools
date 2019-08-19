@@ -8,6 +8,12 @@
 	This demo can be run with Python2:
 		python2 web_server_in_thread.py 
 
+	Useful references:
+		"Python Programming 4th Edition eBook"
+		https://docs.python.org/2.7/library/threading.html#threading.Thread
+		https://docs.python.org/2.7/library/simplehttpserver.html
+		https://blog.anvileight.com/posts/simple-python-http-server/
+
 """
 
 import os
