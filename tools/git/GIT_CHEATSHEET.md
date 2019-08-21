@@ -1,3 +1,7 @@
+o IMPORTANT:
+"git commit ." will commit unstaged modified files!!
+"git commit" (i.e. no ".") will NOT do this :-)
+
 o DISPLAY GIT HELP IN WEB BROWSER
 git config --help --web
 
