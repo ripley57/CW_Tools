@@ -234,15 +234,11 @@ function newer() {
        # Calculate time X minutes ago.
        local _time_earlier_secs=$(($_time_now_secs - $_period_secs))
 
-       # Convert earlier time to string.
-       local _time_earlier_string=$(date -d@$_time_earlier_secs)
-
-       # debug
-       echo "time_now_string=$(date -d@$_time_now_secs)"
-       echo "time_earlier_string=$_time_earlier_string"
+       # Convert time to string format recognised by "touch -t": YYYYMMDDhhmm.ss
+       local _time_earlier_string=$(date -d@$_time_earlier_secs +"%Y%m%d%H%M.%S")
 
        # Set marker file to the earlier time.
-       touch -d "$_time_earlier_string" $MARKER2
+       touch -t "$_time_earlier_string" $MARKER2
 
        # Find the files.
        find . -type f \( -newer $MARKER2 -o -cnewer $MARKER2 \) -print
