@@ -16,6 +16,7 @@ NOTE: This is where the "pip" command tries to find packages for you, plus any d
 ## pip
 Example: Install the "requests" library:
 	python3 -m pip install requests
+**NOTE:** Use "pip list" to see installed packages and their versions.
 
 From "man python3":
        -m module-name
