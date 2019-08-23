@@ -9,14 +9,24 @@ formerly known as the "The Cheese Shop" (soon to be replaced by "The Warehouse")
 
 https://pypi.python.org
 
-NOTE: This is where the "pip" command tries to find packages for you, plus any dependencies,
-      and then performs the installation.
+This is where the "pip" command tries to find packages for you, plus any dependencies,
+and then performs the installation.
 
 
 ## pip
 Example: Install the "requests" library:
 	python3 -m pip install requests
-**NOTE:** Use "pip list" to see installed packages and their versions.
+
+Useful pip options:
+	pip --version				-	List the Python version pip is linked to.
+	pip list				-	See installed packages and their versions.
+	pip install /path/to/package		-	Install package from local directory (containing setup.py).
+	pip install -r file.txt			-	Install all packages names in a "requirements" file.
+	pip download -d somedir pytest		-	Download packages only, to a local directory 'cache'.
+	pip install --no-index --find-links=~/somedir pytest	-	Install from your local download 'cache'.
+
+Pip docs:
+	https://pip.pypa.io
 
 From "man python3":
        -m module-name
