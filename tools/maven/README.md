@@ -37,6 +37,7 @@ NOTE: It looks like many people/organizations have installed their own archetype
 https://maven-repository.com/archetypes
 
 Using an archetype is also demonstrated here: https://www.mkyong.com/webservices/jax-rs/jersey-hello-world-example/
+And another example here (Thucydides and BDD): https://www.joecolantonio.com/jbehave-selenium-getting-started-with-thucydides-part-1/
 
 
 ## Maven Surefire plugin vs Maven Failsafe plugin:
