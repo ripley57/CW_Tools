@@ -45,7 +45,7 @@ def rename_files(preview=True):
 #	Set the name of the file as the mp3 title 
 #	(minus the ".mp3" file extension).
 #
-def set_mp3_titles(preview=False):
+def set_mp3_titles(preview=True):
 	mp3_files = glob.glob("*.mp3")
 	for f in sorted(mp3_files):
 		#  Remove .mp3 extension
@@ -64,7 +64,21 @@ def set_mp3_titles(preview=False):
 			audiofile.tag.save()
 
 
+# Description:
+#	Generate PDF file of the list of mp3 files.
+#
+def create_pdf_file(preview=True):
+	mp3_files = glob.glob("*.mp3")
+	with open("mp3_Audiobooks.txt", 'w') as file_object:
+		for f in sorted(mp3_files):
+			file_object.write("{}\n".format(f))
+	if not preview:
+		os.system('cat mp3_Audiobooks.txt | a2ps --center-title="MP3 Audiobooks" -1 -o - | ps2pdf - mp3_Audiobooks.pdf')
+		os.unlink("mp3_Audiobooks.txt")
+
+
 #rename_files(preview=True)
 #set_mp3_titles(preview=True)
 #rename_safe_for_windows(preview=True)
+create_pdf_file(preview=False)
 
