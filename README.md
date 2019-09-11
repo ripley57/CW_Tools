@@ -14,13 +14,15 @@
 [CW Tools installation demo](https://bit.ly/2IBJd0B)
 
 * Installation should work without any arguments like this:  
-``cwtools.bat``
+`cwtools.bat`  
+(You will find the file here: `tools/scripts/CWTools_Java/cwtools.bat`)
 * Here's an example of calling the scipt with logging enabled:  
 ``cwtools.bat -Dlog4j.logger.com.jeremy.tools=DEBUG``
 * Here's an example of overriding a property value defined in the internal cwtools.properties file:  
 ``cwtools.bat -Dcwtools.processshortcuts=false``
 * If there is a problem running cwtools.bat, you can invoke cwtools.jar directly like this:  
-``java -jar cwtools.jar``
+`java -jar cwtools.jar`  
+(You will find the file here: `tools/scripts/CWTools_Java/cwtools.jar`)
 
 ***
 
