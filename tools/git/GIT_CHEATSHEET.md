@@ -1,5 +1,5 @@
 o IMPORTANT:
-"git commit ." will commit unstaged modified files!!
+"git commit ." will commit unstaged modified files!! (but only files previously committed to the repo)
 "git commit" (i.e. no ".") will NOT do this :-)
 
 o DISPLAY GIT HELP IN WEB BROWSER

@@ -1,7 +1,24 @@
 # BDD ("Behavioural Driven Development")
 
-"At the end of the day, BDD is about streamlining the whole development process
-and delivering value. And it’s much more a mindset than a particular toolset."
+From Thucydides/Serenity home page (http://thucydides.info/docs/serenity-staging/):
+
+"Behaviour Driven Development or BDD, is a development approach where team members 
+explore, and build a shared understanding of application requirements through 
+conversations around examples. In Agile teams practicing BDD, this is often done 
+before or early on in a sprint, in a special meeting sometimes called 
+"the three amigos" or "the three-way handshake", where (at least) a BA (Business 
+Analyst, Product Owner/Manager), a developer and a tester get together to work 
+through examples from the acceptance criteria. The examples being discussed are 
+concrete illustrations of how the system should work, or how a user might use a 
+feature. These examples help provoke discussion, uncovering assumptions and 
+omissions that would have otherwise lead the development team into error further 
+down the track."
+
+"Serenity BDD is also commonly used for automated Regression Tests. Whereas BDD 
+Acceptance Tests are defined very early on in the piece, before development starts, 
+Regression Tests involve an existing system. Other than that, the steps involved 
+in defining and automating the tests are very similar."
+
 
 [Dan North introduction to BDD](https://dannorth.net/introducing-bdd/)
 
@@ -43,7 +60,7 @@ Business Goals -> Capabilities -> Features -> User Stories -> Concrete Examples
 See eBook "BDD In Action", and also "Java Testing with Spock".
 
 
-## JBehave 
+## JBehave (for Java)   [Behave for Python]
 "JBehave is a framework for Behaviour-Driven Development (BDD). BDD is an evolution of 
 test-driven development (TDD) and acceptance-test driven design, and is intended to make 
 these practices more accessible and intuitive to newcomers and experts alike. BDD shifts 
@@ -55,6 +72,10 @@ philosophy."
 2. Map steps to story
 3. Configure stories (JUnit test runner)
 4. Run stories (and examine the reports)
+
+features -> stories -> scenarios -> steps:
+"Our example contains 2 features with a few stories. Each story can contain one 
+or more scenarios, each scenario consists of one or more steps and some examples."
 
 - The JBehave "steps" can be written in Java or Groovy. See https://jbehave.org/reference/latest/using-groovy.html
 - [JBehave (Selenium) Tutorial](https://github.com/jbehave/jbehave-tutorial)
