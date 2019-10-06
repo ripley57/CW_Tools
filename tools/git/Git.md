@@ -2,6 +2,7 @@
 https://help.github.com/articles/git-cheatsheet
 
 ## GitHub Markdown language  
+https://en.support.wordpress.com/markdown-quick-reference/  
 https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet  
 https://help.github.com/en/articles/basic-writing-and-formatting-syntax  
 
