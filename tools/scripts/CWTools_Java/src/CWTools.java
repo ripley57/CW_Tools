@@ -7,19 +7,19 @@ public class CWTools {
 	static Logger logger = Logger.getLogger(CWTools.class);
 
 	private static void usage() {
-		System.err.println(	"\nUsage: java -jar cwtools.jar                 \n" +
+		System.err.println(	"\nUsage: java -jar cwtools.jar       		        \n" +
 					"             [-+cygwin] [-+cwtools]                    \n" +
 					"             [-+cygwin_download]  [-+cygwin_install]	\n" +
 					"             [-+cwtools_download] [-+cwtools_install]	\n" +
 					"             [--dropbox] [--github]                    \n" +
 					"             [--dry_run]                               \n" +
-					"														\n" + 
-					"Some useful property overrides: 					    \n" + 
-					"    -Dlog4j.logger.CWTools=DEBUG    					\n" +
-					"    -Dlog4j.logger.com.jeremy.tools=DEBUG    			\n" +
-					"    -Dcwtools.processshortcuts=false					\n" + 	
-					"    -Durl.cwtools=<cwtools_zip_url> 		  			\n" +
-					"    -Durl.cygwin=<cygwin_zip_url>   					\n\n"	);
+					"							\n" +
+					"Some useful property overrides: 			\n" +
+					"    -Dlog4j.logger.CWTools=DEBUG    			\n" +
+					"    -Dlog4j.logger.com.jeremy.tools=DEBUG    		\n" +
+					"    -Dcwtools.processshortcuts=false			\n" +
+					"    -Durl.cwtools=<cwtools_zip_url> 		  	\n" +
+					"    -Durl.cygwin=<cygwin_zip_url>   			\n\n"	);
 	}
 
 	private enum Cygwin {
@@ -39,7 +39,7 @@ public class CWTools {
 		}
 
 		String getUrlPropName()	   	{	return url_prop_name;		}
-		String getZipName()			{	return zip_name;			}
+		String getZipName()		{	return zip_name;		}
 		String getZipRenamedName() 	{	return zip_renamed_name;	}
 		
 		// Return the unzipped folder name created.
@@ -76,7 +76,7 @@ public class CWTools {
 		}
 
 		String getUrlPropName()		{	return url_prop_name;		}
-		String getZipName()	  		{	return zip_name;			}
+		String getZipName()	  	{	return zip_name;		}
 		String getZipRenamedName() 	{	return zip_renamed_name;	}
 		
 		// Return the unzipped folder name created.
@@ -126,12 +126,12 @@ public class CWTools {
 		*/
 		for (String s: args) {
 			if (s.equals("+cygwin")) { bDownloadCygwin = true;	bInstallCygwin = true; }
-            else if (s.equals("-cygwin")) { bDownloadCygwin = false; bInstallCygwin = false; }
+            		else if (s.equals("-cygwin")) { bDownloadCygwin = false; bInstallCygwin = false; }
 			else if (s.equals("+cygwin_download")) { bDownloadCygwin = true; }
 			else if (s.equals("-cygwin_download")) { bDownloadCygwin = false; }
 			else if (s.equals("+cygwin_install")) {	bInstallCygwin = true; }
 			else if (s.equals("-cygwin_install")) {	bInstallCygwin = false; }
-            else if (s.equals("+cwtools")) { bDownloadCWTools = true; bInstallCWTools  = true; }
+            		else if (s.equals("+cwtools")) { bDownloadCWTools = true; bInstallCWTools  = true; }
 			else if (s.equals("-cwtools")) { bDownloadCWTools = false; bInstallCWTools = false; }
 			else if (s.equals("+cwtools_download")) { bDownloadCWTools = true; }
 			else if (s.equals("-cwtools_download")) { bDownloadCWTools = false;	}
@@ -201,6 +201,8 @@ public class CWTools {
 		File sZipFileName = new File(cygwinzip.getZipRenamedName(), ".");
 		logger.info("Unzipping: " + sZipFileName + " ...");
 		if (!bDryRun) UnzipUtility.unzipfile(sZipFileName);
+
+		try { Thread.sleep(10000); } catch (Exception e) { }
 
 		/* 
 		** Rename the unzipped cygwin directory.
