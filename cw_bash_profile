@@ -617,38 +617,39 @@ function _sd() {
        echo $_SD_DIRS | sed -n 's|#\([0-9][0-9]*\)#\([^#]*\)#\([^#]*\)#!|\1 - \3 - \2\n|pg'
        return
     fi
-	
+
     if [ $_sd_cmd = 'persist' ]; then
        # Command - persist saved dirs to file.
        _persistdirs "$_SD_DIRS"
        return
     fi
-			    	
+
     IFS='!'
     local _dir
     for _dir in $_SD_DIRS
     do
         [ $_debug -eq 1 ] && echo "_dir=$_dir"
-
-        # Parse each directory save details.
-        local _dnum=$(echo $_dir | sed -n 's/#\(.*\)#.*#.*#/\1/p')
-        local _dpath=$(echo $_dir | sed -n 's/#.*#\(.*\)#.*#/\1/p')
-        local _ddesc=$(echo $_dir | sed -n 's/#.*#.*#\(.*\)#/\1/p')
-
+        # Extract values from delimited string.
+        # This should be quicker than x3 sed commands.
+        # See: https://stackoverflow.com/questions/918886/how-do-i-split-a-string-on-a-delimiter-in-bash
+        #local _dnum=$(echo $_dir | sed -n 's/#\(.*\)#.*#.*#/\1/p')
+        #local _dpath=$(echo $_dir | sed -n 's/#.*#\(.*\)#.*#/\1/p')
+        #local _ddesc=$(echo $_dir | sed -n 's/#.*#.*#\(.*\)#/\1/p')
+        IFS='#' read -ra DIR_VALS <<< "$_dir"
+        local _dnum="${DIR_VALS[1]}"
+        local _dpath="${DIR_VALS[2]}"
+        local _ddesc="${DIR_VALS[3]}"
         if [ $_debug -eq 1 ]; then
             echo
             echo "_dnum= $_dnum"
             echo "_dpath=$_dpath"
             echo "_ddesc=$_ddesc"
         fi
-
         # Take action based on command.
         if [ $_sd_cmd = 's' ]; then
             # Command - save current directory in specified slot.
-
             if [ "$_dnum" = "$_sd_dest_dnum" ]; then
 		# We have found slot.
-
 		# Save description. Ask for description, if not supplied.
                 local _sd_new_desc_tmp
                 if [ x"$_sd_dest_desc" != x ]; then
@@ -658,7 +659,6 @@ function _sd() {
                     read _sd_new_desc_tmp
                 fi   
                 [ x"$_sd_new_desc_tmp" = x ] && _sd_new_desc_tmp="No description"
-
                 # Use supplied directory, if specified; otherwise use current directory.
                 local _sd_new_path
                 if [ x"$_sd_dest_path" != x ]; then
@@ -666,12 +666,10 @@ function _sd() {
                 else
                     _sd_new_path="$PWD"
                 fi
-
                 # Save directory path to slot.
                 local _SD_DIRS_TMP
                 _SD_DIRS_TMP=$(echo "$_SD_DIRS" | sed "s|#${_dnum}#[^#]*#[^#]*#|#${_dnum}#${_sd_new_path}#${_sd_new_desc_tmp}#|")
                 _SD_DIRS="$_SD_DIRS_TMP"
-
 		# Persist the paths.
        		_persistdirs "$_SD_DIRS"
                 break
@@ -679,7 +677,6 @@ function _sd() {
 
         elif [ $_sd_cmd = 'd' ]; then
 		# Command - clear saved directory from specified slot.
-
 		if [ "$_dnum" = "$_sd_dest_dnum" ]; then
 			# We have found slot. Clear directory path in it.
 			local _SD_DIRS_TMP
@@ -693,7 +690,6 @@ function _sd() {
 
 	elif [ $_sd_cmd = "cd" ]; then
 		# Command - switch to the specified directory.
-
 		if [ "$_dnum" = "$_sd_dest_dnum" ]; then
 			# We have found slot. cd to directory.
 			cd "$_dpath"
@@ -727,12 +723,17 @@ function _persistdirs() {
     	for _dir in $_SD_DIRS
     	do
        		[ $_debug -eq 1 ] && echo "_dir=$_dir"
-
         	# Parse each directory save details.
-        	local _dnum=$(echo $_dir | sed -n 's/#\(.*\)#.*#.*#/\1/p')
-       	 	local _dpath=$(echo $_dir | sed -n 's/#.*#\(.*\)#.*#/\1/p')
-        	local _ddesc=$(echo $_dir | sed -n 's/#.*#.*#\(.*\)#/\1/p')
-
+                # Extract values from delimited string.
+                # This should be quicker than x3 sed commands.
+                # See: https://stackoverflow.com/questions/918886/how-do-i-split-a-string-on-a-delimiter-in-bash
+        	#local _dnum=$(echo $_dir | sed -n 's/#\(.*\)#.*#.*#/\1/p')
+       	 	#local _dpath=$(echo $_dir | sed -n 's/#.*#\(.*\)#.*#/\1/p')
+        	#local _ddesc=$(echo $_dir | sed -n 's/#.*#.*#\(.*\)#/\1/p')
+                IFS='#' read -ra DIR_VALS <<< "$_dir"
+                local _dnum="${DIR_VALS[1]}"
+                local _dpath="${DIR_VALS[2]}"
+                local _ddesc="${DIR_VALS[3]}"
         	if [ $_debug -eq 1 ]; then
             		echo
             		echo "_dnum= $_dnum"
