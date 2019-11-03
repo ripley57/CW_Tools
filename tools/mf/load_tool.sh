@@ -13,15 +13,16 @@ function percent() {
 		return
 	fi
 
-	local  _pc=$(/usr/bin/bc <<<"$1*$2/100")
-        local _min=$(/usr/bin/bc <<<"$1-$_pc")
-        local _max=$(/usr/bin/bc <<<"$1+$_pc")
+	local  _pc=${2:-5} ;# 2nd arg is the percentage. Default to 5%.
+	local  _diff=$(/usr/bin/bc <<<"$1*$_pc/100")
+        local _min=$(/usr/bin/bc <<<"$1-$_diff")
+        local _max=$(/usr/bin/bc <<<"$1+$_diff")
 
- 	echo "In value: $1"
-        echo "In percent: $2"
-	echo "diff: $_pc"
-        echo "min: $_min"
-        echo "max: $_max"
+ 	printf "%-10s : %s\n" "In value" $1
+        printf "%-10s : %s\n" "In percent" $_pc
+	printf "%-10s : %s\n" "diff" $_diff
+        printf "%-10s : %s\n" "min" $_min
+        printf "%-10s : %s\n" "max" $_max
 }
 
 
