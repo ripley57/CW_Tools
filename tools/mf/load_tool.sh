@@ -5,11 +5,11 @@ TOOLS_DIR=$*
 #   of the second value given (argument two).
 #
 # Usage:
-#   percent 500 5
+#   mf_percent 500 5
 #
-function percent() {
+function mf_percent() {
 	if [ "$1" = '-h' ]; then
-		usage percent
+		usage mf_percent
 		return
 	fi
 
@@ -30,11 +30,11 @@ function percent() {
 #   Launch MF ED 32-bit command prompt.
 #
 # Usage:
-#   es32
+#   mf_es32
 #
-function es32() {
+function mf_es32() {
 	if [ "$1" = '-h' ]; then
-		usage es32
+		usage mf_es32
 		return
 	fi
 	cygstart cmd /c "$(cygpath -w "$TOOLS_DIR/mf/es32.bat")"
@@ -45,11 +45,11 @@ function es32() {
 #   Launch MF ED 64-bit command prompt.
 #
 # Usage:
-#   es64
+#   mf_es64
 #
-function es64() {
+function mf_es64() {
 	if [ "$1" = '-h' ]; then
-		usage es64
+		usage mf_es64
 		return
 	fi
 	cygstart cmd /c "$(cygpath -w "$TOOLS_DIR/mf/es64.bat")"
