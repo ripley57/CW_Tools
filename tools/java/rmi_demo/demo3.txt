@@ -1,0 +1,27 @@
+Local RMI demo 3
+================
+
+Steps to demo rmi with both client and server on same machine. This demo starts
+rmiregistry with "-J-Djava.rmi.server.codebase=file:///...", thereby preventing the
+server from overriding this by telling the client where to download the remote
+files from. This is a security feature, and also runs rmiregistry with the 
+implicit/default value of "-J-Djava.rmi.server.useCodebaseOnly=true".
+
+1. Create a "classes_server" directory, containing only:
+classes_server/example/hello/Server.class
+classes_server/example/hello/Hello.class
+
+2. Create a "classes_client" directory, containing only:
+classes_client/example/hello/Client.class
+classes_client/example/hello/Hello.class
+
+3. Start rmiregistry:
+rmiregistry -J-Djava.rmi.server.codebase=file:///home/jcdc/Downloads/classes_server/ 1099
+
+4. Start the Server:
+java -classpath classes_server example.hello.Server
+
+5. Run the client:
+java -classpath classes_client example.hello.Client
+
+JeremyC 19-1-2020

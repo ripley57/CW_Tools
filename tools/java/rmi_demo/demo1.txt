@@ -1,0 +1,30 @@
+Local RMI demo 1
+================
+
+Steps to demo rmi with both client and server on same machine, using a Jetty web 
+server to host the download files, and using "-Djava.rmi.server.useCodebaseOnly=false", 
+so the server can direct the client to download the files from the web server URL.
+
+1. Create a "classes_server" directory, containing only:
+classes_server/example/hello/Server.class
+classes_server/example/hello/Hello.class
+
+2. Create a "classes_client" directory, containing only:
+classes_client/example/hello/Client.class
+classes_client/example/hello/Hello.class
+
+3. Start rmiregistry:
+rmiregistry -J-Djava.rmi.server.useCodebaseOnly=false 1099
+
+4. Start Jetty in the "classes_server" directory:
+(NOTE: I had to edit the Jetty server MyServer.java file to remove the need for BL/BLBL user authentication).
+jcdc@E1317T:~/Downloads/classes_server$ run_jetty 
+
+5. Start the Server:
+java -classpath classes_server -Djava.rmi.server.codebase=http://localhost:8080/list/ example.hello.Server
+NOTE: The trailing "list/" is vital!
+
+6. Run the client:
+java -classpath classes_client example.hello.Client
+
+JeremyC 19-1-2020

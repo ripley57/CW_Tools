@@ -1,0 +1,26 @@
+Local RMI demo 2
+================
+
+Steps to demo rmi with both client and server on same machine, and using 
+"-Djava.rmi.server.useCodebaseOnly=false" so that the server can direct 
+the client to download the files via a local "file:///" URL.
+
+1. Create a "classes_server" directory, containing only:
+classes_server/example/hello/Server.class
+classes_server/example/hello/Hello.class
+
+2. Create a "classes_client" directory, containing only:
+classes_client/example/hello/Client.class
+classes_client/example/hello/Hello.class
+
+3. Start rmiregistry:
+rmiregistry -J-Djava.rmi.server.useCodebaseOnly=false 1099
+
+4. Start the Server:
+java -classpath classes_server -Djava.rmi.server.codebase=file:///home/jcdc/Downloads/classes/ example.hello.Server
+NOTE: The trailing "classes/" is vital!
+
+5. Run the client:
+java -classpath classes_client example.hello.Client
+
+JeremyC 19-1-2020
