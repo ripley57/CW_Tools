@@ -1,0 +1,30 @@
+Troubleshooting common RMI errors
+=================================
+
+See https://docs.oracle.com/javase/7/docs/technotes/guides/rmi/codebase.html
+
+The following is an example of a real client-side error - from loading the "Ludis.jsp" page in Tomcat.
+
+Note that there is no "bind" or "rebind" mentioned - because this error happened on the rmi client, 
+not the rmi server.
+
+This error was seen on Tomcat, so it's most likely an issue with the Tomcat built-in SecurityManager. 
+My guess is that the remote Stub IS being downloaded, but the client (Tomcat) is not allowed to read/run it.
+
+2020-01-16 17:19:56 Apache Commons Daemon procrun stdout initialized.
+Exception connecting to LUDIS. error unmarshalling return; nested exception is:
+java.lang.ClassNotFoundException: com.microfocus.TestSystem.LUDIS.TestSystemLUDISImpl_Stub
+java.rmi.UnmarshalException: error unmarshalling return; nested exception is:
+java.lang.ClassNotFoundException: com.microfocus.TestSystem.LUDIS.TestSystemLUDISImpl_Stub
+at sun.rmi.registry.RegistryImpl_Stub.lookup(RegistryImpl_Stub.java:127)
+at java.rmi.Naming.lookup(Naming.java:101)
+at com.microfocus.TestSystem.LUDIS.LUDISHelper.getConnection(LUDISHelper.java:97)
+at com.microfocus.TestSystem.LUDIS.LUDISHelper.testConnection(LUDISHelper.java:66)
+at com.microfocus.MFTest.TestSystem.LudisConnectionBean.getConnection(LudisConnectionBean.java:33)
+at com.microfocus.MFTest.TestSystem.LudisIndexBean.getConnectionBean(LudisIndexBean.java:135)
+at org.apache.jsp.Ludis_jsp._jspService(Ludis_jsp.java:99)
+...
+
+SOLUTION:
+tbd
+
