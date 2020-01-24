@@ -1,6 +1,5 @@
 Troubleshooting common RMI errors
 =================================
-
 See https://docs.oracle.com/javase/7/docs/technotes/guides/rmi/codebase.html
 
 The following is an example of a real client-side error - from loading the "Ludis.jsp" page in Tomcat.
@@ -26,5 +25,9 @@ at org.apache.jsp.Ludis_jsp._jspService(Ludis_jsp.java:99)
 ...
 
 SOLUTION:
-tbd
+Run tomcat7w.exe to edit the Registry settings. The following were added to the Tomcat startup options to fix this:  
+-Djava.security.manager
+-Djava.rmi.server.useCodebaseOnly=false
+Note: It is interesting though that my simple rmi client/server "Hello world" worked without this change.
+
 
