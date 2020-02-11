@@ -467,7 +467,7 @@ function download_nc() {
     if [ "$1" != "" ]; then
 	destination_path="-O "$1""
     fi
-    wget "$destination_path" https://dl.dropboxusercontent.com/u/22161481/nc.exe.safe
+    wget "$destination_path" https://www.dropbox.com/s/0pz9lgzxadaipvx/nc.exe.safe?dl=1
 }
 
 # Prefix used when splitting large file for upload.
