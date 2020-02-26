@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Root>
+<Agent id="nwb-tpccsilk1" IpAddress="10.120.50.50"/>
+<Agent id="nwb-tpccsilk2" IpAddress="10.120.50.50"/>
+<Agent id="nwb-tpccsilk3" IpAddress="10.120.50.50"/>
+<Agent id="nwb-tpccsilk4" IpAddress="10.120.50.50"/>
+<Agent id="nwb-tpccsilk5" IpAddress="10.120.50.50"/>
+</Root>
